@@ -6,7 +6,7 @@ const state = {
   db: null,
   cards: [],
   classes: [],
-  cardTypes: ["일반유닛", "트랩유닛", "제물유닛"],
+  cardTypes: ["일반유닛", "트랩유닛", "책사유닛"],
   classId: "all",
   type: "전체",
   query: "",
@@ -26,6 +26,7 @@ const dbStatus = document.querySelector("#dbStatus");
 const exportButton = document.querySelector("#exportButton");
 const exportImageButton = document.querySelector("#exportImageButton");
 const printButton = document.querySelector("#printButton");
+const printFieldButton = document.querySelector("#printFieldButton");
 const addCardButton = document.querySelector("#addCardButton");
 const editorForm = document.querySelector("#editorForm");
 const editorEmpty = document.querySelector("#editorEmpty");
@@ -36,6 +37,7 @@ const dialog = document.querySelector("#cardDialog");
 const dialogBody = document.querySelector("#dialogBody");
 const dialogClose = document.querySelector("#dialogClose");
 const printArea = document.querySelector("#printArea");
+const fieldBoardSheet = document.querySelector("#fieldBoardSheet");
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -60,6 +62,33 @@ function classPrintTokens(classId) {
 
 function displayCardType(type) {
   return String(type ?? "").replace("유닛", "");
+}
+
+function effectText(card) {
+  const actionCost = Number(card.actionCost ?? 1);
+  const effect = card.effect ?? "";
+  return actionCost > 0 ? `[막: ${actionCost}] ${effect}` : effect;
+}
+
+function renderKeywordText(value) {
+  return escapeHtml(value)
+    .replace(/\[([^\]]+)\]/g, "<strong>[$1]</strong>")
+    .replace(/\r?\n/g, "<br>");
+}
+
+function renderEffect(card) {
+  const actionCost = Number(card.actionCost ?? 1);
+  const effect = renderKeywordText(card.effect);
+  return actionCost > 0
+    ? `<strong>[막: ${escapeHtml(actionCost)}]</strong> ${effect}`
+    : effect;
+}
+
+function cardNameSizeClass(name) {
+  const length = Array.from(String(name ?? "")).length;
+  if (length >= 12) return "name-compact";
+  if (length > 8) return "name-small";
+  return "";
 }
 
 function migrateCard(card) {
@@ -97,7 +126,7 @@ async function loadVersion(versionId) {
   state.db = await response.json();
   state.cards = (state.db.cards ?? []).map(migrateCard);
   state.classes = state.db.classes ?? [];
-  state.cardTypes = ["전체", ...(state.db.cardTypes ?? ["일반유닛", "트랩유닛", "제물유닛"])];
+  state.cardTypes = ["전체", ...(state.db.cardTypes ?? ["일반유닛", "트랩유닛", "책사유닛"])];
   state.selectedVersion = versionId;
   state.selectedCardId = "";
   state.dirty = false;
@@ -143,7 +172,7 @@ function getFilteredCards() {
   return state.cards.filter((card) => {
     const classMatches = state.classId === "all" || card.classId === state.classId;
     const typeMatches = state.type === "전체" || card.type === state.type;
-    const text = `${card.id} ${card.serial} ${card.name} ${card.faction} ${card.className} ${card.theme} ${card.type} ${card.race} ${card.effect} ${card.role}`.toLowerCase();
+    const text = `${card.id} ${card.serial} ${card.name} ${card.faction} ${card.className} ${card.theme} ${card.type} ${card.race} ${card.effect}`.toLowerCase();
     return classMatches && typeMatches && (!query || text.includes(query));
   });
 }
@@ -158,7 +187,7 @@ function renderCard(card, detailed = false) {
     <article class="game-card ${detailed ? "game-card-detail" : ""}" data-id="${escapeHtml(card.id)}" style="--class-color:${colors[card.classId] ?? fallbackClassColor}; --class-stripe:${escapeHtml(tones.stripe)}">
       <div class="card-top">
         <span class="cost">${escapeHtml(card.cost)}</span>
-        <strong class="name">${escapeHtml(card.name)}</strong>
+        <strong class="name ${cardNameSizeClass(card.name)}">${escapeHtml(card.name)}</strong>
         <span class="power">${escapeHtml(card.power ?? card.atk ?? 0)}</span>
       </div>
       <div class="art">
@@ -167,11 +196,9 @@ function renderCard(card, detailed = false) {
       <div class="card-bottom">
         <div class="meta">
           <span class="chip">${escapeHtml(card.faction)}</span>
-          <span class="chip">${escapeHtml(card.className)}</span>
           <span class="chip">${escapeHtml(card.race)}</span>
         </div>
-        <div class="effect"><strong>[막: ${escapeHtml(card.actionCost ?? 1)}]</strong> ${escapeHtml(card.effect)}</div>
-        ${detailed ? `<div class="effect">${escapeHtml(card.role)}</div>` : ""}
+        <div class="effect">${renderEffect(card)}</div>
         <div class="serial-line">${escapeHtml(card.serial)}</div>
         <div class="type-line">${escapeHtml(displayCardType(card.type))}</div>
         <div class="class-mark">${escapeHtml(tones.mark)}</div>
@@ -215,7 +242,7 @@ function renderStructureDecks() {
           <div class="deck-meta">
             <span>${escapeHtml(deck.totalCards)}장</span>
             <span>일반 ${typeCounts["일반"] ?? 0}</span>
-            <span>제물 ${typeCounts["제물"] ?? 0}</span>
+            <span>책사 ${typeCounts["책사"] ?? 0}</span>
             <span>트랩 ${typeCounts["트랩"] ?? 0}/16</span>
           </div>
           <ol>${rows}</ol>
@@ -238,7 +265,6 @@ function openCard(cardId) {
       <div class="detail-copy">
         <p class="eyebrow">${escapeHtml(card.faction)} · ${escapeHtml(card.theme)}</p>
         <h3>${escapeHtml(card.name)}</h3>
-        <p>${escapeHtml(card.role)}</p>
         <div class="rule-table">
           <div class="rule-row"><span>ID</span><strong>${escapeHtml(card.id)}</strong></div>
           <div class="rule-row"><span>시리얼</span><strong>${escapeHtml(card.serial)}</strong></div>
@@ -247,7 +273,7 @@ function openCard(cardId) {
           <div class="rule-row"><span>종족</span><strong>${escapeHtml(card.race)}</strong></div>
           <div class="rule-row"><span>비용</span><strong>${escapeHtml(card.cost)}</strong></div>
           <div class="rule-row"><span>힘</span><strong>${escapeHtml(card.power ?? card.atk ?? 0)}</strong></div>
-          <div class="rule-row"><span>효과</span><strong>[막: ${escapeHtml(card.actionCost ?? 1)}] ${escapeHtml(card.effect)}</strong></div>
+          <div class="rule-row"><span>효과</span><strong>${renderEffect(card)}</strong></div>
         </div>
       </div>
     </div>
@@ -287,7 +313,6 @@ function renderEditor() {
   editorForm.elements.actionCost.value = card.actionCost ?? 1;
   editorForm.elements.sigil.value = card.sigil ?? classPrintTokens(card.classId).mark;
   editorForm.elements.effect.value = card.effect ?? "";
-  editorForm.elements.role.value = card.role ?? "";
 
   editorForm.elements.classId.innerHTML = state.classes
     .map((item) => `<option value="${escapeHtml(item.id)}">${escapeHtml(item.label)}</option>`)
@@ -326,7 +351,6 @@ function normalizeCard(formData, previousCard = {}) {
     actionCost: Number(formData.get("actionCost") || 0),
     sigil: formData.get("sigil").trim(),
     effect: formData.get("effect").trim(),
-    role: formData.get("role").trim(),
   };
   delete nextCard.atk;
   delete nextCard.hp;
@@ -353,7 +377,6 @@ function addCard() {
     actionCost: 1,
     sigil: classPrintTokens(classInfo?.id).mark,
     effect: "",
-    role: "",
   };
   state.cards.unshift(card);
   state.selectedCardId = card.id;
@@ -420,7 +443,7 @@ function hexToRgb(hex) {
 }
 
 function wrapText(ctx, text, x, y, maxWidth, lineHeight, maxLines = 99) {
-  const words = String(text ?? "").split(/\s+/);
+  const words = String(text ?? "").match(/\[[^\]]+\]|\S+/g) ?? [];
   const lines = [];
   let line = "";
 
@@ -438,6 +461,50 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight, maxLines = 99) {
   lines.slice(0, maxLines).forEach((item, index) => {
     const suffix = index === maxLines - 1 && lines.length > maxLines ? "..." : "";
     ctx.fillText(`${item}${suffix}`, x, y + index * lineHeight);
+  });
+  return Math.min(lines.length, maxLines) * lineHeight;
+}
+
+function drawInlineText(ctx, text, x, y, normalFont, boldFont) {
+  const segments = String(text ?? "").split(/(\[[^\]]+\])/g).filter(Boolean);
+  let cursor = x;
+
+  for (const segment of segments) {
+    const isKeyword = /^\[[^\]]+\]$/.test(segment);
+    ctx.font = isKeyword ? boldFont : normalFont;
+    ctx.fillText(segment, cursor, y);
+    cursor += ctx.measureText(segment).width;
+  }
+}
+
+function wrapRichText(ctx, text, x, y, maxWidth, lineHeight, maxLines = 99, normalFont = ctx.font, boldFont = ctx.font) {
+  const lines = [];
+
+  ctx.font = normalFont;
+  for (const paragraph of String(text ?? "").split(/\r?\n/)) {
+    const words = paragraph.match(/\[[^\]]+\]|\S+/g) ?? [];
+    let line = "";
+
+    if (words.length === 0) {
+      lines.push("");
+      continue;
+    }
+
+    for (const word of words) {
+      const testLine = line ? `${line} ${word}` : word;
+      if (ctx.measureText(testLine).width > maxWidth && line) {
+        lines.push(line);
+        line = word;
+      } else {
+        line = testLine;
+      }
+    }
+    if (line) lines.push(line);
+  }
+
+  lines.slice(0, maxLines).forEach((item, index) => {
+    const suffix = index === maxLines - 1 && lines.length > maxLines ? "..." : "";
+    drawInlineText(ctx, `${item}${suffix}`, x, y + index * lineHeight, normalFont, boldFont);
   });
   return Math.min(lines.length, maxLines) * lineHeight;
 }
@@ -480,8 +547,11 @@ function drawCardToCanvas(card) {
 
   ctx.fillStyle = "#111111";
   ctx.textAlign = "left";
-  ctx.font = "bold 4.1px Gowun Batang, Noto Sans KR, serif";
-  wrapText(ctx, card.name, 11, 5.7, 37, 4.1, 2);
+  const nameLength = Array.from(String(card.name ?? "")).length;
+  const nameFontSize = nameLength >= 12 ? 2.75 : nameLength > 8 ? 3.45 : 4.1;
+  const nameLineHeight = nameLength >= 12 ? 3.05 : nameLength > 8 ? 3.45 : 4.1;
+  ctx.font = `bold ${nameFontSize}px Gowun Batang, Noto Sans KR, serif`;
+  wrapText(ctx, card.name, 11, 5.7, 37, nameLineHeight, 2);
 
   ctx.fillStyle = "#ffffff";
   ctx.fillRect(50.8, 2.2, 7, 7);
@@ -506,7 +576,7 @@ function drawCardToCanvas(card) {
   ctx.fillText(card.sigil ?? "", artX + artW / 2, artY + artH / 2 + 4);
 
   let y = 49;
-  const chips = [card.faction, card.className, card.race].filter(Boolean);
+  const chips = [card.faction, card.race].filter(Boolean);
   ctx.textAlign = "left";
   ctx.font = "bold 2.25px Noto Sans KR, sans-serif";
   let x = 6.4;
@@ -525,8 +595,10 @@ function drawCardToCanvas(card) {
 
   y += 5.2;
   ctx.fillStyle = "#111111";
-  ctx.font = "2.75px Noto Sans KR, sans-serif";
-  wrapText(ctx, `[막: ${card.actionCost ?? 1}] ${card.effect}`, 6.4, y, 51.4, 3.55, 6);
+  const effectFont = "2.75px Noto Sans KR, sans-serif";
+  const effectBoldFont = "bold 2.75px Noto Sans KR, sans-serif";
+  ctx.font = effectFont;
+  wrapRichText(ctx, effectText(card), 6.4, y, 51.4, 3.55, 6, effectFont, effectBoldFont);
 
   ctx.fillStyle = "#555555";
   ctx.font = "bold 2.2px Noto Sans KR, sans-serif";
@@ -590,6 +662,17 @@ function printCards() {
   window.print();
 }
 
+function printFieldBoard() {
+  if (!fieldBoardSheet) return;
+  printArea.innerHTML = `
+    <section class="field-print-page">
+      ${fieldBoardSheet.outerHTML}
+    </section>
+  `;
+  document.body.classList.add("print-mode");
+  window.print();
+}
+
 versionSelect.addEventListener("change", async (event) => {
   if (state.dirty && !window.confirm("편집 중인 변경사항이 있습니다. 다른 버전을 불러올까요?")) {
     versionSelect.value = state.selectedVersion;
@@ -644,6 +727,7 @@ editorForm?.addEventListener("input", () => {
 exportButton?.addEventListener("click", exportJson);
 exportImageButton?.addEventListener("click", exportSelectedCardImage);
 printButton?.addEventListener("click", printCards);
+printFieldButton?.addEventListener("click", printFieldBoard);
 addCardButton?.addEventListener("click", addCard);
 duplicateCardButton?.addEventListener("click", duplicateCard);
 deleteCardButton?.addEventListener("click", deleteCard);

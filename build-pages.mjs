@@ -16,8 +16,8 @@ await Promise.all([
 
 const html = await readFile("index.html", "utf8");
 const withoutEditor = html
-  .replace(/\s*<button class="doc-link" id="exportButton" type="button">JSON Export<\/button>/, "")
-  .replace(/\s*<aside class="editor"[\s\S]*?<\/aside>\s*(?=<\/section>)/, "");
+  .replace(/\n\s*<!-- EDITOR_ACTION_START -->[\s\S]*?<!-- EDITOR_ACTION_END -->\s*\n/, "\n")
+  .replace(/\n\s*<!-- EDITOR_START -->[\s\S]*?<!-- EDITOR_END -->\s*\n/, "\n");
 const publicHtml = withoutEditor.replace("<script src=\"./app.js\"></script>", `${publicModeScript}\n    <script src="./app.js"></script>`);
 await writeFile(`${dist}/index.html`, publicHtml);
 

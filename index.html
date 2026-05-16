@@ -18,14 +18,19 @@
       <nav class="top-nav" aria-label="주요 섹션">
         <a href="#card-db">카드 DB</a>
         <a href="#decks">스트럭쳐 덱</a>
+        <a href="#field-board">필드 판</a>
         <a href="#field">필드</a>
         <a href="#top">상단</a>
       </nav>
       <div class="header-actions">
-        <a class="doc-link" href="./docs/card-db-plan.html">기획 MD</a>
+        <a class="doc-link" href="./docs/index.html">문서</a>
+        <a class="doc-link" href="./docs/rulebook.html">룰북</a>
+        <!-- EDITOR_ACTION_START -->
         <button class="doc-link" id="exportButton" type="button">JSON Export</button>
+        <!-- EDITOR_ACTION_END -->
         <button class="doc-link" id="exportImageButton" type="button">PNG Export</button>
         <button class="doc-link" id="printButton" type="button">A4 9장 Print</button>
+        <button class="doc-link" id="printFieldButton" type="button">필드판 Print</button>
       </div>
     </header>
 
@@ -70,6 +75,73 @@
         </div>
       </section>
 
+      <section class="field-board-section" id="field-board" aria-label="인쇄용 필드 판">
+        <div class="field-board-head">
+          <div>
+            <p class="eyebrow">printable field</p>
+            <h2>필드 판</h2>
+          </div>
+          <span>1인용 · A4 세로</span>
+        </div>
+
+        <div class="field-board-sheet" id="fieldBoardSheet">
+          <header class="field-title">
+            <div>
+              <p>괴력난신</p>
+              <h3>필드 판</h3>
+            </div>
+            <span>성주가 패장으로 이동하면 패배</span>
+          </header>
+
+          <section class="battlefield-zone" aria-label="전장">
+            <div class="zone-label">
+              <strong>전장</strong>
+              <span>최대 5장 · [대기] 세로 / [정비] 가로</span>
+            </div>
+            <div class="unit-slots">
+              <span>유닛 1</span>
+              <span>유닛 2</span>
+              <span>유닛 3</span>
+              <span>유닛 4</span>
+              <span>유닛 5</span>
+            </div>
+          </section>
+
+          <section class="castle-zone" aria-label="성">
+            <div class="gate-row">
+              <span>문지기 · 동</span>
+              <span>문지기 · 서</span>
+              <span>문지기 · 남</span>
+              <span>문지기 · 북</span>
+            </div>
+            <div class="lord-slot">성주</div>
+          </section>
+
+          <section class="resource-zone" aria-label="막사">
+            <div class="camp-slot">
+              <strong>왼쪽막사</strong>
+              <span>지휘실 · 위에서부터 이동</span>
+            </div>
+            <div class="camp-arrow">→</div>
+            <div class="camp-slot">
+              <strong>오른쪽막사</strong>
+              <span>야전 막사 · 소모된 자원</span>
+            </div>
+          </section>
+
+          <section class="side-zones" aria-label="군과 패장">
+            <div>
+              <strong>군</strong>
+              <span>덱</span>
+            </div>
+            <div>
+              <strong>패장</strong>
+              <span>공개 트래시</span>
+            </div>
+          </section>
+        </div>
+      </section>
+
       <section class="deck-section" id="decks" aria-label="스트럭쳐 덱">
         <div class="deck-section-head">
           <div>
@@ -108,14 +180,15 @@
         <section class="library">
           <div class="library-head">
             <div>
-              <p class="eyebrow">example cards</p>
-              <h2>예시카드</h2>
+              <p class="eyebrow">card database</p>
+              <h2>카드 DB</h2>
             </div>
             <span id="resultCount">0장</span>
           </div>
           <div class="card-grid" id="cardGrid"></div>
         </section>
 
+        <!-- EDITOR_START -->
         <aside class="editor" aria-label="카드 편집기">
           <div class="editor-head">
             <div>
@@ -143,16 +216,16 @@
             </div>
             <label>종족<input name="race" /></label>
             <div class="editor-pair">
-              <label>효과 비용<input name="actionCost" type="number" min="0" /></label>
+            <label>효과 비용<input name="actionCost" type="number" min="0" /></label>
             </div>
             <label>효과<textarea name="effect" rows="4"></textarea></label>
-            <label>역할<textarea name="role" rows="3"></textarea></label>
             <div class="editor-actions">
               <button id="duplicateCardButton" type="button">복제</button>
               <button id="deleteCardButton" type="button">삭제</button>
             </div>
           </form>
         </aside>
+        <!-- EDITOR_END -->
       </section>
     </main>
 

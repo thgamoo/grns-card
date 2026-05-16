@@ -225,6 +225,216 @@ textarea {
   font-size: 0.9rem;
 }
 
+.field-board-section {
+  padding: clamp(1.25rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+}
+
+.field-board-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.field-board-head h2,
+.field-title h3 {
+  margin: 0;
+  font-family: "Gowun Batang", serif;
+  letter-spacing: 0;
+}
+
+.field-board-head h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.field-board-head > span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.field-board-sheet {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 11mm;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(90deg, transparent 49.85%, #d1d5db 49.85% 50.15%, transparent 50.15%),
+    #ffffff;
+  color: #111111;
+  display: grid;
+  grid-template-rows: auto 1.1fr 1.05fr auto auto;
+  gap: 8mm;
+}
+
+.field-title {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid #111111;
+  padding-bottom: 5mm;
+}
+
+.field-title p {
+  margin: 0 0 1mm;
+  color: #555555;
+  font-size: 3.1mm;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.field-title h3 {
+  font-size: 12mm;
+  line-height: 1;
+}
+
+.field-title span {
+  font-size: 3.2mm;
+  font-weight: 800;
+  text-align: right;
+}
+
+.battlefield-zone,
+.castle-zone,
+.resource-zone,
+.side-zones > div {
+  border: 0.45mm solid #111111;
+  background: #ffffff;
+}
+
+.battlefield-zone {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: 5mm;
+  gap: 5mm;
+}
+
+.zone-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 0.3mm solid #111111;
+  padding-bottom: 3mm;
+}
+
+.zone-label strong {
+  font-family: "Gowun Batang", serif;
+  font-size: 8mm;
+}
+
+.zone-label span {
+  color: #333333;
+  font-size: 3.1mm;
+  font-weight: 800;
+  text-align: right;
+}
+
+.unit-slots {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 3mm;
+}
+
+.unit-slots span,
+.gate-row span,
+.lord-slot {
+  display: grid;
+  place-items: center;
+  border: 0.35mm solid #111111;
+  background:
+    repeating-linear-gradient(135deg, #ffffff, #ffffff 5mm, #f2f2f2 5mm, #f2f2f2 10mm);
+  color: #111111;
+  font-weight: 900;
+}
+
+.unit-slots span {
+  min-height: 54mm;
+  font-size: 3.8mm;
+}
+
+.castle-zone {
+  display: grid;
+  grid-template-rows: 1fr 1.05fr;
+  padding: 5mm;
+  gap: 5mm;
+}
+
+.gate-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4mm;
+}
+
+.gate-row span {
+  min-height: 43mm;
+  font-size: 3.4mm;
+}
+
+.lord-slot {
+  min-height: 46mm;
+  font-family: "Gowun Batang", serif;
+  font-size: 10mm;
+  background: #ffffff;
+}
+
+.resource-zone {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 12mm minmax(0, 1fr);
+  align-items: stretch;
+  gap: 4mm;
+  padding: 4mm;
+}
+
+.camp-slot {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 2mm;
+  min-height: 30mm;
+  border: 0.35mm solid #111111;
+  background: #ffffff;
+  text-align: center;
+}
+
+.camp-slot strong,
+.side-zones strong {
+  font-family: "Gowun Batang", serif;
+  font-size: 6mm;
+}
+
+.camp-slot span,
+.side-zones span {
+  color: #444444;
+  font-size: 3mm;
+  font-weight: 800;
+}
+
+.camp-arrow {
+  display: grid;
+  place-items: center;
+  font-size: 9mm;
+  font-weight: 900;
+}
+
+.side-zones {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5mm;
+}
+
+.side-zones > div {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  min-height: 26mm;
+  gap: 1mm;
+}
+
 .deck-section {
   padding: clamp(1.25rem, 4vw, 3rem);
   border-bottom: 1px solid var(--line);
@@ -548,6 +758,14 @@ select option {
   font-size: 5.4mm;
 }
 
+.game-card-detail .name-small {
+  font-size: 4.5mm;
+}
+
+.game-card-detail .name-compact {
+  font-size: 3.25mm;
+}
+
 .game-card-detail .art {
   margin: 0 2.8mm 0 8.3mm;
 }
@@ -623,6 +841,14 @@ select option {
   font-size: 4.2mm;
   line-height: 1.15;
   white-space: normal;
+}
+
+.name-small {
+  font-size: 3.55mm;
+}
+
+.name-compact {
+  font-size: 2.65mm;
 }
 
 .art {
@@ -917,5 +1143,22 @@ dialog::backdrop {
   .game-card:hover {
     transform: none;
     filter: none;
+  }
+
+  .field-print-page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 0;
+    background: #ffffff;
+    break-after: page;
+  }
+
+  .field-print-page .field-board-sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+    break-inside: avoid;
   }
 }

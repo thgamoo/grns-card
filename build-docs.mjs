@@ -1,6 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
-
-const md = await readFile("docs/card-db-plan.md", "utf8");
+import { readdir, readFile, writeFile } from "node:fs/promises";
 
 function escapeHtml(value) {
   return value
@@ -11,6 +9,7 @@ function escapeHtml(value) {
 
 function inline(text) {
   return escapeHtml(text)
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
     .replace(/`([^`]+)`/g, "<code>$1</code>")
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
 }
@@ -19,6 +18,7 @@ function renderMarkdown(markdown) {
   const lines = markdown.split(/\r?\n/);
   const html = [];
   let inList = false;
+  let inOrderedList = false;
   let inCode = false;
   let inTable = false;
   let tableRows = [];
@@ -27,6 +27,10 @@ function renderMarkdown(markdown) {
     if (inList) {
       html.push("</ul>");
       inList = false;
+    }
+    if (inOrderedList) {
+      html.push("</ol>");
+      inOrderedList = false;
     }
   }
 
@@ -72,24 +76,31 @@ function renderMarkdown(markdown) {
       continue;
     }
 
-    if (line.startsWith("# ")) {
+    const trimmedLine = line.trimStart();
+
+    if (trimmedLine.startsWith("# ")) {
       closeList();
-      html.push(`<h1>${inline(line.slice(2))}</h1>`);
-    } else if (line.startsWith("## ")) {
+      html.push(`<h1>${inline(trimmedLine.slice(2))}</h1>`);
+    } else if (trimmedLine.startsWith("## ")) {
       closeList();
-      html.push(`<h2>${inline(line.slice(3))}</h2>`);
-    } else if (line.startsWith("### ")) {
+      html.push(`<h2>${inline(trimmedLine.slice(3))}</h2>`);
+    } else if (trimmedLine.startsWith("### ")) {
       closeList();
-      html.push(`<h3>${inline(line.slice(4))}</h3>`);
-    } else if (line.startsWith("- ")) {
-      if (!inList) {
+      html.push(`<h3>${inline(trimmedLine.slice(4))}</h3>`);
+    } else if (trimmedLine.startsWith("- ")) {
+      if (!inList || inOrderedList) {
+        closeList();
         html.push("<ul>");
         inList = true;
       }
-      html.push(`<li>${inline(line.slice(2))}</li>`);
-    } else if (/^\d+\.\s/.test(line)) {
-      closeList();
-      html.push(`<p>${inline(line.replace(/^\d+\.\s/, ""))}</p>`);
+      html.push(`<li>${inline(trimmedLine.slice(2))}</li>`);
+    } else if (/^\d+\.\s/.test(trimmedLine)) {
+      if (!inOrderedList || inList) {
+        closeList();
+        html.push("<ol>");
+        inOrderedList = true;
+      }
+      html.push(`<li>${inline(trimmedLine.replace(/^\d+\.\s/, ""))}</li>`);
     } else {
       closeList();
       html.push(`<p>${inline(line)}</p>`);
@@ -101,12 +112,17 @@ function renderMarkdown(markdown) {
   return html.join("\n");
 }
 
-const html = `<!doctype html>
+function titleFromMarkdown(markdown, fallback) {
+  return markdown.match(/^#\s+(.+)$/m)?.[1] ?? fallback;
+}
+
+function pageHtml(markdown, title) {
+  return `<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>괴력난신 카드 DB 기획</title>
+    <title>${escapeHtml(title)}</title>
     <style>
       body { margin: 0; background: #f5f2ea; color: #111; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif; line-height: 1.75; }
       main { max-width: 920px; margin: 0 auto; padding: 48px 24px 80px; }
@@ -120,14 +136,32 @@ const html = `<!doctype html>
       table { width: 100%; border-collapse: collapse; margin: 1rem 0 2rem; background: #fff; }
       th, td { border: 1px solid #111; padding: 0.55rem 0.7rem; text-align: left; vertical-align: top; }
       th { background: #e5e7eb; }
+      .doc-nav { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem; }
+      .doc-nav a { border: 1px solid #111; background: #fff; padding: 0.35rem 0.7rem; text-decoration: none; }
     </style>
   </head>
   <body>
     <main>
-${renderMarkdown(md)}
+      <nav class="doc-nav" aria-label="문서">
+        <a href="./index.html">문서 홈</a>
+        <a href="./rulebook.html">룰북</a>
+        <a href="./card-design.html">카드/클래스 설계</a>
+        <a href="./card-db-plan.html">카드 DB 운영</a>
+        <a href="../index.html">카드 DB로 돌아가기</a>
+      </nav>
+${renderMarkdown(markdown)}
     </main>
   </body>
 </html>
 `;
+}
 
-await writeFile("docs/card-db-plan.html", html);
+const files = await readdir("docs");
+const markdownFiles = files.filter((file) => file.endsWith(".md"));
+
+await Promise.all(markdownFiles.map(async (file) => {
+  const markdown = await readFile(`docs/${file}`, "utf8");
+  const title = titleFromMarkdown(markdown, file.replace(/\.md$/, ""));
+  const output = `docs/${file.replace(/\.md$/, ".html")}`;
+  await writeFile(output, pageHtml(markdown, title));
+}));
