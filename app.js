@@ -664,9 +664,13 @@ function printCards() {
 
 function printFieldBoard() {
   if (!fieldBoardSheet) return;
+  const boardHtml = fieldBoardSheet.outerHTML.replace('id="fieldBoardSheet"', "");
   printArea.innerHTML = `
-    <section class="field-print-page">
-      ${fieldBoardSheet.outerHTML}
+    <section class="field-print-page field-print-left">
+      <div class="field-board-slice">${boardHtml}</div>
+    </section>
+    <section class="field-print-page field-print-right">
+      <div class="field-board-slice">${boardHtml}</div>
     </section>
   `;
   document.body.classList.add("print-mode");

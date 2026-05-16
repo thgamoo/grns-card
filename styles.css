@@ -256,44 +256,51 @@ textarea {
 }
 
 .field-board-sheet {
-  width: 210mm;
-  min-height: 297mm;
+  width: 420mm;
+  height: 297mm;
   margin: 0 auto;
-  padding: 11mm;
+  padding: 6mm;
   border: 1px solid var(--line);
   background:
     linear-gradient(90deg, transparent 49.85%, #d1d5db 49.85% 50.15%, transparent 50.15%),
     #ffffff;
   color: #111111;
   display: grid;
-  grid-template-rows: auto 1.1fr 1.05fr auto auto;
-  gap: 8mm;
+  grid-template-columns: minmax(0, 1fr) 60mm;
+  grid-template-rows: 12mm 97mm 78mm 80mm;
+  grid-template-areas:
+    "title title"
+    "battle side"
+    "castle side"
+    "camp side";
+  gap: 3mm;
 }
 
 .field-title {
+  grid-area: title;
   display: flex;
   align-items: end;
   justify-content: space-between;
   gap: 1rem;
   border-bottom: 1px solid #111111;
-  padding-bottom: 5mm;
+  padding-bottom: 1.5mm;
 }
 
 .field-title p {
   margin: 0 0 1mm;
   color: #555555;
-  font-size: 3.1mm;
+  font-size: 2.4mm;
   font-weight: 900;
   letter-spacing: 0.08em;
 }
 
 .field-title h3 {
-  font-size: 12mm;
+  font-size: 7mm;
   line-height: 1;
 }
 
 .field-title span {
-  font-size: 3.2mm;
+  font-size: 2.7mm;
   font-weight: 800;
   text-align: right;
 }
@@ -307,10 +314,11 @@ textarea {
 }
 
 .battlefield-zone {
+  grid-area: battle;
   display: grid;
   grid-template-rows: auto 1fr;
-  padding: 5mm;
-  gap: 5mm;
+  padding: 2mm;
+  gap: 2mm;
 }
 
 .zone-label {
@@ -319,25 +327,27 @@ textarea {
   justify-content: space-between;
   gap: 1rem;
   border-bottom: 0.3mm solid #111111;
-  padding-bottom: 3mm;
+  padding-bottom: 1mm;
 }
 
 .zone-label strong {
   font-family: "Gowun Batang", serif;
-  font-size: 8mm;
+  font-size: 5mm;
 }
 
 .zone-label span {
   color: #333333;
-  font-size: 3.1mm;
+  font-size: 2.7mm;
   font-weight: 800;
   text-align: right;
 }
 
 .unit-slots {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 3mm;
+  grid-template-columns: repeat(5, 60mm);
+  align-content: end;
+  justify-content: center;
+  gap: 2.5mm;
 }
 
 .unit-slots span,
@@ -353,49 +363,58 @@ textarea {
 }
 
 .unit-slots span {
-  min-height: 54mm;
+  width: 60mm;
+  height: 85mm;
   font-size: 3.8mm;
 }
 
 .castle-zone {
+  grid-area: castle;
   display: grid;
-  grid-template-rows: 1fr 1.05fr;
-  padding: 5mm;
-  gap: 5mm;
+  grid-template-rows: auto 60mm;
+  align-items: center;
+  padding: 2mm;
+  gap: 2mm;
 }
 
 .gate-row {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 4mm;
+  grid-template-columns: repeat(4, 85mm);
+  justify-content: center;
+  gap: 0.5mm;
 }
 
 .gate-row span {
-  min-height: 43mm;
+  width: 85mm;
+  height: 60mm;
   font-size: 3.4mm;
 }
 
 .lord-slot {
-  min-height: 46mm;
+  justify-self: center;
+  width: 85mm;
+  height: 60mm;
   font-family: "Gowun Batang", serif;
-  font-size: 10mm;
+  font-size: 7mm;
   background: #ffffff;
 }
 
 .resource-zone {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 12mm minmax(0, 1fr);
-  align-items: stretch;
-  gap: 4mm;
-  padding: 4mm;
+  grid-area: camp;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8mm;
+  padding: 2mm;
 }
 
 .camp-slot {
   display: grid;
   align-content: center;
   justify-items: center;
-  gap: 2mm;
-  min-height: 30mm;
+  gap: 1mm;
+  width: 85mm;
+  height: 60mm;
   border: 0.35mm solid #111111;
   background: #ffffff;
   text-align: center;
@@ -404,34 +423,30 @@ textarea {
 .camp-slot strong,
 .side-zones strong {
   font-family: "Gowun Batang", serif;
-  font-size: 6mm;
+  font-size: 5mm;
 }
 
 .camp-slot span,
 .side-zones span {
   color: #444444;
-  font-size: 3mm;
+  font-size: 2.7mm;
   font-weight: 800;
 }
 
-.camp-arrow {
-  display: grid;
-  place-items: center;
-  font-size: 9mm;
-  font-weight: 900;
-}
-
 .side-zones {
+  grid-area: side;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 5mm;
+  align-content: start;
+  grid-template-rows: repeat(2, 85mm);
+  gap: 3mm;
 }
 
 .side-zones > div {
   display: grid;
   align-content: center;
   justify-items: center;
-  min-height: 26mm;
+  width: 60mm;
+  height: 85mm;
   gap: 1mm;
 }
 
@@ -1146,19 +1161,30 @@ dialog::backdrop {
   }
 
   .field-print-page {
+    position: relative;
     width: 210mm;
-    min-height: 297mm;
+    height: 297mm;
     padding: 0;
     background: #ffffff;
+    overflow: hidden;
     break-after: page;
   }
 
-  .field-print-page .field-board-sheet {
-    width: 210mm;
-    min-height: 297mm;
+  .field-board-slice {
+    width: 420mm;
+    height: 297mm;
+  }
+
+  .field-print-page .field-board-slice .field-board-sheet {
+    width: 420mm;
+    height: 297mm;
     margin: 0;
     border: 0;
     box-shadow: none;
     break-inside: avoid;
+  }
+
+  .field-print-right .field-board-slice {
+    transform: translateX(-210mm);
   }
 }
