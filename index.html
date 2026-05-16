@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>괴력난신 카드 DB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">삼국 이전의 어둠을 모은 군영</p>
+        <h1>괴력난신 카드 DB</h1>
+      </div>
+      <nav class="top-nav" aria-label="주요 섹션">
+        <a href="#card-db">카드 DB</a>
+        <a href="#decks">스트럭쳐 덱</a>
+        <a href="#field">필드</a>
+        <a href="#top">상단</a>
+      </nav>
+      <div class="header-actions">
+        <a class="doc-link" href="./docs/card-db-plan.html">기획 MD</a>
+        <button class="doc-link" id="exportButton" type="button">JSON Export</button>
+        <button class="doc-link" id="exportImageButton" type="button">PNG Export</button>
+        <button class="doc-link" id="printButton" type="button">A4 9장 Print</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="kicker">한국형 판타지 TCG</p>
+          <h2 id="hero-title">문지기를 격파, 상대의 성주를 처단하세요</h2>
+          <p>
+            카드 DB 프로토타입
+          </p>
+        </div>
+        <div class="hero-board" aria-hidden="true">
+          <span class="lane north">동</span>
+          <span class="lane south">서</span>
+          <span class="lane east">남</span>
+          <span class="lane west">북</span>
+          <span class="lord">城主</span>
+          <span class="gate gate-a"></span>
+          <span class="gate gate-b"></span>
+          <span class="gate gate-c"></span>
+          <span class="gate gate-d"></span>
+        </div>
+      </section>
+
+      <section class="rules-strip" id="field" aria-label="필드 요소">
+        <div>
+          <strong>패장</strong>
+          <span>공개된 트래시</span>
+        </div>
+        <div>
+          <strong>막사</strong>
+          <span>좌우로 이동하는 자원</span>
+        </div>
+        <div>
+          <strong>성</strong>
+          <span>성주와 네 문지기</span>
+        </div>
+        <div>
+          <strong>군</strong>
+          <span>40장 덱</span>
+        </div>
+      </section>
+
+      <section class="deck-section" id="decks" aria-label="스트럭쳐 덱">
+        <div class="deck-section-head">
+          <div>
+            <p class="eyebrow">structure decks</p>
+            <h2>스트럭쳐 덱</h2>
+          </div>
+          <span>40장 · 트랩 16장 제한</span>
+        </div>
+        <div class="deck-grid" id="deckGrid"></div>
+      </section>
+
+      <section class="workspace" id="card-db" aria-label="카드 데이터베이스">
+        <aside class="filters">
+          <div class="filter-group">
+            <label for="versionSelect">DB 버전</label>
+            <select id="versionSelect"></select>
+            <span class="db-status" id="dbStatus">불러오는 중</span>
+          </div>
+
+          <div class="filter-group">
+            <label for="search">검색</label>
+            <input id="search" type="search" placeholder="카드명, 효과, 종족" />
+          </div>
+
+          <div class="filter-group">
+            <span>클래스</span>
+            <div class="segmented" id="classFilters"></div>
+          </div>
+
+          <div class="filter-group">
+            <span>카드 타입</span>
+            <div class="segmented compact" id="typeFilters"></div>
+          </div>
+        </aside>
+
+        <section class="library">
+          <div class="library-head">
+            <div>
+              <p class="eyebrow">example cards</p>
+              <h2>예시카드</h2>
+            </div>
+            <span id="resultCount">0장</span>
+          </div>
+          <div class="card-grid" id="cardGrid"></div>
+        </section>
+
+        <aside class="editor" aria-label="카드 편집기">
+          <div class="editor-head">
+            <div>
+              <p class="eyebrow">personal editor</p>
+              <h2 id="editorTitle">카드 편집</h2>
+            </div>
+            <button class="icon-button" id="addCardButton" type="button" aria-label="카드 추가">＋</button>
+          </div>
+
+          <p class="empty-state" id="editorEmpty">카드를 선택하거나 새 카드를 추가하세요.</p>
+
+          <form class="editor-form" id="editorForm" hidden>
+            <label>ID<input name="id" required /></label>
+            <label>시리얼 넘버<input name="serial" required /></label>
+            <label>일러스트 이미지<input name="illustration" placeholder="나중에 이미지 경로 입력" /></label>
+            <label>카드명<input name="name" required /></label>
+            <div class="editor-pair">
+              <label>비용<input name="cost" type="number" min="0" required /></label>
+              <label>힘<input name="power" type="number" min="0" /></label>
+            </div>
+            <label>시길<input name="sigil" maxlength="4" /></label>
+            <div class="editor-pair">
+              <label>클래스<select name="classId"></select></label>
+              <label>타입<select name="type"></select></label>
+            </div>
+            <label>종족<input name="race" /></label>
+            <div class="editor-pair">
+              <label>효과 비용<input name="actionCost" type="number" min="0" /></label>
+            </div>
+            <label>효과<textarea name="effect" rows="4"></textarea></label>
+            <label>역할<textarea name="role" rows="3"></textarea></label>
+            <div class="editor-actions">
+              <button id="duplicateCardButton" type="button">복제</button>
+              <button id="deleteCardButton" type="button">삭제</button>
+            </div>
+          </form>
+        </aside>
+      </section>
+    </main>
+
+    <dialog id="cardDialog">
+      <button class="dialog-close" id="dialogClose" aria-label="닫기">×</button>
+      <div id="dialogBody"></div>
+    </dialog>
+
+    <div class="print-area" id="printArea" aria-hidden="true"></div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

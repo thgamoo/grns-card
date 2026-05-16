@@ -1,0 +1,921 @@
+:root {
+  color-scheme: light;
+  --card-width: 60mm;
+  --card-height: 85mm;
+  --bg: #f5f2ea;
+  --paper: #ffffff;
+  --ink: #111111;
+  --muted: #66615a;
+  --line: #1a1a1a;
+  --goguryeo: #a8332a;
+  --jinhan: #7047b8;
+  --gaya: #b56b1e;
+  --mahan: #4d7b68;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 110px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans KR", system-ui, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem clamp(1rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.92);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.app-header h1,
+.hero h2,
+.library h2 {
+  margin: 0;
+  font-family: "Gowun Batang", serif;
+  letter-spacing: 0;
+}
+
+.app-header h1 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.eyebrow,
+.kicker {
+  margin: 0 0 0.35rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.doc-link {
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.65rem 0.9rem;
+  text-decoration: none;
+  white-space: nowrap;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.doc-link:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.top-nav a {
+  color: var(--ink);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.55rem 0.75rem;
+  text-decoration: none;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.top-nav a:hover,
+.top-nav a:focus-visible {
+  border-color: var(--line);
+  background: #ffffff;
+}
+
+.hero {
+  min-height: calc(100svh - 88px);
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
+  padding: clamp(3rem, 7vw, 6rem) clamp(1rem, 5vw, 5rem);
+  overflow: hidden;
+}
+
+.hero-copy {
+  max-width: 620px;
+  animation: rise 700ms ease both;
+}
+
+.hero h2 {
+  font-size: clamp(2.65rem, 6.4vw, 5.55rem);
+  line-height: 1.04;
+  word-break: keep-all;
+}
+
+.hero p:last-child {
+  max-width: 34rem;
+  color: #3f3b36;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.hero-board {
+  position: relative;
+  min-height: min(68vw, 650px);
+  border: 1px solid rgba(231, 220, 198, 0.2);
+  background:
+    linear-gradient(90deg, transparent 24%, rgba(17, 17, 17, 0.08) 24% 25%, transparent 25% 49%, rgba(17, 17, 17, 0.08) 49% 50%, transparent 50% 74%, rgba(17, 17, 17, 0.08) 74% 75%, transparent 75%),
+    linear-gradient(180deg, #ffffff, #ede8dc);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.12);
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+  animation: boardIn 850ms ease 120ms both;
+}
+
+.lane {
+  position: absolute;
+  top: 1.1rem;
+  color: rgba(17, 17, 17, 0.42);
+  font-family: "Gowun Batang", serif;
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+}
+
+.north { left: 14%; }
+.south { left: 38%; }
+.east { left: 62%; }
+.west { left: 84%; }
+
+.lord {
+  position: absolute;
+  left: 50%;
+  bottom: 12%;
+  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+  width: clamp(7rem, 17vw, 11rem);
+  aspect-ratio: 3 / 4;
+  border: 2px solid #111111;
+  background: #ffffff;
+  color: #111111;
+  font-family: "Gowun Batang", serif;
+  font-size: 2rem;
+}
+
+.gate {
+  position: absolute;
+  bottom: 42%;
+  width: clamp(4.2rem, 10vw, 6rem);
+  aspect-ratio: 3 / 4;
+  border: 1px solid #111111;
+  background:
+    radial-gradient(circle at center 35%, rgba(17, 17, 17, 0.16), transparent 1.7rem),
+    repeating-linear-gradient(135deg, #ffffff, #ffffff 6px, #eeeeee 6px, #eeeeee 12px);
+}
+
+.gate-a { left: 12%; transform: rotate(-7deg); }
+.gate-b { left: 34%; transform: rotate(3deg); }
+.gate-c { left: 57%; transform: rotate(-2deg); }
+.gate-d { left: 78%; transform: rotate(8deg); }
+
+.rules-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-block: 1px solid var(--line);
+}
+
+.rules-strip div {
+  padding: 1.1rem clamp(1rem, 3vw, 2rem);
+  border-right: 1px solid var(--line);
+}
+
+.rules-strip strong,
+.rules-strip span {
+  display: block;
+}
+
+.rules-strip span {
+  color: var(--muted);
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.deck-section {
+  padding: clamp(1.25rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.deck-section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.deck-section h2,
+.deck-card h3 {
+  margin: 0;
+  font-family: "Gowun Batang", serif;
+  letter-spacing: 0;
+}
+
+.deck-section h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.deck-section-head > span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.deck-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.deck-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 1rem;
+  max-height: 420px;
+  overflow: auto;
+}
+
+.deck-card h3 {
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+.deck-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.8rem 0;
+}
+
+.deck-meta span {
+  border: 1px solid #111111;
+  padding: 0.25rem 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.deck-card ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.38rem;
+}
+
+.deck-card li {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+}
+
+.deck-card li span {
+  font-weight: 900;
+}
+
+.deck-card small {
+  color: var(--muted);
+  display: block;
+  font-size: 0.74rem;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr) 340px;
+  gap: 2rem;
+  padding: clamp(1.25rem, 4vw, 3rem);
+}
+
+.filters,
+.editor {
+  align-self: start;
+  position: sticky;
+  top: 110px;
+}
+
+.filters {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.filter-group {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.filter-group label,
+.filter-group > span {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: #ffffff;
+  color: var(--ink);
+  padding: 0.8rem 0.9rem;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: rgba(231, 220, 198, 0.58);
+  border-color: #111111;
+}
+
+select option {
+  background: #ffffff;
+  color: var(--ink);
+}
+
+.db-status,
+.empty-state {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.segmented {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.segmented.compact {
+  grid-template-columns: 1fr;
+}
+
+.filter-button {
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: #ffffff;
+  color: var(--ink);
+  padding: 0.72rem 0.85rem;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.filter-button:hover,
+.filter-button.active {
+  transform: translateY(-1px);
+  background: #efefef;
+  border-color: #111111;
+}
+
+.library {
+  min-width: 0;
+}
+
+.library-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.library h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+#resultCount {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--card-width));
+  gap: 1rem;
+  justify-content: start;
+}
+
+.editor {
+  border-left: 1px solid var(--line);
+  padding-left: 1.4rem;
+}
+
+.editor-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.editor h2 {
+  margin: 0;
+  font-family: "Gowun Batang", serif;
+  font-size: 1.65rem;
+  line-height: 1.2;
+}
+
+.icon-button {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+.editor-form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.editor-form label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.editor-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.editor-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.editor-actions button {
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: #ffffff;
+  color: var(--ink);
+  padding: 0.8rem;
+  cursor: pointer;
+}
+
+.editor-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.game-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: 11mm 34mm 40mm;
+  width: var(--card-width);
+  height: var(--card-height);
+  border: 0.35mm solid #111111;
+  background:
+    linear-gradient(90deg, var(--class-stripe) 0 4.2mm, #111111 4.2mm 4.45mm, transparent 4.45mm),
+    #ffffff;
+  color: var(--ink);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  filter: none;
+}
+
+.game-card-detail {
+  width: min(78mm, calc(100vw - 3rem));
+  height: auto;
+  min-height: 110.5mm;
+  aspect-ratio: 60 / 85;
+  grid-template-rows: 14.3mm 44.2mm minmax(52mm, 1fr);
+}
+
+.game-card-detail .card-top {
+  padding: 2.8mm 2.8mm 2.8mm 8.3mm;
+}
+
+.game-card-detail .cost,
+.game-card-detail .power {
+  width: 9.1mm;
+  font-size: 4.3mm;
+}
+
+.game-card-detail .name {
+  font-size: 5.4mm;
+}
+
+.game-card-detail .art {
+  margin: 0 2.8mm 0 8.3mm;
+}
+
+.game-card-detail .art-placeholder span {
+  font-size: 18mm;
+}
+
+.game-card-detail .card-bottom {
+  padding: 2.8mm 2.8mm 2.8mm 8.3mm;
+  gap: 2mm;
+}
+
+.game-card-detail .chip {
+  font-size: 3mm;
+}
+
+.game-card-detail .effect {
+  font-size: 3.4mm;
+}
+
+.game-card-detail .serial-line {
+  font-size: 2.8mm;
+}
+
+.game-card-detail .type-line {
+  font-size: 5mm;
+  padding-right: 10mm;
+}
+
+.game-card-detail .class-mark {
+  font-size: 7.5mm;
+  right: 2.8mm;
+  bottom: 2mm;
+}
+
+.card-top {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 2.4mm;
+  align-items: center;
+  padding: 2.2mm 2.2mm 2.2mm 6.4mm;
+}
+
+.cost {
+  display: grid;
+  place-items: center;
+  width: 7mm;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--ink);
+  border: 0.35mm solid #111111;
+  font-weight: 900;
+  font-size: 3.4mm;
+}
+
+.power {
+  display: grid;
+  place-items: center;
+  width: 7mm;
+  aspect-ratio: 1;
+  border: 0.35mm solid #111111;
+  background: #ffffff;
+  color: var(--ink);
+  font-weight: 900;
+  font-size: 3.4mm;
+}
+
+.name {
+  min-width: 0;
+  font-family: "Gowun Batang", serif;
+  font-size: 4.2mm;
+  line-height: 1.15;
+  white-space: normal;
+}
+
+.art {
+  position: relative;
+  margin: 0 2.2mm 0 6.4mm;
+  overflow: hidden;
+  border: 0.3mm solid #111111;
+  background: #ffffff;
+}
+
+.art::before,
+.art::after {
+  content: none;
+}
+
+.art-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.art-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.art-placeholder span {
+  display: grid;
+  place-items: center;
+  color: #222222;
+  font-family: "Gowun Batang", serif;
+  font-size: 14mm;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.card-bottom {
+  position: relative;
+  display: grid;
+  align-content: start;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  gap: 1.6mm;
+  padding: 2.2mm 2.2mm 2.2mm 6.4mm;
+  overflow: hidden;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chip {
+  border: 0.25mm solid #111111;
+  color: #111111;
+  padding: 0.7mm 1mm;
+  font-size: 2.4mm;
+  line-height: 1.1;
+}
+
+.flavor {
+  color: #555555;
+  font-family: "Gowun Batang", serif;
+  font-size: 2.65mm;
+  line-height: 1.35;
+}
+
+.effect {
+  font-size: 2.7mm;
+  line-height: 1.35;
+}
+
+.serial-line {
+  grid-row: 3;
+  align-self: end;
+  color: #555555;
+  font-size: 2.2mm;
+  font-weight: 800;
+  letter-spacing: 0;
+  margin-bottom: -0.5mm;
+}
+
+.type-line {
+  grid-row: 4;
+  align-self: end;
+  border-top: 0.3mm solid #111111;
+  padding-top: 1.5mm;
+  padding-right: 8mm;
+  font-weight: 800;
+  font-size: 4mm;
+  letter-spacing: 0;
+}
+
+.class-mark {
+  position: absolute;
+  right: 2.2mm;
+  bottom: 1.6mm;
+  font-size: 6mm;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.public-mode .editor,
+.public-mode #exportButton {
+  display: none !important;
+}
+
+.public-mode .workspace {
+  grid-template-columns: 280px minmax(0, 1fr);
+}
+
+.print-area {
+  display: none;
+}
+
+.print-page {
+  width: 210mm;
+  min-height: 297mm;
+  display: grid;
+  grid-template-columns: repeat(3, var(--card-width));
+  grid-auto-rows: var(--card-height);
+  gap: 5mm;
+  align-content: center;
+  justify-content: center;
+  padding: 10mm;
+  background: white;
+  break-after: page;
+}
+
+.print-page:last-child {
+  break-after: auto;
+}
+
+.print-page .game-card {
+  box-shadow: none;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+dialog {
+  width: min(1080px, calc(100vw - 2rem));
+  border: 1px solid #111111;
+  background: #ffffff;
+  color: var(--ink);
+  padding: 0;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(4px);
+}
+
+.dialog-close {
+  position: absolute;
+  right: 0.7rem;
+  top: 0.7rem;
+  z-index: 2;
+  width: 2.4rem;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.dialog-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 430px) minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 1.25rem;
+}
+
+.detail-copy h3 {
+  margin: 0 2.5rem 0.6rem 0;
+  font-family: "Gowun Batang", serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.detail-copy p {
+  color: #333333;
+  line-height: 1.8;
+}
+
+.rule-table {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
+
+.rule-row {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: 1rem;
+  border-top: 1px solid var(--line);
+  padding-top: 0.6rem;
+}
+
+.rule-row span:first-child {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes boardIn {
+  from { opacity: 0; transform: translateX(30px) rotate(1deg); }
+  to { opacity: 1; transform: translateX(0) rotate(0); }
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .workspace,
+  .dialog-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-board {
+    min-height: 420px;
+  }
+
+  .filters,
+  .editor {
+    position: static;
+  }
+
+  .editor {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding-left: 0;
+    padding-top: 1.4rem;
+  }
+
+  .segmented {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .top-nav {
+    justify-content: flex-start;
+  }
+
+  .rules-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .segmented {
+    grid-template-columns: 1fr;
+  }
+
+  .game-card {
+    grid-template-rows: 11mm 34mm 40mm;
+  }
+}
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    width: 210mm;
+    background: white;
+  }
+
+  body.print-mode > *:not(.print-area) {
+    display: none !important;
+  }
+
+  body.print-mode .print-area {
+    display: block;
+  }
+
+  .game-card:hover {
+    transform: none;
+    filter: none;
+  }
+}
