@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>괴력난신 필드 판</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css?v=20260517-pages1" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">printable field</p>
+        <h1>필드 판</h1>
+      </div>
+      <nav class="top-nav" aria-label="주요 페이지">
+        <a href="./index.html">상단</a>
+        <a href="./card-db.html">카드 DB</a>
+        <a href="./graph.html">레벨 그래프</a>
+        <a href="./decks.html">스트럭쳐 덱</a>
+        <a href="./world.html">세계관</a>
+      </nav>
+      <div class="header-actions">
+        <a class="doc-link" href="./docs/rulebook.html">룰북</a>
+        <button class="doc-link" id="printFieldButton" type="button">필드판 Print</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="rules-strip" aria-label="필드 요소">
+        <div>
+          <strong>패장</strong>
+          <span>공개된 트래시</span>
+        </div>
+        <div>
+          <strong>막사</strong>
+          <span>좌우로 이동하는 자원</span>
+        </div>
+        <div>
+          <strong>성</strong>
+          <span>성주와 네 문지기</span>
+        </div>
+        <div>
+          <strong>군</strong>
+          <span>40장 덱</span>
+        </div>
+      </section>
+
+      <section class="field-board-section" id="field-board" aria-label="인쇄용 필드 판">
+        <div class="field-board-head">
+          <div>
+            <p class="eyebrow">A3 landscape split print</p>
+            <h2>필드 판</h2>
+          </div>
+          <span>1인용 · A4 2장 분할 인쇄</span>
+        </div>
+
+        <div class="field-board-sheet" id="fieldBoardSheet">
+          <header class="field-title">
+            <div>
+              <p>괴력난신</p>
+              <h3>필드 판</h3>
+            </div>
+            <span>성주가 패장으로 이동하면 패배</span>
+          </header>
+
+          <section class="battlefield-zone" aria-label="전장">
+            <div class="zone-label">
+              <strong>전장</strong>
+              <span>최대 5장 · [대기] 세로 / [정비] 가로</span>
+            </div>
+            <div class="unit-slots">
+              <span>유닛 1</span>
+              <span>유닛 2</span>
+              <span>유닛 3</span>
+              <span>유닛 4</span>
+              <span>유닛 5</span>
+            </div>
+          </section>
+
+          <section class="castle-zone" aria-label="성">
+            <div class="zone-label">
+              <strong>성</strong>
+              <span>문지기 4장 · 성주는 하단 중앙</span>
+            </div>
+            <div class="gate-row">
+              <span>문지기 · 동</span>
+              <span>문지기 · 서</span>
+              <span>문지기 · 남</span>
+              <span>문지기 · 북</span>
+            </div>
+          </section>
+
+          <section class="resource-zone" aria-label="막사">
+            <div class="camp-slot">
+              <strong>왼쪽막사</strong>
+              <span>지휘실 · 위에서부터 이동</span>
+            </div>
+            <div class="lord-slot">성주</div>
+            <div class="camp-slot">
+              <strong>오른쪽막사</strong>
+              <span>야전 막사 · 소모된 자원</span>
+            </div>
+          </section>
+
+          <section class="side-zones" aria-label="군과 패장">
+            <div>
+              <strong>군</strong>
+              <span>덱</span>
+            </div>
+            <div>
+              <strong>패장</strong>
+              <span>공개 트래시</span>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <div class="print-area" id="printArea" aria-hidden="true"></div>
+    <script src="./app.js?v=20260517-pages1"></script>
+  </body>
+</html>

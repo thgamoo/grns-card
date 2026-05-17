@@ -52,7 +52,7 @@ function restoreFilters() {
   state.type = typeIds.has(savedFilters.type) ? savedFilters.type : "전체";
   state.tag = tagIds.has(savedFilters.tag) ? savedFilters.tag : "전체";
   state.query = typeof savedFilters.query === "string" ? savedFilters.query : "";
-  searchInput.value = state.query;
+  if (searchInput) searchInput.value = state.query;
 }
 
 function readSavedGraphFilters() {
@@ -236,17 +236,19 @@ async function loadManifest() {
   const savedVersion = readSavedFilters().selectedVersion;
   const versionExists = state.manifest.versions.some((item) => item.id === savedVersion);
   state.selectedVersion = versionExists ? savedVersion : state.manifest.latest;
-  versionSelect.innerHTML = state.manifest.versions
-    .map((item) => `<option value="${escapeHtml(item.id)}">${escapeHtml(item.label)}</option>`)
-    .join("");
-  versionSelect.value = state.selectedVersion;
+  if (versionSelect) {
+    versionSelect.innerHTML = state.manifest.versions
+      .map((item) => `<option value="${escapeHtml(item.id)}">${escapeHtml(item.label)}</option>`)
+      .join("");
+    versionSelect.value = state.selectedVersion;
+  }
 }
 
 async function loadVersion(versionId) {
   const version = state.manifest.versions.find((item) => item.id === versionId);
   if (!version) throw new Error("선택한 버전이 없습니다.");
 
-  dbStatus.textContent = "불러오는 중";
+  if (dbStatus) dbStatus.textContent = "불러오는 중";
   const response = await fetch(version.file, { cache: "no-store" });
   if (!response.ok) throw new Error(`${version.file} 파일을 불러오지 못했습니다.`);
 
@@ -269,10 +271,12 @@ async function loadVersion(versionId) {
 }
 
 function updateStatus() {
+  if (!dbStatus) return;
   dbStatus.textContent = `${state.db?.dbVersion ?? "-"} · ${state.cards.length}장`;
 }
 
 function createFilters() {
+  if (!classFilters || !typeFilters) return;
   const classItems = [
     { id: "all", label: "전체", color: "#eeeeee" },
     ...state.classes.map((item) => ({
@@ -374,6 +378,7 @@ function renderCard(card, detailed = false) {
 }
 
 function renderLibrary() {
+  if (!cardGrid || !resultCount) return;
   const filtered = getFilteredCards();
   resultCount.textContent = `${filtered.length}장`;
   cardGrid.innerHTML = filtered.map((card) => renderCard(card)).join("");
@@ -609,8 +614,8 @@ function selectedCard() {
 }
 
 function updateAssetButtons() {
-  exportImageButton.disabled = !selectedCard();
-  printButton.disabled = getFilteredCards().length === 0;
+  if (exportImageButton) exportImageButton.disabled = !selectedCard();
+  if (printButton) printButton.disabled = getFilteredCards().length === 0;
 }
 
 function hexToRgb(hex) {
@@ -869,12 +874,12 @@ function printFieldBoard() {
   window.print();
 }
 
-versionSelect.addEventListener("change", async (event) => {
+versionSelect?.addEventListener("change", async (event) => {
   await loadVersion(event.target.value);
   saveFilters();
 });
 
-classFilters.addEventListener("click", (event) => {
+classFilters?.addEventListener("click", (event) => {
   const button = event.target.closest("[data-class]");
   if (!button) return;
   state.classId = button.dataset.class;
@@ -883,7 +888,7 @@ classFilters.addEventListener("click", (event) => {
   renderLibrary();
 });
 
-typeFilters.addEventListener("click", (event) => {
+typeFilters?.addEventListener("click", (event) => {
   const button = event.target.closest("[data-type]");
   if (!button) return;
   state.type = button.dataset.type;
@@ -919,13 +924,13 @@ graphTagFilter?.addEventListener("change", (event) => {
   renderLevelGraph();
 });
 
-searchInput.addEventListener("input", (event) => {
+searchInput?.addEventListener("input", (event) => {
   state.query = event.target.value;
   saveFilters();
   renderLibrary();
 });
 
-cardGrid.addEventListener("click", (event) => {
+cardGrid?.addEventListener("click", (event) => {
   const card = event.target.closest("[data-id]");
   if (card) openCard(card.dataset.id);
 });
@@ -946,14 +951,14 @@ levelGraph?.addEventListener("keydown", (event) => {
 exportImageButton?.addEventListener("click", exportSelectedCardImage);
 printButton?.addEventListener("click", printCards);
 printFieldButton?.addEventListener("click", printFieldBoard);
-dialogClose.addEventListener("click", () => dialog.close());
-dialog.addEventListener("click", (event) => {
+dialogClose?.addEventListener("click", () => dialog.close());
+dialog?.addEventListener("click", (event) => {
   if (event.target === dialog) dialog.close();
 });
 
 window.addEventListener("afterprint", () => {
   document.body.classList.remove("print-mode");
-  printArea.innerHTML = "";
+  if (printArea) printArea.innerHTML = "";
 });
 
 async function boot() {
@@ -961,8 +966,8 @@ async function boot() {
     await loadManifest();
     await loadVersion(state.selectedVersion);
   } catch (error) {
-    dbStatus.textContent = error.message;
-    cardGrid.innerHTML = `<p class="empty-state">${escapeHtml(error.message)}</p>`;
+    if (dbStatus) dbStatus.textContent = error.message;
+    if (cardGrid) cardGrid.innerHTML = `<p class="empty-state">${escapeHtml(error.message)}</p>`;
   }
 }
 

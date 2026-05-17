@@ -138,6 +138,13 @@ textarea {
   animation: rise 700ms ease both;
 }
 
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.2rem;
+}
+
 .hero h2 {
   font-size: clamp(2.65rem, 6.4vw, 5.55rem);
   line-height: 1.04;
@@ -271,7 +278,7 @@ textarea {
 
 .graph-filter-bar {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.75rem;
   margin-bottom: 1rem;
   border: 1px solid var(--line);
@@ -690,10 +697,69 @@ textarea {
   font-weight: 800;
 }
 
+.inline-select {
+  display: grid;
+  min-width: min(320px, 100%);
+  gap: 0.35rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
 .deck-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1rem;
+}
+
+.world-section {
+  padding: clamp(1.5rem, 5vw, 4rem);
+}
+
+.world-head {
+  max-width: 860px;
+  margin-bottom: 1.5rem;
+}
+
+.world-head h2 {
+  margin: 0 0 0.75rem;
+  font-family: "Gowun Batang", serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  letter-spacing: 0;
+}
+
+.world-head p {
+  color: #333333;
+  line-height: 1.8;
+}
+
+.world-link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.world-link-grid a {
+  display: grid;
+  gap: 0.35rem;
+  min-height: 130px;
+  align-content: start;
+  background: #ffffff;
+  color: var(--ink);
+  padding: 1rem;
+  text-decoration: none;
+}
+
+.world-link-grid strong {
+  font-family: "Gowun Batang", serif;
+  font-size: 1.25rem;
+}
+
+.world-link-grid span {
+  color: var(--muted);
+  line-height: 1.5;
 }
 
 .deck-card {
@@ -1282,6 +1348,7 @@ dialog::backdrop {
   .graph-filter-bar,
   .level-graph-layout,
   .workspace,
+  .deck-section-head,
   .dialog-layout {
     grid-template-columns: 1fr;
   }
@@ -1321,7 +1388,15 @@ dialog::backdrop {
     grid-template-columns: 1fr;
   }
 
-  .game-card {
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .card-grid .game-card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 60 / 85;
     grid-template-rows: 11mm 34mm 40mm;
   }
 }

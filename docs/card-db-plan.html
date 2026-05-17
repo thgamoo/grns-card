@@ -28,7 +28,7 @@
         <a href="./rulebook.html">룰북</a>
         <a href="./card-design.html">카드/클래스 설계</a>
         <a href="./card-db-plan.html">카드 DB 운영</a>
-        <a href="../index.html">카드 DB로 돌아가기</a>
+        <a href="../card-db.html">카드 DB로 돌아가기</a>
       </nav>
 <h1>괴력난신 카드 DB 운영 문서</h1>
 <h2>목적</h2>
@@ -44,7 +44,7 @@ pnpm dev
 <pre><code>
 npm run build
 </code></pre>
-<p>빌드 결과는 <code>dist</code>에 생성된다. 공개 페이지에는 검색, 필터, 레벨 그래프, PNG Export, A4 Print 기능이 포함된다.</p>
+<p>빌드 결과는 <code>dist</code>에 생성된다. 공개 페이지에는 카드 DB, 레벨 그래프, 스트럭쳐 덱, 필드 판, 세계관 허브가 분리된 HTML로 포함된다.</p>
 <h2>데이터 버전 관리</h2>
 <p>카드 데이터는 <code>./data</code> 디렉토리에 둔다.</p>
 <ul>
@@ -72,6 +72,14 @@ npm run build
 <tr><td><a href="./card-design.html">카드/클래스 설계</a></td><td>클래스 정체성, 카드 타입, 레이아웃, 스트럭쳐 덱</td></tr>
 <tr><td><a href="./card-db-plan.html">카드 DB 운영 문서</a></td><td>로컬 실행, 배포, 데이터 버전 관리</td></tr>
 </table>
+<h2>세계관 작업 공간</h2>
+<p>세계관 설정은 <code>world</code> 디렉토리에서 카드 DB와 분리해 관리한다.</p>
+<ul>
+<li><code>world/maps</code>: 지도 원본과 내보낸 이미지</li>
+<li><code>world/docs</code>: 세계관 개요, 팩션, 장소, 연표, 확장팩 배경</li>
+<li><code>world/fiction</code>: 단편 소설과 장면 조각</li>
+<li><code>world/data</code>: 장소, 팩션, 사건 JSON</li>
+</ul>
     </main>
   </body>
 </html>

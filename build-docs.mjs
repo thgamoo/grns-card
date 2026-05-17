@@ -147,7 +147,7 @@ function pageHtml(markdown, title) {
         <a href="./rulebook.html">룰북</a>
         <a href="./card-design.html">카드/클래스 설계</a>
         <a href="./card-db-plan.html">카드 DB 운영</a>
-        <a href="../index.html">카드 DB로 돌아가기</a>
+        <a href="../card-db.html">카드 DB로 돌아가기</a>
       </nav>
 ${renderMarkdown(markdown)}
     </main>
