@@ -22,7 +22,7 @@ pnpm dev
 npm run build
 ```
 
-빌드 결과는 `dist`에 생성된다. 배포본에는 `window.GRNS_PUBLIC_MODE = true`가 주입되며, 카드 편집기와 JSON Export 버튼은 HTML에서 제거된다. 공개 페이지에는 검색, 필터, PNG Export, A4 Print 기능만 남긴다.
+빌드 결과는 `dist`에 생성된다. 공개 페이지에는 검색, 필터, 레벨 그래프, PNG Export, A4 Print 기능이 포함된다.
 
 ## 데이터 버전 관리
 
@@ -32,9 +32,13 @@ npm run build
 - 카드 DB 파일명 규칙: `data/card-[date-version].json`
 - 예시: `data/card-2026-05-16-v1.json`
 
-새 버전을 웹 편집기에서 export하면 `card-YYYY-MM-DD-vN.json` 파일로 다운로드된다. 그 파일을 `data` 디렉토리에 넣고, `data/card-versions.json`에 항목을 추가하면 상단 버전 드롭다운에서 선택할 수 있다.
+새 버전은 JSON 파일을 직접 생성하거나 수정해서 관리한다. 새 `card-YYYY-MM-DD-vN.json` 파일을 `data` 디렉토리에 넣고, `data/card-versions.json`에 항목을 추가하면 상단 버전 드롭다운에서 선택할 수 있다.
 
-브라우저 보안상 웹앱이 로컬 파일을 직접 덮어쓰지는 않는다. 개인용 DB 편집은 화면에서 수정한 뒤 JSON Export로 저장하는 흐름을 기준으로 한다.
+브라우저 보안상 웹앱이 로컬 파일을 직접 덮어쓰지는 않는다. 카드 데이터 수정은 JSON 파일을 편집하고 새 버전으로 등록하는 흐름을 기준으로 한다.
+
+## 카드 데이터 필드
+
+카드별 설정 설명은 `lore` 필드에 작성한다. `lore`는 카드 표면, PNG Export, 프린트에는 들어가지 않고 카드 상세 팝업에서만 표시된다.
 
 ## 출력과 이미지 내보내기
 

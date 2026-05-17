@@ -1,5 +1,6 @@
 const fallbackClassColor = "#8c7662";
-const publicMode = Boolean(window.GRNS_PUBLIC_MODE);
+const storageKey = "grns-card-db-filters";
+const graphStorageKey = "grns-card-graph-filters";
 
 const state = {
   manifest: null,
@@ -7,13 +8,83 @@ const state = {
   cards: [],
   classes: [],
   cardTypes: ["일반유닛", "트랩유닛", "책사유닛"],
+  tags: [],
   classId: "all",
   type: "전체",
+  tag: "전체",
   query: "",
   selectedVersion: "",
   selectedCardId: "",
-  dirty: false,
+  graphClassId: "all",
+  graphType: "전체",
+  graphTag: "전체",
 };
+
+function readSavedFilters() {
+  try {
+    return JSON.parse(localStorage.getItem(storageKey) ?? "{}");
+  } catch {
+    return {};
+  }
+}
+
+function saveFilters() {
+  try {
+    localStorage.setItem(storageKey, JSON.stringify({
+      selectedVersion: state.selectedVersion,
+      classId: state.classId,
+      type: state.type,
+      tag: state.tag,
+      query: state.query,
+    }));
+  } catch {
+    // Browsers can block storage in private contexts; filtering should still work.
+  }
+}
+
+function restoreFilters() {
+  const savedFilters = readSavedFilters();
+  const classIds = new Set(["all", ...state.classes.map((item) => item.id)]);
+  const typeIds = new Set(state.cardTypes);
+  const tagIds = new Set(["전체", ...state.tags]);
+
+  state.classId = classIds.has(savedFilters.classId) ? savedFilters.classId : "all";
+  state.type = typeIds.has(savedFilters.type) ? savedFilters.type : "전체";
+  state.tag = tagIds.has(savedFilters.tag) ? savedFilters.tag : "전체";
+  state.query = typeof savedFilters.query === "string" ? savedFilters.query : "";
+  searchInput.value = state.query;
+}
+
+function readSavedGraphFilters() {
+  try {
+    return JSON.parse(localStorage.getItem(graphStorageKey) ?? "{}");
+  } catch {
+    return {};
+  }
+}
+
+function saveGraphFilters() {
+  try {
+    localStorage.setItem(graphStorageKey, JSON.stringify({
+      graphClassId: state.graphClassId,
+      graphType: state.graphType,
+      graphTag: state.graphTag,
+    }));
+  } catch {
+    // Graph filtering still works when storage is blocked.
+  }
+}
+
+function restoreGraphFilters() {
+  const savedFilters = readSavedGraphFilters();
+  const classIds = new Set(["all", ...state.classes.map((item) => item.id)]);
+  const typeIds = new Set(state.cardTypes);
+  const tagIds = new Set(["전체", ...state.tags]);
+
+  state.graphClassId = classIds.has(savedFilters.graphClassId) ? savedFilters.graphClassId : "all";
+  state.graphType = typeIds.has(savedFilters.graphType) ? savedFilters.graphType : "전체";
+  state.graphTag = tagIds.has(savedFilters.graphTag) ? savedFilters.graphTag : "전체";
+}
 
 const cardGrid = document.querySelector("#cardGrid");
 const deckGrid = document.querySelector("#deckGrid");
@@ -21,23 +92,23 @@ const resultCount = document.querySelector("#resultCount");
 const searchInput = document.querySelector("#search");
 const classFilters = document.querySelector("#classFilters");
 const typeFilters = document.querySelector("#typeFilters");
+const tagFilters = document.querySelector("#tagFilters");
 const versionSelect = document.querySelector("#versionSelect");
 const dbStatus = document.querySelector("#dbStatus");
-const exportButton = document.querySelector("#exportButton");
 const exportImageButton = document.querySelector("#exportImageButton");
 const printButton = document.querySelector("#printButton");
 const printFieldButton = document.querySelector("#printFieldButton");
-const addCardButton = document.querySelector("#addCardButton");
-const editorForm = document.querySelector("#editorForm");
-const editorEmpty = document.querySelector("#editorEmpty");
-const editorTitle = document.querySelector("#editorTitle");
-const deleteCardButton = document.querySelector("#deleteCardButton");
-const duplicateCardButton = document.querySelector("#duplicateCardButton");
 const dialog = document.querySelector("#cardDialog");
 const dialogBody = document.querySelector("#dialogBody");
 const dialogClose = document.querySelector("#dialogClose");
 const printArea = document.querySelector("#printArea");
 const fieldBoardSheet = document.querySelector("#fieldBoardSheet");
+const levelGraph = document.querySelector("#levelGraph");
+const graphMetrics = document.querySelector("#graphMetrics");
+const graphLegend = document.querySelector("#graphLegend");
+const graphClassFilter = document.querySelector("#graphClassFilter");
+const graphTypeFilter = document.querySelector("#graphTypeFilter");
+const graphTagFilter = document.querySelector("#graphTagFilter");
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -91,11 +162,48 @@ function cardNameSizeClass(name) {
   return "";
 }
 
+function hashNumber(value) {
+  return Array.from(String(value ?? "")).reduce((total, char) => {
+    return (total * 31 + char.charCodeAt(0)) % 9973;
+  }, 7);
+}
+
+function extractKeywords(effect) {
+  return Array.from(String(effect ?? "").matchAll(/\[([^\]]+)\]/g), (match) => match[1]);
+}
+
+function primaryRace(card) {
+  return String(card.race ?? "").split(/[\/,·\s]+/).filter(Boolean)[0] ?? "";
+}
+
+function cardTags(card) {
+  return Array.from(new Set([
+    card.faction,
+    card.race,
+    ...String(card.race ?? "").split(/[\/,·\s]+/),
+    ...extractKeywords(card.effect),
+  ].map((tag) => String(tag ?? "").trim()).filter(Boolean)));
+}
+
+function collectTags(cards) {
+  const counts = cards.reduce((tagCounts, card) => {
+    cardTags(card).forEach((tag) => {
+      tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+    });
+    return tagCounts;
+  }, new Map());
+
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "ko"))
+    .map(([tag]) => tag);
+}
+
 function migrateCard(card) {
   const nextCard = structuredClone(card);
   nextCard.serial = nextCard.serial || nextCard.id;
   nextCard.sigil = nextCard.sigil || classPrintTokens(nextCard.classId).mark;
   nextCard.illustration = nextCard.illustration ?? "";
+  nextCard.lore = nextCard.lore ?? nextCard.flavor ?? "";
   nextCard.power = Number(nextCard.power ?? nextCard.atk ?? 0);
   nextCard.actionCost = Number(nextCard.actionCost ?? 1);
   delete nextCard.atk;
@@ -108,7 +216,9 @@ async function loadManifest() {
   const response = await fetch("./data/card-versions.json", { cache: "no-store" });
   if (!response.ok) throw new Error("버전 목록을 불러오지 못했습니다.");
   state.manifest = await response.json();
-  state.selectedVersion = state.manifest.latest;
+  const savedVersion = readSavedFilters().selectedVersion;
+  const versionExists = state.manifest.versions.some((item) => item.id === savedVersion);
+  state.selectedVersion = versionExists ? savedVersion : state.manifest.latest;
   versionSelect.innerHTML = state.manifest.versions
     .map((item) => `<option value="${escapeHtml(item.id)}">${escapeHtml(item.label)}</option>`)
     .join("");
@@ -127,25 +237,22 @@ async function loadVersion(versionId) {
   state.cards = (state.db.cards ?? []).map(migrateCard);
   state.classes = state.db.classes ?? [];
   state.cardTypes = ["전체", ...(state.db.cardTypes ?? ["일반유닛", "트랩유닛", "책사유닛"])];
+  state.tags = collectTags(state.cards);
   state.selectedVersion = versionId;
   state.selectedCardId = "";
-  state.dirty = false;
+  restoreFilters();
+  restoreGraphFilters();
 
   createFilters();
+  createGraphFilters();
   renderStructureDecks();
   renderLibrary();
-  renderEditor();
+  renderLevelGraph();
   updateStatus();
 }
 
 function updateStatus() {
-  const dirtyLabel = state.dirty ? " · 편집됨" : "";
-  dbStatus.textContent = `${state.db?.dbVersion ?? "-"} · ${state.cards.length}장${dirtyLabel}`;
-}
-
-function markDirty() {
-  state.dirty = true;
-  updateStatus();
+  dbStatus.textContent = `${state.db?.dbVersion ?? "-"} · ${state.cards.length}장`;
 }
 
 function createFilters() {
@@ -165,6 +272,36 @@ function createFilters() {
   typeFilters.innerHTML = state.cardTypes
     .map((item) => `<button class="filter-button ${item === state.type ? "active" : ""}" data-type="${escapeHtml(item)}">${escapeHtml(item)}</button>`)
     .join("");
+
+  if (tagFilters) {
+    const tagItems = ["전체", ...state.tags];
+    tagFilters.innerHTML = tagItems
+      .map((item) => `<button class="filter-button tag-filter ${item === state.tag ? "active" : ""}" data-tag="${escapeHtml(item)}">${escapeHtml(item)}</button>`)
+      .join("");
+  }
+}
+
+function createGraphFilters() {
+  if (!graphClassFilter || !graphTypeFilter || !graphTagFilter) return;
+  const classItems = [
+    { id: "all", label: "전체" },
+    ...state.classes.map((item) => ({ id: item.id, label: item.label })),
+  ];
+  const tagItems = ["전체", ...state.tags];
+
+  graphClassFilter.innerHTML = classItems
+    .map((item) => `<option value="${escapeHtml(item.id)}">${escapeHtml(item.label)}</option>`)
+    .join("");
+  graphTypeFilter.innerHTML = state.cardTypes
+    .map((item) => `<option value="${escapeHtml(item)}">${escapeHtml(item)}</option>`)
+    .join("");
+  graphTagFilter.innerHTML = tagItems
+    .map((item) => `<option value="${escapeHtml(item)}">${escapeHtml(item)}</option>`)
+    .join("");
+
+  graphClassFilter.value = state.graphClassId;
+  graphTypeFilter.value = state.graphType;
+  graphTagFilter.value = state.graphTag;
 }
 
 function getFilteredCards() {
@@ -172,9 +309,21 @@ function getFilteredCards() {
   return state.cards.filter((card) => {
     const classMatches = state.classId === "all" || card.classId === state.classId;
     const typeMatches = state.type === "전체" || card.type === state.type;
+    const tagMatches = state.tag === "전체" || cardTags(card).includes(state.tag);
     const text = `${card.id} ${card.serial} ${card.name} ${card.faction} ${card.className} ${card.theme} ${card.type} ${card.race} ${card.effect}`.toLowerCase();
-    return classMatches && typeMatches && (!query || text.includes(query));
+    return classMatches && typeMatches && tagMatches && (!query || text.includes(query));
   });
+}
+
+function getGraphCards() {
+  const filtered = state.cards.filter((card) => {
+    const classMatches = state.graphClassId === "all" || card.classId === state.graphClassId;
+    const typeMatches = state.graphType === "전체" || card.type === state.graphType;
+    const tagMatches = state.graphTag === "전체" || cardTags(card).includes(state.graphTag);
+    return classMatches && typeMatches && tagMatches;
+  });
+
+  return filtered;
 }
 
 function renderCard(card, detailed = false) {
@@ -212,6 +361,158 @@ function renderLibrary() {
   resultCount.textContent = `${filtered.length}장`;
   cardGrid.innerHTML = filtered.map((card) => renderCard(card)).join("");
   updateAssetButtons();
+}
+
+function buildGraphEdges(cards) {
+  const edges = [];
+  const seen = new Set();
+  const classGroups = cards.reduce((groups, card) => {
+    if (!groups.has(card.classId)) groups.set(card.classId, []);
+    groups.get(card.classId).push(card);
+    return groups;
+  }, new Map());
+
+  function addEdge(source, target, kind) {
+    if (!source || !target || source.id === target.id) return;
+    const key = `${source.id}->${target.id}:${kind}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    edges.push({ source: source.id, target: target.id, kind });
+  }
+
+  classGroups.forEach((classCards) => {
+    const sorted = [...classCards].sort((a, b) => Number(a.cost) - Number(b.cost) || Number(a.power) - Number(b.power));
+    sorted.forEach((card, index) => addEdge(card, sorted[index + 1], "curve"));
+  });
+
+  cards.forEach((source) => {
+    const effect = String(source.effect ?? "");
+    const keywords = new Set(extractKeywords(effect));
+    const targets = cards
+      .filter((target) => {
+        if (target.id === source.id || target.classId !== source.classId) return false;
+        const race = primaryRace(target);
+        if (race && effect.includes(race)) return true;
+        return extractKeywords(target.effect).some((keyword) => keywords.has(keyword));
+      })
+      .slice(0, 2);
+
+    targets.forEach((target) => addEdge(source, target, "synergy"));
+  });
+
+  return edges.slice(0, 120);
+}
+
+function renderLevelGraph(cards = getGraphCards()) {
+  if (!levelGraph || !graphMetrics || !graphLegend) return;
+  if (!cards.length) {
+    levelGraph.innerHTML = `
+      <rect x="1" y="1" width="958" height="538" class="graph-empty-bg" />
+      <text x="480" y="258" text-anchor="middle" class="graph-empty">카드 데이터를 불러오지 못했습니다.</text>
+      <text x="480" y="288" text-anchor="middle" class="graph-empty-help">DB 버전 목록과 JSON 파일을 확인하세요.</text>
+    `;
+    graphMetrics.innerHTML = `<div><strong>0</strong><span>노드</span></div>`;
+    graphLegend.innerHTML = `<h3>범례</h3><p>그래프 필터와 일치하는 카드가 없습니다. 그래프 전용 필터를 조정하세요.</p>`;
+    return;
+  }
+
+  const width = 960;
+  const height = 540;
+  const margin = { top: 44, right: 48, bottom: 52, left: 62 };
+  const plotWidth = width - margin.left - margin.right;
+  const plotHeight = height - margin.top - margin.bottom;
+  const maxCost = Math.ceil(Math.max(1, ...cards.map((card) => Number(card.cost) || 0)));
+  const maxPower = Math.ceil(Math.max(1, ...cards.map((card) => Number(card.power) || 0)));
+  const colors = classColors();
+  const nodes = cards.map((card) => {
+    const hash = hashNumber(card.id);
+    const jitterX = (hash % 19) - 9;
+    const jitterY = ((Math.floor(hash / 19) % 19) - 9) * 0.85;
+    const cost = Number(card.cost) || 0;
+    const power = Number(card.power) || 0;
+    return {
+      card,
+      x: margin.left + (cost / maxCost) * plotWidth + jitterX,
+      y: margin.top + (1 - power / maxPower) * plotHeight + jitterY,
+      radius: card.type === "트랩유닛" ? 7 : card.type === "책사유닛" ? 8 : 6.5,
+      color: colors[card.classId] ?? fallbackClassColor,
+    };
+  });
+  const nodeById = new Map(nodes.map((node) => [node.card.id, node]));
+  const edges = buildGraphEdges(cards);
+  const costTicks = Array.from({ length: maxCost + 1 }, (_, cost) => cost).filter((cost) => cost === 0 || cost === maxCost || cost % 2 === 0);
+  const powerTicks = Array.from({ length: maxPower + 1 }, (_, power) => power).filter((power) => power === 0 || power === maxPower || power % 2 === 0);
+
+  const axis = `
+    <g class="graph-axis">
+      <line x1="${margin.left}" y1="${height - margin.bottom}" x2="${width - margin.right}" y2="${height - margin.bottom}" />
+      <line x1="${margin.left}" y1="${margin.top}" x2="${margin.left}" y2="${height - margin.bottom}" />
+      ${costTicks.map((cost) => {
+        const x = margin.left + (cost / maxCost) * plotWidth;
+        return `<g><line class="graph-grid" x1="${x}" y1="${margin.top}" x2="${x}" y2="${height - margin.bottom}" /><text x="${x}" y="${height - 18}" text-anchor="middle">${cost}</text></g>`;
+      }).join("")}
+      ${powerTicks.map((power) => {
+        const y = margin.top + (1 - power / maxPower) * plotHeight;
+        return `<g><line class="graph-grid" x1="${margin.left}" y1="${y}" x2="${width - margin.right}" y2="${y}" /><text x="34" y="${y + 4}" text-anchor="middle">${power}</text></g>`;
+      }).join("")}
+      <text x="${width / 2}" y="${height - 4}" text-anchor="middle">비용</text>
+      <text x="18" y="${height / 2}" text-anchor="middle" transform="rotate(-90 18 ${height / 2})">힘</text>
+    </g>
+  `;
+
+  const edgeMarkup = edges.map((edge) => {
+    const source = nodeById.get(edge.source);
+    const target = nodeById.get(edge.target);
+    if (!source || !target) return "";
+    return `<line class="graph-edge graph-edge-${edge.kind}" x1="${source.x}" y1="${source.y}" x2="${target.x}" y2="${target.y}" />`;
+  }).join("");
+
+  const nodeMarkup = nodes.map((node) => {
+    const label = escapeHtml(`${node.card.name} · 비용 ${node.card.cost} / 힘 ${node.card.power}`);
+    const common = `class="graph-node" data-id="${escapeHtml(node.card.id)}" tabindex="0" role="button" aria-label="${label}"`;
+    if (node.card.type === "트랩유닛") {
+      return `<rect ${common} x="${node.x - node.radius}" y="${node.y - node.radius}" width="${node.radius * 2}" height="${node.radius * 2}" fill="${escapeHtml(node.color)}"><title>${label}</title></rect>`;
+    }
+    if (node.card.type === "책사유닛") {
+      const r = node.radius;
+      const points = `${node.x},${node.y - r} ${node.x + r},${node.y} ${node.x},${node.y + r} ${node.x - r},${node.y}`;
+      return `<polygon ${common} points="${points}" fill="${escapeHtml(node.color)}"><title>${label}</title></polygon>`;
+    }
+    return `<circle ${common} cx="${node.x}" cy="${node.y}" r="${node.radius}" fill="${escapeHtml(node.color)}"><title>${label}</title></circle>`;
+  }).join("");
+
+  levelGraph.innerHTML = `${axis}<g class="graph-edges">${edgeMarkup}</g><g class="graph-nodes">${nodeMarkup}</g>`;
+
+  const averageCost = cards.reduce((sum, card) => sum + Number(card.cost || 0), 0) / cards.length;
+  const averagePower = cards.reduce((sum, card) => sum + Number(card.power || 0), 0) / cards.length;
+  const typeCounts = cards.reduce((counts, card) => {
+    const type = displayCardType(card.type);
+    counts[type] = (counts[type] ?? 0) + 1;
+    return counts;
+  }, {});
+  const keywordCounts = cards.flatMap((card) => extractKeywords(card.effect)).reduce((counts, keyword) => {
+    counts[keyword] = (counts[keyword] ?? 0) + 1;
+    return counts;
+  }, {});
+  const topKeywords = Object.entries(keywordCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
+
+  graphMetrics.innerHTML = `
+    <div><strong>${cards.length}</strong><span>노드</span></div>
+    <div><strong>${edges.length}</strong><span>연결</span></div>
+    <div><strong>${averageCost.toFixed(1)}</strong><span>평균 비용</span></div>
+    <div><strong>${averagePower.toFixed(1)}</strong><span>평균 힘</span></div>
+  `;
+
+  graphLegend.innerHTML = `
+    <h3>범례</h3>
+    <p>가로축은 비용, 세로축은 힘입니다. 원은 일반, 사각형은 트랩, 마름모는 책사입니다.</p>
+    <div class="graph-type-counts">
+      ${Object.entries(typeCounts).map(([type, count]) => `<span>${escapeHtml(type)} ${count}</span>`).join("")}
+    </div>
+    <div class="graph-keywords">
+      ${topKeywords.map(([keyword, count]) => `<span><strong>[${escapeHtml(keyword)}]</strong> ${count}</span>`).join("")}
+    </div>
+  `;
 }
 
 function renderStructureDecks() {
@@ -257,7 +558,11 @@ function openCard(cardId) {
   if (!card) return;
 
   state.selectedCardId = card.id;
-  renderEditor();
+  updateAssetButtons();
+  const lore = String(card.lore ?? "").trim();
+  const loreBlock = lore
+    ? `<section class="lore-panel"><h4>설정</h4><p>${renderKeywordText(lore)}</p></section>`
+    : "";
 
   dialogBody.innerHTML = `
     <div class="dialog-layout">
@@ -275,6 +580,7 @@ function openCard(cardId) {
           <div class="rule-row"><span>힘</span><strong>${escapeHtml(card.power ?? card.atk ?? 0)}</strong></div>
           <div class="rule-row"><span>효과</span><strong>${renderEffect(card)}</strong></div>
         </div>
+        ${loreBlock}
       </div>
     </div>
   `;
@@ -285,149 +591,9 @@ function selectedCard() {
   return state.cards.find((item) => item.id === state.selectedCardId);
 }
 
-function renderEditor() {
-  if (publicMode) return;
-  const card = selectedCard();
-  const hasCard = Boolean(card);
-  editorForm.hidden = !hasCard;
-  editorEmpty.hidden = hasCard;
-  deleteCardButton.disabled = !hasCard;
-  duplicateCardButton.disabled = !hasCard;
-
-  if (!card) {
-    editorTitle.textContent = "카드 편집";
-    updateAssetButtons();
-    return;
-  }
-
-  editorTitle.textContent = card.name || card.id;
-  editorForm.elements.id.value = card.id ?? "";
-  editorForm.elements.serial.value = card.serial ?? card.id ?? "";
-  editorForm.elements.illustration.value = card.illustration ?? "";
-  editorForm.elements.name.value = card.name ?? "";
-  editorForm.elements.cost.value = card.cost ?? 0;
-  editorForm.elements.classId.value = card.classId ?? "";
-  editorForm.elements.type.value = card.type ?? "일반유닛";
-  editorForm.elements.race.value = card.race ?? "";
-  editorForm.elements.power.value = card.power ?? card.atk ?? 0;
-  editorForm.elements.actionCost.value = card.actionCost ?? 1;
-  editorForm.elements.sigil.value = card.sigil ?? classPrintTokens(card.classId).mark;
-  editorForm.elements.effect.value = card.effect ?? "";
-
-  editorForm.elements.classId.innerHTML = state.classes
-    .map((item) => `<option value="${escapeHtml(item.id)}">${escapeHtml(item.label)}</option>`)
-    .join("");
-  editorForm.elements.classId.value = card.classId ?? state.classes[0]?.id ?? "";
-
-  editorForm.elements.type.innerHTML = state.cardTypes
-    .filter((item) => item !== "전체")
-    .map((item) => `<option value="${escapeHtml(item)}">${escapeHtml(item)}</option>`)
-    .join("");
-  editorForm.elements.type.value = card.type ?? "일반유닛";
-  updateAssetButtons();
-}
-
 function updateAssetButtons() {
   exportImageButton.disabled = !selectedCard();
   printButton.disabled = getFilteredCards().length === 0;
-}
-
-function normalizeCard(formData, previousCard = {}) {
-  const classInfo = state.classes.find((item) => item.id === formData.get("classId"));
-  const nextCard = {
-    ...previousCard,
-    id: formData.get("id").trim(),
-    serial: formData.get("serial").trim(),
-    illustration: formData.get("illustration").trim(),
-    name: formData.get("name").trim(),
-    cost: Number(formData.get("cost") || 0),
-    faction: classInfo?.faction ?? previousCard.faction ?? "",
-    classId: formData.get("classId"),
-    className: classInfo?.className ?? previousCard.className ?? "",
-    theme: classInfo?.theme ?? previousCard.theme ?? "",
-    type: formData.get("type"),
-    race: formData.get("race").trim(),
-    power: Number(formData.get("power") || 0),
-    actionCost: Number(formData.get("actionCost") || 0),
-    sigil: formData.get("sigil").trim(),
-    effect: formData.get("effect").trim(),
-  };
-  delete nextCard.atk;
-  delete nextCard.hp;
-  delete nextCard.flavor;
-  return nextCard;
-}
-
-function addCard() {
-  const classInfo = state.classes[0];
-  const nextNumber = String(state.cards.length + 1).padStart(3, "0");
-  const card = {
-    id: `new-${nextNumber}`,
-    serial: `GRNS-${Date.now().toString(36).toUpperCase()}`,
-    illustration: "",
-    name: "새 카드",
-    cost: 1,
-    faction: classInfo?.faction ?? "",
-    classId: classInfo?.id ?? "",
-    className: classInfo?.className ?? "",
-    theme: classInfo?.theme ?? "",
-    type: "일반유닛",
-    race: "",
-    power: 1,
-    actionCost: 1,
-    sigil: classPrintTokens(classInfo?.id).mark,
-    effect: "",
-  };
-  state.cards.unshift(card);
-  state.selectedCardId = card.id;
-  markDirty();
-  renderLibrary();
-  renderEditor();
-}
-
-function duplicateCard() {
-  const card = selectedCard();
-  if (!card) return;
-  const copy = structuredClone(card);
-  copy.id = `${card.id}-copy`;
-  copy.serial = `${card.serial ?? card.id}-COPY-${Date.now().toString(36).toUpperCase()}`;
-  copy.name = `${card.name} 복사본`;
-  state.cards.unshift(copy);
-  state.selectedCardId = copy.id;
-  markDirty();
-  renderLibrary();
-  renderEditor();
-}
-
-function deleteCard() {
-  const card = selectedCard();
-  if (!card) return;
-  state.cards = state.cards.filter((item) => item.id !== card.id);
-  state.selectedCardId = "";
-  markDirty();
-  renderLibrary();
-  renderEditor();
-}
-
-function exportJson() {
-  const today = new Date().toISOString().slice(0, 10);
-  const defaultVersion = `${today}-v2`;
-  const version = window.prompt("내보낼 DB 버전을 입력하세요. 예: 2026-05-16-v2", defaultVersion);
-  if (!version) return;
-
-  const exportDb = {
-    ...state.db,
-    dbVersion: version,
-    updatedAt: today,
-    cards: state.cards.map(migrateCard),
-  };
-  const blob = new Blob([`${JSON.stringify(exportDb, null, 2)}\n`], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = `card-${version}.json`;
-  link.click();
-  URL.revokeObjectURL(url);
 }
 
 function hexToRgb(hex) {
@@ -678,17 +844,15 @@ function printFieldBoard() {
 }
 
 versionSelect.addEventListener("change", async (event) => {
-  if (state.dirty && !window.confirm("편집 중인 변경사항이 있습니다. 다른 버전을 불러올까요?")) {
-    versionSelect.value = state.selectedVersion;
-    return;
-  }
   await loadVersion(event.target.value);
+  saveFilters();
 });
 
 classFilters.addEventListener("click", (event) => {
   const button = event.target.closest("[data-class]");
   if (!button) return;
   state.classId = button.dataset.class;
+  saveFilters();
   createFilters();
   renderLibrary();
 });
@@ -697,12 +861,41 @@ typeFilters.addEventListener("click", (event) => {
   const button = event.target.closest("[data-type]");
   if (!button) return;
   state.type = button.dataset.type;
+  saveFilters();
   createFilters();
   renderLibrary();
 });
 
+tagFilters?.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-tag]");
+  if (!button) return;
+  state.tag = button.dataset.tag;
+  saveFilters();
+  createFilters();
+  renderLibrary();
+});
+
+graphClassFilter?.addEventListener("change", (event) => {
+  state.graphClassId = event.target.value;
+  saveGraphFilters();
+  renderLevelGraph();
+});
+
+graphTypeFilter?.addEventListener("change", (event) => {
+  state.graphType = event.target.value;
+  saveGraphFilters();
+  renderLevelGraph();
+});
+
+graphTagFilter?.addEventListener("change", (event) => {
+  state.graphTag = event.target.value;
+  saveGraphFilters();
+  renderLevelGraph();
+});
+
 searchInput.addEventListener("input", (event) => {
   state.query = event.target.value;
+  saveFilters();
   renderLibrary();
 });
 
@@ -711,30 +904,22 @@ cardGrid.addEventListener("click", (event) => {
   if (card) openCard(card.dataset.id);
 });
 
-editorForm?.addEventListener("input", () => {
-  if (publicMode) return;
-  const card = selectedCard();
-  if (!card) return;
-  const nextCard = normalizeCard(new FormData(editorForm), card);
-  const duplicate = state.cards.some((item) => item.id === nextCard.id && item !== card);
-  if (duplicate) {
-    dbStatus.textContent = "ID가 중복되었습니다.";
-    return;
-  }
-  Object.assign(card, nextCard);
-  state.selectedCardId = nextCard.id;
-  markDirty();
-  editorTitle.textContent = card.name || card.id;
-  renderLibrary();
+levelGraph?.addEventListener("click", (event) => {
+  const node = event.target.closest("[data-id]");
+  if (node) openCard(node.dataset.id);
 });
 
-exportButton?.addEventListener("click", exportJson);
+levelGraph?.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+  const node = event.target.closest("[data-id]");
+  if (!node) return;
+  event.preventDefault();
+  openCard(node.dataset.id);
+});
+
 exportImageButton?.addEventListener("click", exportSelectedCardImage);
 printButton?.addEventListener("click", printCards);
 printFieldButton?.addEventListener("click", printFieldBoard);
-addCardButton?.addEventListener("click", addCard);
-duplicateCardButton?.addEventListener("click", duplicateCard);
-deleteCardButton?.addEventListener("click", deleteCard);
 dialogClose.addEventListener("click", () => dialog.close());
 dialog.addEventListener("click", (event) => {
   if (event.target === dialog) dialog.close();
@@ -747,7 +932,6 @@ window.addEventListener("afterprint", () => {
 
 async function boot() {
   try {
-    document.body.classList.toggle("public-mode", publicMode);
     await loadManifest();
     await loadVersion(state.selectedVersion);
   } catch (error) {
