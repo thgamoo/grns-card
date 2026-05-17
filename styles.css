@@ -1116,6 +1116,15 @@ select option {
   line-height: 1.35;
 }
 
+.effect-lore {
+  align-self: center;
+  color: #333333;
+  font-family: "Gowun Batang", serif;
+  font-style: italic;
+  line-height: 1.45;
+  text-align: center;
+}
+
 .serial-line {
   grid-row: 3;
   align-self: end;
@@ -1356,6 +1365,11 @@ dialog::backdrop {
 
   .print-page .game-card::before {
     background: linear-gradient(90deg, #111111 0 0.25mm, var(--class-stripe) 0.25mm 4.45mm, #111111 4.45mm 4.7mm) !important;
+  }
+
+  .print-page .effect-lore {
+    font-style: italic !important;
+    text-align: center !important;
   }
 
   .field-print-page {

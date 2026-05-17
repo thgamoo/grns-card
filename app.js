@@ -135,9 +135,14 @@ function displayCardType(type) {
   return String(type ?? "").replace("유닛", "");
 }
 
+function hasEffect(card) {
+  return String(card.effect ?? "").trim().length > 0;
+}
+
 function effectText(card) {
+  if (!hasEffect(card)) return "";
   const actionCost = Number(card.actionCost ?? 1);
-  const effect = card.effect ?? "";
+  const effect = String(card.effect ?? "").trim();
   return actionCost > 0 ? `[막: ${actionCost}] ${effect}` : effect;
 }
 
@@ -148,11 +153,23 @@ function renderKeywordText(value) {
 }
 
 function renderEffect(card) {
+  if (!hasEffect(card)) return "";
   const actionCost = Number(card.actionCost ?? 1);
   const effect = renderKeywordText(card.effect);
   return actionCost > 0
     ? `<strong>[막: ${escapeHtml(actionCost)}]</strong> ${effect}`
     : effect;
+}
+
+function renderCardDescription(card) {
+  if (hasEffect(card)) {
+    return `<div class="effect">${renderEffect(card)}</div>`;
+  }
+
+  const lore = String(card.lore ?? "").trim();
+  return lore
+    ? `<div class="effect effect-lore">${renderKeywordText(lore)}</div>`
+    : `<div class="effect"></div>`;
 }
 
 function cardNameSizeClass(name) {
@@ -347,7 +364,7 @@ function renderCard(card, detailed = false) {
           <span class="chip">${escapeHtml(card.faction)}</span>
           <span class="chip">${escapeHtml(card.race)}</span>
         </div>
-        <div class="effect">${renderEffect(card)}</div>
+        ${renderCardDescription(card)}
         <div class="serial-line">${escapeHtml(card.serial)}</div>
         <div class="type-line">${escapeHtml(displayCardType(card.type))}</div>
         <div class="class-mark">${escapeHtml(tones.mark)}</div>
@@ -763,10 +780,19 @@ function drawCardToCanvas(card) {
   ctx.fillStyle = "#111111";
   const effectFont = "2.75px Noto Sans KR, sans-serif";
   const effectBoldFont = "bold 2.75px Noto Sans KR, sans-serif";
-  ctx.font = effectFont;
-  wrapRichText(ctx, effectText(card), 6.4, y, 51.4, 3.55, 6, effectFont, effectBoldFont);
+  if (hasEffect(card)) {
+    ctx.textAlign = "left";
+    ctx.font = effectFont;
+    wrapRichText(ctx, effectText(card), 6.4, y, 51.4, 3.55, 6, effectFont, effectBoldFont);
+  } else if (String(card.lore ?? "").trim()) {
+    ctx.fillStyle = "#333333";
+    ctx.textAlign = "center";
+    ctx.font = "italic 2.75px Gowun Batang, Noto Sans KR, serif";
+    wrapText(ctx, card.lore, 32.1, y + 7.8, 46, 3.8, 4);
+  }
 
   ctx.fillStyle = "#555555";
+  ctx.textAlign = "left";
   ctx.font = "bold 2.2px Noto Sans KR, sans-serif";
   ctx.textAlign = "left";
   ctx.fillText(card.serial ?? "", 6.4, 76.4);
