@@ -13,7 +13,7 @@
     "lore": "전쟁의 겉면이 소란해질수록, 숨어 있던 괴이는 더 또렷한 이름을 얻었다.",
     "power": 3,
     "actionCost": 0,
-    "serial": "GRNS-EX01-0027",
+    "serial": "GRNS-EX01-0025",
     "sigil": "王",
     "illustration": "",
     "expansionId": "ex01",
@@ -33,7 +33,7 @@
     "lore": "전쟁의 겉면이 소란해질수록, 숨어 있던 괴이는 더 또렷한 이름을 얻었다.",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-EX01-0028",
+    "serial": "GRNS-EX01-0026",
     "sigil": "鈴",
     "illustration": "",
     "expansionId": "ex01",
@@ -53,7 +53,7 @@
     "lore": "전쟁의 겉면이 소란해질수록, 숨어 있던 괴이는 더 또렷한 이름을 얻었다.",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-EX01-0029",
+    "serial": "GRNS-EX01-0027",
     "sigil": "燐",
     "illustration": "",
     "expansionId": "ex01",
@@ -76,7 +76,7 @@
     "effect": "[출정] 상대 손패가 내 손패보다 많으면 [패 유실 1].",
     "lore": "웃는 쪽이 앞인지, 우는 쪽이 앞인지 아무도 몰랐다.",
     "power": 1,
-    "serial": "GRNS-EX01-0030",
+    "serial": "GRNS-EX01-0028",
     "sigil": "面"
   },
   {
@@ -96,7 +96,7 @@
     "effect": "공격 유닛 1장의 힘 -2. 그 유닛의 비용이 2 이하라면 [패 유실 1].",
     "lore": "불빛은 길을 밝히지 않고 발목만 따라왔다.",
     "power": 0,
-    "serial": "GRNS-EX01-0031",
+    "serial": "GRNS-EX01-0029",
     "sigil": "尾"
   },
   {
@@ -116,7 +116,7 @@
     "effect": "[지휘막사] 상대가 트랩유닛을 발동하면 상대 [덱 유실 2].",
     "lore": "마을의 경계가 뒤집히자 손님과 재앙도 뒤섞였다.",
     "power": 1,
-    "serial": "GRNS-EX01-0032",
+    "serial": "GRNS-EX01-0030",
     "sigil": "將"
   },
   {
@@ -136,7 +136,7 @@
     "effect": "[출정] 내 손패가 3장 이하라면 드로우 +1.",
     "lore": "불러낸 적은 없지만 이미 자리에 앉아 있었다.",
     "power": 2,
-    "serial": "GRNS-EX01-0033",
+    "serial": "GRNS-EX01-0031",
     "sigil": "魍"
   },
   {
@@ -156,7 +156,7 @@
     "effect": "[야전막사] 상대 첫 드로우 후 상대 [패 유실 1].",
     "lore": "묶은 적 없는 주머니에서 말이 새었다.",
     "power": 0,
-    "serial": "GRNS-EX01-0034",
+    "serial": "GRNS-EX01-0032",
     "sigil": "囊"
   }
 ]

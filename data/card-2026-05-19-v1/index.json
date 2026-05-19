@@ -49,7 +49,7 @@
         "packId": "ex01",
         "classId": "gaya",
         "file": "./data/card-2026-05-19-v1/cards/ex01/gaya.json",
-        "count": 10
+        "count": 8
       },
       {
         "packId": "ex01",
@@ -67,7 +67,7 @@
         "packId": "ex01",
         "classId": "neutral",
         "file": "./data/card-2026-05-19-v1/cards/ex01/neutral.json",
-        "count": 8
+        "count": 10
       }
     ],
     "structureDecks": [
