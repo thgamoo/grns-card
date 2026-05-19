@@ -655,7 +655,7 @@ textarea {
   grid-area: side;
   display: grid;
   align-content: start;
-  grid-template-rows: repeat(2, 85mm);
+  grid-template-rows: repeat(3, 85mm);
   gap: 3mm;
 }
 
@@ -666,6 +666,11 @@ textarea {
   width: 60mm;
   height: 85mm;
   gap: 1mm;
+}
+
+.side-zones .special-zone {
+  background:
+    repeating-linear-gradient(0deg, #ffffff, #ffffff 4mm, #f3f4f6 4mm, #f3f4f6 8mm);
 }
 
 .deck-section {
