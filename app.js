@@ -7,9 +7,11 @@ const state = {
   db: null,
   cards: [],
   classes: [],
+  packs: [],
   cardTypes: ["일반유닛", "트랩유닛", "책사유닛"],
   tags: [],
   classId: "all",
+  packId: "all",
   type: "전체",
   tag: "전체",
   query: "",
@@ -33,6 +35,7 @@ function saveFilters() {
     localStorage.setItem(storageKey, JSON.stringify({
       selectedVersion: state.selectedVersion,
       classId: state.classId,
+      packId: state.packId,
       type: state.type,
       tag: state.tag,
       query: state.query,
@@ -45,10 +48,12 @@ function saveFilters() {
 function restoreFilters() {
   const savedFilters = readSavedFilters();
   const classIds = new Set(["all", ...state.classes.map((item) => item.id)]);
+  const packIds = new Set(["all", ...state.packs.map((item) => item.id)]);
   const typeIds = new Set(state.cardTypes);
   const tagIds = new Set(["전체", ...state.tags]);
 
   state.classId = classIds.has(savedFilters.classId) ? savedFilters.classId : "all";
+  state.packId = packIds.has(savedFilters.packId) ? savedFilters.packId : "all";
   state.type = typeIds.has(savedFilters.type) ? savedFilters.type : "전체";
   state.tag = tagIds.has(savedFilters.tag) ? savedFilters.tag : "전체";
   state.query = typeof savedFilters.query === "string" ? savedFilters.query : "";
@@ -91,6 +96,7 @@ const deckGrid = document.querySelector("#deckGrid");
 const resultCount = document.querySelector("#resultCount");
 const searchInput = document.querySelector("#search");
 const classFilters = document.querySelector("#classFilters");
+const packFilters = document.querySelector("#packFilters");
 const typeFilters = document.querySelector("#typeFilters");
 const tagFilters = document.querySelector("#tagFilters");
 const versionSelect = document.querySelector("#versionSelect");
@@ -202,6 +208,22 @@ function cardTags(card) {
   ].map((tag) => String(tag ?? "").trim()).filter(Boolean)));
 }
 
+function packLabel(packId, expansions = []) {
+  if (!packId || packId === "base") return "기본";
+  return expansions.find((item) => item.id === packId)?.name ?? packId;
+}
+
+function collectPacks(cards, expansions = []) {
+  const seen = new Set();
+  return cards.reduce((packs, card) => {
+    const id = card.packId ?? (card.expansionId || "base");
+    if (seen.has(id)) return packs;
+    seen.add(id);
+    packs.push({ id, label: card.packName ?? packLabel(id, expansions) });
+    return packs;
+  }, []).sort((a, b) => (a.id === "base" ? -1 : b.id === "base" ? 1 : a.label.localeCompare(b.label, "ko")));
+}
+
 function collectTags(cards) {
   const counts = cards.reduce((tagCounts, card) => {
     cardTags(card).forEach((tag) => {
@@ -221,6 +243,8 @@ function migrateCard(card) {
   nextCard.sigil = nextCard.sigil || classPrintTokens(nextCard.classId).mark;
   nextCard.illustration = nextCard.illustration ?? "";
   nextCard.lore = nextCard.lore ?? nextCard.flavor ?? "";
+  nextCard.packId = nextCard.packId ?? nextCard.expansionId ?? "base";
+  nextCard.packName = nextCard.packName ?? nextCard.expansionName ?? packLabel(nextCard.packId, state.db?.expansions ?? []);
   nextCard.power = Number(nextCard.power ?? nextCard.atk ?? 0);
   nextCard.actionCost = Number(nextCard.actionCost ?? 1);
   delete nextCard.atk;
@@ -243,13 +267,26 @@ async function resolveDb(db) {
     classes,
     cardTypes,
     expansions,
-    cardGroups,
-    deckGroups,
   ] = await Promise.all([
     sources.classes ? fetchJson(sources.classes) : Promise.resolve(db.classes ?? []),
     sources.cardTypes ? fetchJson(sources.cardTypes) : Promise.resolve(db.cardTypes ?? []),
     sources.expansions ? fetchJson(sources.expansions) : Promise.resolve(db.expansions ?? []),
-    Promise.all((sources.cards ?? []).map((source) => fetchJson(source.file))),
+  ]);
+
+  const [
+    cardGroups,
+    deckGroups,
+  ] = await Promise.all([
+    Promise.all((sources.cards ?? []).map(async (source) => {
+      const group = await fetchJson(source.file);
+      const cards = Array.isArray(group) ? group : (group.cards ?? []);
+      const packName = packLabel(source.packId, expansions);
+      return cards.map((card) => ({
+        ...card,
+        packId: card.packId ?? source.packId ?? card.expansionId ?? "base",
+        packName: card.packName ?? card.expansionName ?? packName,
+      }));
+    })),
     Promise.all((sources.structureDecks ?? []).map((source) => fetchJson(source.file))),
   ]);
 
@@ -286,6 +323,7 @@ async function loadVersion(versionId) {
   state.db = await resolveDb(await fetchJson(version.file));
   state.cards = (state.db.cards ?? []).map(migrateCard);
   state.classes = state.db.classes ?? [];
+  state.packs = collectPacks(state.cards, state.db.expansions ?? []);
   state.cardTypes = ["전체", ...(state.db.cardTypes ?? ["일반유닛", "트랩유닛", "책사유닛"])];
   state.tags = collectTags(state.cards);
   state.selectedVersion = versionId;
@@ -320,6 +358,16 @@ function createFilters() {
   classFilters.innerHTML = classItems
     .map((item) => `<button class="filter-button ${item.id === state.classId ? "active" : ""}" data-class="${escapeHtml(item.id)}" style="--tone:${escapeHtml(item.color)}">${escapeHtml(item.label)}</button>`)
     .join("");
+
+  if (packFilters) {
+    const packItems = [
+      { id: "all", label: "전체" },
+      ...state.packs,
+    ];
+    packFilters.innerHTML = packItems
+      .map((item) => `<button class="filter-button ${item.id === state.packId ? "active" : ""}" data-pack="${escapeHtml(item.id)}">${escapeHtml(item.label)}</button>`)
+      .join("");
+  }
 
   typeFilters.innerHTML = state.cardTypes
     .map((item) => `<button class="filter-button ${item === state.type ? "active" : ""}" data-type="${escapeHtml(item)}">${escapeHtml(item)}</button>`)
@@ -360,10 +408,11 @@ function getFilteredCards() {
   const query = state.query.trim().toLowerCase();
   return state.cards.filter((card) => {
     const classMatches = state.classId === "all" || card.classId === state.classId;
+    const packMatches = state.packId === "all" || card.packId === state.packId;
     const typeMatches = state.type === "전체" || card.type === state.type;
     const tagMatches = state.tag === "전체" || cardTags(card).includes(state.tag);
-    const text = `${card.id} ${card.serial} ${card.name} ${card.faction} ${card.className} ${card.theme} ${card.type} ${card.race} ${card.effect}`.toLowerCase();
-    return classMatches && typeMatches && tagMatches && (!query || text.includes(query));
+    const text = `${card.id} ${card.serial} ${card.name} ${card.faction} ${card.className} ${card.theme} ${card.packName} ${card.type} ${card.race} ${card.effect}`.toLowerCase();
+    return classMatches && packMatches && typeMatches && tagMatches && (!query || text.includes(query));
   });
 }
 
@@ -923,6 +972,15 @@ typeFilters?.addEventListener("click", (event) => {
   const button = event.target.closest("[data-type]");
   if (!button) return;
   state.type = button.dataset.type;
+  saveFilters();
+  createFilters();
+  renderLibrary();
+});
+
+packFilters?.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-pack]");
+  if (!button) return;
+  state.packId = button.dataset.pack;
   saveFilters();
   createFilters();
   renderLibrary();
