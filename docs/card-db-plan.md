@@ -36,6 +36,37 @@ npm run build
 
 브라우저 보안상 웹앱이 로컬 파일을 직접 덮어쓰지는 않는다. 카드 데이터 수정은 JSON 파일을 편집하고 새 버전으로 등록하는 흐름을 기준으로 한다.
 
+## 분리형 데이터 구조
+
+최신 버전은 단일 JSON 대신 클래스와 팩 단위로 나눈다. `data/card-versions.json`의 `file`은 각 버전 디렉토리의 `index.json`을 가리킨다.
+
+```text
+data/card-2026-05-19-v1/
+  index.json
+  classes.json
+  card-types.json
+  expansions.json
+  cards/
+    base/
+      goguryeo.json
+      jinhan.json
+      gaya.json
+      mahan.json
+    ex01/
+      jinhan.json
+      neutral.json
+  decks/
+    goguryeo.json
+    jinhan.json
+    gaya.json
+    mahan.json
+```
+
+- `cards/base/*.json`: 기본 카드풀. 클래스별로 관리한다.
+- `cards/ex01/*.json`: 확장팩 `드러나는 이면` 카드풀. 확장팩과 클래스별로 관리한다.
+- `decks/*.json`: 스트럭쳐 덱 리스트. 기본 카드풀 교체 시 이 파일도 함께 확인한다.
+- 과거 단일 JSON 버전도 계속 읽을 수 있다.
+
 ## 카드 데이터 필드
 
 카드별 설정 설명은 `lore` 필드에 작성한다. `lore`는 카드 표면, PNG Export, 프린트에는 들어가지 않고 카드 상세 팝업에서만 표시된다.

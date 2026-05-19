@@ -229,6 +229,40 @@ function migrateCard(card) {
   return nextCard;
 }
 
+async function fetchJson(file) {
+  const response = await fetch(file, { cache: "no-store" });
+  if (!response.ok) throw new Error(`${file} 파일을 불러오지 못했습니다.`);
+  return response.json();
+}
+
+async function resolveDb(db) {
+  if (!db?.sources) return db;
+
+  const sources = db.sources;
+  const [
+    classes,
+    cardTypes,
+    expansions,
+    cardGroups,
+    deckGroups,
+  ] = await Promise.all([
+    sources.classes ? fetchJson(sources.classes) : Promise.resolve(db.classes ?? []),
+    sources.cardTypes ? fetchJson(sources.cardTypes) : Promise.resolve(db.cardTypes ?? []),
+    sources.expansions ? fetchJson(sources.expansions) : Promise.resolve(db.expansions ?? []),
+    Promise.all((sources.cards ?? []).map((source) => fetchJson(source.file))),
+    Promise.all((sources.structureDecks ?? []).map((source) => fetchJson(source.file))),
+  ]);
+
+  return {
+    ...db,
+    classes,
+    cardTypes,
+    expansions,
+    cards: cardGroups.flat(),
+    structureDecks: deckGroups,
+  };
+}
+
 async function loadManifest() {
   const response = await fetch("./data/card-versions.json", { cache: "no-store" });
   if (!response.ok) throw new Error("버전 목록을 불러오지 못했습니다.");
@@ -249,10 +283,7 @@ async function loadVersion(versionId) {
   if (!version) throw new Error("선택한 버전이 없습니다.");
 
   if (dbStatus) dbStatus.textContent = "불러오는 중";
-  const response = await fetch(version.file, { cache: "no-store" });
-  if (!response.ok) throw new Error(`${version.file} 파일을 불러오지 못했습니다.`);
-
-  state.db = await response.json();
+  state.db = await resolveDb(await fetchJson(version.file));
   state.cards = (state.db.cards ?? []).map(migrateCard);
   state.classes = state.db.classes ?? [];
   state.cardTypes = ["전체", ...(state.db.cardTypes ?? ["일반유닛", "트랩유닛", "책사유닛"])];

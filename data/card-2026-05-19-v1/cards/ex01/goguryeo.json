@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ex01-ym-001",
+    "name": "패태자의 사명창",
+    "cost": 3,
+    "faction": "예맥",
+    "classId": "goguryeo",
+    "className": "개마무사",
+    "theme": "용력",
+    "type": "책사유닛",
+    "race": "무기/용력",
+    "effect": "[야전막사] [턴1회] 이 카드를 패장에 놓는다. 문지기 하나를 선택한다. 문지기를 뒤집는다.",
+    "lore": "전하께서는 스스로 목숨을 끊었으나, 그의 바람은 사명창에 깃들어 유약한 적들을 짓밟으리라.",
+    "power": 2,
+    "actionCost": 0,
+    "serial": "GRNS-EX01-0013",
+    "sigil": "槍",
+    "illustration": "",
+    "expansionId": "ex01",
+    "expansionName": "드러나는 이면"
+  },
+  {
+    "id": "ex01-ym-002",
+    "name": "퇴각하라",
+    "cost": 2,
+    "faction": "예맥",
+    "classId": "goguryeo",
+    "className": "개마무사",
+    "theme": "용력",
+    "type": "트랩유닛",
+    "race": "전술/용력",
+    "effect": "내 전장의 유닛 1장을 지정한다. 전투로 인해 패장으로 이동할 경우 그 유닛을 [야전막사]에 놓는다.",
+    "lore": "살아남는 것도 명이다.",
+    "power": 1,
+    "actionCost": 0,
+    "serial": "GRNS-EX01-0014",
+    "sigil": "退",
+    "illustration": "",
+    "expansionId": "ex01",
+    "expansionName": "드러나는 이면"
+  }
+]
