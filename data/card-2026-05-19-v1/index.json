@@ -37,25 +37,37 @@
         "packId": "base",
         "classId": "neutral",
         "file": "./data/card-2026-05-19-v1/cards/base/neutral.json",
-        "count": 9
+        "count": 16
       },
       {
         "packId": "ex01",
         "classId": "goguryeo",
         "file": "./data/card-2026-05-19-v1/cards/ex01/goguryeo.json",
-        "count": 2
+        "count": 8
+      },
+      {
+        "packId": "ex01",
+        "classId": "gaya",
+        "file": "./data/card-2026-05-19-v1/cards/ex01/gaya.json",
+        "count": 10
+      },
+      {
+        "packId": "ex01",
+        "classId": "mahan",
+        "file": "./data/card-2026-05-19-v1/cards/ex01/mahan.json",
+        "count": 8
       },
       {
         "packId": "ex01",
         "classId": "jinhan",
         "file": "./data/card-2026-05-19-v1/cards/ex01/jinhan.json",
-        "count": 3
+        "count": 8
       },
       {
         "packId": "ex01",
         "classId": "neutral",
         "file": "./data/card-2026-05-19-v1/cards/ex01/neutral.json",
-        "count": 7
+        "count": 8
       }
     ],
     "structureDecks": [
