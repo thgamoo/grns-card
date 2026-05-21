@@ -1,6 +1,9 @@
 const fallbackClassColor = "#8c7662";
 const storageKey = "grns-card-db-filters";
 const graphStorageKey = "grns-card-graph-filters";
+const cardWidthMm = 63;
+const cardHeightMm = 88;
+const cardExportDpi = 300;
 
 const state = {
   manifest: null,
@@ -778,10 +781,9 @@ function wrapRichText(ctx, text, x, y, maxWidth, lineHeight, maxLines = 99, norm
 }
 
 function drawCardToCanvas(card) {
-  const dpi = 300;
-  const width = Math.round((60 / 25.4) * dpi);
-  const height = Math.round((85 / 25.4) * dpi);
-  const scale = width / 60;
+  const width = Math.round((cardWidthMm / 25.4) * cardExportDpi);
+  const height = Math.round((cardHeightMm / 25.4) * cardExportDpi);
+  const scale = width / cardWidthMm;
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
   const tones = classPrintTokens(card.classId);
@@ -791,15 +793,15 @@ function drawCardToCanvas(card) {
   ctx.scale(scale, scale);
 
   ctx.fillStyle = "#ffffff";
-  ctx.fillRect(0, 0, 60, 85);
+  ctx.fillRect(0, 0, cardWidthMm, cardHeightMm);
   ctx.fillStyle = tones.stripe;
-  ctx.fillRect(0, 0, 4.2, 85);
+  ctx.fillRect(0, 0, 4.2, cardHeightMm);
   ctx.fillStyle = "#111111";
-  ctx.fillRect(4.2, 0, 0.25, 85);
+  ctx.fillRect(4.2, 0, 0.25, cardHeightMm);
 
   ctx.strokeStyle = "#111111";
   ctx.lineWidth = 0.35;
-  ctx.strokeRect(0.3, 0.3, 59.4, 84.4);
+  ctx.strokeRect(0.3, 0.3, cardWidthMm - 0.6, cardHeightMm - 0.6);
 
   ctx.beginPath();
   ctx.arc(5.7, 5.7, 3.5, 0, Math.PI * 2);
@@ -819,19 +821,19 @@ function drawCardToCanvas(card) {
   const nameFontSize = nameLength >= 12 ? 2.75 : nameLength > 8 ? 3.45 : 4.1;
   const nameLineHeight = nameLength >= 12 ? 3.05 : nameLength > 8 ? 3.45 : 4.1;
   ctx.font = `bold ${nameFontSize}px Gowun Batang, Noto Sans KR, serif`;
-  wrapText(ctx, card.name, 11, 5.7, 37, nameLineHeight, 2);
+  wrapText(ctx, card.name, 11, 5.7, 40, nameLineHeight, 2);
 
   ctx.fillStyle = "#ffffff";
-  ctx.fillRect(50.8, 2.2, 7, 7);
+  ctx.fillRect(cardWidthMm - 9.2, 2.2, 7, 7);
   ctx.strokeStyle = "#111111";
-  ctx.strokeRect(50.8, 2.2, 7, 7);
+  ctx.strokeRect(cardWidthMm - 9.2, 2.2, 7, 7);
   ctx.fillStyle = "#111111";
   ctx.textAlign = "center";
-  ctx.fillText(String(card.power ?? card.atk ?? 0), 54.3, 5.8);
+  ctx.fillText(String(card.power ?? card.atk ?? 0), cardWidthMm - 5.7, 5.8);
 
   const artX = 6.4;
   const artY = 11;
-  const artW = 51.4;
+  const artW = cardWidthMm - 8.6;
   const artH = 34;
   ctx.fillStyle = "#ffffff";
   ctx.fillRect(artX, artY, artW, artH);
@@ -850,7 +852,7 @@ function drawCardToCanvas(card) {
   let x = 6.4;
   for (const chip of chips) {
     const widthChip = Math.min(ctx.measureText(chip).width + 2.4, 19);
-    if (x + widthChip > 57.8) {
+    if (x + widthChip > cardWidthMm - 2.2) {
       x = 6.4;
       y += 4.1;
     }
@@ -868,27 +870,27 @@ function drawCardToCanvas(card) {
   if (hasEffect(card)) {
     ctx.textAlign = "left";
     ctx.font = effectFont;
-    wrapRichText(ctx, effectText(card), 6.4, y, 51.4, 3.55, 6, effectFont, effectBoldFont);
+    wrapRichText(ctx, effectText(card), 6.4, y, cardWidthMm - 8.6, 3.55, 6, effectFont, effectBoldFont);
   } else if (String(card.lore ?? "").trim()) {
     ctx.fillStyle = "#333333";
     ctx.textAlign = "center";
     ctx.font = "italic 2.75px Gowun Batang, Noto Sans KR, serif";
-    wrapText(ctx, card.lore, 32.1, y + 7.8, 46, 3.8, 4);
+    wrapText(ctx, card.lore, cardWidthMm / 2, y + 7.8, cardWidthMm - 14, 3.8, 4);
   }
 
   ctx.fillStyle = "#555555";
   ctx.textAlign = "left";
   ctx.font = "bold 2.2px Noto Sans KR, sans-serif";
   ctx.textAlign = "left";
-  ctx.fillText(card.serial ?? "", 6.4, 76.4);
+  ctx.fillText(card.serial ?? "", 6.4, cardHeightMm - 8.6);
 
   ctx.fillStyle = "#111111";
   ctx.font = "bold 4.2px Noto Sans KR, sans-serif";
   ctx.textAlign = "left";
-  ctx.fillText(displayCardType(card.type), 6.4, 81.5);
+  ctx.fillText(displayCardType(card.type), 6.4, cardHeightMm - 3.5);
   ctx.font = "bold 6px Noto Sans KR, sans-serif";
   ctx.textAlign = "right";
-  ctx.fillText(tones.mark, 57.8, 81.8);
+  ctx.fillText(tones.mark, cardWidthMm - 2.2, cardHeightMm - 3.2);
 
   return canvas;
 }
@@ -907,7 +909,7 @@ function exportSelectedCardImage() {
     return;
   }
   const safeName = card.name.replace(/[\\/:*?"<>|]/g, "_");
-  downloadCanvas(drawCardToCanvas(card), `${card.id}-${safeName}-60x85mm-300dpi.png`);
+  downloadCanvas(drawCardToCanvas(card), `${card.id}-${safeName}-${cardWidthMm}x${cardHeightMm}mm-300dpi.png`);
 }
 
 function buildPrintArea() {

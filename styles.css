@@ -1,7 +1,7 @@
 :root {
   color-scheme: light;
-  --card-width: 60mm;
-  --card-height: 85mm;
+  --card-width: 63mm;
+  --card-height: 88mm;
   --bg: #f5f2ea;
   --paper: #ffffff;
   --ink: #111111;
@@ -655,7 +655,7 @@ textarea {
   grid-area: side;
   display: grid;
   align-content: start;
-  grid-template-rows: repeat(3, 85mm);
+  grid-template-rows: repeat(2, 85mm);
   gap: 3mm;
 }
 
@@ -666,11 +666,6 @@ textarea {
   width: 60mm;
   height: 85mm;
   gap: 1mm;
-}
-
-.side-zones .special-zone {
-  background:
-    repeating-linear-gradient(0deg, #ffffff, #ffffff 4mm, #f3f4f6 4mm, #f3f4f6 8mm);
 }
 
 .deck-section {
@@ -968,7 +963,7 @@ select option {
 .game-card {
   position: relative;
   display: grid;
-  grid-template-rows: 11mm 34mm 40mm;
+  grid-template-rows: 11mm 34mm 43mm;
   width: var(--card-width);
   height: var(--card-height);
   border: 0.35mm solid #111111;
@@ -1002,8 +997,8 @@ select option {
 .game-card-detail {
   width: min(78mm, calc(100vw - 3rem));
   height: auto;
-  min-height: 110.5mm;
-  aspect-ratio: 60 / 85;
+  min-height: 109mm;
+  aspect-ratio: 63 / 88;
   grid-template-rows: 14.3mm 44.2mm minmax(52mm, 1fr);
 }
 
@@ -1232,16 +1227,50 @@ select option {
 
 .print-page {
   width: 210mm;
-  min-height: 297mm;
+  height: 297mm;
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, var(--card-width));
   grid-auto-rows: var(--card-height);
-  gap: 5mm;
-  align-content: center;
-  justify-content: center;
-  padding: 10mm;
+  gap: 0;
+  align-content: start;
+  justify-content: start;
+  padding: 16.5mm 10.5mm;
   background: white;
   break-after: page;
+}
+
+.print-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 10.4mm,
+      #111111 10.4mm 10.6mm,
+      transparent 10.6mm 73.4mm,
+      #111111 73.4mm 73.6mm,
+      transparent 73.6mm 136.4mm,
+      #111111 136.4mm 136.6mm,
+      transparent 136.6mm 199.4mm,
+      #111111 199.4mm 199.6mm,
+      transparent 199.6mm
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 16.4mm,
+      #111111 16.4mm 16.6mm,
+      transparent 16.6mm 104.4mm,
+      #111111 104.4mm 104.6mm,
+      transparent 104.6mm 192.4mm,
+      #111111 192.4mm 192.6mm,
+      transparent 192.6mm 280.4mm,
+      #111111 280.4mm 280.6mm,
+      transparent 280.6mm
+    );
 }
 
 .print-page:last-child {
