@@ -145,6 +145,7 @@ function pageHtml(markdown, title) {
       <nav class="doc-nav" aria-label="문서">
         <a href="./index.html">문서 홈</a>
         <a href="./rulebook.html">룰북</a>
+        <a href="./keywords.html">키워드</a>
         <a href="./card-design.html">카드/클래스 설계</a>
         <a href="./card-db-plan.html">카드 DB 운영</a>
         <a href="../card-db.html">카드 DB로 돌아가기</a>
