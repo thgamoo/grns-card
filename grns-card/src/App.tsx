@@ -167,6 +167,9 @@ function CardTile({ card, selected = false, onClick }: { card: Card; selected?: 
   );
 }
 
+/**
+ * 지우기
+ */
 function MythGlyph() {
   return (
     <div className="myth-glyph" aria-hidden="true">
@@ -276,7 +279,6 @@ function App() {
                 <button type="button" onClick={() => setActiveTab("rules")}>룰 보기</button>
               </div>
             </div>
-            <MythGlyph />
             <div className="intro-stats" aria-label="통계">
               <span><strong>{cards.length || "..."}</strong> Cards</span>
               <span><strong>{classes.length || "..."}</strong> Factions</span>
