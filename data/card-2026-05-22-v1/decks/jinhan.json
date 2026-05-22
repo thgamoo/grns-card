@@ -1,0 +1,91 @@
+{
+  "id": "jinhan-structure-v1",
+  "name": "사로국 이매망량 스트럭쳐 덱",
+  "classId": "jinhan",
+  "faction": "사로국",
+  "className": "이매망량",
+  "totalCards": 40,
+  "trapCards": 15,
+  "entries": [
+    {
+      "cardId": "sr-g-001",
+      "serial": "GRNS-0026",
+      "count": 3
+    },
+    {
+      "cardId": "sr-g-002",
+      "serial": "GRNS-0027",
+      "count": 3
+    },
+    {
+      "cardId": "sr-g-003",
+      "serial": "GRNS-0028",
+      "count": 3
+    },
+    {
+      "cardId": "sr-g-007",
+      "serial": "GRNS-0029",
+      "count": 3
+    },
+    {
+      "cardId": "sr-g-006",
+      "serial": "GRNS-0030",
+      "count": 3
+    },
+    {
+      "cardId": "sr-r-001",
+      "serial": "GRNS-0031",
+      "count": 2
+    },
+    {
+      "cardId": "sr-r-002",
+      "serial": "GRNS-0032",
+      "count": 2
+    },
+    {
+      "cardId": "sr-r-003",
+      "serial": "GRNS-0033",
+      "count": 2
+    },
+    {
+      "cardId": "sr-r-004",
+      "serial": "GRNS-0034",
+      "count": 2
+    },
+    {
+      "cardId": "sr-r-006",
+      "serial": "GRNS-0035",
+      "count": 2
+    },
+    {
+      "cardId": "sr-t-001",
+      "serial": "GRNS-0004",
+      "count": 3
+    },
+    {
+      "cardId": "sr-t-002",
+      "serial": "GRNS-0005",
+      "count": 3
+    },
+    {
+      "cardId": "sr-t-003",
+      "serial": "GRNS-0006",
+      "count": 3
+    },
+    {
+      "cardId": "sr-t-004",
+      "serial": "GRNS-0036",
+      "count": 2
+    },
+    {
+      "cardId": "sr-t-005",
+      "serial": "GRNS-0037",
+      "count": 2
+    },
+    {
+      "cardId": "sr-t-007",
+      "serial": "GRNS-0038",
+      "count": 2
+    }
+  ]
+}

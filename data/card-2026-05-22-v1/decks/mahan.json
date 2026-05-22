@@ -1,0 +1,91 @@
+{
+  "id": "mahan-structure-v1",
+  "name": "십제 주혼귀사 스트럭쳐 덱",
+  "classId": "mahan",
+  "faction": "십제",
+  "className": "주혼귀사",
+  "totalCards": 40,
+  "trapCards": 15,
+  "entries": [
+    {
+      "cardId": "sj-g-001",
+      "serial": "GRNS-0011",
+      "count": 3
+    },
+    {
+      "cardId": "sj-g-002",
+      "serial": "GRNS-0012",
+      "count": 3
+    },
+    {
+      "cardId": "sj-g-003",
+      "serial": "GRNS-0052",
+      "count": 3
+    },
+    {
+      "cardId": "sj-g-004",
+      "serial": "GRNS-0053",
+      "count": 3
+    },
+    {
+      "cardId": "sj-g-005",
+      "serial": "GRNS-0054",
+      "count": 3
+    },
+    {
+      "cardId": "sj-r-001",
+      "serial": "GRNS-0010",
+      "count": 2
+    },
+    {
+      "cardId": "sj-r-002",
+      "serial": "GRNS-0055",
+      "count": 2
+    },
+    {
+      "cardId": "sj-r-003",
+      "serial": "GRNS-0056",
+      "count": 2
+    },
+    {
+      "cardId": "sj-r-004",
+      "serial": "GRNS-0057",
+      "count": 2
+    },
+    {
+      "cardId": "sj-r-005",
+      "serial": "GRNS-0058",
+      "count": 2
+    },
+    {
+      "cardId": "sj-t-001",
+      "serial": "GRNS-0059",
+      "count": 3
+    },
+    {
+      "cardId": "sj-t-002",
+      "serial": "GRNS-0060",
+      "count": 3
+    },
+    {
+      "cardId": "sj-t-003",
+      "serial": "GRNS-0061",
+      "count": 3
+    },
+    {
+      "cardId": "sj-t-004",
+      "serial": "GRNS-0062",
+      "count": 2
+    },
+    {
+      "cardId": "sj-t-005",
+      "serial": "GRNS-0063",
+      "count": 2
+    },
+    {
+      "cardId": "sj-t-006",
+      "serial": "GRNS-0064",
+      "count": 2
+    }
+  ]
+}
