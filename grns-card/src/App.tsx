@@ -167,9 +167,7 @@ function CardTile({ card, selected = false, onClick }: { card: Card; selected?: 
   );
 }
 
-/**
- * 지우기
- */
+/* eslint-disable no-unused-vars */
 function MythGlyph() {
   return (
     <div className="myth-glyph" aria-hidden="true">
