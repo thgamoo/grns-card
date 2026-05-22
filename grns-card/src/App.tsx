@@ -167,26 +167,6 @@ function CardTile({ card, selected = false, onClick }: { card: Card; selected?: 
   );
 }
 
-/* eslint-disable no-unused-vars */
-function MythGlyph() {
-  return (
-    <div className="myth-glyph" aria-hidden="true">
-      <span className="moon moon-a" />
-      <span className="moon moon-b" />
-      <span className="moon moon-c" />
-      <span className="pine pine-a" />
-      <span className="pine pine-b" />
-      <span className="water water-a" />
-      <span className="water water-b" />
-      <span className="creature-body" />
-      <span className="creature-eye eye-a" />
-      <span className="creature-eye eye-b" />
-      <span className="creature-mouth" />
-      <span className="tail" />
-    </div>
-  );
-}
-
 function App() {
   const [manifest, setManifest] = useState<Manifest | null>(null);
   const [dbState, setDbState] = useState<DbState | null>(null);
