@@ -218,7 +218,7 @@
   {
     "id": "ym-t-004",
     "name": "뼈를 주고 뼈를 취한다",
-    "cost": 3,
+    "cost": 2,
     "faction": "예맥",
     "classId": "goguryeo",
     "className": "개마무사",

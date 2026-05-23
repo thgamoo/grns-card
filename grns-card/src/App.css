@@ -1382,190 +1382,10 @@ h3 {
 }
 
 .field-board-react {
-  --field-card-w: clamp(48px, 9vw, 63mm);
-  position: relative;
-  display: grid;
-  gap: 10mm;
-  border: 1px solid var(--line);
-  background: #ffffff;
-  padding: clamp(16px, 3vw, 30px);
-  overflow-x: auto;
-}
-
-.field-board-tools,
-.outer-base-row {
-  display: grid;
-  gap: 8mm;
-}
-
-.field-board-tools {
-  grid-template-columns: repeat(3, minmax(92px, 1fr));
-}
-
-.field-pile-zone,
-.base-zone {
-  display: grid;
-  place-items: center;
-  min-height: 24mm;
-  border: 1px solid var(--line);
-  background: var(--paper-soft);
-  font-weight: 900;
-}
-
-.battlefield-zone-react,
-.castle-zone-react {
-  position: relative;
-  display: grid;
-  gap: 6mm;
-  width: max-content;
-  min-width: 100%;
-  border: 2px solid var(--line);
-  background: #ffffff;
-  padding: 8mm;
-}
-
-.field-zone-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 5mm;
-}
-
-.field-zone-title strong {
-  font-size: clamp(1.3rem, 3vw, 2rem);
-  font-weight: 900;
-}
-
-.field-zone-title span {
-  color: var(--muted);
-  font-size: 0.78rem;
-  font-weight: 900;
-}
-
-.battlefield-cards,
-.field-lane-gates {
-  display: flex;
-  justify-content: center;
-}
-
-.battlefield-cards .field-card-slot + .field-card-slot {
-  margin-left: -12mm;
-}
-
-.field-lane-gates {
-  margin-top: -4mm;
-  padding-inline: 16mm;
-}
-
-.field-lane-gates .field-card-slot + .field-card-slot {
-  margin-left: -3mm;
-}
-
-.field-card-slot {
-  position: relative;
-  display: grid;
-  align-content: space-between;
-  flex: 0 0 var(--field-card-w);
-  width: var(--field-card-w);
-  aspect-ratio: 63 / 88;
-  border: 1px solid var(--line);
-  background: var(--paper);
-  padding: 6mm 4mm;
-  box-shadow: none;
-}
-
-.unit-slot {
-  background:
-    linear-gradient(90deg, #111111 0 1mm, #ffffff 1mm),
-    var(--paper);
-}
-
-.gate-slot {
-  background:
-    repeating-linear-gradient(135deg, #ffffff 0 8px, #f2f2f2 8px 16px);
-}
-
-.slot-index {
-  display: grid;
-  place-items: center;
-  width: 28px;
-  aspect-ratio: 1;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  font-weight: 900;
-}
-
-.field-card-slot strong {
-  align-self: end;
-  justify-self: center;
-  font-size: clamp(0.9rem, 1.4vw, 1.08rem);
-}
-
-.outer-base-row {
-  grid-template-columns: minmax(120px, 1fr) minmax(120px, 1fr);
-  align-items: stretch;
-}
-
-.forward-base {
-  position: relative;
-}
-
-.forward-base::before {
-  content: "";
-  position: absolute;
-  left: 18%;
-  right: 18%;
-  top: -10mm;
-  border-top: 2px dashed var(--line);
-}
-
-.castle-layout {
-  display: grid;
-  gap: 6mm;
-}
-
-.diagonal-guide {
-  position: relative;
-  height: 18mm;
-  margin: -3mm 0;
-}
-
-.diagonal-guide span {
-  --slot: 0;
-  position: absolute;
-  left: calc((var(--slot) + 0.62) * 20%);
-  top: 0;
-  width: 16%;
-  height: 18mm;
-  border-left: 1px dashed var(--line);
-  border-right: 1px dashed var(--line);
-  transform: skewX(-18deg);
-}
-
-.lord-field-slot {
-  display: grid;
-  place-items: center;
-  justify-self: center;
-  width: var(--field-card-w);
-  aspect-ratio: 63 / 88;
-  border: 2px solid var(--line);
-  background: var(--paper);
-  padding: 6mm 4mm;
-  text-align: center;
-}
-
-.lord-field-slot strong {
-  font-size: 1.6rem;
-}
-
-.field-board-react {
-  width: min(100%, 420mm);
-  height: auto;
-  min-height: 297mm;
+  width: 420mm;
+  height: 297mm;
   margin: 0 auto;
-  padding: 6mm;
+  padding: 3mm;
   border: 1px solid var(--line);
   background:
     linear-gradient(90deg, transparent 49.85%, #d1d5db 49.85% 50.15%, transparent 50.15%),
@@ -1573,48 +1393,48 @@ h3 {
   color: #111111;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 60mm;
-  grid-template-rows: 12mm 97mm 78mm 80mm;
+  grid-template-rows: 6mm 101mm 178mm 0;
   grid-template-areas:
     "title title"
     "battle side"
     "castle side"
     "camp side";
-  gap: 3mm;
+  gap: 2mm;
   overflow-x: auto;
 }
+
 
 .field-title-react {
   grid-area: title;
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  border-bottom: 1px solid #111111;
-  padding-bottom: 1.5mm;
+  border-bottom: 0.3mm solid #111111;
+  padding-bottom: 0.6mm;
 }
 
 .field-title-react p {
-  margin: 0 0 1mm;
+  margin: 0;
   color: #555555;
-  font-size: 2.4mm;
+  font-size: 1.8mm;
   font-weight: 900;
   letter-spacing: 0.08em;
 }
 
 .field-title-react h3 {
-  font-size: 7mm;
+  font-size: 4.4mm;
   line-height: 1;
 }
 
 .field-title-react span {
-  font-size: 2.7mm;
+  font-size: 2.2mm;
   font-weight: 800;
   text-align: right;
 }
 
 .battlefield-zone-react,
 .castle-zone-react,
-.resource-zone-react,
 .side-zones-react > div {
   border: 0.45mm solid #111111;
   background: #ffffff;
@@ -1625,10 +1445,10 @@ h3 {
   position: relative;
   display: grid;
   grid-template-rows: auto 1fr;
-  gap: 2mm;
+  gap: 1.5mm;
   width: auto;
   min-width: 0;
-  padding: 2mm;
+  padding: 1.5mm;
 }
 
 .field-zone-label {
@@ -1654,10 +1474,10 @@ h3 {
 
 .field-unit-slots {
   display: grid;
-  grid-template-columns: repeat(5, 60mm);
+  grid-template-columns: repeat(5, 63mm);
   align-content: end;
   justify-content: center;
-  gap: 7mm;
+  gap: 5mm;
 }
 
 .field-unit-slots span,
@@ -1673,39 +1493,58 @@ h3 {
 }
 
 .field-unit-slots span {
-  width: 60mm;
-  height: 85mm;
+  width: 63mm;
+  height: 88mm;
   font-size: 3.8mm;
 }
 
-.field-attack-arrows {
-  position: absolute;
-  left: 24mm;
-  right: 24mm;
-  bottom: -15mm;
-  z-index: 2;
-  width: calc(100% - 48mm);
-  height: 18mm;
-  overflow: visible;
-  pointer-events: none;
+.field-soldier-1 {
+  transform: translateX(-6mm);
 }
 
-.field-attack-arrows path {
-  fill: none;
-  stroke: #111111;
-  stroke-width: 0.7;
-  stroke-dasharray: 2 1.4;
+.field-soldier-2 {
+  transform: translateX(-7mm);
+}
+
+.field-soldier-4 {
+  transform: translateX(7mm);
+}
+
+.field-soldier-5 {
+  transform: translateX(6mm);
 }
 
 .castle-zone-react {
   grid-area: castle;
   display: grid;
-  grid-template-rows: auto 60mm;
-  align-items: center;
+  grid-template-rows: 72mm 104mm;
   gap: 2mm;
   width: auto;
   min-width: 0;
-  padding: 2mm;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.gate-zone-react {
+  display: grid;
+  grid-template-rows: auto 60mm;
+  gap: 1.5mm;
+  border: 0.45mm solid #111111;
+  background: #ffffff;
+  padding: 1.5mm;
+}
+
+.lord-zone-react {
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  gap: 1.5mm;
+  padding-top: 1.5mm;
+}
+
+.lord-zone-react .field-zone-label {
+  width: 85mm;
 }
 
 .field-gate-row {
@@ -1723,11 +1562,14 @@ h3 {
 
 .resource-zone-react {
   grid-area: camp;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 60mm);
   align-items: center;
-  justify-content: space-between;
-  gap: 8mm;
-  padding: 2mm;
+  justify-content: center;
+  gap: 150mm;
+  padding: 0 2mm;
+  transform: translateY(-94mm);
+  pointer-events: none;
 }
 
 .camp-slot-react {
@@ -1735,11 +1577,12 @@ h3 {
   align-content: center;
   justify-items: center;
   gap: 1mm;
-  width: 85mm;
-  height: 60mm;
+  width: 60mm;
+  height: 85mm;
   border: 0.35mm solid #111111;
   background: #ffffff;
   text-align: center;
+  pointer-events: auto;
 }
 
 .camp-slot-react strong,
@@ -1755,19 +1598,6 @@ h3 {
   font-weight: 800;
 }
 
-.forward-camp-slot {
-  position: relative;
-}
-
-.forward-camp-slot::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: -18mm;
-  height: 16mm;
-  border-left: 0.5mm dashed #111111;
-}
-
 .lord-slot-react {
   justify-self: center;
   width: 85mm;
@@ -1779,7 +1609,7 @@ h3 {
 .side-zones-react {
   grid-area: side;
   display: grid;
-  align-content: start;
+  align-content: end;
   grid-template-rows: repeat(2, 85mm);
   gap: 3mm;
 }
@@ -2088,8 +1918,6 @@ h3 {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .field-board-tools,
-  .outer-base-row,
   .field-position-notes,
   .graph-filter-bar,
   .level-graph-layout {
@@ -2184,26 +2012,6 @@ h3 {
     flex-direction: column;
   }
 
-  .field-board-react {
-    --field-card-w: 46mm;
-    padding: 12px;
-  }
-
-  .battlefield-zone-react,
-  .castle-zone-react {
-    min-width: 0;
-    width: auto;
-  }
-
-  .battlefield-cards,
-  .field-lane-gates {
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding-bottom: 6px;
-  }
-
-  .field-board-tools,
-  .outer-base-row,
   .field-position-notes,
   .graph-filter-bar,
   .level-graph-layout {
@@ -2314,7 +2122,6 @@ h3 {
   .field-board-react {
     width: 420mm !important;
     height: 297mm !important;
-    min-height: 297mm;
     border: 0 !important;
     gap: 3mm !important;
     padding: 6mm !important;
@@ -2322,11 +2129,15 @@ h3 {
     overflow: visible !important;
   }
 
-  .battlefield-zone-react,
-  .castle-zone-react {
+  .battlefield-zone-react {
     width: auto !important;
     min-width: 0 !important;
     padding: 2mm !important;
+    gap: 2mm !important;
+  }
+
+  .castle-zone-react {
+    padding: 0 !important;
     gap: 2mm !important;
   }
 

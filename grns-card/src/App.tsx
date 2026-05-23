@@ -391,12 +391,10 @@ const keywordRules = [
   ["[출정]", "<전장>으로 배치 시 효과를 이행"],
   ["[단말마]", "<전장> 혹은 <성>에서 <매장지>로 이동하였을 경우 효과를 이행"],
   ["[자체보급]", "해당 유닛을 <보급> 하여 효과를 발동"],
+  ["[상시]", "조건을 만족하는 동안 지속적으로 효과를 적용"],
   ["[전투광]", "공격 선언 시 <보급> 하지 않는다."],
-  ["[강화 X]", "유닛 1장을 지정하여 X 만큼 힘 +1"],
-  [
-    "[약화 X]",
-    "유닛 1장을 지정하여 X 만큼 힘 -1. 단 약화로 힘이 0 이하로 감소할 수 없다.",
-  ],
+  ["[강화]", "지정한 유닛 힘 +X"],
+  ["[약화]", "지정한 유닛 힘 -X. 단 약화로 힘이 0 이하로 감소할 수 없다."],
   ["[퇴출 X]", "<군영> 또는 <징집소>에서 X 만큼 <매장지>로 이동"],
   ["[공개 X]", "<군영>의 카드 X장을 공개한다."],
   [
@@ -453,6 +451,14 @@ function keywords(effect: string) {
   );
 }
 
+function angleTerms(effect: string) {
+  return Array.from(
+    new Set(
+      (effect.match(/<[^>]+>/g) ?? []).map((item) => item.slice(1, -1)),
+    ),
+  );
+}
+
 function cardTags(card: Card) {
   return Array.from(
     new Set(
@@ -461,6 +467,7 @@ function cardTags(card: Card) {
         card.race,
         ...card.race.split(/[\/,·\s]+/),
         ...keywords(card.effect),
+        ...angleTerms(card.effect),
       ]
         .map((tag) => tag.trim())
         .filter(Boolean),
@@ -533,7 +540,7 @@ function buildGraphEdges(cards: Card[]) {
 }
 
 function normalizeKeyword(keyword: string) {
-  return keyword.replace(/^(강화|약화|퇴출|공개)\s+(X|\d+)$/i, "$1 X");
+  return keyword.replace(/^(강화|약화|공개|희생)\s+(X|\d+)$/i, "$1");
 }
 
 function matchesKeywordFilter(cardKeywords: string[], filter: string) {
@@ -542,6 +549,10 @@ function matchesKeywordFilter(cardKeywords: string[], filter: string) {
       keyword === filter ||
       normalizeKeyword(keyword) === normalizeKeyword(filter),
   );
+}
+
+function normalizeKeywordQuery(query: string) {
+  return normalizeKeyword(query.replace(/^\[|\]$/g, "").trim());
 }
 
 function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
@@ -698,6 +709,7 @@ function App() {
   const [packIds, setPackIds] = useState<string[]>([]);
   const [types, setTypes] = useState<string[]>([]);
   const [keywordFilters, setKeywordFilters] = useState<string[]>([]);
+  const [otherFilters, setOtherFilters] = useState<string[]>([]);
   const [graphClassId, setGraphClassId] = useState("all");
   const [graphType, setGraphType] = useState("전체");
   const [graphTag, setGraphTag] = useState("전체");
@@ -777,12 +789,16 @@ function App() {
 
   const filteredCards = useMemo(() => {
     const normalized = query.trim().toLowerCase();
+    const queryKeyword = normalizeKeywordQuery(query);
     return cards.filter((card) => {
       const haystack =
         `${card.name} ${card.effect} ${card.race} ${card.faction} ${card.className} ${card.theme}`.toLowerCase();
       const cardKeywords = keywords(card.effect);
+      const cardAngleTerms = angleTerms(card.effect);
       return (
-        (!normalized || haystack.includes(normalized)) &&
+        (!normalized ||
+          haystack.includes(normalized) ||
+          matchesKeywordFilter(cardKeywords, queryKeyword)) &&
         (classIds.length === 0 || classIds.includes(card.classId)) &&
         (packIds.length === 0 || packIds.includes(card.packId)) &&
         (types.length === 0 || types.includes(card.type)) &&
@@ -790,10 +806,11 @@ function App() {
           (keyword) =>
             haystack.includes(keyword.toLowerCase()) ||
             matchesKeywordFilter(cardKeywords, keyword),
-        )
+        ) &&
+        otherFilters.every((term) => cardAngleTerms.includes(term))
       );
     });
-  }, [cards, classIds, keywordFilters, packIds, query, types]);
+  }, [cards, classIds, keywordFilters, otherFilters, packIds, query, types]);
 
   const keywordCounts = useMemo(() => {
     const counts = new Map<string, number>();
@@ -804,6 +821,16 @@ function App() {
         counts.set(keyword, (counts.get(keyword) ?? 0) + 1),
       );
     return Array.from(counts, ([keyword, count]) => ({ keyword, count })).sort(
+      (a, b) => b.count - a.count,
+    );
+  }, [cards]);
+
+  const otherTermCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    cards
+      .flatMap((card) => angleTerms(card.effect))
+      .forEach((term) => counts.set(term, (counts.get(term) ?? 0) + 1));
+    return Array.from(counts, ([term, count]) => ({ term, count })).sort(
       (a, b) => b.count - a.count,
     );
   }, [cards]);
@@ -1072,12 +1099,31 @@ function App() {
                   ))}
                 </div>
               </div>
+              <div className="filter-group">
+                <span>그 외</span>
+                <div className="chip-list keyword-chips">
+                  {otherTermCounts.slice(0, 18).map((item) => (
+                    <FilterChip
+                      key={item.term}
+                      active={otherFilters.includes(item.term)}
+                      onClick={() =>
+                        setOtherFilters((current) =>
+                          toggleValue(current, item.term),
+                        )
+                      }
+                    >
+                      &lt;{item.term}&gt; <span>{item.count}</span>
+                    </FilterChip>
+                  ))}
+                </div>
+              </div>
               {Boolean(
                 query ||
                 classIds.length ||
                 packIds.length ||
                 types.length ||
-                keywordFilters.length,
+                keywordFilters.length ||
+                otherFilters.length,
               ) && (
                 <button
                   className="clear-filters"
@@ -1088,6 +1134,7 @@ function App() {
                     setPackIds([]);
                     setTypes([]);
                     setKeywordFilters([]);
+                    setOtherFilters([]);
                   }}
                 >
                   필터 초기화
@@ -1711,45 +1758,41 @@ function App() {
 
             <section className="field-board-react" aria-label="필드 판">
               <header className="field-title-react">
-                <div>
-                  <p>괴력난신</p>
-                  <h3>필드 판</h3>
-                </div>
-                <span>성주가 매장지로 이동하면 패배</span>
+                <p>괴력난신 필드판</p>
               </header>
 
               <section className="battlefield-zone-react" aria-label="전장">
                 <div className="field-zone-label">
                   <strong>전장</strong>
-                  <span>야전병 5장 · [대기] 세로 / [정비] 가로</span>
+                  <span>야전병 5장 · &lt;대기&gt; 세로 / &lt;정비&gt; 가로</span>
                 </div>
                 <div className="field-unit-slots">
                   {battlefieldSlots.map((slot, index) => (
-                    <span key={slot.id}>야전병 {index + 1}</span>
+                    <span key={slot.id} className={`field-soldier-${index + 1}`}>
+                      야전병 {index + 1}
+                    </span>
                   ))}
                 </div>
-                <svg
-                  className="field-attack-arrows"
-                  viewBox="0 0 100 24"
-                  aria-hidden="true"
-                >
-                  <path d="M8 2 L14 22" />
-                  <path d="M28 2 L36 22" />
-                  <path d="M50 2 L50 22" />
-                  <path d="M72 2 L64 22" />
-                  <path d="M92 2 L86 22" />
-                </svg>
               </section>
 
               <section className="castle-zone-react" aria-label="성">
-                <div className="field-zone-label">
-                  <strong>성</strong>
-                  <span>문지기 4 · 성주 1</span>
+                <div className="gate-zone-react">
+                  <div className="field-zone-label">
+                    <strong>성</strong>
+                    <span>문지기 4</span>
+                  </div>
+                  <div className="field-gate-row">
+                    {gateSlots.map((slot) => (
+                      <span key={slot.id}>{slot.name}</span>
+                    ))}
+                  </div>
                 </div>
-                <div className="field-gate-row">
-                  {gateSlots.map((slot) => (
-                    <span key={slot.id}>{slot.name}</span>
-                  ))}
+                <div className="lord-zone-react">
+                  <div className="field-zone-label">
+                    <strong>성</strong>
+                    <span>성주</span>
+                  </div>
+                  <div className="lord-slot-react">성주</div>
                 </div>
               </section>
 
@@ -1761,8 +1804,7 @@ function App() {
                   <strong>후방기지</strong>
                   <span>보급 전 자원</span>
                 </div>
-                <div className="lord-slot-react">성주</div>
-                <div className="camp-slot-react forward-camp-slot">
+                <div className="camp-slot-react">
                   <strong>전진기지</strong>
                   <span>야전과 이어진 보급</span>
                 </div>
