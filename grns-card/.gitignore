@@ -11,6 +11,10 @@ node_modules
 dist
 dist-ssr
 public/data
+public/docs
+public/app.js
+public/field-board.html
+public/styles.css
 *.local
 
 # Editor directories and files
