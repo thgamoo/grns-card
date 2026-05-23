@@ -1,0 +1,52 @@
+[
+  {
+    "id": "goguryeo",
+    "label": "예맥 · 개마무사",
+    "faction": "예맥",
+    "className": "개마무사",
+    "theme": "용력",
+    "color": "#a8332a",
+    "stripe": "#ffffff",
+    "mark": "△"
+  },
+  {
+    "id": "jinhan",
+    "label": "사로국 · 이매망량",
+    "faction": "사로국",
+    "className": "이매망량",
+    "theme": "괴이",
+    "color": "#7047b8",
+    "stripe": "#e5e7eb",
+    "mark": "★"
+  },
+  {
+    "id": "gaya",
+    "label": "가락 · 야철장",
+    "faction": "가락",
+    "className": "야철장",
+    "theme": "반란",
+    "color": "#b56b1e",
+    "stripe": "#9ca3af",
+    "mark": "■"
+  },
+  {
+    "id": "mahan",
+    "label": "십제 · 주혼귀사",
+    "faction": "십제",
+    "className": "주혼귀사",
+    "theme": "귀신",
+    "color": "#4d7b68",
+    "stripe": "#4b5563",
+    "mark": "●"
+  },
+  {
+    "id": "neutral",
+    "label": "중립",
+    "faction": "중립",
+    "className": "중립",
+    "theme": "전운",
+    "color": "#525252",
+    "stripe": "#d4d4d4",
+    "mark": "◇"
+  }
+]

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>괴력난신 예시 지도</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: #d8ece6;
+        color: #111111;
+        font-family: "Noto Sans KR", system-ui, sans-serif;
+      }
+
+      .map-page {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .map-canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: #d8ece6;
+      }
+
+      .map-toolbar {
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        right: 1rem;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        pointer-events: none;
+      }
+
+      .map-title {
+        margin: 0;
+        color: #111111;
+        font-family: "Gowun Batang", serif;
+        font-size: clamp(1.4rem, 3vw, 2.4rem);
+        line-height: 1;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+      }
+
+      .map-toolbar a {
+        border: 1px solid #111111;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.86);
+        color: #111111;
+        padding: 0.65rem 0.9rem;
+        font-weight: 800;
+        text-decoration: none;
+        pointer-events: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="map-page" aria-label="예시 지도">
+      <canvas id="exampleMapCanvas" class="map-canvas" aria-label="괴력난신 예시 지도"></canvas>
+      <div class="map-toolbar">
+        <h1 class="map-title">괴력난신 예시 지도</h1>
+        <a href="../../world.html">세계서</a>
+      </div>
+    </main>
+    <script>
+      (() => {
+        const canvas = document.getElementById("exampleMapCanvas");
+        const context = canvas.getContext("2d");
+        const mapWidth = 1440;
+        const mapHeight = 840;
+        const svg = `
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${mapWidth} ${mapHeight}">
+            <rect width="${mapWidth}" height="${mapHeight}" fill="#d8ece6"/>
+            <path d="M0 604 C184 548 248 656 428 608 C624 556 688 492 876 520 C1084 552 1184 464 1440 504 L1440 840 L0 840 Z" fill="#9fcab8"/>
+            <path d="M420 72 C532 22 720 30 818 102 C902 164 870 264 750 300 C626 338 468 314 388 232 C326 168 328 112 420 72 Z" fill="#a8332a" stroke="#62231e" stroke-width="8" opacity="0.84"/>
+            <path d="M108 194 C194 116 354 126 434 216 C504 296 456 412 336 444 C212 478 82 420 52 318 C38 270 56 240 108 194 Z" fill="#8f6ab8" stroke="#5a3b7a" stroke-width="8" opacity="0.82"/>
+            <path d="M1000 238 C1128 166 1320 210 1376 336 C1424 444 1334 554 1188 558 C1042 562 934 476 914 360 C904 306 928 278 1000 238 Z" fill="#7047b8" stroke="#4b3180" stroke-width="8" opacity="0.8"/>
+            <path d="M520 568 C662 488 870 530 944 650 C1008 752 902 838 724 826 C554 816 420 736 420 650 C420 616 450 594 520 568 Z" fill="#b56b1e" stroke="#735838" stroke-width="8" opacity="0.84"/>
+            <path d="M244 408 C376 382 488 426 598 442 C762 468 878 406 1010 426 C1142 446 1228 514 1360 488" fill="none" stroke="#4f7f95" stroke-width="22" stroke-linecap="round" opacity="0.72"/>
+            <path d="M270 420 C400 394 506 438 608 452 C770 474 886 418 1012 438 C1136 456 1228 526 1354 500" fill="none" stroke="#f3f0df" stroke-width="6" stroke-linecap="round" opacity="0.78"/>
+            <g opacity="0.9">
+              <path d="M650 372 L708 344 L760 378 L748 438 L680 454 L632 418 Z" fill="#4d7b68" stroke="#2f4d40" stroke-width="6"/>
+              <path d="M790 306 L842 278 L894 308 L886 366 L824 386 L776 354 Z" fill="#5f8b76" stroke="#2f4d40" stroke-width="6"/>
+              <path d="M914 236 L968 210 L1018 244 L1004 300 L944 318 L900 282 Z" fill="#709b83" stroke="#2f4d40" stroke-width="6"/>
+              <path d="M1040 168 L1096 144 L1148 180 L1132 236 L1070 250 L1026 214 Z" fill="#83aa8e" stroke="#2f4d40" stroke-width="6"/>
+            </g>
+            <g fill="#111" font-family="Noto Sans KR, sans-serif" font-size="44" font-weight="800">
+              <text x="566" y="176">예맥</text>
+              <text x="218" y="304">십제</text>
+              <text x="1110" y="390">사로국</text>
+              <text x="652" y="704">가락</text>
+            </g>
+            <g fill="#111" font-family="Noto Sans KR, sans-serif" font-size="26" font-weight="800">
+              <text x="670" y="414">불내예</text>
+              <text x="808" y="346">옥저</text>
+              <text x="936" y="276">동예</text>
+              <text x="1066" y="208">읍루</text>
+            </g>
+            <g fill="none" stroke="#111" stroke-width="4" opacity="0.34">
+              <path d="M176 152 C376 64 556 108 716 172"/>
+              <path d="M740 120 C944 40 1188 84 1344 224"/>
+              <path d="M124 492 C356 568 576 600 808 568"/>
+              <path d="M924 656 C1068 628 1244 636 1388 692"/>
+              <path d="M596 394 C734 330 900 258 1124 190"/>
+            </g>
+            <circle cx="1260" cy="140" r="36" fill="#f0d36b" stroke="#111" stroke-width="6"/>
+          </svg>
+        `;
+
+        function drawMap() {
+          const scale = window.devicePixelRatio || 1;
+          canvas.width = Math.round(window.innerWidth * scale);
+          canvas.height = Math.round(window.innerHeight * scale);
+          canvas.style.width = `${window.innerWidth}px`;
+          canvas.style.height = `${window.innerHeight}px`;
+          context.setTransform(scale, 0, 0, scale, 0, 0);
+
+          const image = new Image();
+          image.onload = () => {
+            const viewportRatio = window.innerWidth / window.innerHeight;
+            const mapRatio = mapWidth / mapHeight;
+            const drawWidth = viewportRatio > mapRatio ? window.innerHeight * mapRatio : window.innerWidth;
+            const drawHeight = viewportRatio > mapRatio ? window.innerHeight : window.innerWidth / mapRatio;
+            const x = (window.innerWidth - drawWidth) / 2;
+            const y = (window.innerHeight - drawHeight) / 2;
+            context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+            context.drawImage(image, x, y, drawWidth, drawHeight);
+          };
+          image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+        }
+
+        drawMap();
+        window.addEventListener("resize", drawMap);
+      })();
+    </script>
+  </body>
+</html>
