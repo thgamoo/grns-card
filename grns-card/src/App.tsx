@@ -165,7 +165,7 @@ const worldLinks = [
     body: "서장",
   },
   {
-    href: "./world/maps/index.html",
+    href: "./world/maps/README.md",
     title: "지도 작업",
     body: "지도",
   },
@@ -662,7 +662,19 @@ function MarkdownView({ source }: { source: string }) {
           return <h3 key={index}>{block.replace(/^### /, "")}</h3>;
         }
 
-        if (block.includes("\n- ")) {
+        if (block.startsWith("```")) {
+          const code = block
+            .replace(/^```[a-z]*\n?/i, "")
+            .replace(/\n?```$/, "");
+
+          return (
+            <pre key={index}>
+              <code>{code}</code>
+            </pre>
+          );
+        }
+
+        if (block.startsWith("- ") || block.includes("\n- ")) {
           const items = block
             .split("\n")
             .filter((line) => line.startsWith("- "))
@@ -716,6 +728,8 @@ function App() {
   const [modalCardId, setModalCardId] = useState<string | null>(null);
   const [rulebookMarkdown, setRulebookMarkdown] = useState("");
   const [showRulebook, setShowRulebook] = useState(false);
+  const [worldDocIndex, setWorldDocIndex] = useState(0);
+  const [worldMarkdown, setWorldMarkdown] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -757,6 +771,36 @@ function App() {
         ),
       );
   }, []);
+
+  useEffect(() => {
+    const selectedDoc = worldLinks[worldDocIndex];
+    if (!selectedDoc) return;
+
+    fetch(selectedDoc.href, { cache: "no-store" })
+      .then((response) => {
+        if (!response.ok) throw new Error("세계관 문서 로드 실패");
+        return response.text();
+      })
+      .then((source) => {
+        const trimmed = source.trim();
+        if (!trimmed) {
+          setWorldMarkdown(`# ${selectedDoc.title}\n\n아직 작성된 내용이 없습니다.`);
+          return;
+        }
+
+        if (selectedDoc.href.endsWith(".json")) {
+          setWorldMarkdown(`# ${selectedDoc.title}\n\n\`\`\`json\n${trimmed}\n\`\`\``);
+          return;
+        }
+
+        setWorldMarkdown(trimmed);
+      })
+      .catch(() =>
+        setWorldMarkdown(
+          `# ${selectedDoc.title}\n\n세계관 문서를 불러오지 못했습니다.`,
+        ),
+      );
+  }, [worldDocIndex]);
 
   useEffect(() => {
     if (!manifest || !versionId) return;
@@ -1837,13 +1881,23 @@ function App() {
                 확인할 수 있습니다.
               </p>
             </div>
-            <div className="world-link-grid">
-              {worldLinks.map((link) => (
-                <a key={link.href} href={link.href}>
-                  <strong>{link.title}</strong>
-                  <span>{link.body}</span>
-                </a>
-              ))}
+            <div className="world-doc-layout">
+              <nav className="world-doc-list" aria-label="세계관 문서 목록">
+                {worldLinks.map((link, index) => (
+                  <button
+                    key={link.href}
+                    type="button"
+                    className={worldDocIndex === index ? "active" : ""}
+                    onClick={() => setWorldDocIndex(index)}
+                  >
+                    <strong>{link.title}</strong>
+                    <span>{link.body}</span>
+                  </button>
+                ))}
+              </nav>
+              <article className="world-doc-reader">
+                <MarkdownView source={worldMarkdown} />
+              </article>
             </div>
           </div>
         )}
