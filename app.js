@@ -11,7 +11,7 @@ const state = {
   cards: [],
   classes: [],
   packs: [],
-  cardTypes: ["일반유닛", "트랩유닛", "책사유닛"],
+  cardTypes: ["일반", "매복", "지원"],
   tags: [],
   classId: "all",
   packId: "all",
@@ -141,7 +141,7 @@ function classPrintTokens(classId) {
 }
 
 function displayCardType(type) {
-  return String(type ?? "").replace("유닛", "");
+  return String(type ?? "");
 }
 
 function hasEffect(card) {
@@ -327,7 +327,7 @@ async function loadVersion(versionId) {
   state.cards = (state.db.cards ?? []).map(migrateCard);
   state.classes = state.db.classes ?? [];
   state.packs = collectPacks(state.cards, state.db.expansions ?? []);
-  state.cardTypes = ["전체", ...(state.db.cardTypes ?? ["일반유닛", "트랩유닛", "책사유닛"])];
+  state.cardTypes = ["전체", ...(state.db.cardTypes ?? ["일반", "매복", "지원"])];
   state.tags = collectTags(state.cards);
   state.selectedVersion = versionId;
   state.selectedCardId = "";
@@ -539,7 +539,7 @@ function renderLevelGraph(cards = getGraphCards()) {
       card,
       x: margin.left + (cost / maxCost) * plotWidth + jitterX,
       y: margin.top + (1 - power / maxPower) * plotHeight + jitterY,
-      radius: card.type === "트랩유닛" ? 7 : card.type === "책사유닛" ? 8 : 6.5,
+      radius: card.type === "매복" ? 7 : card.type === "지원" ? 8 : 6.5,
       color: colors[card.classId] ?? fallbackClassColor,
     };
   });
@@ -560,7 +560,7 @@ function renderLevelGraph(cards = getGraphCards()) {
         const y = margin.top + (1 - power / maxPower) * plotHeight;
         return `<g><line class="graph-grid" x1="${margin.left}" y1="${y}" x2="${width - margin.right}" y2="${y}" /><text x="34" y="${y + 4}" text-anchor="middle">${power}</text></g>`;
       }).join("")}
-      <text x="${width / 2}" y="${height - 4}" text-anchor="middle">비용</text>
+      <text x="${width / 2}" y="${height - 4}" text-anchor="middle">허기</text>
       <text x="18" y="${height / 2}" text-anchor="middle" transform="rotate(-90 18 ${height / 2})">힘</text>
     </g>
   `;
@@ -573,12 +573,12 @@ function renderLevelGraph(cards = getGraphCards()) {
   }).join("");
 
   const nodeMarkup = nodes.map((node) => {
-    const label = escapeHtml(`${node.card.name} · 비용 ${node.card.cost} / 힘 ${node.card.power}`);
+    const label = escapeHtml(`${node.card.name} · 허기 ${node.card.cost} / 힘 ${node.card.power}`);
     const common = `class="graph-node" data-id="${escapeHtml(node.card.id)}" tabindex="0" role="button" aria-label="${label}"`;
-    if (node.card.type === "트랩유닛") {
+    if (node.card.type === "매복") {
       return `<rect ${common} x="${node.x - node.radius}" y="${node.y - node.radius}" width="${node.radius * 2}" height="${node.radius * 2}" fill="${escapeHtml(node.color)}"><title>${label}</title></rect>`;
     }
-    if (node.card.type === "책사유닛") {
+    if (node.card.type === "지원") {
       const r = node.radius;
       const points = `${node.x},${node.y - r} ${node.x + r},${node.y} ${node.x},${node.y + r} ${node.x - r},${node.y}`;
       return `<polygon ${common} points="${points}" fill="${escapeHtml(node.color)}"><title>${label}</title></polygon>`;
@@ -604,13 +604,13 @@ function renderLevelGraph(cards = getGraphCards()) {
   graphMetrics.innerHTML = `
     <div><strong>${cards.length}</strong><span>노드</span></div>
     <div><strong>${edges.length}</strong><span>연결</span></div>
-    <div><strong>${averageCost.toFixed(1)}</strong><span>평균 비용</span></div>
+    <div><strong>${averageCost.toFixed(1)}</strong><span>평균 허기</span></div>
     <div><strong>${averagePower.toFixed(1)}</strong><span>평균 힘</span></div>
   `;
 
   graphLegend.innerHTML = `
     <h3>범례</h3>
-    <p>가로축은 비용, 세로축은 힘입니다. 원은 일반, 사각형은 트랩, 마름모는 책사입니다.</p>
+    <p>가로축은 허기, 세로축은 힘입니다. 원은 일반, 사각형은 매복, 마름모는 지원입니다.</p>
     <div class="graph-type-counts">
       ${Object.entries(typeCounts).map(([type, count]) => `<span>${escapeHtml(type)} ${count}</span>`).join("")}
     </div>
@@ -681,7 +681,7 @@ function openCard(cardId) {
           <div class="rule-row"><span>클래스</span><strong>${escapeHtml(card.className)}</strong></div>
           <div class="rule-row"><span>카드 타입</span><strong>${escapeHtml(card.type)}</strong></div>
           <div class="rule-row"><span>종족</span><strong>${escapeHtml(card.race)}</strong></div>
-          <div class="rule-row"><span>비용</span><strong>${escapeHtml(card.cost)}</strong></div>
+          <div class="rule-row"><span>허기</span><strong>${escapeHtml(card.cost)}</strong></div>
           <div class="rule-row"><span>힘</span><strong>${escapeHtml(card.power ?? card.atk ?? 0)}</strong></div>
           <div class="rule-row"><span>효과</span><strong>${renderEffect(card)}</strong></div>
         </div>
