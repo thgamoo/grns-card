@@ -23,6 +23,9 @@ import {
 import { fieldTermNotes } from "./content/field";
 import { worldLinks } from "./content/world";
 import { FieldTermToken } from "./components/FieldTermToken";
+import { MissingCallout } from "./components/MissingCallout";
+import { TimelineView } from "./components/TimelineView";
+import type { TimelineEvent } from "./components/TimelineView";
 import { FieldPage } from "./pages/FieldPage";
 import { IntroPage } from "./pages/IntroPage";
 import { RulesPage } from "./pages/RulesPage";
@@ -149,8 +152,15 @@ function tabFromPath(pathname: string): TabId {
 
 const pinnedKeywordFilters = ["왕살"];
 
+function publicAssetPath(file: string) {
+  if (/^(https?:)?\/\//.test(file)) return file;
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  const path = file.replace(/^\.?\//, "");
+  return `${base}/${path}`;
+}
+
 async function fetchJson<T>(file: string): Promise<T> {
-  const response = await fetch(file.replace(/^\.\/data\//, "./data/"), {
+  const response = await fetch(publicAssetPath(file), {
     cache: "no-store",
   });
   if (!response.ok) throw new Error(`${file} 로드 실패`);
@@ -514,10 +524,12 @@ function App() {
   const [graphType, setGraphType] = useState("전체");
   const [graphTag, setGraphTag] = useState("전체");
   const [modalCardId, setModalCardId] = useState<string | null>(null);
+  const [isMapModalOpen, setIsMapModalOpen] = useState(false);
   const [rulebookMarkdown, setRulebookMarkdown] = useState("");
   const [showRulebook, setShowRulebook] = useState(false);
   const [worldDocIndex, setWorldDocIndex] = useState(0);
   const [worldMarkdown, setWorldMarkdown] = useState("");
+  const [timelineEvents, setTimelineEvents] = useState<TimelineEvent[]>([]);
   const [showPrivateWorldDocs, setShowPrivateWorldDocs] = useState(false);
   const [error, setError] = useState("");
   const activeTab = tabFromPath(pathname);
@@ -540,7 +552,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetch("./docs/rulebook.md", { cache: "no-store" })
+    fetch(publicAssetPath("./docs/rulebook.md"), { cache: "no-store" })
       .then((response) => {
         if (!response.ok) throw new Error("룰북 로드 실패");
         return response.text();
@@ -556,8 +568,15 @@ function App() {
   useEffect(() => {
     const selectedDoc = visibleWorldLinks[worldDocIndex] ?? visibleWorldLinks[0];
     if (!selectedDoc) return;
+    if (selectedDoc.kind === "image") return;
+    if (selectedDoc.kind === "timeline") {
+      fetchJson<TimelineEvent[]>(selectedDoc.href)
+        .then(setTimelineEvents)
+        .catch(() => setTimelineEvents([]));
+      return;
+    }
 
-    fetch(selectedDoc.href, { cache: "no-store" })
+    fetch(publicAssetPath(selectedDoc.href), { cache: "no-store" })
       .then((response) => {
         if (!response.ok) throw new Error("세계관 문서 로드 실패");
         return response.text();
@@ -776,6 +795,26 @@ function App() {
     cards.find((card) => card.serial === "GRNS-0009") ?? cards[0];
   const activeWorldDocIndex =
     worldDocIndex < visibleWorldLinks.length ? worldDocIndex : 0;
+  const activeWorldDoc = visibleWorldLinks[activeWorldDocIndex];
+  const worldContent =
+    activeWorldDoc?.kind === "image" ? (
+      <figure className="world-map-figure">
+        <button
+          type="button"
+          aria-label="지도 크게 보기"
+          onClick={() => setIsMapModalOpen(true)}
+        >
+          <img
+            src={publicAssetPath(activeWorldDoc.href)}
+            alt="괴력난신 세계 지도"
+          />
+        </button>
+      </figure>
+    ) : activeWorldDoc?.kind === "timeline" ? (
+      <TimelineView events={timelineEvents} />
+    ) : (
+      <MarkdownView source={worldMarkdown} />
+    );
   const navigateRuleTerm = (term: string) => {
     const target =
       (term === "전투" ? document.getElementById("combat-resolution") : null) ??
@@ -1357,7 +1396,7 @@ function App() {
           <WorldPage
             activeDocIndex={activeWorldDocIndex}
             links={visibleWorldLinks}
-            markdown={<MarkdownView source={worldMarkdown} />}
+            content={worldContent}
             onSelectDoc={setWorldDocIndex}
             onTogglePrivateDocs={() => {
               setShowPrivateWorldDocs((current) => !current);
@@ -1436,7 +1475,40 @@ function App() {
         </div>
       )}
 
-      {error && <p className="error-message">{error}</p>}
+      {isMapModalOpen && activeWorldDoc?.kind === "image" && (
+        <div
+          className="map-modal-backdrop"
+          role="presentation"
+          onClick={() => setIsMapModalOpen(false)}
+        >
+          <section
+            className="map-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label="괴력난신 세계 지도"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              className="modal-close"
+              type="button"
+              aria-label="닫기"
+              onClick={() => setIsMapModalOpen(false)}
+            >
+              <X />
+            </button>
+            <img
+              src={publicAssetPath(activeWorldDoc.href)}
+              alt="괴력난신 세계 지도"
+            />
+          </section>
+        </div>
+      )}
+
+      {error && (
+        <div className="error-message" role="status">
+          <MissingCallout />
+        </div>
+      )}
     </main>
   );
 }

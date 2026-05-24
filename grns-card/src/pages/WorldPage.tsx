@@ -5,7 +5,7 @@ import type { WorldLink } from "../content/world";
 type WorldPageProps = {
   activeDocIndex: number;
   links: WorldLink[];
-  markdown: ReactNode;
+  content: ReactNode;
   onSelectDoc: (index: number) => void;
   onTogglePrivateDocs: () => void;
   showPrivateDocs: boolean;
@@ -14,7 +14,7 @@ type WorldPageProps = {
 export function WorldPage({
   activeDocIndex,
   links,
-  markdown,
+  content,
   onSelectDoc,
   onTogglePrivateDocs,
   showPrivateDocs,
@@ -54,7 +54,7 @@ export function WorldPage({
             </button>
           ))}
         </nav>
-        <article className="world-doc-reader">{markdown}</article>
+        <article className="world-doc-reader">{content}</article>
       </div>
     </div>
   );

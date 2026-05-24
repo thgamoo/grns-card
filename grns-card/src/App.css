@@ -1909,6 +1909,285 @@ h3 {
   padding: clamp(18px, 3vw, 34px);
 }
 
+.world-map-figure {
+  margin: 0;
+}
+
+.world-map-figure button {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: zoom-in;
+}
+
+.world-map-figure button:focus-visible {
+  outline: 3px solid rgba(17, 17, 17, 0.35);
+  outline-offset: 3px;
+}
+
+.world-map-figure img {
+  display: block;
+  width: 100%;
+  max-height: calc(100svh - 230px);
+  object-fit: contain;
+  border: 1px solid var(--line);
+  background: #17120d;
+}
+
+.timeline-view {
+  display: grid;
+  gap: 20px;
+}
+
+.timeline-head {
+  display: grid;
+  gap: 10px;
+  max-width: 860px;
+}
+
+.timeline-head h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.6vw, 3rem);
+  line-height: 1.12;
+}
+
+.timeline-head p:not(.eyebrow) {
+  margin: 0;
+  color: #333333;
+  line-height: 1.75;
+}
+
+.timeline-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  background: #edf3ec;
+}
+
+.timeline-chart {
+  position: relative;
+  width: 980px;
+  height: 300px;
+}
+
+.timeline-chart-container {
+  width: 980px;
+  height: 300px;
+}
+
+.timeline-future-gradient {
+  position: absolute;
+  top: 0;
+  right: 120px;
+  bottom: 0;
+  z-index: 0;
+  width: 99px;
+  background: linear-gradient(
+    90deg,
+    rgba(36, 31, 24, 0.16),
+    rgba(36, 31, 24, 0)
+  );
+  pointer-events: none;
+}
+
+.timeline-band-label {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  height: 34px;
+  background: #241f18;
+  color: #f5f0e8;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.timeline-chart .recharts-cartesian-axis-line,
+.timeline-chart .recharts-cartesian-axis-tick-line,
+.timeline-chart .recharts-reference-area,
+.timeline-chart .recharts-reference-area-rectangles {
+  display: none;
+}
+
+.timeline-band-label strong {
+  font-family: "Gowun Batang", serif;
+  font-size: 1.05rem;
+}
+
+.timeline-band-label span {
+  color: rgba(245, 240, 232, 0.72);
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.timeline-events-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.timeline-event-card {
+  position: absolute;
+  left: var(--x);
+  width: 116px;
+  height: 112px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+
+.timeline-event-card.top {
+  top: 38px;
+}
+
+.timeline-event-card.bottom {
+  top: 174px;
+}
+
+.timeline-marker-line {
+  position: absolute;
+  left: 50%;
+  width: 1px;
+  height: 34px;
+  background: rgba(36, 31, 24, 0.35);
+  transform: translateX(-50%);
+}
+
+.timeline-event-card.top .timeline-marker-line {
+  top: 66px;
+}
+
+.timeline-event-card.bottom .timeline-marker-line {
+  top: -24px;
+}
+
+.timeline-marker-dot {
+  position: absolute;
+  left: 50%;
+  width: 9px;
+  aspect-ratio: 1;
+  border: 2px solid var(--tone);
+  border-radius: 50%;
+  background: #edf3ec;
+  transform: translateX(-50%);
+}
+
+.timeline-event-card.top .timeline-marker-dot {
+  top: 96px;
+}
+
+.timeline-event-card.bottom .timeline-marker-dot {
+  top: -28px;
+}
+
+.timeline-event-label {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  color: #211d18;
+  text-align: center;
+}
+
+.timeline-event-card:hover,
+.timeline-event-card:focus-visible {
+  z-index: 20;
+}
+
+.timeline-event-popover {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 8px);
+  z-index: 20;
+  display: none;
+  width: 230px;
+  border: 1px solid rgba(36, 31, 24, 0.18);
+  border-top: 5px solid var(--tone);
+  background: var(--paper);
+  box-shadow: 0 18px 48px rgba(17, 17, 17, 0.16);
+  color: #3a342d;
+  padding: 12px;
+  font-size: 0.74rem;
+  line-height: 1.55;
+  text-align: left;
+  transform: translateX(-50%);
+}
+
+.timeline-event-card.bottom .timeline-event-popover {
+  top: auto;
+  bottom: calc(100% + 8px);
+}
+
+.timeline-event-card:hover .timeline-event-popover,
+.timeline-event-card:focus-visible .timeline-event-popover {
+  display: block;
+}
+
+.timeline-event-card:focus-visible {
+  outline: 3px solid rgba(36, 31, 24, 0.25);
+  outline-offset: 3px;
+}
+
+.timeline-event-year {
+  color: var(--tone);
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+
+.timeline-event-card strong {
+  display: -webkit-box;
+  min-height: 2.44em;
+  overflow: hidden;
+  color: #211d18;
+  font-size: 0.8rem;
+  line-height: 1.22;
+  word-break: keep-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.timeline-event-faction {
+  color: #6b6258;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.timeline-event-popover span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--tone);
+  font-size: 0.74rem;
+  font-weight: 900;
+}
+
+.timeline-event-card.present strong {
+  color: #b42318;
+}
+
+.timeline-future-note {
+  position: absolute;
+  right: 72px;
+  bottom: 20px;
+  color: rgba(36, 31, 24, 0.52);
+  font-size: 0.82rem;
+  font-weight: 900;
+  pointer-events: none;
+}
+
+.timeline-empty {
+  margin: 0;
+  color: #333333;
+  line-height: 1.7;
+}
+
 .rule-list,
 .about-grid {
   display: grid;
@@ -1990,11 +2269,14 @@ h3 {
   position: fixed;
   right: 24px;
   bottom: 24px;
-  border: 1px solid var(--line);
+  z-index: 60;
+  max-width: min(360px, calc(100vw - 32px));
+}
+
+.error-message .missing-callout {
+  margin-top: 0;
   background: var(--paper);
-  color: var(--ink);
-  padding: 12px;
-  font-weight: 900;
+  box-shadow: 0 16px 40px rgba(17, 17, 17, 0.12);
 }
 
 .card-modal-backdrop {
@@ -2005,6 +2287,32 @@ h3 {
   place-items: center;
   background: rgba(0, 0, 0, 0.36);
   padding: 18px;
+}
+
+.map-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.72);
+  padding: 18px;
+}
+
+.map-modal {
+  position: relative;
+  width: min(1400px, 100%);
+  max-height: calc(100svh - 36px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: #17120d;
+  padding: clamp(10px, 2vw, 18px);
+  overflow: auto;
+}
+
+.map-modal img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .card-modal {
@@ -2363,6 +2671,7 @@ h3 {
   .field-hero,
   .field-position-notes,
   .card-modal-backdrop,
+  .map-modal-backdrop,
   .error-message {
     display: none !important;
   }
