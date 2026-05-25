@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import type { CSSProperties, KeyboardEvent, ReactNode } from "react";
+import type {
+  CSSProperties,
+  KeyboardEvent,
+  PointerEvent,
+  ReactNode,
+} from "react";
 import { useNavigate, useRouterState } from "@tanstack/react-router";
 import {
   Activity,
@@ -323,7 +328,30 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
       : card.name.length > 6
         ? " name-small"
         : "";
+  const hasEffect = Boolean(card.effect.trim());
   const effectText = card.effect.trim() || card.lore.trim();
+  const effectClassName = hasEffect
+    ? "card-effect"
+    : "card-effect card-effect-lore";
+  const handlePointerMove = (event: PointerEvent<HTMLButtonElement>) => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const cardRect = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - cardRect.left) / cardRect.width;
+    const y = (event.clientY - cardRect.top) / cardRect.height;
+    const rotateY = (x - 0.5) * 10;
+    const rotateX = (0.5 - y) * 8;
+
+    event.currentTarget.style.setProperty("--tilt-x", `${rotateX}deg`);
+    event.currentTarget.style.setProperty("--tilt-y", `${rotateY}deg`);
+    event.currentTarget.style.setProperty("--glare-x", `${x * 100}%`);
+    event.currentTarget.style.setProperty("--glare-y", `${y * 100}%`);
+  };
+  const resetTilt = (target: HTMLButtonElement) => {
+    target.style.setProperty("--tilt-x", "0deg");
+    target.style.setProperty("--tilt-y", "0deg");
+    target.style.setProperty("--glare-x", "50%");
+    target.style.setProperty("--glare-y", "35%");
+  };
 
   return (
     <button
@@ -332,10 +360,17 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
         {
           "--class-stripe":
             card.classStripe || classColors[card.classId] || "#ffffff",
+          "--tilt-x": "0deg",
+          "--tilt-y": "0deg",
+          "--glare-x": "50%",
+          "--glare-y": "35%",
         } as CSSProperties
       }
       type="button"
       onClick={onClick}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={(event) => resetTilt(event.currentTarget)}
+      onBlur={(event) => resetTilt(event.currentTarget)}
     >
       <span className="card-stripe" aria-hidden="true" />
       <span className="card-top">
@@ -351,7 +386,7 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
           <span>{card.faction}</span>
           {card.race && <span>{card.race}</span>}
         </span>
-        <span className="card-effect">
+        <span className={effectClassName}>
           <EmphasizedTerms text={effectText} />
         </span>
         <span className="card-serial">{card.serial}</span>

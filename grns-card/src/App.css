@@ -453,6 +453,7 @@ h3 {
   gap: 14px;
   align-items: start;
   padding: 1px 6px 24px 1px;
+  perspective: 1200px;
 }
 
 .card-tile {
@@ -469,17 +470,57 @@ h3 {
   overflow: hidden;
   padding: 0;
   text-align: left;
+  transform:
+    perspective(900px)
+    rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg))
+    translateY(0);
+  transform-style: preserve-3d;
   transition: transform 160ms ease, box-shadow 160ms ease;
+  will-change: transform;
+}
+
+.card-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    radial-gradient(
+      circle at var(--glare-x, 50%) var(--glare-y, 35%),
+      rgba(255, 255, 255, 0.34),
+      rgba(255, 255, 255, 0.1) 18%,
+      transparent 42%
+    );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease;
 }
 
 .card-tile:hover,
-.card-tile.selected {
-  box-shadow: 0 0 0 2px var(--line);
+.card-tile:focus-visible {
+  box-shadow: 0 14px 28px rgba(17, 17, 17, 0.18);
 }
 
-.card-tile.selected {
-  outline: 2px solid var(--line);
-  outline-offset: 3px;
+.card-tile:hover::after,
+.card-tile:focus-visible::after {
+  opacity: 1;
+}
+
+.card-tile:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-tile {
+    transform: none;
+    transition: box-shadow 160ms ease;
+  }
+
+  .card-tile::after {
+    display: none;
+  }
 }
 
 .card-stripe {
@@ -584,6 +625,16 @@ h3 {
   font-size: 2.45mm;
   line-height: 1.32;
   word-break: keep-all;
+}
+
+.card-effect-lore {
+  align-self: center;
+  color: #3f3a33;
+  font-family: "Gowun Batang", serif;
+  font-size: 2.75mm;
+  font-style: italic;
+  line-height: 1.45;
+  text-align: center;
 }
 
 .card-effect strong {
@@ -2864,6 +2915,9 @@ h3 {
     content: "";
     position: absolute;
     z-index: 20;
+    display: block;
+    background: none;
+    opacity: 1;
     pointer-events: none;
   }
 

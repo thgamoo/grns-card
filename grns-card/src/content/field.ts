@@ -92,7 +92,6 @@ const fieldTerms: FieldTerm[] = [
   },
   ...supportZones.map((zone) => ({
     ...zone,
-    aliases: zone.name === "전진기지" ? ["전방기지"] : undefined,
     showOnField: true,
   })),
   {

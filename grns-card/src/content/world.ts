@@ -37,7 +37,7 @@ export const worldLinks: WorldLink[] = [
   },
   {
     href: "./world/fiction/prologue.md",
-    title: "군웅의 발호",
+    title: "대변혁 이후",
     body: "서장",
   },
   {
