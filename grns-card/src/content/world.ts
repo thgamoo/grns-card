@@ -32,7 +32,7 @@ export const worldLinks: WorldLink[] = [
   {
     href: "./world/data/timeline.json",
     title: "연표",
-    body: "드러나는 이면 전후 사건",
+    body: "세계분리 이후 사건",
     kind: "timeline",
   },
   {
