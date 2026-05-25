@@ -1,9 +1,10 @@
-import type { ReactNode } from "react";
-import { BookOpenText, Map as MapIcon } from "lucide-react";
+import { useState, type ReactNode } from "react";
+import { BookOpenText, Gamepad2, X, ZoomIn } from "lucide-react";
+import fieldCapture from "../assets/field-capture.png";
 import { MissingCallout } from "../components/MissingCallout";
 import { RichText } from "../components/RichText";
 import {
-  battleSteps,
+  battleCases,
   cardPartTerms,
   combatConceptId,
   combatConceptNotes,
@@ -18,6 +19,18 @@ import {
 } from "../content/rules";
 import { fieldTermNotes } from "../content/field";
 
+const fieldPreviewCards = [
+  "전진기지",
+  "후방기지",
+  "야전병",
+  "문지기",
+  "성주",
+  "징집소",
+  "매장지",
+  "발각된 군영",
+  "검은 강",
+];
+
 type RulesPageProps = {
   rulebook: ReactNode;
   sampleCard: ReactNode;
@@ -26,6 +39,7 @@ type RulesPageProps = {
   onSelectRuleTerm: (term: string) => void;
   onToggleRulebook: () => void;
   onNavigateField: () => void;
+  onNavigateTutorial: () => void;
   renderInlineText: (text: string) => ReactNode;
 };
 
@@ -37,8 +51,10 @@ export function RulesPage({
   onSelectRuleTerm,
   onToggleRulebook,
   onNavigateField,
+  onNavigateTutorial,
   renderInlineText,
 }: RulesPageProps) {
+  const [fieldPreviewOpen, setFieldPreviewOpen] = useState(false);
   const termNotes = {
     ...combatConceptNotes,
     ...ruleTermNotes,
@@ -68,9 +84,9 @@ export function RulesPage({
             <BookOpenText />
             룰북
           </button>
-          <button type="button" onClick={onNavigateField}>
-            <MapIcon />
-            필드 판
+          <button type="button" onClick={onNavigateTutorial}>
+            <Gamepad2 />
+            튜토리얼
           </button>
         </div>
         {showRulebook && (
@@ -104,8 +120,7 @@ export function RulesPage({
               <span className="callout callout-art">3</span>
               <span className="callout callout-race">4</span>
               <span className="callout callout-effect">5</span>
-              <span className="callout callout-type">6</span>
-              <span className="callout callout-mark">7</span>
+              <span className="callout callout-mark">6</span>
             </div>
           )}
           <div className="term-grid">
@@ -130,6 +145,62 @@ export function RulesPage({
           </div>
         </div>
       </section>
+
+      <section className="rules-section field-preview-guide">
+        <div className="rules-section-head">
+          <p className="eyebrow">field layout</p>
+          <h2>필드 구성</h2>
+        </div>
+        <p className="section-intro">
+          필드판의 전체 배치와 각 위치의 관계를 작은 지도로 먼저 살펴봅니다.
+        </p>
+        <button
+          className="field-preview-map"
+          type="button"
+          onClick={() => setFieldPreviewOpen(true)}
+          aria-label="필드판 크게 보기"
+        >
+          <img src={fieldCapture} alt="필드판 배치 프리뷰" />
+          <span>
+            <ZoomIn />
+            크게 보기
+          </span>
+        </button>
+        <ul className="field-preview-term-list" aria-label="필드 위치 목록">
+          {fieldPreviewCards.map((label) => (
+            <li key={label}>
+              <strong>{label}</strong>
+              <p>{fieldTermNotes[label]}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {fieldPreviewOpen && (
+        <div
+          className="field-preview-modal-backdrop"
+          role="presentation"
+          onClick={() => setFieldPreviewOpen(false)}
+        >
+          <section
+            className="field-preview-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label="필드판 프리뷰 확대"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              className="modal-close"
+              type="button"
+              aria-label="닫기"
+              onClick={() => setFieldPreviewOpen(false)}
+            >
+              <X />
+            </button>
+            <img src={fieldCapture} alt="필드판 배치 확대 이미지" />
+          </section>
+        </div>
+      )}
 
       <section className="rules-section">
         <div className="rules-section-head">
@@ -203,8 +274,32 @@ export function RulesPage({
           text={ruleCopy.combat.intro}
           {...richTextFieldProps}
         />
+        <div className="rule-chapter-flow combat-case-list">
+          {battleCases.map((battleCase, index) => (
+            <article key={battleCase.title}>
+              <h3>
+                {index + 1}. {battleCase.title}
+              </h3>
+              <ol>
+                {battleCase.steps.map((step) => (
+                  <li key={step}>{renderInlineText(step)}</li>
+                ))}
+              </ol>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="rules-section" id="scout-sacrifice">
+        <div className="rules-section-head">
+          <p className="eyebrow">{ruleCopy.scoutSacrifice.eyebrow}</p>
+          <h2>{ruleCopy.scoutSacrifice.title}</h2>
+        </div>
+        <p className="section-intro">
+          {renderInlineText(ruleCopy.scoutSacrifice.intro)}
+        </p>
         <ol className="rules-ordered-list">
-          {battleSteps.map((step) => (
+          {ruleCopy.scoutSacrifice.steps.map((step) => (
             <li key={step}>{renderInlineText(step)}</li>
           ))}
         </ol>

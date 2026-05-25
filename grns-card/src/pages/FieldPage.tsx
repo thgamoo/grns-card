@@ -2,6 +2,15 @@ import { Printer } from "lucide-react";
 import { FieldBoard } from "../components/FieldBoard";
 import { fieldPositionNotes } from "../content/field";
 
+const fieldPrintSlices = [
+  "field-print-page-r1-c1",
+  "field-print-page-r1-c2",
+  "field-print-page-r1-c3",
+  "field-print-page-r2-c1",
+  "field-print-page-r2-c2",
+  "field-print-page-r2-c3",
+];
+
 export function FieldPage() {
   return (
     <div className="field-view">
@@ -30,16 +39,13 @@ export function FieldPage() {
       </div>
 
       <div className="field-print-pages" aria-hidden="true">
-        <div className="field-print-page field-print-page-left">
-          <div className="field-print-slice">
-            <FieldBoard />
+        {fieldPrintSlices.map((slice) => (
+          <div key={slice} className={`field-print-page ${slice}`}>
+            <div className="field-print-slice">
+              <FieldBoard />
+            </div>
           </div>
-        </div>
-        <div className="field-print-page field-print-page-right">
-          <div className="field-print-slice">
-            <FieldBoard />
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

@@ -28,6 +28,11 @@ const rulesRoute = createRoute({
   path: '/rules',
 })
 
+const tutorialRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/tutorial',
+})
+
 const graphRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/graph',
@@ -47,6 +52,7 @@ const routeTree = rootRoute.addChildren([
   indexRoute,
   cardsRoute,
   rulesRoute,
+  tutorialRoute,
   graphRoute,
   fieldRoute,
   worldRoute,

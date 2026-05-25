@@ -10,6 +10,7 @@ import {
   Activity,
   BookOpenText,
   ChevronDown,
+  Gamepad2,
   Library,
   Map as MapIcon,
   Printer,
@@ -35,6 +36,7 @@ import type { TimelineEvent } from "./components/TimelineView";
 import { FieldPage } from "./pages/FieldPage";
 import { IntroPage } from "./pages/IntroPage";
 import { RulesPage } from "./pages/RulesPage";
+import { TutorialPage } from "./pages/TutorialPage";
 import { WorldPage } from "./pages/WorldPage";
 
 type VersionEntry = {
@@ -109,7 +111,14 @@ type DbState = {
   cards: Card[];
 };
 
-type TabId = "intro" | "db" | "rules" | "graph" | "field" | "world";
+type TabId =
+  | "intro"
+  | "db"
+  | "rules"
+  | "tutorial"
+  | "graph"
+  | "field"
+  | "world";
 
 const emptyCards: Card[] = [];
 const emptyClasses: ClassInfo[] = [];
@@ -134,6 +143,7 @@ const tabs: Array<{ id: TabId; label: string; icon: typeof Sparkles }> = [
   { id: "intro", label: "처음", icon: Sparkles },
   { id: "db", label: "DB", icon: Library },
   { id: "rules", label: "룰", icon: Shield },
+  { id: "tutorial", label: "튜토리얼", icon: Gamepad2 },
   { id: "graph", label: "그래프", icon: Activity },
   { id: "field", label: "필드", icon: MapIcon },
   { id: "world", label: "세계관", icon: BookOpenText },
@@ -143,6 +153,7 @@ const tabPaths: Record<TabId, string> = {
   intro: "/",
   db: "/cards",
   rules: "/rules",
+  tutorial: "/tutorial",
   graph: "/graph",
   field: "/field",
   world: "/world",
@@ -390,7 +401,6 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
           <EmphasizedTerms text={effectText} />
         </span>
         <span className="card-serial">{card.serial}</span>
-        <span className="card-type">{card.type}</span>
         <span className="card-mark">
           {card.classMark || fallbackClassMarks[card.classId] || "◇"}
         </span>
@@ -554,11 +564,9 @@ function App() {
   const [query, setQuery] = useState("");
   const [classIds, setClassIds] = useState<string[]>([]);
   const [packIds, setPackIds] = useState<string[]>([]);
-  const [types, setTypes] = useState<string[]>([]);
   const [keywordFilters, setKeywordFilters] = useState<string[]>([]);
   const [otherFilters, setOtherFilters] = useState<string[]>([]);
   const [graphClassId, setGraphClassId] = useState("all");
-  const [graphType, setGraphType] = useState("전체");
   const [graphTag, setGraphTag] = useState("전체");
   const [openDistributionPackId, setOpenDistributionPackId] =
     useState("base");
@@ -656,10 +664,6 @@ function App() {
 
   const cards = dbState?.cards ?? emptyCards;
   const classes = dbState?.classes ?? emptyClasses;
-  const cardTypes = useMemo(
-    () => Array.from(new Set(cards.map((card) => card.type))),
-    [cards],
-  );
   const packs = useMemo(() => {
     const seen = new Set<string>();
     return cards.reduce<Array<{ id: string; name: string }>>((items, card) => {
@@ -684,7 +688,6 @@ function App() {
           matchesKeywordFilter(cardKeywords, queryKeyword)) &&
         (classIds.length === 0 || classIds.includes(card.classId)) &&
         (packIds.length === 0 || packIds.includes(card.packId)) &&
-        (types.length === 0 || types.includes(card.type)) &&
         keywordFilters.every(
           (keyword) =>
             haystack.includes(keyword.toLowerCase()) ||
@@ -693,7 +696,7 @@ function App() {
         otherFilters.every((term) => cardAngleTerms.includes(term))
       );
     });
-  }, [cards, classIds, keywordFilters, otherFilters, packIds, query, types]);
+  }, [cards, classIds, keywordFilters, otherFilters, packIds, query]);
 
   const keywordCounts = useMemo(() => {
     const counts = new Map<string, number>();
@@ -746,11 +749,10 @@ function App() {
     return cards.filter((card) => {
       return (
         (graphClassId === "all" || card.classId === graphClassId) &&
-        (graphType === "전체" || card.type === graphType) &&
         (graphTag === "전체" || cardTags(card).includes(graphTag))
       );
     });
-  }, [cards, graphClassId, graphTag, graphType]);
+  }, [cards, graphClassId, graphTag]);
 
   const graphData = useMemo(() => {
     const width = 960;
@@ -772,7 +774,7 @@ function App() {
         card,
         x: margin.left + (card.cost / maxCost) * plotWidth + jitterX,
         y: margin.top + (1 - card.power / maxPower) * plotHeight + jitterY,
-        radius: card.type === "매복" ? 7 : card.type === "지원" ? 8 : 6.5,
+        radius: 6.5,
         color: card.classStripe || classColors[card.classId] || "#ffffff",
       };
     });
@@ -810,12 +812,7 @@ function App() {
     const averagePower =
       graphCards.reduce((sum, card) => sum + card.power, 0) /
       (graphCards.length || 1);
-    const typeCounts = graphCards.reduce((counts, card) => {
-      counts.set(card.type, (counts.get(card.type) ?? 0) + 1);
-      return counts;
-    }, new Map<string, number>());
-
-    return { averageCost, averagePower, typeCounts };
+    return { averageCost, averagePower };
   }, [graphCards]);
 
   const cardDistribution = useMemo(() => {
@@ -1007,22 +1004,6 @@ function App() {
                 </div>
               </div>
               <div className="filter-group">
-                <span>타입</span>
-                <div className="chip-list">
-                  {cardTypes.map((item) => (
-                    <FilterChip
-                      key={item}
-                      active={types.includes(item)}
-                      onClick={() =>
-                        setTypes((current) => toggleValue(current, item))
-                      }
-                    >
-                      {item}
-                    </FilterChip>
-                  ))}
-                </div>
-              </div>
-              <div className="filter-group">
                 <span>키워드</span>
                 <div className="chip-list keyword-chips">
                   {keywordFilterItems.map((item) => (
@@ -1065,7 +1046,6 @@ function App() {
                 query ||
                 classIds.length ||
                 packIds.length ||
-                types.length ||
                 keywordFilters.length ||
                 otherFilters.length,
               ) && (
@@ -1076,7 +1056,6 @@ function App() {
                     setQuery("");
                     setClassIds([]);
                     setPackIds([]);
-                    setTypes([]);
                     setKeywordFilters([]);
                     setOtherFilters([]);
                   }}
@@ -1126,6 +1105,7 @@ function App() {
             sampleCard={sampleCard ? <CardTile card={sampleCard} /> : null}
             showRulebook={showRulebook}
             onNavigateField={() => navigateTab("field")}
+            onNavigateTutorial={() => navigateTab("tutorial")}
             onSelectKeyword={(keyword) => {
               setQuery("");
               setKeywordFilters([keyword.replace(/^\[|\]$/g, "")]);
@@ -1135,6 +1115,8 @@ function App() {
             onToggleRulebook={() => setShowRulebook((current) => !current)}
           />
         )}
+
+        {activeTab === "tutorial" && <TutorialPage />}
 
         {activeTab === "graph" && (
           <div className="graph-view">
@@ -1166,20 +1148,6 @@ function App() {
                   </select>
                 </label>
                 <label>
-                  카드 타입
-                  <select
-                    value={graphType}
-                    onChange={(event) => setGraphType(event.target.value)}
-                  >
-                    <option value="전체">전체</option>
-                    {cardTypes.map((type) => (
-                      <option key={type} value={type}>
-                        {type}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label>
                   태그
                   <select
                     value={graphTag}
@@ -1197,7 +1165,6 @@ function App() {
                   type="button"
                   onClick={() => {
                     setGraphClassId("all");
-                    setGraphType("전체");
                     setGraphTag("전체");
                   }}
                 >
@@ -1236,7 +1203,7 @@ function App() {
                           textAnchor="middle"
                           className="graph-empty-help"
                         >
-                          세력, 타입, 태그 조건을 조정하세요.
+                          세력과 태그 조건을 조정하세요.
                         </text>
                       </>
                     ) : (
@@ -1345,48 +1312,6 @@ function App() {
                                 openGraphCard();
                               }
                             };
-                            if (node.card.type === "매복") {
-                              return (
-                                <rect
-                                  key={node.card.id}
-                                  className="graph-node"
-                                  role="button"
-                                  tabIndex={0}
-                                  aria-label={label}
-                                  onClick={openGraphCard}
-                                  onKeyDown={handleGraphKeyDown}
-                                  x={node.x - node.radius}
-                                  y={node.y - node.radius}
-                                  width={node.radius * 2}
-                                  height={node.radius * 2}
-                                  fill={node.color}
-                                >
-                                  <title>{label}</title>
-                                </rect>
-                              );
-                            }
-                            if (node.card.type === "지원") {
-                              const points = `${node.x},${node.y - node.radius} ${
-                                node.x + node.radius
-                              },${node.y} ${node.x},${node.y + node.radius} ${
-                                node.x - node.radius
-                              },${node.y}`;
-                              return (
-                                <polygon
-                                  key={node.card.id}
-                                  className="graph-node"
-                                  role="button"
-                                  tabIndex={0}
-                                  aria-label={label}
-                                  onClick={openGraphCard}
-                                  onKeyDown={handleGraphKeyDown}
-                                  points={points}
-                                  fill={node.color}
-                                >
-                                  <title>{label}</title>
-                                </polygon>
-                              );
-                            }
                             return (
                               <circle
                                 key={node.card.id}
@@ -1469,18 +1394,9 @@ function App() {
                   <div className="graph-legend">
                     <h3>범례</h3>
                     <p>
-                      가로축은 허기, 세로축은 힘입니다. 원은 일반, 사각형은
-                      매복, 마름모는 지원입니다.
+                      가로축은 허기, 세로축은 힘입니다. 각 점은 카드 1장을
+                      나타냅니다.
                     </p>
-                    <div className="graph-type-counts">
-                      {Array.from(graphMetrics.typeCounts).map(
-                        ([type, count]) => (
-                          <span key={type}>
-                            {type} {count}
-                          </span>
-                        ),
-                      )}
-                    </div>
                   </div>
                 </aside>
               </div>
@@ -1538,10 +1454,6 @@ function App() {
                   <dd>
                     {modalCard.faction} · {modalCard.className}
                   </dd>
-                </div>
-                <div>
-                  <dt>타입</dt>
-                  <dd>{modalCard.type}</dd>
                 </div>
                 <div>
                   <dt>종족</dt>

@@ -6,10 +6,6 @@ export function FieldBoard({ className = "" }: { className?: string }) {
       className={`field-board-react${className ? ` ${className}` : ""}`}
       aria-label="필드 판"
     >
-      <header className="field-title-react">
-        <p>괴력난신 필드판</p>
-      </header>
-
       <section className="battlefield-zone-react" aria-label="전장">
         <div className="field-zone-label">
           <strong>전장</strong>
@@ -47,12 +43,12 @@ export function FieldBoard({ className = "" }: { className?: string }) {
 
       <section className="resource-zone-react" aria-label="성 외곽 기지">
         <div className="camp-slot-react">
-          <strong>후방기지</strong>
-          <span>보급 전 자원</span>
+          <strong>전진기지</strong>
+          <span>사용한 자원</span>
         </div>
         <div className="camp-slot-react">
-          <strong>전진기지</strong>
-          <span>야전과 이어진 보급</span>
+          <strong>후방기지</strong>
+          <span>보급 전 자원</span>
         </div>
       </section>
 
@@ -65,6 +61,16 @@ export function FieldBoard({ className = "" }: { className?: string }) {
           <strong>매장지</strong>
           <span>공개 트래시</span>
         </div>
+      </section>
+
+      <section className="open-army-zone-react" aria-label="발각된 군영">
+        <strong>발각된 군영</strong>
+        <span>공개된 카드</span>
+      </section>
+
+      <section className="black-river-zone-react" aria-label="검은 강">
+        <strong>검은 강</strong>
+        <span>퇴출로 죽은 카드</span>
       </section>
     </section>
   );
