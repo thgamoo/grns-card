@@ -165,7 +165,7 @@ export const warPrepSections = [
   {
     title: "징집소 구축",
     items: [
-      "<징집소> - 40장으로 구성해야함.",
+      "<징집소> - (일반적으로) 단일 소속과 중립 카드로 40장을 구성해야함.",
       "같은 카드는 최대 3장까지 넣을 수 있음.",
     ],
   },
@@ -276,6 +276,10 @@ export const keywordRules = [
 ] as const;
 
 export const ruleTerms: RuleTerm[] = [
+  {
+    term: "병사",
+    body: "모든 카드는 병사로 지칭됩니다. 야전병이든 장수든 왕이든 플레이어 입장에서는 장기말이니까요.",
+  },
   {
     term: "선공",
     body: "전쟁 시작 시 먼저 턴을 진행하는 플레이어입니다.",

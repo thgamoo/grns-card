@@ -4,6 +4,7 @@ import { useNavigate, useRouterState } from "@tanstack/react-router";
 import {
   Activity,
   BookOpenText,
+  ChevronDown,
   Library,
   Map as MapIcon,
   Printer,
@@ -322,6 +323,7 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
       : card.name.length > 6
         ? " name-small"
         : "";
+  const effectText = card.effect.trim() || card.lore.trim();
 
   return (
     <button
@@ -347,10 +349,10 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
       <span className="card-bottom">
         <span className="card-meta">
           <span>{card.faction}</span>
-          <span>{card.race || "무속성"}</span>
+          {card.race && <span>{card.race}</span>}
         </span>
         <span className="card-effect">
-          <EmphasizedTerms text={card.effect || "효과 없음"} />
+          <EmphasizedTerms text={effectText} />
         </span>
         <span className="card-serial">{card.serial}</span>
         <span className="card-type">{card.type}</span>
@@ -523,6 +525,8 @@ function App() {
   const [graphClassId, setGraphClassId] = useState("all");
   const [graphType, setGraphType] = useState("전체");
   const [graphTag, setGraphTag] = useState("전체");
+  const [openDistributionPackId, setOpenDistributionPackId] =
+    useState("base");
   const [modalCardId, setModalCardId] = useState<string | null>(null);
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
   const [rulebookMarkdown, setRulebookMarkdown] = useState("");
@@ -775,20 +779,51 @@ function App() {
       counts.set(card.type, (counts.get(card.type) ?? 0) + 1);
       return counts;
     }, new Map<string, number>());
-    const topKeywords = Array.from(
-      graphCards
-        .flatMap((card) => keywords(card.effect))
-        .reduce((counts, keyword) => {
-          const normalized = normalizeKeyword(keyword);
-          counts.set(normalized, (counts.get(normalized) ?? 0) + 1);
-          return counts;
-        }, new Map<string, number>()),
-    )
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 5);
 
-    return { averageCost, averagePower, typeCounts, topKeywords };
+    return { averageCost, averagePower, typeCounts };
   }, [graphCards]);
+
+  const cardDistribution = useMemo(() => {
+    const classLabels = new Map(
+      classes.map((classInfo) => {
+        const className = classInfo.className ?? classInfo.name ?? classInfo.id;
+        const label =
+          classInfo.faction === className
+            ? classInfo.faction
+            : `${classInfo.faction} · ${className}`;
+        return [classInfo.id, label];
+      }),
+    );
+    const packClassCounts = cards.reduce((counts, card) => {
+      const packCounts = counts.get(card.packId) ?? new Map<string, number>();
+      packCounts.set(card.classId, (packCounts.get(card.classId) ?? 0) + 1);
+      counts.set(card.packId, packCounts);
+      return counts;
+    }, new Map<string, Map<string, number>>());
+
+    return {
+      total: cards.length,
+      byPack: packs.map((pack) => ({
+        ...pack,
+        total: Array.from(packClassCounts.get(pack.id)?.values() ?? []).reduce(
+          (sum, count) => sum + count,
+          0,
+        ),
+        classes: classes
+          .map((classInfo) => ({
+            id: classInfo.id,
+            name: classLabels.get(classInfo.id) ?? classInfo.id,
+            count: packClassCounts.get(pack.id)?.get(classInfo.id) ?? 0,
+          }))
+          .filter((classInfo) => classInfo.count > 0),
+      })),
+    };
+  }, [cards, classes, packs]);
+  const visibleDistributionPackId =
+    cardDistribution.byPack.find((pack) => pack.id === openDistributionPackId)
+      ?.id ??
+    cardDistribution.byPack[0]?.id ??
+    "";
 
   const modalCard = cards.find((card) => card.id === modalCardId);
   const sampleCard =
@@ -1359,6 +1394,43 @@ function App() {
                       <span>평균 힘</span>
                     </div>
                   </div>
+                  <div className="graph-distribution">
+                    <div className="graph-distribution-head">
+                      <h3>카드 분포</h3>
+                      <strong>{cardDistribution.total}장</strong>
+                    </div>
+                    {cardDistribution.byPack.map((pack) => (
+                      <section key={pack.id} className="graph-pack-summary">
+                        <button
+                          type="button"
+                          aria-expanded={visibleDistributionPackId === pack.id}
+                          onClick={() => setOpenDistributionPackId(pack.id)}
+                        >
+                          <span>{pack.name}</span>
+                          <strong>{pack.total}장</strong>
+                          <ChevronDown
+                            className={
+                              visibleDistributionPackId === pack.id
+                                ? "open"
+                                : ""
+                            }
+                            size={16}
+                            aria-hidden="true"
+                          />
+                        </button>
+                        {visibleDistributionPackId === pack.id && (
+                          <div className="graph-count-list">
+                            {pack.classes.map((classInfo) => (
+                              <span key={classInfo.id}>
+                                <em>{classInfo.name}</em>
+                                <strong>{classInfo.count}</strong>
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </section>
+                    ))}
+                  </div>
                   <div className="graph-legend">
                     <h3>범례</h3>
                     <p>
@@ -1373,13 +1445,6 @@ function App() {
                           </span>
                         ),
                       )}
-                    </div>
-                    <div className="graph-keywords">
-                      {graphMetrics.topKeywords.map(([keyword, count]) => (
-                        <span key={keyword}>
-                          <strong>[{keyword}]</strong> {count}
-                        </span>
-                      ))}
                     </div>
                   </div>
                 </aside>
@@ -1445,7 +1510,7 @@ function App() {
                 </div>
                 <div>
                   <dt>종족</dt>
-                  <dd>{modalCard.race || "기록 없음"}</dd>
+                  <dd>{modalCard.race || ""}</dd>
                 </div>
                 <div>
                   <dt>팩</dt>
@@ -1458,12 +1523,14 @@ function App() {
                   </dd>
                 </div>
               </dl>
-              <div className="modal-rule">
-                <strong>효과</strong>
-                <p>
-                  <EmphasizedTerms text={modalCard.effect || "효과 없음"} />
-                </p>
-              </div>
+              {modalCard.effect.trim() && (
+                <div className="modal-rule">
+                  <strong>효과</strong>
+                  <p>
+                    <EmphasizedTerms text={modalCard.effect} />
+                  </p>
+                </div>
+              )}
               {modalCard.lore && (
                 <div className="modal-lore">
                   <strong>기록</strong>
