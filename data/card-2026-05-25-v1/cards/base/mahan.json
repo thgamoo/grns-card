@@ -13,7 +13,7 @@
     "lore": "",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-0061",
+    "serial": "GRNS-0011",
     "sigil": "招",
     "illustration": ""
   },
@@ -31,7 +31,7 @@
     "lore": "",
     "power": 8,
     "actionCost": 0,
-    "serial": "GRNS-0062",
+    "serial": "GRNS-0012",
     "sigil": "陵",
     "illustration": ""
   },
@@ -49,7 +49,7 @@
     "lore": "",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-0063",
+    "serial": "GRNS-0052",
     "sigil": "喪",
     "illustration": ""
   },
@@ -67,7 +67,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0064",
+    "serial": "GRNS-0053",
     "sigil": "童",
     "illustration": ""
   },
@@ -85,7 +85,7 @@
     "lore": "",
     "power": 3,
     "actionCost": 0,
-    "serial": "GRNS-0065",
+    "serial": "GRNS-0054",
     "sigil": "墓",
     "illustration": ""
   },
@@ -103,7 +103,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0066",
+    "serial": "GRNS-0010",
     "sigil": "魂",
     "illustration": ""
   },
@@ -121,7 +121,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0067",
+    "serial": "GRNS-0055",
     "sigil": "服",
     "illustration": ""
   },
@@ -139,7 +139,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0068",
+    "serial": "GRNS-0056",
     "sigil": "米",
     "illustration": ""
   },
@@ -157,7 +157,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0069",
+    "serial": "GRNS-0057",
     "sigil": "土",
     "illustration": ""
   },
@@ -175,7 +175,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0070",
+    "serial": "GRNS-0058",
     "sigil": "鈴",
     "illustration": ""
   },
@@ -193,7 +193,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0071",
+    "serial": "GRNS-0059",
     "sigil": "開",
     "illustration": ""
   },
@@ -211,7 +211,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0072",
+    "serial": "GRNS-0060",
     "sigil": "手",
     "illustration": ""
   },
@@ -229,7 +229,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0073",
+    "serial": "GRNS-0061",
     "sigil": "歌",
     "illustration": ""
   },
@@ -247,7 +247,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0074",
+    "serial": "GRNS-0062",
     "sigil": "霧",
     "illustration": ""
   },
@@ -265,7 +265,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0075",
+    "serial": "GRNS-0063",
     "sigil": "祭",
     "illustration": ""
   },
@@ -283,7 +283,7 @@
     "lore": "",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-0076",
+    "serial": "GRNS-0064",
     "sigil": "呪",
     "illustration": ""
   },
@@ -301,7 +301,7 @@
     "lore": "",
     "power": 8,
     "actionCost": 0,
-    "serial": "GRNS-0077",
+    "serial": "GRNS-0135",
     "sigil": "建",
     "illustration": ""
   },
@@ -319,7 +319,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0078",
+    "serial": "GRNS-0136",
     "sigil": "多",
     "illustration": ""
   },
@@ -337,7 +337,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0079",
+    "serial": "GRNS-0137",
     "sigil": "德",
     "illustration": ""
   },
@@ -355,7 +355,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0080",
+    "serial": "GRNS-0138",
     "sigil": "婚",
     "illustration": ""
   }

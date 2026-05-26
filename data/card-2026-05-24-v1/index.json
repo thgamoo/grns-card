@@ -11,12 +11,6 @@
     "cards": [
       {
         "packId": "base",
-        "classId": "gaya",
-        "file": "./data/card-2026-05-24-v1/cards/base/gaya.json",
-        "count": 20
-      },
-      {
-        "packId": "base",
         "classId": "goguryeo",
         "file": "./data/card-2026-05-24-v1/cards/base/goguryeo.json",
         "count": 20
@@ -25,6 +19,12 @@
         "packId": "base",
         "classId": "jinhan",
         "file": "./data/card-2026-05-24-v1/cards/base/jinhan.json",
+        "count": 20
+      },
+      {
+        "packId": "base",
+        "classId": "gaya",
+        "file": "./data/card-2026-05-24-v1/cards/base/gaya.json",
         "count": 20
       },
       {
@@ -47,6 +47,12 @@
       },
       {
         "packId": "ex01",
+        "classId": "jinhan",
+        "file": "./data/card-2026-05-24-v1/cards/ex01/jinhan.json",
+        "count": 8
+      },
+      {
+        "packId": "ex01",
         "classId": "gaya",
         "file": "./data/card-2026-05-24-v1/cards/ex01/gaya.json",
         "count": 8
@@ -55,12 +61,6 @@
         "packId": "ex01",
         "classId": "mahan",
         "file": "./data/card-2026-05-24-v1/cards/ex01/mahan.json",
-        "count": 8
-      },
-      {
-        "packId": "ex01",
-        "classId": "jinhan",
-        "file": "./data/card-2026-05-24-v1/cards/ex01/jinhan.json",
         "count": 8
       },
       {

@@ -49,7 +49,7 @@
     "lore": "나를 따르라!",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-0003",
+    "serial": "GRNS-0013",
     "sigil": "將",
     "illustration": ""
   },
@@ -67,7 +67,7 @@
     "lore": "제가 다 길을 알고 있습니다.",
     "power": 4,
     "actionCost": 0,
-    "serial": "GRNS-0004",
+    "serial": "GRNS-0014",
     "sigil": "壁",
     "illustration": ""
   },
@@ -85,7 +85,7 @@
     "lore": "성주는 목을 내놓거라!",
     "power": 4,
     "actionCost": 0,
-    "serial": "GRNS-0005",
+    "serial": "GRNS-0003",
     "sigil": "怪",
     "illustration": ""
   },
@@ -103,7 +103,7 @@
     "lore": "",
     "power": 7,
     "actionCost": 0,
-    "serial": "GRNS-0006",
+    "serial": "GRNS-0123",
     "sigil": "武",
     "illustration": ""
   },
@@ -121,7 +121,7 @@
     "lore": "말 위에서 활쏘기",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-0007",
+    "serial": "GRNS-0125",
     "sigil": "射",
     "illustration": ""
   },
@@ -139,7 +139,7 @@
     "lore": "길들여진 게 아닌 거 같아요.",
     "power": 3,
     "actionCost": 0,
-    "serial": "GRNS-0008",
+    "serial": "GRNS-0126",
     "sigil": "虎",
     "illustration": ""
   },
@@ -157,7 +157,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0009",
+    "serial": "GRNS-0127",
     "sigil": "角",
     "illustration": ""
   },
@@ -175,7 +175,7 @@
     "lore": "이것도 뺏은 건가요?",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0010",
+    "serial": "GRNS-0015",
     "sigil": "血",
     "illustration": ""
   },
@@ -193,7 +193,7 @@
     "lore": "까먹지 말고 챙겨가야죠.",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0011",
+    "serial": "GRNS-0016",
     "sigil": "旗",
     "illustration": ""
   },
@@ -211,7 +211,7 @@
     "lore": "진정한 무사는 맥고기를 항상 주머니에 넣고 다니죠.",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0012",
+    "serial": "GRNS-0017",
     "sigil": "肉",
     "illustration": ""
   },
@@ -229,7 +229,7 @@
     "lore": "수박 한 판 하시죠",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-0013",
+    "serial": "GRNS-0018",
     "sigil": "圖",
     "illustration": ""
   },
@@ -247,7 +247,7 @@
     "lore": "일단 무너뜨리고 봅시다",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0014",
+    "serial": "GRNS-0020",
     "sigil": "門",
     "illustration": ""
   },
@@ -265,7 +265,7 @@
     "lore": "아니, 나 살아있다니까...?",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0015",
+    "serial": "GRNS-0021",
     "sigil": "怒",
     "illustration": ""
   },
@@ -283,7 +283,7 @@
     "lore": "역시 말은 빼앗아야죠.",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0016",
+    "serial": "GRNS-0022",
     "sigil": "馬",
     "illustration": ""
   },
@@ -301,7 +301,7 @@
     "lore": "뼈를 주고 뼈를 취하면 결국 똑같은 거 아닌가요?",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-0017",
+    "serial": "GRNS-0023",
     "sigil": "骨",
     "illustration": ""
   },
@@ -319,8 +319,26 @@
     "lore": "우리 군은 하늘의 명을 받았노라!",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0018",
+    "serial": "GRNS-0024",
     "sigil": "兆",
+    "illustration": ""
+  },
+  {
+    "id": "ym-t-006",
+    "name": "철갑 전열",
+    "cost": 1,
+    "faction": "예맥",
+    "classId": "goguryeo",
+    "className": "개마무사",
+    "theme": "용력",
+    "type": "일반",
+    "race": "",
+    "effect": "[매복] 내 전장의 <예맥> 카드 1장을 지정한다. 이번 전투에서 힘 +1.",
+    "lore": "앞으로 나란히",
+    "power": 1,
+    "actionCost": 0,
+    "serial": "GRNS-0025",
+    "sigil": "列",
     "illustration": ""
   },
   {
@@ -339,24 +357,6 @@
     "actionCost": 0,
     "serial": "GRNS-0019",
     "sigil": "令",
-    "illustration": ""
-  },
-  {
-    "id": "ym-t-006",
-    "name": "철갑 전열",
-    "cost": 1,
-    "faction": "예맥",
-    "classId": "goguryeo",
-    "className": "개마무사",
-    "theme": "용력",
-    "type": "일반",
-    "race": "",
-    "effect": "[매복] 내 전장의 <예맥> 카드 1장을 지정한다. 이번 전투에서 힘 +1.",
-    "lore": "앞으로 나란히",
-    "power": 1,
-    "actionCost": 0,
-    "serial": "GRNS-0020",
-    "sigil": "列",
     "illustration": ""
   }
 ]

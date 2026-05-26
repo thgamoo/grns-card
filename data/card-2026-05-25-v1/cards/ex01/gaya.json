@@ -17,7 +17,7 @@
     "lore": "두번째에오",
     "power": 2,
     "sigil": "二",
-    "serial": "GRNS-EX01-0017"
+    "serial": "GRNS-EX01-0009"
   },
   {
     "faction": "가락",
@@ -37,7 +37,7 @@
     "lore": "세번째에오",
     "power": 3,
     "sigil": "三",
-    "serial": "GRNS-EX01-0018"
+    "serial": "GRNS-EX01-0010"
   },
   {
     "faction": "가락",
@@ -57,7 +57,7 @@
     "lore": "네번째에오",
     "power": 4,
     "sigil": "四",
-    "serial": "GRNS-EX01-0019"
+    "serial": "GRNS-EX01-0011"
   },
   {
     "faction": "가락",
@@ -77,7 +77,7 @@
     "lore": "다섯번째에오",
     "power": 5,
     "sigil": "五",
-    "serial": "GRNS-EX01-0020"
+    "serial": "GRNS-EX01-0012"
   },
   {
     "faction": "가락",
@@ -97,7 +97,7 @@
     "lore": "마지막은 좀 특별해야겠죠?",
     "power": 6,
     "sigil": "六",
-    "serial": "GRNS-EX01-0021"
+    "serial": "GRNS-EX01-0013"
   },
   {
     "faction": "가락",
@@ -117,7 +117,7 @@
     "lore": "거북은 목을 내놓고, 알들은 마침내 숨을 들이켰다.",
     "power": 4,
     "sigil": "龜",
-    "serial": "GRNS-EX01-0022"
+    "serial": "GRNS-EX01-0014"
   },
   {
     "faction": "가락",
@@ -137,7 +137,7 @@
     "lore": "빛나는 것은 보물이 아니라 부화의 징조였다.",
     "power": 1,
     "sigil": "金",
-    "serial": "GRNS-EX01-0023"
+    "serial": "GRNS-EX01-0015"
   },
   {
     "faction": "가락",
@@ -157,6 +157,6 @@
     "lore": "알은 깨어난 것이 아니라, 오래 숨겨 둔 머리를 드러냈다.",
     "power": 10,
     "sigil": "神",
-    "serial": "GRNS-EX01-0024"
+    "serial": "GRNS-EX01-0016"
   }
 ]

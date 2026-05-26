@@ -13,7 +13,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0021",
+    "serial": "GRNS-0026",
     "sigil": "戱",
     "illustration": ""
   },
@@ -31,7 +31,7 @@
     "lore": "",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-0022",
+    "serial": "GRNS-0027",
     "sigil": "捕",
     "illustration": ""
   },
@@ -49,7 +49,7 @@
     "lore": "",
     "power": 3,
     "actionCost": 0,
-    "serial": "GRNS-0023",
+    "serial": "GRNS-0028",
     "sigil": "影",
     "illustration": ""
   },
@@ -67,7 +67,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0024",
+    "serial": "GRNS-0031",
     "sigil": "甕",
     "illustration": ""
   },
@@ -85,7 +85,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0025",
+    "serial": "GRNS-0032",
     "sigil": "屰",
     "illustration": ""
   },
@@ -103,7 +103,7 @@
     "lore": "",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-0026",
+    "serial": "GRNS-0033",
     "sigil": "符",
     "illustration": ""
   },
@@ -121,7 +121,7 @@
     "lore": "",
     "power": 3,
     "actionCost": 0,
-    "serial": "GRNS-0027",
+    "serial": "GRNS-0034",
     "sigil": "移",
     "illustration": ""
   },
@@ -139,7 +139,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0028",
+    "serial": "GRNS-0004",
     "sigil": "鬼",
     "illustration": ""
   },
@@ -157,7 +157,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0029",
+    "serial": "GRNS-0005",
     "sigil": "面",
     "illustration": ""
   },
@@ -175,7 +175,7 @@
     "lore": "",
     "power": 3,
     "actionCost": 0,
-    "serial": "GRNS-0030",
+    "serial": "GRNS-0006",
     "sigil": "棒",
     "illustration": ""
   },
@@ -193,7 +193,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0031",
+    "serial": "GRNS-0036",
     "sigil": "步",
     "illustration": ""
   },
@@ -211,7 +211,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0032",
+    "serial": "GRNS-0037",
     "sigil": "假",
     "illustration": ""
   },
@@ -229,7 +229,7 @@
     "lore": "이빨 수는 적지만 요술은 부릴 수 있습니다.",
     "power": 5,
     "actionCost": 0,
-    "serial": "GRNS-0033",
+    "serial": "GRNS-0030",
     "sigil": "弱",
     "illustration": ""
   },
@@ -247,7 +247,7 @@
     "lore": "이렇게 묶는 게 맞나요?",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0034",
+    "serial": "GRNS-0035",
     "sigil": "鈴",
     "illustration": ""
   },
@@ -265,7 +265,7 @@
     "lore": "으아악!",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0035",
+    "serial": "GRNS-0038",
     "sigil": "火",
     "illustration": ""
   },
@@ -283,7 +283,7 @@
     "lore": "약 오르죠?",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0036",
+    "serial": "GRNS-0029",
     "sigil": "陰",
     "illustration": ""
   },
@@ -301,7 +301,7 @@
     "lore": "",
     "power": 4,
     "actionCost": 0,
-    "serial": "GRNS-0037",
+    "serial": "GRNS-0124",
     "sigil": "脫",
     "illustration": ""
   },
@@ -319,7 +319,7 @@
     "lore": "",
     "power": 6,
     "actionCost": 0,
-    "serial": "GRNS-0038",
+    "serial": "GRNS-0128",
     "sigil": "讓",
     "illustration": ""
   },
@@ -337,7 +337,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0039",
+    "serial": "GRNS-0129",
     "sigil": "寶",
     "illustration": ""
   },
@@ -355,7 +355,7 @@
     "lore": "",
     "power": 4,
     "actionCost": 0,
-    "serial": "GRNS-0040",
+    "serial": "GRNS-0130",
     "sigil": "呆",
     "illustration": ""
   }

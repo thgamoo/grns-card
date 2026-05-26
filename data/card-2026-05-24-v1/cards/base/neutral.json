@@ -13,7 +13,7 @@
     "lore": "주인님, 어디계세요ㅠ",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0065",
+    "serial": "GRNS-0081",
     "sigil": "名",
     "illustration": ""
   },
@@ -31,7 +31,7 @@
     "lore": "칼밥드실래요?",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0066",
+    "serial": "GRNS-0082",
     "sigil": "刀",
     "illustration": ""
   },
@@ -49,7 +49,7 @@
     "lore": "불끼아악!",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-0067",
+    "serial": "GRNS-0083",
     "sigil": "不",
     "illustration": ""
   },
@@ -67,7 +67,7 @@
     "lore": "그냥 지나가던 길이었어요.",
     "power": 3,
     "actionCost": 0,
-    "serial": "GRNS-0068",
+    "serial": "GRNS-0084",
     "sigil": "丁",
     "illustration": ""
   },
@@ -85,7 +85,7 @@
     "lore": "???",
     "power": 4,
     "actionCost": 0,
-    "serial": "GRNS-0069",
+    "serial": "GRNS-0085",
     "sigil": "魑",
     "illustration": ""
   },
@@ -103,7 +103,7 @@
     "lore": "아우우~",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-0070",
+    "serial": "GRNS-0086",
     "sigil": "狼",
     "illustration": ""
   },
@@ -121,7 +121,7 @@
     "lore": "그오오오",
     "power": 4,
     "actionCost": 0,
-    "serial": "GRNS-0071",
+    "serial": "GRNS-0087",
     "sigil": "鋼",
     "illustration": ""
   },
@@ -139,7 +139,7 @@
     "lore": "도대체 뭘로 만들었길래 깨지지 않는 거죠?",
     "power": 4,
     "actionCost": 0,
-    "serial": "GRNS-0072",
+    "serial": "GRNS-0088",
     "sigil": "鋼",
     "illustration": ""
   },
@@ -157,7 +157,7 @@
     "lore": "인사는 영체사회생활의 기본이죠.",
     "power": 8,
     "actionCost": 0,
-    "serial": "GRNS-0073",
+    "serial": "GRNS-0089",
     "sigil": "片",
     "illustration": ""
   },
@@ -175,7 +175,7 @@
     "lore": "별을 본다는 말은 하늘을 읽는다는 뜻이 아니었다. 어둠 속에서 남보다 먼저 흔들리는 것을 본다는 뜻이었다.",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0074",
+    "serial": "GRNS-0090",
     "sigil": "星",
     "illustration": ""
   },
@@ -193,7 +193,7 @@
     "lore": "역시 빼앗은 활이 제일 잘 드는 법이죠.",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0075",
+    "serial": "GRNS-0091",
     "sigil": "弓",
     "illustration": ""
   },
@@ -211,7 +211,7 @@
     "lore": "떡 1장 주면 안 잡아먹지",
     "power": 4,
     "actionCost": 0,
-    "serial": "GRNS-0076",
+    "serial": "GRNS-0092",
     "sigil": "虎",
     "illustration": ""
   },
@@ -229,7 +229,7 @@
     "lore": "모이면 살고, 흩어지면...",
     "power": 6,
     "actionCost": 0,
-    "serial": "GRNS-0077",
+    "serial": "GRNS-0093",
     "sigil": "喊",
     "illustration": ""
   },
@@ -247,7 +247,7 @@
     "lore": "제발 성벽을 치세요",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0078",
+    "serial": "GRNS-0094",
     "sigil": "橋",
     "illustration": ""
   },
@@ -265,7 +265,7 @@
     "lore": "먹을 수 없는 건 방패로라도 써야죠",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0079",
+    "serial": "GRNS-0095",
     "sigil": "糧",
     "illustration": ""
   },
@@ -283,7 +283,7 @@
     "lore": "많이 늦지 않았죠?",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0080",
+    "serial": "GRNS-0096",
     "sigil": "令",
     "illustration": ""
   },
@@ -301,7 +301,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0139",
+    "serial": "GRNS-0097",
     "sigil": "狐",
     "illustration": ""
   },
@@ -319,7 +319,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0140",
+    "serial": "GRNS-0098",
     "sigil": "猫",
     "illustration": ""
   },
@@ -337,7 +337,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0141",
+    "serial": "GRNS-0099",
     "sigil": "祭",
     "illustration": ""
   },
@@ -355,7 +355,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0142",
+    "serial": "GRNS-0100",
     "sigil": "魔",
     "illustration": ""
   }

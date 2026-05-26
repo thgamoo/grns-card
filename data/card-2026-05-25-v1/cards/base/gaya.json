@@ -13,7 +13,7 @@
     "lore": "",
     "power": 8,
     "actionCost": 0,
-    "serial": "GRNS-0041",
+    "serial": "GRNS-0009",
     "sigil": "巨",
     "illustration": ""
   },
@@ -31,7 +31,7 @@
     "lore": "",
     "power": 4,
     "actionCost": 0,
-    "serial": "GRNS-0042",
+    "serial": "GRNS-0039",
     "sigil": "牛",
     "illustration": ""
   },
@@ -49,7 +49,7 @@
     "lore": "",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-0043",
+    "serial": "GRNS-0040",
     "sigil": "爐",
     "illustration": ""
   },
@@ -67,7 +67,7 @@
     "lore": "",
     "power": 4,
     "actionCost": 0,
-    "serial": "GRNS-0044",
+    "serial": "GRNS-0041",
     "sigil": "工",
     "illustration": ""
   },
@@ -85,7 +85,7 @@
     "lore": "빼앗긴 비단을 어떻게 찾아올지 고민입니다. 네? 그냥 집으로 갈 거라고요?",
     "power": 5,
     "actionCost": 0,
-    "serial": "GRNS-0045",
+    "serial": "GRNS-0042",
     "sigil": "盟",
     "illustration": ""
   },
@@ -103,7 +103,7 @@
     "lore": "",
     "power": 9,
     "actionCost": 0,
-    "serial": "GRNS-0046",
+    "serial": "GRNS-0131",
     "sigil": "干",
     "illustration": ""
   },
@@ -121,7 +121,7 @@
     "lore": "",
     "power": 3,
     "actionCost": 0,
-    "serial": "GRNS-0047",
+    "serial": "GRNS-0132",
     "sigil": "鐵",
     "illustration": ""
   },
@@ -139,7 +139,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0048",
+    "serial": "GRNS-0133",
     "sigil": "書",
     "illustration": ""
   },
@@ -157,7 +157,7 @@
     "lore": "",
     "power": 4,
     "actionCost": 0,
-    "serial": "GRNS-0049",
+    "serial": "GRNS-0134",
     "sigil": "蛛",
     "illustration": ""
   },
@@ -175,7 +175,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0050",
+    "serial": "GRNS-0007",
     "sigil": "火",
     "illustration": ""
   },
@@ -193,7 +193,7 @@
     "lore": "",
     "power": 3,
     "actionCost": 0,
-    "serial": "GRNS-0051",
+    "serial": "GRNS-0008",
     "sigil": "鐵",
     "illustration": ""
   },
@@ -211,7 +211,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0052",
+    "serial": "GRNS-0043",
     "sigil": "鑛",
     "illustration": ""
   },
@@ -229,7 +229,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0053",
+    "serial": "GRNS-0044",
     "sigil": "型",
     "illustration": ""
   },
@@ -247,7 +247,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0054",
+    "serial": "GRNS-0045",
     "sigil": "炭",
     "illustration": ""
   },
@@ -265,7 +265,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0055",
+    "serial": "GRNS-0046",
     "sigil": "爆",
     "illustration": ""
   },
@@ -283,7 +283,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0056",
+    "serial": "GRNS-0047",
     "sigil": "鎖",
     "illustration": ""
   },
@@ -301,7 +301,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-0057",
+    "serial": "GRNS-0048",
     "sigil": "盾",
     "illustration": ""
   },
@@ -319,7 +319,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0058",
+    "serial": "GRNS-0049",
     "sigil": "書",
     "illustration": ""
   },
@@ -337,7 +337,7 @@
     "lore": "",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-0059",
+    "serial": "GRNS-0050",
     "sigil": "槌",
     "illustration": ""
   },
@@ -355,7 +355,7 @@
     "lore": "",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-0060",
+    "serial": "GRNS-0051",
     "sigil": "流",
     "illustration": ""
   }

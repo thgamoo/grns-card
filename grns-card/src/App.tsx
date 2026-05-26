@@ -189,6 +189,19 @@ function packName(packId: string, expansions: Expansion[]) {
   return expansions.find((item) => item.id === packId)?.name ?? packId;
 }
 
+function serialNumber(serial: string) {
+  return Number(serial.match(/(\d+)$/)?.[1] ?? 0);
+}
+
+function compareCardsBySerial(a: Card, b: Card) {
+  if (a.packId !== b.packId) {
+    if (a.packId === "base") return -1;
+    if (b.packId === "base") return 1;
+    return a.packId.localeCompare(b.packId);
+  }
+  return serialNumber(a.serial) - serialNumber(b.serial);
+}
+
 async function loadDb(version: VersionEntry): Promise<DbState> {
   const db = await fetchJson<SplitDb>(version.file);
   const [classes, expansions] = await Promise.all([
@@ -211,7 +224,7 @@ async function loadDb(version: VersionEntry): Promise<DbState> {
       }));
     }),
   );
-  return { version, classes, expansions, cards: groups.flat() };
+  return { version, classes, expansions, cards: groups.flat().sort(compareCardsBySerial) };
 }
 
 function keywords(effect: string) {

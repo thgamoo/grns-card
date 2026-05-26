@@ -13,7 +13,7 @@
     "lore": "정체가 드러나 버렸네?",
     "power": 3,
     "actionCost": 0,
-    "serial": "GRNS-EX01-0009",
+    "serial": "GRNS-EX01-0025",
     "sigil": "王",
     "illustration": "",
     "expansionId": "ex01",
@@ -33,7 +33,7 @@
     "lore": "전쟁의 겉면이 소란해질수록, 숨어 있던 괴이는 더 또렷한 이름을 얻었다.",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-EX01-0010",
+    "serial": "GRNS-EX01-0026",
     "sigil": "鈴",
     "illustration": "",
     "expansionId": "ex01",
@@ -53,7 +53,7 @@
     "lore": "전쟁의 겉면이 소란해질수록, 숨어 있던 괴이는 더 또렷한 이름을 얻었다.",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-EX01-0011",
+    "serial": "GRNS-EX01-0027",
     "sigil": "燐",
     "illustration": "",
     "expansionId": "ex01",
@@ -76,7 +76,7 @@
     "effect": "[출정] 상대 군영가 내 군영보다 많으면 상대 군영에서 [희생 1].",
     "lore": "웃는 쪽이 앞인지, 우는 쪽이 앞인지 아무도 몰랐다.",
     "power": 1,
-    "serial": "GRNS-EX01-0012",
+    "serial": "GRNS-EX01-0028",
     "sigil": "面"
   },
   {
@@ -96,7 +96,7 @@
     "effect": "[출정] 자신과 상대 모두 징집 +1",
     "lore": "",
     "power": 1,
-    "serial": "GRNS-EX01-0013",
+    "serial": "GRNS-EX01-0029",
     "sigil": "崇"
   },
   {
@@ -116,7 +116,7 @@
     "effect": "[후방기지] 상대가 매복 카드를 배치하면 상대 징집소에서 [희생 1]",
     "lore": "마을의 경계가 뒤집히자 손님과 재앙도 뒤섞였다.",
     "power": 1,
-    "serial": "GRNS-EX01-0014",
+    "serial": "GRNS-EX01-0030",
     "sigil": "將"
   },
   {
@@ -136,7 +136,7 @@
     "effect": "",
     "lore": "데구르르",
     "power": 4,
-    "serial": "GRNS-EX01-0015",
+    "serial": "GRNS-EX01-0031",
     "sigil": "魍"
   },
   {
@@ -156,7 +156,7 @@
     "effect": "이 카드는 <성주>에만 배치할 수 있다.\n[성주등장] 이 카드 공개 시 내 전장에 <유리 - 망량> 이 있다면 상대는 공격 선언 시 마다 징집소에서 [희생 1]",
     "lore": "",
     "power": 8,
-    "serial": "GRNS-EX01-0016",
+    "serial": "GRNS-EX01-0032",
     "sigil": "囊"
   }
 ]
