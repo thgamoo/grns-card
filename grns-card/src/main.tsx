@@ -33,6 +33,11 @@ const tutorialRoute = createRoute({
   path: '/tutorial',
 })
 
+const deckSimRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/deck-sim',
+})
+
 const graphRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/graph',
@@ -53,6 +58,7 @@ const routeTree = rootRoute.addChildren([
   cardsRoute,
   rulesRoute,
   tutorialRoute,
+  deckSimRoute,
   graphRoute,
   fieldRoute,
   worldRoute,

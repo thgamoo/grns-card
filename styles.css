@@ -1182,6 +1182,14 @@ select option {
   line-height: 1.35;
 }
 
+.effect em {
+  display: inline-block;
+  font-family: inherit;
+  font-style: normal;
+  transform: skewX(-10deg);
+  transform-origin: left bottom;
+}
+
 .effect-lore {
   align-self: center;
   color: #333333;

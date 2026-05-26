@@ -17,6 +17,7 @@ import {
   Search,
   Shield,
   Sparkles,
+  Shuffle,
   X,
 } from "lucide-react";
 import "./App.css";
@@ -35,6 +36,7 @@ import { TimelineView } from "./components/TimelineView";
 import type { TimelineEvent } from "./components/TimelineView";
 import { FieldPage } from "./pages/FieldPage";
 import { IntroPage } from "./pages/IntroPage";
+import { DeckSimulatorPage } from "./pages/DeckSimulatorPage";
 import { RulesPage } from "./pages/RulesPage";
 import { TutorialPage } from "./pages/TutorialPage";
 import { WorldPage } from "./pages/WorldPage";
@@ -66,7 +68,13 @@ type SplitDb = {
     classes: string;
     expansions: string;
     cards: CardSource[];
+    structureDecks?: DeckSource[];
   };
+};
+
+type DeckSource = {
+  classId: string;
+  file: string;
 };
 
 type ClassInfo = {
@@ -104,11 +112,29 @@ type Card = {
   packName: string;
 };
 
+type DeckEntry = {
+  cardId: string;
+  serial: string;
+  count: number;
+};
+
+type StructureDeck = {
+  id: string;
+  name: string;
+  classId: string;
+  faction: string;
+  className: string;
+  totalCards: number;
+  trapCards?: number;
+  entries: DeckEntry[];
+};
+
 type DbState = {
   version: VersionEntry;
   classes: ClassInfo[];
   expansions: Expansion[];
   cards: Card[];
+  decks: StructureDeck[];
 };
 
 type TabId =
@@ -116,12 +142,14 @@ type TabId =
   | "db"
   | "rules"
   | "tutorial"
+  | "deckSim"
   | "graph"
   | "field"
   | "world";
 
 const emptyCards: Card[] = [];
 const emptyClasses: ClassInfo[] = [];
+const emptyDecks: StructureDeck[] = [];
 
 const classColors: Record<string, string> = {
   goguryeo: "#d7d7d7",
@@ -144,6 +172,7 @@ const tabs: Array<{ id: TabId; label: string; icon: typeof Sparkles }> = [
   { id: "db", label: "DB", icon: Library },
   { id: "rules", label: "룰", icon: Shield },
   { id: "tutorial", label: "튜토리얼", icon: Gamepad2 },
+  { id: "deckSim", label: "덱 시뮬", icon: Shuffle },
   { id: "graph", label: "그래프", icon: Activity },
   { id: "field", label: "필드", icon: MapIcon },
   { id: "world", label: "세계관", icon: BookOpenText },
@@ -154,6 +183,7 @@ const tabPaths: Record<TabId, string> = {
   db: "/cards",
   rules: "/rules",
   tutorial: "/tutorial",
+  deckSim: "/deck-sim",
   graph: "/graph",
   field: "/field",
   world: "/world",
@@ -224,7 +254,18 @@ async function loadDb(version: VersionEntry): Promise<DbState> {
       }));
     }),
   );
-  return { version, classes, expansions, cards: groups.flat().sort(compareCardsBySerial) };
+  const decks = await Promise.all(
+    (db.sources.structureDecks ?? []).map((source) =>
+      fetchJson<StructureDeck>(source.file),
+    ),
+  );
+  return {
+    version,
+    classes,
+    expansions,
+    cards: groups.flat().sort(compareCardsBySerial),
+    decks,
+  };
 }
 
 function keywords(effect: string) {
@@ -460,7 +501,7 @@ function EmphasizedTerms({
   return (
     <>
       {text.replace(/\\n/g, "\n")
-        .split(/(\*\*[^*]+\*\*|\r?\n|<[^>]+>|\[[^\]]+\])/g)
+        .split(/(\*\*[^*\n]+\*\*|_[^_\n]+_|\r?\n|<[^>]+>|\[[^\]]+\])/g)
         .map((part, index) => {
           if (/^\r?\n$/.test(part)) {
             return <br key={`line-${index}`} />;
@@ -470,6 +511,10 @@ function EmphasizedTerms({
             return (
               <strong key={`${part}-${index}`}>{part.slice(2, -2)}</strong>
             );
+          }
+
+          if (/^_[^_]+_$/.test(part)) {
+            return <em key={`${part}-${index}`}>{part.slice(1, -1)}</em>;
           }
 
           if (/^<[^>]+>$/.test(part)) {
@@ -677,6 +722,7 @@ function App() {
 
   const cards = dbState?.cards ?? emptyCards;
   const classes = dbState?.classes ?? emptyClasses;
+  const decks = dbState?.decks ?? emptyDecks;
   const packs = useMemo(() => {
     const seen = new Set<string>();
     return cards.reduce<Array<{ id: string; name: string }>>((items, card) => {
@@ -1131,6 +1177,10 @@ function App() {
 
         {activeTab === "tutorial" && <TutorialPage />}
 
+        {activeTab === "deckSim" && (
+          <DeckSimulatorPage cards={cards} decks={decks} />
+        )}
+
         {activeTab === "graph" && (
           <div className="graph-view">
             <section
@@ -1494,7 +1544,9 @@ function App() {
               {modalCard.lore && (
                 <div className="modal-lore">
                   <strong>기록</strong>
-                  <p>{modalCard.lore}</p>
+                  <p>
+                    <EmphasizedTerms text={modalCard.lore} />
+                  </p>
                 </div>
               )}
             </div>

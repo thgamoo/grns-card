@@ -9,82 +9,82 @@
   "entries": [
     {
       "cardId": "sj-g-001",
-      "serial": "GRNS-0011",
-      "count": 3
-    },
-    {
-      "cardId": "sj-g-002",
-      "serial": "GRNS-0012",
-      "count": 3
-    },
-    {
-      "cardId": "sj-g-003",
-      "serial": "GRNS-0052",
-      "count": 3
-    },
-    {
-      "cardId": "sj-g-004",
-      "serial": "GRNS-0053",
-      "count": 3
-    },
-    {
-      "cardId": "sj-g-005",
-      "serial": "GRNS-0054",
-      "count": 3
-    },
-    {
-      "cardId": "sj-r-001",
-      "serial": "GRNS-0010",
-      "count": 2
-    },
-    {
-      "cardId": "sj-r-002",
-      "serial": "GRNS-0055",
-      "count": 2
-    },
-    {
-      "cardId": "sj-r-003",
-      "serial": "GRNS-0056",
-      "count": 2
-    },
-    {
-      "cardId": "sj-r-004",
-      "serial": "GRNS-0057",
-      "count": 2
-    },
-    {
-      "cardId": "sj-r-005",
-      "serial": "GRNS-0058",
-      "count": 2
-    },
-    {
-      "cardId": "sj-t-001",
-      "serial": "GRNS-0059",
-      "count": 3
-    },
-    {
-      "cardId": "sj-t-002",
-      "serial": "GRNS-0060",
-      "count": 3
-    },
-    {
-      "cardId": "sj-t-003",
       "serial": "GRNS-0061",
       "count": 3
     },
     {
-      "cardId": "sj-t-004",
+      "cardId": "sj-g-002",
       "serial": "GRNS-0062",
+      "count": 3
+    },
+    {
+      "cardId": "sj-g-003",
+      "serial": "GRNS-0063",
+      "count": 3
+    },
+    {
+      "cardId": "sj-g-004",
+      "serial": "GRNS-0064",
+      "count": 3
+    },
+    {
+      "cardId": "sj-g-005",
+      "serial": "GRNS-0065",
+      "count": 3
+    },
+    {
+      "cardId": "sj-r-001",
+      "serial": "GRNS-0066",
+      "count": 2
+    },
+    {
+      "cardId": "sj-r-002",
+      "serial": "GRNS-0067",
+      "count": 2
+    },
+    {
+      "cardId": "sj-r-003",
+      "serial": "GRNS-0068",
+      "count": 2
+    },
+    {
+      "cardId": "sj-r-004",
+      "serial": "GRNS-0069",
+      "count": 2
+    },
+    {
+      "cardId": "sj-r-005",
+      "serial": "GRNS-0070",
+      "count": 2
+    },
+    {
+      "cardId": "sj-t-001",
+      "serial": "GRNS-0071",
+      "count": 3
+    },
+    {
+      "cardId": "sj-t-002",
+      "serial": "GRNS-0072",
+      "count": 3
+    },
+    {
+      "cardId": "sj-t-003",
+      "serial": "GRNS-0073",
+      "count": 3
+    },
+    {
+      "cardId": "sj-t-004",
+      "serial": "GRNS-0074",
       "count": 2
     },
     {
       "cardId": "sj-t-005",
-      "serial": "GRNS-0063",
+      "serial": "GRNS-0075",
       "count": 2
     },
     {
       "cardId": "sj-t-006",
-      "serial": "GRNS-0064",
+      "serial": "GRNS-0076",
       "count": 2
     }
   ]

@@ -157,6 +157,7 @@ function effectText(card) {
 
 function renderKeywordText(value) {
   return escapeHtml(value)
+    .replace(/_([^_\n]+)_/g, "<em>$1</em>")
     .replace(/\[([^\]]+)\]/g, "<strong>[$1]</strong>")
     .replace(/\r?\n/g, "<br>");
 }
@@ -736,24 +737,34 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight, maxLines = 99) {
   return Math.min(lines.length, maxLines) * lineHeight;
 }
 
-function drawInlineText(ctx, text, x, y, normalFont, boldFont) {
-  const segments = String(text ?? "").split(/(\[[^\]]+\])/g).filter(Boolean);
+function drawInlineText(ctx, text, x, y, normalFont, boldFont, italicFont) {
+  const segments = String(text ?? "").split(/(\[[^\]]+\]|_[^_\n]+_)/g).filter(Boolean);
   let cursor = x;
+  const italicSkew = -0.18;
 
   for (const segment of segments) {
     const isKeyword = /^\[[^\]]+\]$/.test(segment);
-    ctx.font = isKeyword ? boldFont : normalFont;
-    ctx.fillText(segment, cursor, y);
-    cursor += ctx.measureText(segment).width;
+    const isItalic = /^_[^_\n]+_$/.test(segment);
+    const textSegment = isItalic ? segment.slice(1, -1) : segment;
+    ctx.font = isKeyword ? boldFont : isItalic ? italicFont : normalFont;
+    if (isItalic) {
+      ctx.save();
+      ctx.transform(1, 0, italicSkew, 1, 0, 0);
+      ctx.fillText(textSegment, cursor - italicSkew * y, y);
+      ctx.restore();
+    } else {
+      ctx.fillText(textSegment, cursor, y);
+    }
+    cursor += ctx.measureText(textSegment).width;
   }
 }
 
-function wrapRichText(ctx, text, x, y, maxWidth, lineHeight, maxLines = 99, normalFont = ctx.font, boldFont = ctx.font) {
+function wrapRichText(ctx, text, x, y, maxWidth, lineHeight, maxLines = 99, normalFont = ctx.font, boldFont = ctx.font, italicFont = ctx.font) {
   const lines = [];
 
   ctx.font = normalFont;
   for (const paragraph of String(text ?? "").split(/\r?\n/)) {
-    const words = paragraph.match(/\[[^\]]+\]|\S+/g) ?? [];
+    const words = paragraph.match(/\[[^\]]+\]|_[^_\n]+_|\S+/g) ?? [];
     let line = "";
 
     if (words.length === 0) {
@@ -775,7 +786,7 @@ function wrapRichText(ctx, text, x, y, maxWidth, lineHeight, maxLines = 99, norm
 
   lines.slice(0, maxLines).forEach((item, index) => {
     const suffix = index === maxLines - 1 && lines.length > maxLines ? "..." : "";
-    drawInlineText(ctx, `${item}${suffix}`, x, y + index * lineHeight, normalFont, boldFont);
+    drawInlineText(ctx, `${item}${suffix}`, x, y + index * lineHeight, normalFont, boldFont, italicFont);
   });
   return Math.min(lines.length, maxLines) * lineHeight;
 }
@@ -867,10 +878,11 @@ function drawCardToCanvas(card) {
   ctx.fillStyle = "#111111";
   const effectFont = "2.75px Noto Sans KR, sans-serif";
   const effectBoldFont = "bold 2.75px Noto Sans KR, sans-serif";
+  const effectItalicFont = "italic 2.75px Noto Sans KR, sans-serif";
   if (hasEffect(card)) {
     ctx.textAlign = "left";
     ctx.font = effectFont;
-    wrapRichText(ctx, effectText(card), 6.4, y, cardWidthMm - 8.6, 3.55, 6, effectFont, effectBoldFont);
+    wrapRichText(ctx, effectText(card), 6.4, y, cardWidthMm - 8.6, 3.55, 6, effectFont, effectBoldFont, effectItalicFont);
   } else if (String(card.lore ?? "").trim()) {
     ctx.fillStyle = "#333333";
     ctx.textAlign = "center";

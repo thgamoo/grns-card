@@ -641,6 +641,14 @@ h3 {
   font-weight: 900;
 }
 
+.card-effect em {
+  display: inline-block;
+  font-family: inherit;
+  font-style: normal;
+  transform: skewX(-10deg);
+  transform-origin: left bottom;
+}
+
 .card-serial {
   color: #555555;
   font-size: 2.2mm;
@@ -2668,6 +2676,15 @@ h3 {
   line-height: 1.75;
 }
 
+.modal-rule p em,
+.modal-lore p em {
+  display: inline-block;
+  font-family: inherit;
+  font-style: normal;
+  transform: skewX(-10deg);
+  transform-origin: left bottom;
+}
+
 .modal-lore p {
   font-family: "Gowun Batang", serif;
 }
@@ -3363,6 +3380,216 @@ h3 {
   .tutorial-lanes span {
     min-height: 46px;
     font-size: 0.76rem;
+  }
+}
+
+.deck-sim-view {
+  display: grid;
+  gap: 18px;
+  padding: clamp(24px, 4vw, 46px);
+}
+
+.deck-sim-head,
+.deck-sim-controls,
+.deck-sim-summary,
+.deck-sim-table {
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.deck-sim-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px;
+}
+
+.deck-sim-head h2 {
+  margin: 4px 0 8px;
+}
+
+.deck-sim-head p:not(.eyebrow) {
+  max-width: 720px;
+  margin: 0;
+  color: #333333;
+  line-height: 1.6;
+}
+
+.deck-sim-head button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  background: var(--paper-soft);
+  padding: 9px 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.deck-sim-head svg {
+  width: 16px;
+  height: 16px;
+}
+
+.deck-sim-controls {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(180px, 1fr) 110px auto;
+  gap: 12px;
+  align-items: end;
+  padding: 14px;
+}
+
+.deck-sim-controls label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.deck-sim-controls select,
+.deck-sim-controls input[type="number"] {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  background: var(--paper-soft);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 800;
+  padding: 8px 10px;
+}
+
+.deck-sim-check {
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  min-height: 38px;
+  color: var(--ink) !important;
+}
+
+.deck-sim-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.deck-sim-summary article {
+  display: grid;
+  gap: 4px;
+  padding: 14px;
+}
+
+.deck-sim-summary article + article {
+  border-left: 1px solid var(--line);
+}
+
+.deck-sim-summary span,
+.deck-sim-summary small,
+.deck-sim-row > span,
+.deck-sim-row small {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.deck-sim-summary strong {
+  font-size: 1rem;
+}
+
+.deck-sim-table {
+  display: grid;
+  overflow: hidden;
+}
+
+.deck-sim-row {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1fr);
+  min-height: 74px;
+}
+
+.deck-sim-row + .deck-sim-row {
+  border-top: 1px solid var(--line);
+}
+
+.deck-sim-row > span,
+.deck-sim-row > strong,
+.deck-sim-row > div {
+  padding: 10px;
+}
+
+.deck-sim-row > span {
+  display: grid;
+  place-items: start center;
+}
+
+.deck-sim-row > strong,
+.deck-sim-row > div + div {
+  border-left: 1px solid var(--line);
+}
+
+.deck-sim-row > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: start;
+  gap: 7px;
+}
+
+.deck-sim-row > div > small {
+  flex-basis: 100%;
+}
+
+.deck-sim-row > div > em {
+  color: var(--muted);
+  font-style: italic;
+  font-weight: 800;
+}
+
+.deck-sim-row-head {
+  min-height: auto;
+  background: var(--paper-soft);
+}
+
+.deck-sim-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 6px 8px;
+  gap: 8px;
+}
+
+.deck-sim-card small,
+.deck-sim-card em {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.deck-sim-card strong {
+  overflow: hidden;
+  font-size: 0.82rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .deck-sim-head,
+  .deck-sim-controls,
+  .deck-sim-summary,
+  .deck-sim-row {
+    grid-template-columns: 1fr;
+  }
+
+  .deck-sim-head {
+    display: grid;
+  }
+
+  .deck-sim-summary article + article,
+  .deck-sim-row > strong,
+  .deck-sim-row > div + div {
+    border-left: 0;
+    border-top: 1px solid var(--line);
   }
 }
 
