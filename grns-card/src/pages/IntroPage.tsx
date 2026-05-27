@@ -15,7 +15,7 @@ export function IntroPage({
     <div className="intro-view">
       <div className="intro-copy">
         <p className="eyebrow">한국형 판타지 TCG</p>
-        <h1>괴력난신</h1>
+        <h1>갈래누리</h1>
         <p>
           사실 군자께서는 괴이와 용력, 반란과 귀신이 역사의 이면이라 하셨다.
         </p>

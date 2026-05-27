@@ -221,7 +221,7 @@ async function fetchJson<T>(file: string): Promise<T> {
 }
 
 function packName(packId: string, expansions: Expansion[]) {
-  if (packId === "base") return "기본";
+  if (packId === "base") return "괴력난신";
   return expansions.find((item) => item.id === packId)?.name ?? packId;
 }
 
@@ -671,7 +671,7 @@ function App() {
       .then(setRulebookMarkdown)
       .catch(() =>
         setRulebookMarkdown(
-          "# 괴력난신 룰북\n\n룰북 문서를 불러오지 못했습니다.",
+          "# 갈래누리 룰북\n\n룰북 문서를 불러오지 못했습니다.",
         ),
       );
   }, []);
@@ -938,7 +938,7 @@ function App() {
         >
           <img
             src={publicAssetPath(activeWorldDoc.href)}
-            alt="괴력난신 세계 지도"
+            alt="갈래누리 세계 지도"
           />
         </button>
       </figure>
@@ -975,7 +975,7 @@ function App() {
           type="button"
           onClick={() => navigateTab("intro")}
         >
-          괴력난신
+          갈래누리
         </button>
         <nav className="tab-nav" aria-label="페이지 탭">
           {tabs.map(({ id, label, icon: Icon }) => (
@@ -1577,7 +1577,7 @@ function App() {
             className="map-modal"
             role="dialog"
             aria-modal="true"
-            aria-label="괴력난신 세계 지도"
+            aria-label="갈래누리 세계 지도"
             onClick={(event) => event.stopPropagation()}
           >
             <button
@@ -1590,7 +1590,7 @@ function App() {
             </button>
             <img
               src={publicAssetPath(activeWorldDoc.href)}
-              alt="괴력난신 세계 지도"
+              alt="갈래누리 세계 지도"
             />
           </section>
         </div>

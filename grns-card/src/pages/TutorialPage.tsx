@@ -49,7 +49,7 @@ function deckShortName(name: string) {
   if (name.includes("수신")) return "수신덱";
   if (name.includes("신모")) return "신모덱";
   if (name.includes("선구자")) return "선구자덱";
-  return name.replace(/^첫 성문:\s*/, "").replace(/\s*고정 징집소$/, "");
+  return name.replace(/^옛이야기:\s*/, "").replace(/\s*고정 징집소$/, "");
 }
 
 function expandDeck(deck: StructureDeck, cards: PrintCard[]): PrintableDeck {
@@ -77,7 +77,7 @@ function expandCommonCards(cards: PrintCard[]): PrintableDeck {
   return {
     deck: {
       id: "st01-common-print",
-      name: "첫 성문: 공통 카드",
+      name: "옛이야기: 공통 카드",
       totalCards: printableCards.length,
       mainDeckCards: printableCards.length,
       entries: commonCardIds.map((cardId) => ({
@@ -138,7 +138,7 @@ export function TutorialPage({
         <section className="tutorial-print-head">
           <p className="eyebrow">deck print</p>
           <h2>덱 프린트</h2>
-          <p>출력할 첫 성문 덱 데이터가 없습니다.</p>
+          <p>출력할 옛이야기 덱 데이터가 없습니다.</p>
         </section>
       </div>
     );
@@ -149,7 +149,7 @@ export function TutorialPage({
       <section className="tutorial-print-head">
         <div>
           <p className="eyebrow">deck print</p>
-          <h2>첫 성문 덱 프린트</h2>
+          <h2>옛이야기 덱 프린트</h2>
           <p>
             덱을 선택하면 성주 1장과 징집소 39장을 한 번에 출력합니다.
             프린트용 카드 얼굴은 DB 화면과 같은 컴포넌트를 사용합니다.

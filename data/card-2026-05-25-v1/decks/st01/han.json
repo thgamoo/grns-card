@@ -1,11 +1,11 @@
 {
   "id": "st01-han-fixed-v1",
-  "name": "첫 성문: 검은 새 머리 선구자의 길 고정 징집소",
+  "name": "옛이야기: 검은 새 머리 선구자의 길 고정 징집소",
   "classId": "neutral",
   "faction": "중립",
   "className": "중립",
   "packId": "st01",
-  "packName": "첫 성문",
+  "packName": "옛이야기",
   "hero": {
     "cardId": "st01-h-003",
     "serial": "GRNS-ST01-0003",

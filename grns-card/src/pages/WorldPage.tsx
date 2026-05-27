@@ -24,7 +24,7 @@ export function WorldPage({
       <div className="world-head">
         <p className="eyebrow">world</p>
         <div className="world-title-row">
-          <h2>괴력난신 세계서</h2>
+          <h2>갈래누리 세계서</h2>
           <button
             type="button"
             className={showPrivateDocs ? "world-private-toggle active" : "world-private-toggle"}
