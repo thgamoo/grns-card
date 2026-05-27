@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>옛이야기 스타터 설계 초안</title>
+    <style>
+      body { margin: 0; background: #f5f2ea; color: #111; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif; line-height: 1.75; }
+      main { max-width: 920px; margin: 0 auto; padding: 48px 24px 80px; }
+      h1, h2, h3 { line-height: 1.25; letter-spacing: 0; }
+      h1 { font-size: clamp(2rem, 5vw, 3.6rem); }
+      h2 { margin-top: 3rem; border-top: 1px solid #111; padding-top: 1.3rem; }
+      h3 { margin-top: 2rem; }
+      a { color: inherit; }
+      code { background: #fff; border: 1px solid #d4d4d4; padding: 0.1em 0.35em; border-radius: 4px; }
+      pre { overflow: auto; background: #fff; border: 1px solid #111; padding: 1rem; }
+      table { width: 100%; border-collapse: collapse; margin: 1rem 0 2rem; background: #fff; }
+      th, td { border: 1px solid #111; padding: 0.55rem 0.7rem; text-align: left; vertical-align: top; }
+      th { background: #e5e7eb; }
+      .doc-nav { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem; }
+      .doc-nav a { border: 1px solid #111; background: #fff; padding: 0.35rem 0.7rem; text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="doc-nav" aria-label="문서">
+        <a href="./index.html">문서 홈</a>
+        <a href="./rulebook.html">룰북</a>
+        <a href="./keywords.html">키워드</a>
+        <a href="./card-design.html">카드/클래스 설계</a>
+        <a href="./card-db-plan.html">카드 DB 운영</a>
+        <a href="../card-db.html">카드 DB로 돌아가기</a>
+      </nav>
+<h1>옛이야기 스타터 설계 초안</h1>
+<p>이 문서는 <code>옛이야기</code> 초보자용 카드풀을 고정 덱 순서 튜토리얼로 운용하기 위한 초안이다.</p>
+<p>룰 기준점:</p>
+<ul>
+<li>덱은 성주 1장을 포함해 40장으로 구성한다. 성주를 배치한 뒤 징집소 고정 순서는 39장으로 본다.</li>
+<li>전쟁 시작 때 성주를 비공개로 배치한다.</li>
+<li>시작 준비에서는 문지기 4장과 시작 군영 5장이 결정된다. 이 스타터에서는 고정 덱 순서를 쓰므로 처음 9장을 보고 문지기 4장과 군영 5장을 나누는 퍼즐로 다룬다.</li>
+<li>선공은 첫 턴 징집 페이즈에 징집하지 않는다.</li>
+<li>각 턴 보급병 배치 페이즈에 군영 카드 1장 또는 0장을 후방기지에 놓을 수 있다.</li>
+<li>이 설계의 시뮬레이션 가정은 1~7턴 동안 매턴 가능한 한 보급병 1장을 내려놓는 것이다.</li>
+<li>[전투광]은 공격 선언 시 보급을 요구하지 않는다.</li>
+<li>[매복]은 방어자가 상대 공격 선언 후 군영에서 전장에 배치해 처리한다.</li>
+<li>[문지기 등장]은 비공개 문지기가 공개될 때 처리한다.</li>
+<li>[자체보급]은 해당 후방기지 카드를 전진기지로 옮기며 처리한다.</li>
+</ul>
+<h2>카드풀 37종</h2>
+<p>성주는 ST01의 맨 앞 번호에 고정한다. <code>GRNS-ST01-0001</code>, <code>GRNS-ST01-0002</code>, <code>GRNS-ST01-0003</code>는 성주 카드다. 성주를 제외한 카드는 코스트 오름차순으로 정렬해 시리얼을 다시 부여했다.</p>
+<ul>
+<li>수신의 길 덱 총량은 성주 1장과 징집소 27장으로 총 28장이다.</li>
+<li>신모의 길 덱 총량은 성주 1장과 징집소 39장으로 총 40장이다.</li>
+<li>검은 선구자의 길 덱 총량은 성주 1장과 징집소 39장으로 총 40장이다.</li>
+<li>성주 3종: 전쟁 시작 때 성주로 배치한다.</li>
+<li>공용 13종: 여러 덱이 함께 사용할 수 있다.</li>
+<li>수신의 길 전용 4종: <code>성급한 수신의 화신</code> 덱이 주로 사용한다.</li>
+<li>신모의 길 전용 9종: <code>인사하는 신모의 우상</code> 덱이 주로 사용한다.</li>
+<li>검은 선구자의 길 전용 8종: <code>검은 선구자</code> 덱이 주로 사용한다.</li>
+</ul>
+<p><code>C/R/I/E/H</code> 코드는 설계 중 역할을 빠르게 구분하기 위한 임시 코드다. 실제 카드 식별자는 모두 <code>GRNS-ST01-*</code> 시리얼을 사용한다.</p>
+<h3>성주 3종</h3>
+<table>
+<tr><th>코드</th><th>시리얼</th><th>카드명</th><th>허기/힘</th><th>종족</th><th>효과</th><th>역할</th></tr>
+<tr><td>H01</td><td>GRNS-ST01-0001</td><td>성급한 수신의 화신</td><td>8/8</td><td></td><td>이 카드는 &lt;성주&gt;에만 배치할 수 있다.&lt;br/&gt;이 카드는 앞면으로 배치되어 시작한다.&lt;br/&gt;이 성주를 사용하는 영령 _(플레이어)_ 이 선공을 가져간다.&lt;br/&gt;양쪽 영령이 모두 &lt;성급한 수신의 화신&gt;을 사용한다면 이 효과는 적용하지 않는다.</td><td></td></tr>
+<tr><td>H02</td><td>GRNS-ST01-0002</td><td>인사하는 신모의 우상</td><td>8/8</td><td></td><td>이 카드는 &lt;성주&gt;에만 배치할 수 있다.&lt;br/&gt;[성주등장] 이 카드 공개 시 상대 영령과 인사합니다&lt;br/&gt;&lt;br/&gt;_[성주등장]은 성주가 뒤집어 질 때 반드시 효과를 이행합니다_</td><td></td></tr>
+<tr><td>H03</td><td>GRNS-ST01-0003</td><td>검은 선구자</td><td>8/8</td><td>도구</td><td>[성주등장] 내 매장지로 간 &lt;짐승&gt; 카드를 &lt;징집소&gt; 맨 아래로 되돌린다.</td><td></td></tr>
+</table>
+<h3>공용 13종</h3>
+<table>
+<tr><th>코드</th><th>시리얼</th><th>카드명</th><th>허기/힘</th><th>종족</th><th>효과</th><th>역할</th></tr>
+<tr><td>C01</td><td>GRNS-ST01-0005</td><td>무시무시한 고양이</td><td>1/1</td><td>짐승</td><td>[매복] 공격하는 카드가 &lt;짐승&gt; 카드인 경우 힘 -2.</td><td></td></tr>
+<tr><td>C03</td><td>GRNS-ST01-0006</td><td>전쟁선전꾼 여우</td><td>1/1</td><td>짐승</td><td>[자체보급] 군영에서 [공개 1]. 그렇게 했다면 징집 +1.</td><td></td></tr>
+<tr><td>C09</td><td>GRNS-ST01-0007</td><td>암살전문 아기곰</td><td>1/1</td><td>짐승</td><td>[매복] 상대 전장의 &lt;짐승&gt; 카드 1장을 지정한다. 상대는 소강 페이즈에 징집소 아래부터 [희생 3]을 하거나 지정한 카드를 매장지로 이동해야 한다.</td><td></td></tr>
+<tr><td>C02</td><td>GRNS-ST01-0016</td><td>호랑이 그림자</td><td>2/2</td><td>도깨비</td><td>[매복] 내 &lt;짐승&gt; 카드 1장을 지정한다. 이번 전투 동안 힘 +2.</td><td></td></tr>
+<tr><td>C04</td><td>GRNS-ST01-0017</td><td>작은 호랑이</td><td>2/2</td><td>짐승</td><td>[전투광]</td><td></td></tr>
+<tr><td>C05</td><td>GRNS-ST01-0018</td><td>장난꾸러기 여우</td><td>2/1</td><td>짐승</td><td>[매복] 이 카드를 포함한 내 &lt;중립&gt; 카드 1장을 지정한다. 이번 전투에서 공격 대상을 그 카드로 바꾼다.</td><td></td></tr>
+<tr><td>C12</td><td>GRNS-ST01-0019</td><td>땅에 떨어진 구름</td><td>2/0</td><td>음식</td><td>효과 없음.</td><td></td></tr>
+<tr><td>C06</td><td>GRNS-ST01-0025</td><td>상한 알</td><td>3/1</td><td>알</td><td>효과 없음.</td><td></td></tr>
+<tr><td>C07</td><td>GRNS-ST01-0026</td><td>허기진 산군</td><td>3/4</td><td>짐승</td><td>[출정] 군영에서 [희생 1]</td><td></td></tr>
+<tr><td>C08</td><td>GRNS-ST01-0027</td><td>살아움직이는 떡</td><td>3/3</td><td>도깨비</td><td>효과 없음.</td><td></td></tr>
+<tr><td>C11</td><td>GRNS-ST01-0028</td><td>매우매우 쓴 쑥</td><td>3/2</td><td>도깨비</td><td>[후방기지] 모든 전장의 &lt;짐승&gt; 카드 [약화 1]</td><td></td></tr>
+<tr><td>C10</td><td>GRNS-ST01-0032</td><td>욕심 많은 곰</td><td>4/2</td><td>도깨비</td><td>[출정] 내 전장에 이 카드 외에 &lt;짐승&gt; 카드가 존재할 경우 징집 +3</td><td></td></tr>
+<tr><td>C13</td><td>GRNS-ST01-0037</td><td>거대한 마늘</td><td>8/8</td><td>도구</td><td>효과 없음.</td><td></td></tr>
+</table>
+<h3>수신의 길 전용 4종</h3>
+<table>
+<tr><th>코드</th><th>시리얼</th><th>카드명</th><th>허기/힘</th><th>종족</th><th>효과</th><th>역할</th></tr>
+<tr><td>R02</td><td>GRNS-ST01-0004</td><td>겁이 많은 고양이</td><td>0/0</td><td>짐승</td><td>[퇴각] 내 전장의 다른 &lt;중립&gt; 카드 1장을 지정한다. 이 턴 중 힘+1</td><td></td></tr>
+<tr><td>R03</td><td>GRNS-ST01-0008</td><td>광신도 고양이</td><td>1/1</td><td>짐승</td><td>[퇴출] 내 &lt;중립&gt; 유닛을 1장 지정한다. 다음 전투에서 힘+2</td><td></td></tr>
+<tr><td>R01</td><td>GRNS-ST01-0029</td><td>날뛰는 호랑무늬 고양이</td><td>3/3</td><td>짐승</td><td>[출정] 징집소 맨아래부터 [희생 1]&lt;br/&gt;[전투광]</td><td></td></tr>
+<tr><td>R04</td><td>GRNS-ST01-0030</td><td>수신찬미 범</td><td>3/6</td><td>짐승</td><td>[출정] 내 징집소 맨 아래에서 [희생 3]&lt;br/&gt;이 카드는 공격할 수 없다.</td><td></td></tr>
+</table>
+<h3>신모의 길 전용 9종</h3>
+<table>
+<tr><th>코드</th><th>시리얼</th><th>카드명</th><th>허기/힘</th><th>종족</th><th>효과</th><th>역할</th></tr>
+<tr><td>I01</td><td>GRNS-ST01-0009</td><td>선봉 아기곰</td><td>1/1</td><td>짐승</td><td>이 카드는 &lt;보급&gt; 없이 &lt;장악&gt;할 수 있다.</td><td></td></tr>
+<tr><td>I04</td><td>GRNS-ST01-0010</td><td>곰 주술사</td><td>1/1</td><td>인간</td><td>[전진기지] 내 &lt;짐승&gt; 카드가 문지기를 공격할 때 힘 +2.</td><td></td></tr>
+<tr><td>I05</td><td>GRNS-ST01-0011</td><td>반격하는 이리</td><td>1/1</td><td>짐승</td><td>[매복] 상대의 뒷면인 문지기 1장을 지정한다. 앞면으로 뒤집는다.</td><td></td></tr>
+<tr><td>I07</td><td>GRNS-ST01-0012</td><td>호랑이 주술사</td><td>1/1</td><td>인간</td><td>[전진기지] 내 &lt;짐승&gt; 카드 공격 시 힘 +1</td><td></td></tr>
+<tr><td>I02</td><td>GRNS-ST01-0020</td><td>문지기 아기곰</td><td>2/2</td><td>짐승</td><td>이 카드는 공격할 수 없다. 문지기로 배치할 경우 [상시] 힘 +2.</td><td></td></tr>
+<tr><td>I03</td><td>GRNS-ST01-0021</td><td>명사수 아기곰</td><td>2/2</td><td>짐승</td><td>[상시] 내 문지기 힘 +1.</td><td></td></tr>
+<tr><td>I09</td><td>GRNS-ST01-0022</td><td>척후전문 곰</td><td>2/1</td><td>인간</td><td>이 카드가 공개된 &lt;짐승&gt; 문지기를 공격할 때 힘 +3. 전투 중 상대 문지기가 매장지로 이동하였다면 그 자리를 &lt;장악&gt;할 수 있다.</td><td></td></tr>
+<tr><td>I06</td><td>GRNS-ST01-0033</td><td>광전사 범</td><td>4/7</td><td>짐승</td><td>&lt;징집소&gt; 맨 아래에서부터 [희생 5].</td><td></td></tr>
+<tr><td>I08</td><td>GRNS-ST01-0034</td><td>성난 곰</td><td>4/4</td><td>인간</td><td>[매복] 내 다른 &lt;짐승&gt; 카드 1장을 지정한다. 그 카드를 매장지로 이동한다. 매장지로 이동했다면 상대의 공개 문지기를 매장지로 이동한다.</td><td></td></tr>
+</table>
+<h3>검은 선구자의 길 전용 8종</h3>
+<table>
+<tr><th>코드</th><th>시리얼</th><th>카드명</th><th>허기/힘</th><th>종족</th><th>효과</th><th>역할</th></tr>
+<tr><td>E01</td><td>GRNS-ST01-0013</td><td>귀신 까마귀</td><td>1/1</td><td>귀신/짐승</td><td>[단말마] 내 &lt;징집소&gt; 맨 아래에서 &lt;징집&gt; +1</td><td></td></tr>
+<tr><td>E02</td><td>GRNS-ST01-0014</td><td>외눈 까마귀</td><td>1/2</td><td>짐승</td><td>[단말마] 내 &lt;군영&gt;에서 &lt;희생 1&gt;</td><td></td></tr>
+<tr><td>E06</td><td>GRNS-ST01-0015</td><td>까마귀 주술사</td><td>1/1</td><td>인간</td><td>내 [단말마]를 가진 모든 카드의 힘 +1</td><td></td></tr>
+<tr><td>E03</td><td>GRNS-ST01-0023</td><td>날쌘 송골매</td><td>2/2</td><td>짐승</td><td>이 카드는 &lt;보급&gt; 없이 &lt;이동&gt; 가능하다. &lt;짐승&gt; 공격 시 힘 +2.</td><td></td></tr>
+<tr><td>E08</td><td>GRNS-ST01-0024</td><td>숭배받는 참매</td><td>2/2</td><td>짐승</td><td>이 카드는 &lt;이동&gt;한 턴에 힘 +2를 얻는다.</td><td></td></tr>
+<tr><td>E04</td><td>GRNS-ST01-0031</td><td>다리 셋의 까마귀</td><td>3/3</td><td>짐승</td><td>[단말마] 내 &lt;징집소&gt; 맨 아래에서 &lt;징집&gt; +3. 그 중 &lt;짐승&gt;이 아닌 카드는 &lt;매장지&gt;로 이동한다.</td><td></td></tr>
+<tr><td>E05</td><td>GRNS-ST01-0035</td><td>마하수리 부엉이</td><td>4/6</td><td>짐승</td><td>[단말마] 내 &lt;징집소&gt; 맨 아래에서 [희생 3]</td><td></td></tr>
+<tr><td>E07</td><td>GRNS-ST01-0036</td><td>공포의 솔부엉이</td><td>5/8</td><td>짐승</td><td>[단말마] 내 &lt;군영&gt;의 모든 카드를 매장지로 이동한다.</td><td></td></tr>
+</table>
+<h2>덱 구성</h2>
+<p>각 덱은 성주 1장과 징집소 고정 순서로 구성한다.</p>
+<h3>수신의 길</h3>
+<ul>
+<li>성주: GRNS-ST01-0001 성급한 수신의 화신</li>
+<li>기본 플랜: 전쟁선전꾼 여우로 징집을 당기고, 수신 전용 공격 카드로 문지기/성주 압박을 익힌다.</li>
+</ul>
+<h3>신모의 길</h3>
+<ul>
+<li>성주: GRNS-ST01-0002 인사하는 신모의 우상</li>
+<li>기본 승리 플랜: 붉은 눈의 문지기와 궁사로 문지기 힘을 세우고, 반격하는 이리로 상대 뒷면 문지기를 공개한 뒤 부관으로 문지기 공격을 밀어준다.</li>
+<li>세컨드 플랜: 광전사 범과 척후병으로 문지기 돌파 후 성주 타격 또는 장악을 노린다.</li>
+</ul>
+<h3>검은 선구자의 길</h3>
+<ul>
+<li>성주: GRNS-ST01-0003 검은 선구자</li>
+<li>기본 승리 플랜: [단말마] 카드로 징집소 맨 아래에서 다시 끌어오고, 성주 등장으로 매장지의 &lt;짐승&gt;을 되돌리는 순환을 익힌다.</li>
+</ul>
+<h3>수신의 길 28장</h3>
+<p>성주 1장과 징집소 27장으로 총 28장이다.</p>
+<table>
+<tr><th>구분</th><th>시리얼</th><th>카드명</th><th>장수</th></tr>
+<tr><td>성주</td><td>GRNS-ST01-0001</td><td>성급한 수신의 화신</td><td>1</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0005</td><td>무시무시한 고양이</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0016</td><td>호랑이 그림자</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0006</td><td>전쟁선전꾼 여우</td><td>3</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0017</td><td>작은 호랑이</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0018</td><td>장난꾸러기 여우</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0025</td><td>상한 알</td><td>3</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0026</td><td>허기진 산군</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0027</td><td>살아움직이는 떡</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0029</td><td>날뛰는 호랑무늬 고양이</td><td>3</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0004</td><td>겁이 많은 고양이</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0008</td><td>광신도 고양이</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0030</td><td>수신찬미 범</td><td>2</td></tr>
+</table>
+<p>징집소 고정 순서:</p>
+<table>
+<tr><th>순서</th><th>코드</th><th>시리얼</th><th>카드명</th></tr>
+<tr><td>1</td><td>C01</td><td>GRNS-ST01-0005</td><td>무시무시한 고양이</td></tr>
+<tr><td>2</td><td>C02</td><td>GRNS-ST01-0016</td><td>호랑이 그림자</td></tr>
+<tr><td>3</td><td>C07</td><td>GRNS-ST01-0026</td><td>허기진 산군</td></tr>
+<tr><td>4</td><td>R01</td><td>GRNS-ST01-0029</td><td>날뛰는 호랑무늬 고양이</td></tr>
+<tr><td>5</td><td>C03</td><td>GRNS-ST01-0006</td><td>전쟁선전꾼 여우</td></tr>
+<tr><td>6</td><td>C07</td><td>GRNS-ST01-0026</td><td>허기진 산군</td></tr>
+<tr><td>7</td><td>R01</td><td>GRNS-ST01-0029</td><td>날뛰는 호랑무늬 고양이</td></tr>
+<tr><td>8</td><td>C05</td><td>GRNS-ST01-0018</td><td>장난꾸러기 여우</td></tr>
+<tr><td>9</td><td>C04</td><td>GRNS-ST01-0017</td><td>작은 호랑이</td></tr>
+<tr><td>10</td><td>C08</td><td>GRNS-ST01-0027</td><td>살아움직이는 떡</td></tr>
+<tr><td>11</td><td>R02</td><td>GRNS-ST01-0004</td><td>겁이 많은 고양이</td></tr>
+<tr><td>12</td><td>R04</td><td>GRNS-ST01-0030</td><td>수신찬미 범</td></tr>
+<tr><td>13</td><td>C03</td><td>GRNS-ST01-0006</td><td>전쟁선전꾼 여우</td></tr>
+<tr><td>14</td><td>C01</td><td>GRNS-ST01-0005</td><td>무시무시한 고양이</td></tr>
+<tr><td>15</td><td>C02</td><td>GRNS-ST01-0016</td><td>호랑이 그림자</td></tr>
+<tr><td>16</td><td>C03</td><td>GRNS-ST01-0006</td><td>전쟁선전꾼 여우</td></tr>
+<tr><td>17</td><td>C04</td><td>GRNS-ST01-0017</td><td>작은 호랑이</td></tr>
+<tr><td>18</td><td>C05</td><td>GRNS-ST01-0018</td><td>장난꾸러기 여우</td></tr>
+<tr><td>19</td><td>R01</td><td>GRNS-ST01-0029</td><td>날뛰는 호랑무늬 고양이</td></tr>
+<tr><td>20</td><td>C08</td><td>GRNS-ST01-0027</td><td>살아움직이는 떡</td></tr>
+<tr><td>21</td><td>R02</td><td>GRNS-ST01-0004</td><td>겁이 많은 고양이</td></tr>
+<tr><td>22</td><td>R03</td><td>GRNS-ST01-0008</td><td>광신도 고양이</td></tr>
+<tr><td>23</td><td>R03</td><td>GRNS-ST01-0008</td><td>광신도 고양이</td></tr>
+<tr><td>24</td><td>R04</td><td>GRNS-ST01-0030</td><td>수신찬미 범</td></tr>
+<tr><td>25</td><td>C06</td><td>GRNS-ST01-0025</td><td>상한 알</td></tr>
+<tr><td>26</td><td>C06</td><td>GRNS-ST01-0025</td><td>상한 알</td></tr>
+<tr><td>27</td><td>C06</td><td>GRNS-ST01-0025</td><td>상한 알</td></tr>
+</table>
+<h3>신모의 길 40장</h3>
+<p>성주 1장과 징집소 39장으로 총 40장이다.</p>
+<table>
+<tr><th>구분</th><th>시리얼</th><th>카드명</th><th>장수</th></tr>
+<tr><td>성주</td><td>GRNS-ST01-0002</td><td>인사하는 신모의 우상</td><td>1</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0005</td><td>무시무시한 고양이</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0016</td><td>호랑이 그림자</td><td>3</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0006</td><td>전쟁선전꾼 여우</td><td>3</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0017</td><td>작은 호랑이</td><td>1</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0018</td><td>장난꾸러기 여우</td><td>1</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0025</td><td>상한 알</td><td>3</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0026</td><td>허기진 산군</td><td>1</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0027</td><td>살아움직이는 떡</td><td>1</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0029</td><td>날뛰는 호랑무늬 고양이</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0009</td><td>선봉 아기곰</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0020</td><td>문지기 아기곰</td><td>3</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0021</td><td>명사수 아기곰</td><td>3</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0007</td><td>암살전문 아기곰</td><td>1</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0010</td><td>곰 주술사</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0011</td><td>반격하는 이리</td><td>3</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0033</td><td>광전사 범</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0012</td><td>호랑이 주술사</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0034</td><td>성난 곰</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0022</td><td>척후전문 곰</td><td>2</td></tr>
+</table>
+<p>징집소 고정 순서:</p>
+<table>
+<tr><th>순서</th><th>코드</th><th>시리얼</th><th>카드명</th></tr>
+<tr><td>1</td><td>I02</td><td>GRNS-ST01-0020</td><td>문지기 아기곰</td></tr>
+<tr><td>2</td><td>I03</td><td>GRNS-ST01-0021</td><td>명사수 아기곰</td></tr>
+<tr><td>3</td><td>R01</td><td>GRNS-ST01-0029</td><td>날뛰는 호랑무늬 고양이</td></tr>
+<tr><td>4</td><td>I05</td><td>GRNS-ST01-0011</td><td>반격하는 이리</td></tr>
+<tr><td>5</td><td>C03</td><td>GRNS-ST01-0006</td><td>전쟁선전꾼 여우</td></tr>
+<tr><td>6</td><td>R01</td><td>GRNS-ST01-0029</td><td>날뛰는 호랑무늬 고양이</td></tr>
+<tr><td>7</td><td>I08</td><td>GRNS-ST01-0034</td><td>성난 곰</td></tr>
+<tr><td>8</td><td>C01</td><td>GRNS-ST01-0005</td><td>무시무시한 고양이</td></tr>
+<tr><td>9</td><td>C02</td><td>GRNS-ST01-0016</td><td>호랑이 그림자</td></tr>
+<tr><td>10</td><td>I01</td><td>GRNS-ST01-0009</td><td>선봉 아기곰</td></tr>
+<tr><td>11</td><td>I02</td><td>GRNS-ST01-0020</td><td>문지기 아기곰</td></tr>
+<tr><td>12</td><td>I03</td><td>GRNS-ST01-0021</td><td>명사수 아기곰</td></tr>
+<tr><td>13</td><td>I05</td><td>GRNS-ST01-0011</td><td>반격하는 이리</td></tr>
+<tr><td>14</td><td>C08</td><td>GRNS-ST01-0027</td><td>살아움직이는 떡</td></tr>
+<tr><td>15</td><td>I07</td><td>GRNS-ST01-0012</td><td>호랑이 주술사</td></tr>
+<tr><td>16</td><td>C03</td><td>GRNS-ST01-0006</td><td>전쟁선전꾼 여우</td></tr>
+<tr><td>17</td><td>I04</td><td>GRNS-ST01-0010</td><td>곰 주술사</td></tr>
+<tr><td>18</td><td>I06</td><td>GRNS-ST01-0033</td><td>광전사 범</td></tr>
+<tr><td>19</td><td>I09</td><td>GRNS-ST01-0022</td><td>척후전문 곰</td></tr>
+<tr><td>20</td><td>C02</td><td>GRNS-ST01-0016</td><td>호랑이 그림자</td></tr>
+<tr><td>21</td><td>C05</td><td>GRNS-ST01-0018</td><td>장난꾸러기 여우</td></tr>
+<tr><td>22</td><td>I01</td><td>GRNS-ST01-0009</td><td>선봉 아기곰</td></tr>
+<tr><td>23</td><td>I02</td><td>GRNS-ST01-0020</td><td>문지기 아기곰</td></tr>
+<tr><td>24</td><td>I03</td><td>GRNS-ST01-0021</td><td>명사수 아기곰</td></tr>
+<tr><td>25</td><td>C09</td><td>GRNS-ST01-0007</td><td>암살전문 아기곰</td></tr>
+<tr><td>26</td><td>I04</td><td>GRNS-ST01-0010</td><td>곰 주술사</td></tr>
+<tr><td>27</td><td>I05</td><td>GRNS-ST01-0011</td><td>반격하는 이리</td></tr>
+<tr><td>28</td><td>C07</td><td>GRNS-ST01-0026</td><td>허기진 산군</td></tr>
+<tr><td>29</td><td>I06</td><td>GRNS-ST01-0033</td><td>광전사 범</td></tr>
+<tr><td>30</td><td>I07</td><td>GRNS-ST01-0012</td><td>호랑이 주술사</td></tr>
+<tr><td>31</td><td>I08</td><td>GRNS-ST01-0034</td><td>성난 곰</td></tr>
+<tr><td>32</td><td>I09</td><td>GRNS-ST01-0022</td><td>척후전문 곰</td></tr>
+<tr><td>33</td><td>C01</td><td>GRNS-ST01-0005</td><td>무시무시한 고양이</td></tr>
+<tr><td>34</td><td>C02</td><td>GRNS-ST01-0016</td><td>호랑이 그림자</td></tr>
+<tr><td>35</td><td>C03</td><td>GRNS-ST01-0006</td><td>전쟁선전꾼 여우</td></tr>
+<tr><td>36</td><td>C04</td><td>GRNS-ST01-0017</td><td>작은 호랑이</td></tr>
+<tr><td>37</td><td>C06</td><td>GRNS-ST01-0025</td><td>상한 알</td></tr>
+<tr><td>38</td><td>C06</td><td>GRNS-ST01-0025</td><td>상한 알</td></tr>
+<tr><td>39</td><td>C06</td><td>GRNS-ST01-0025</td><td>상한 알</td></tr>
+</table>
+<h3>검은 선구자의 길 40장</h3>
+<p>성주 1장과 징집소 39장으로 총 40장이다.</p>
+<table>
+<tr><th>구분</th><th>시리얼</th><th>카드명</th><th>장수</th></tr>
+<tr><td>성주</td><td>GRNS-ST01-0003</td><td>검은 선구자</td><td>1</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0005</td><td>무시무시한 고양이</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0016</td><td>호랑이 그림자</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0006</td><td>전쟁선전꾼 여우</td><td>3</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0017</td><td>작은 호랑이</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0018</td><td>장난꾸러기 여우</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0025</td><td>상한 알</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0026</td><td>허기진 산군</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0027</td><td>살아움직이는 떡</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0013</td><td>귀신 까마귀</td><td>3</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0014</td><td>외눈 까마귀</td><td>3</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0023</td><td>날쌘 송골매</td><td>3</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0031</td><td>다리 셋의 까마귀</td><td>3</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0035</td><td>마하수리 부엉이</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0015</td><td>까마귀 주술사</td><td>3</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0036</td><td>공포의 솔부엉이</td><td>2</td></tr>
+<tr><td>징집소</td><td>GRNS-ST01-0024</td><td>숭배받는 참매</td><td>3</td></tr>
+</table>
+<p>징집소 고정 순서:</p>
+<table>
+<tr><th>순서</th><th>코드</th><th>시리얼</th><th>카드명</th></tr>
+<tr><td>1</td><td>E01</td><td>GRNS-ST01-0013</td><td>귀신 까마귀</td></tr>
+<tr><td>2</td><td>E02</td><td>GRNS-ST01-0014</td><td>외눈 까마귀</td></tr>
+<tr><td>3</td><td>C03</td><td>GRNS-ST01-0006</td><td>전쟁선전꾼 여우</td></tr>
+<tr><td>4</td><td>E06</td><td>GRNS-ST01-0015</td><td>까마귀 주술사</td></tr>
+<tr><td>5</td><td>C01</td><td>GRNS-ST01-0005</td><td>무시무시한 고양이</td></tr>
+<tr><td>6</td><td>E04</td><td>GRNS-ST01-0031</td><td>다리 셋의 까마귀</td></tr>
+<tr><td>7</td><td>E03</td><td>GRNS-ST01-0023</td><td>날쌘 송골매</td></tr>
+<tr><td>8</td><td>E01</td><td>GRNS-ST01-0013</td><td>귀신 까마귀</td></tr>
+<tr><td>9</td><td>C02</td><td>GRNS-ST01-0016</td><td>호랑이 그림자</td></tr>
+<tr><td>10</td><td>E02</td><td>GRNS-ST01-0014</td><td>외눈 까마귀</td></tr>
+<tr><td>11</td><td>C04</td><td>GRNS-ST01-0017</td><td>작은 호랑이</td></tr>
+<tr><td>12</td><td>C05</td><td>GRNS-ST01-0018</td><td>장난꾸러기 여우</td></tr>
+<tr><td>13</td><td>E08</td><td>GRNS-ST01-0024</td><td>숭배받는 참매</td></tr>
+<tr><td>14</td><td>E06</td><td>GRNS-ST01-0015</td><td>까마귀 주술사</td></tr>
+<tr><td>15</td><td>C07</td><td>GRNS-ST01-0026</td><td>허기진 산군</td></tr>
+<tr><td>16</td><td>E04</td><td>GRNS-ST01-0031</td><td>다리 셋의 까마귀</td></tr>
+<tr><td>17</td><td>E05</td><td>GRNS-ST01-0035</td><td>마하수리 부엉이</td></tr>
+<tr><td>18</td><td>C03</td><td>GRNS-ST01-0006</td><td>전쟁선전꾼 여우</td></tr>
+<tr><td>19</td><td>E01</td><td>GRNS-ST01-0013</td><td>귀신 까마귀</td></tr>
+<tr><td>20</td><td>C06</td><td>GRNS-ST01-0025</td><td>상한 알</td></tr>
+<tr><td>21</td><td>E02</td><td>GRNS-ST01-0014</td><td>외눈 까마귀</td></tr>
+<tr><td>22</td><td>E03</td><td>GRNS-ST01-0023</td><td>날쌘 송골매</td></tr>
+<tr><td>23</td><td>E08</td><td>GRNS-ST01-0024</td><td>숭배받는 참매</td></tr>
+<tr><td>24</td><td>C01</td><td>GRNS-ST01-0005</td><td>무시무시한 고양이</td></tr>
+<tr><td>25</td><td>E06</td><td>GRNS-ST01-0015</td><td>까마귀 주술사</td></tr>
+<tr><td>26</td><td>E04</td><td>GRNS-ST01-0031</td><td>다리 셋의 까마귀</td></tr>
+<tr><td>27</td><td>E07</td><td>GRNS-ST01-0036</td><td>공포의 솔부엉이</td></tr>
+<tr><td>28</td><td>C08</td><td>GRNS-ST01-0027</td><td>살아움직이는 떡</td></tr>
+<tr><td>29</td><td>C02</td><td>GRNS-ST01-0016</td><td>호랑이 그림자</td></tr>
+<tr><td>30</td><td>C03</td><td>GRNS-ST01-0006</td><td>전쟁선전꾼 여우</td></tr>
+<tr><td>31</td><td>C04</td><td>GRNS-ST01-0017</td><td>작은 호랑이</td></tr>
+<tr><td>32</td><td>C05</td><td>GRNS-ST01-0018</td><td>장난꾸러기 여우</td></tr>
+<tr><td>33</td><td>E03</td><td>GRNS-ST01-0023</td><td>날쌘 송골매</td></tr>
+<tr><td>34</td><td>C06</td><td>GRNS-ST01-0025</td><td>상한 알</td></tr>
+<tr><td>35</td><td>C07</td><td>GRNS-ST01-0026</td><td>허기진 산군</td></tr>
+<tr><td>36</td><td>E05</td><td>GRNS-ST01-0035</td><td>마하수리 부엉이</td></tr>
+<tr><td>37</td><td>E08</td><td>GRNS-ST01-0024</td><td>숭배받는 참매</td></tr>
+<tr><td>38</td><td>E07</td><td>GRNS-ST01-0036</td><td>공포의 솔부엉이</td></tr>
+<tr><td>39</td><td>C08</td><td>GRNS-ST01-0027</td><td>살아움직이는 떡</td></tr>
+</table>
+<h2>초기 9장 준비 루트</h2>
+<p>수신의 길 첫 9장은 <code>C01 C02 C07 R01 C03 C07 R01 C05 C04</code>다.</p>
+<pre><code>
+flowchart TD
+  S["수신 초기 9장&lt;br/&gt;C01 C02 C07 R01 C03 C07 R01 C05 C04"] --&gt; A{"기본 정답 배치"}
+  A --&gt; G1["문지기 4장&lt;br/&gt;C01 고양이&lt;br/&gt;C07 산군&lt;br/&gt;R01 귀신&lt;br/&gt;C07 산군"]
+  A --&gt; H1["군영 5장&lt;br/&gt;C02 호랑이 그림자&lt;br/&gt;C03 전쟁선전꾼&lt;br/&gt;R01 귀신&lt;br/&gt;C05 장난꾸러기 여우&lt;br/&gt;C04 날뛰는 이리"]
+  S --&gt; B{"공격 우선 배치"}
+  B --&gt; G2["문지기 4장&lt;br/&gt;C01 고양이&lt;br/&gt;C07 산군&lt;br/&gt;R01 귀신&lt;br/&gt;C05 여우"]
+  B --&gt; H2["군영 5장&lt;br/&gt;C02 그림자&lt;br/&gt;C03 전쟁선전꾼&lt;br/&gt;C07 산군&lt;br/&gt;R01 귀신&lt;br/&gt;C04 이리"]
+  S --&gt; C{"방어 우선 배치"}
+  C --&gt; G3["문지기 4장&lt;br/&gt;C01 고양이&lt;br/&gt;C05 여우&lt;br/&gt;C07 산군&lt;br/&gt;R01 귀신"]
+  C --&gt; H3["군영 5장&lt;br/&gt;C02 그림자&lt;br/&gt;C03 전쟁선전꾼&lt;br/&gt;C07 산군&lt;br/&gt;R01 귀신&lt;br/&gt;C04 이리"]
+</code></pre>
+<p>신모의 길 첫 9장은 <code>I02 I03 R01 I05 C03 R01 I08 C01 C02</code>다.</p>
+<pre><code>
+flowchart TD
+  S["신모 초기 9장&lt;br/&gt;I02 I03 R01 I05 C03 R01 I08 C01 C02"] --&gt; A{"기본 정답 배치"}
+  A --&gt; G1["문지기 4장&lt;br/&gt;I02 붉은 눈의 문지기&lt;br/&gt;I03 붉은 눈의 궁사&lt;br/&gt;R01 흩어진 귀신&lt;br/&gt;I08 검은 숨 문지기"]
+  A --&gt; H1["군영 5장&lt;br/&gt;I05 반격병&lt;br/&gt;C03 전쟁선전꾼&lt;br/&gt;R01 흩어진 귀신&lt;br/&gt;C01 고양이&lt;br/&gt;C02 호랑이 그림자"]
+  S --&gt; B{"매복 보존 배치"}
+  B --&gt; G2["문지기 4장&lt;br/&gt;I02 문지기&lt;br/&gt;I03 궁사&lt;br/&gt;R01 귀신&lt;br/&gt;C01 고양이"]
+  B --&gt; H2["군영 5장&lt;br/&gt;I05 반격병&lt;br/&gt;C03 전쟁선전꾼&lt;br/&gt;R01 귀신&lt;br/&gt;I08 검은 숨 문지기&lt;br/&gt;C02 그림자"]
+  S --&gt; C{"반격 우선 배치"}
+  C --&gt; G3["문지기 4장&lt;br/&gt;I02 문지기&lt;br/&gt;I03 궁사&lt;br/&gt;I08 검은 숨 문지기&lt;br/&gt;R01 귀신"]
+  C --&gt; H3["군영 5장&lt;br/&gt;I05 반격병&lt;br/&gt;C03 전쟁선전꾼&lt;br/&gt;R01 귀신&lt;br/&gt;C01 고양이&lt;br/&gt;C02 그림자"]
+</code></pre>
+<h2>1~7턴 루트 그래프</h2>
+<p>아래 그래프는 <code>매턴 보급병 1장 배치</code>를 전제로 한다. 이 스타터의 목적은 긴 장기전이 아니라, 초반에 보급병/자체보급/징집/희생을 거의 강제로 밟게 만들어 덱 소모 감각을 익히게 하는 것이다.</p>
+<p>특히 수신의 길은 선공 첫 턴에 징집이 없으므로, <code>전쟁선전꾼</code>의 자체보급을 통해 1장 징집을 유도한다. 이 선택을 하지 않으면 선공은 초반 군영 폭이 좁아지고, 이후 <code>흩어진 귀신</code>을 내기 위한 자원과 희생 타이밍도 늦어진다.</p>
+<p>이 설계에서 중요한 압박은 다음 세 가지다.</p>
+<ol>
+<li>시작 준비와 보급병 배치로 이미 징집소가 줄어든다.</li>
+<li><code>전쟁선전꾼</code>, <code>검은 숨의 찬미자</code> 같은 카드가 추가 징집을 유도한다.</li>
+<li><code>흩어진 귀신</code>은 징집소에서 [희생 3]을 요구하므로, 큰 힘을 얻는 대신 패배 조건인 징집소 고갈 카운트를 직접 앞당긴다.</li>
+</ol>
+<p>따라서 루트는 <code>17턴 이상 버티는 장기전</code>보다 <code>1~7턴 사이에 얼마나 많이 당겨 쓰고, 어디서 공격을 패배/교환/성주 공개로 연결하느냐</code>를 보는 쪽으로 잡는다.</p>
+<h3>수신의 길 루트</h3>
+<pre><code>
+flowchart TD
+  T0["준비 완료&lt;br/&gt;문지기 4 + 군영 5&lt;br/&gt;성급한 수신의 화신으로 선공"] --&gt; T1A{"1턴 보급병"}
+  T1A --&gt;|"C03 전쟁선전꾼"| T1B["후방기지: 전쟁선전꾼&lt;br/&gt;선공 첫 턴 징집 없음"]
+  T1A --&gt;|"C02/C05 매복 보급"| T1X["매복을 자원화&lt;br/&gt;방어 선택지 감소&lt;br/&gt;흩어진 귀신 루트 지연"]
+  T1B --&gt; T1C{"전쟁 페이즈"}
+  T1C --&gt;|"자체보급 거의 정답"| T1D["전쟁선전꾼 -&gt; 전진기지&lt;br/&gt;제일 낮은 허기 공개&lt;br/&gt;징집 +1&lt;br/&gt;덱 소모 +1"]
+  T1C --&gt;|"보급 보존"| T1E["자체보급 보류&lt;br/&gt;다음 턴 자원 안정"]
+  T1D --&gt; T1F{"출정 후보"}
+  T1E --&gt; T1F
+  T1F --&gt;|"C04 날뛰는 이리"| T1G["전장: 날뛰는 이리&lt;br/&gt;전투광 공격 가능"]
+  T1F --&gt;|"출정 없음"| T1H["군영 보존&lt;br/&gt;상대 후공 반응 관찰&lt;br/&gt;공격 압박 없음"]
+
+  T1G --&gt; T2A["2턴 정비&lt;br/&gt;전진기지 -&gt; 후방기지&lt;br/&gt;2장 징집"]
+  T1H --&gt; T2A
+  T1X --&gt; T2A
+  T2A --&gt; T2B{"2턴 보급병"}
+  T2B --&gt;|"C06 상한 알"| T2C["후방기지: 상한 알&lt;br/&gt;버리는 용도 명확&lt;br/&gt;자원/희생 후보"]
+  T2B --&gt;|"C08/R01 저허기"| T2D["식량 2 확보&lt;br/&gt;저허기 전개"]
+  T2C --&gt; T2E{"공격 계획"}
+  T2D --&gt; T2E
+  T2E --&gt;|"이리로 문지기 공격"| T2F["보급 없이 공격&lt;br/&gt;문지기 공개 유도&lt;br/&gt;패배/생존/교환 루트 확인"]
+  T2E --&gt;|"R06 횃불 출정"| T2G["문지기 1장 선공개&lt;br/&gt;공격 대상 결정"]
+  T2E --&gt;|"C07 산군 출정"| T2H["군영 희생 1&lt;br/&gt;힘 4 전장 확보"]
+
+  T2F --&gt; T3A["3턴 정비 + 2장 징집 + 보급"]
+  T2G --&gt; T3A
+  T2H --&gt; T3A
+  T3A --&gt; T3B{"3턴 핵심 선택"}
+  T3B --&gt;|"약한 문지기 공개"| T3C["C06/R07로 제거 압박"]
+  T3B --&gt;|"강한 문지기 공개"| T3D["생존 선언 대가 계산&lt;br/&gt;쇠지렛대꾼/돌파자 대기"]
+  T3B --&gt;|"R01 흩어진 귀신 출정"| T3E["징집소에서 희생 3&lt;br/&gt;힘 6 확보&lt;br/&gt;덱 고갈 카운트 가속"]
+
+  T3C --&gt; T4A["4턴: 공성 카드 보급/출정"]
+  T3D --&gt; T4A
+  T3E --&gt; T4B["4턴: 귀신으로 문지기 압박&lt;br/&gt;큰 힘으로 교환 강제"]
+  T4A --&gt; T4C{"4턴 전투"}
+  T4B --&gt; T4D{"전투 결과"}
+  T4C --&gt;|"문지기 제거"| T4D
+  T4C --&gt;|"제거 실패"| T5A["5턴: 횃불/쇠지렛대꾼/산군으로 재공략"]
+  T4D --&gt;|"상대 카드 패배"| T5B["빈 문 발생&lt;br/&gt;장악 후보"]
+  T4D --&gt;|"내 카드 패배"| T5C["군영/징집소 손실 확인&lt;br/&gt;두 번째 귀신 여부 판단"]
+  T4D --&gt;|"동힘 교착"| T5D["군영 희생 1로 처치할지 선택"]
+
+  T5A --&gt; T6A["6턴: 두 번째 문 공략&lt;br/&gt;쇠지렛대꾼/그림자/돌파자"]
+  T5B --&gt; T6B["6턴: 장악 후 성주 압박"]
+  T5C --&gt; T6C["6턴: 드로우/징집 유도&lt;br/&gt;죽음 카운트 확인"]
+  T5D --&gt; T6D["6턴: 희생하면 문 열림&lt;br/&gt;안 하면 교착"]
+  T6A --&gt; T7A["7턴: 성주 첫 공개 또는 추가 문지기 제거"]
+  T6B --&gt; T7A
+  T6C --&gt; T7B["7턴: 덱 소모 위험 구간&lt;br/&gt;흩어진 귀신 2장째는 신중"]
+  T6D --&gt; T7A
+</code></pre>
+<h3>신모의 길 루트</h3>
+<pre><code>
+flowchart TD
+  T0["준비 완료&lt;br/&gt;문지기 4 + 군영 5&lt;br/&gt;인사하는 신모의 우상"] --&gt; T1A["1턴 후공 정비/징집&lt;br/&gt;후공은 2장 징집 가능"]
+  T1A --&gt; T1B{"상대 선공 공격 여부"}
+  T1B --&gt;|"날뛰는 이리 공격"| D1["매복 후보&lt;br/&gt;C01 고양이/C02 그림자/C05 여우&lt;br/&gt;공격 카드 패배 루트 계산"]
+  T1B --&gt;|"공격 없음"| D2["군영 보존&lt;br/&gt;반격병/전쟁선전꾼 준비"]
+  D1 --&gt; D3{"공격 대상"}
+  D3 --&gt;|"문지기"| D4["문지기 공개&lt;br/&gt;I02/I03/I08 효과 처리&lt;br/&gt;공격자 생존 선언 여부 확인"]
+  D3 --&gt;|"야전병"| D5["매복으로 힘 조정&lt;br/&gt;패배/동힘/생존 분기"]
+  D3 --&gt;|"성주"| D6["성주 공개&lt;br/&gt;첫 공개 전투는 힘겨루기 없음"]
+  D2 --&gt; T1C{"1턴 보급병"}
+  D4 --&gt; T1C
+  D5 --&gt; T1C
+  D6 --&gt; T1C
+  T1C --&gt;|"C03 전쟁선전꾼"| T1D["후방기지: 전쟁선전꾼&lt;br/&gt;자체보급/징집 준비"]
+  T1C --&gt;|"[매복] 카드 1장"| T1E["방어 카드 자원화&lt;br/&gt;다음 반격 준비"]
+  T1D --&gt; T1F{"전쟁 페이즈"}
+  T1F --&gt;|"I05 반격병 보존"| T1G["상대 뒷면 문지기 공개 대기&lt;br/&gt;공격 대상 정보 확보"]
+  T1F --&gt;|"출정 없음"| T1H["매복 방어 유지"]
+
+  T1G --&gt; T2A["2턴 정비 + 2장 징집 + 보급"]
+  T1H --&gt; T2A
+  T1E --&gt; T2A
+  T2A --&gt; T2B{"2턴 선택"}
+  T2B --&gt;|"C04 날뛰는 이리 출정"| T2C["반격 전투광 확보"]
+  T2B --&gt;|"R01 흩어진 귀신 출정"| T2D["징집소에서 희생 3&lt;br/&gt;큰 힘으로 성주/문지기 압박"]
+  T2B --&gt;|"C09 붉은 눈의 암살자 보존"| T2E["매복 제거 협박&lt;br/&gt;상대 소강 페이즈 압박"]
+
+  T2C --&gt; T3A["3턴: 상대 문지기/야전병 상태 확인"]
+  T2D --&gt; T3A
+  T2E --&gt; T3A
+  T3A --&gt; T3B{"수신 쪽 큰 카드 출정?"}
+  T3B --&gt;|"R01 흩어진 귀신"| T3C["힘 6 대응&lt;br/&gt;고양이/그림자/암살자로 교환 유도"]
+  T3B --&gt;|"C07 산군"| T3D["힘 4 대응&lt;br/&gt;동힘/패배/희생 선택"]
+  T3B --&gt;|"성주 압박 받음"| T3E["I08 검은 숨 문지기 공개 대기"]
+
+  T3C --&gt; T4A{"4턴 방어 결과"}
+  T3D --&gt; T4A
+  T3E --&gt; T4C["4턴: 성주 공격 방어 우선"]
+  T4A --&gt;|"상대 공격 카드 패배"| T5A["5턴 주도권 전환&lt;br/&gt;반격/장악 후보"]
+  T4A --&gt;|"내 문지기 패배"| T5B["5턴 빈 문지기 자리&lt;br/&gt;재배치 우선"]
+  T4A --&gt;|"동힘 교착"| T5C["5턴 군영 희생 여부 결정"]
+  T4C --&gt; T5A
+  T5A --&gt; T6A["6턴: 부관/귀신/광전사로 성주 압박"]
+  T5B --&gt; T6B["6턴: 문지기 배치&lt;br/&gt;붉은 눈/검은 숨 문지기 우선"]
+  T5C --&gt; T6C["6턴: 희생하면 제거&lt;br/&gt;안 하면 방어 유지"]
+  T6A --&gt; T7A["7턴: 상대 자원 소모 후 역공"]
+  T6B --&gt; T7B["7턴: 성주 보호 유지"]
+  T6C --&gt; T7A
+</code></pre>
+<h3>양 덱 대전 통합 루트</h3>
+<pre><code>
+flowchart LR
+  A["초기 9장&lt;br/&gt;문지기 4 + 군영 5 결정"] --&gt; B["수신 선공&lt;br/&gt;신모 후공"]
+  B --&gt; C{"수신 1턴"}
+  C --&gt;|"전쟁선전꾼 보급 + 자체보급"| D["수신 빠른 전개&lt;br/&gt;징집 +1&lt;br/&gt;덱 소모 시작"]
+  C --&gt;|"전쟁선전꾼 보류"| E["수신 느린 전개&lt;br/&gt;매복/고비용 보존"]
+  D --&gt; F{"신모 1턴 반응"}
+  E --&gt; F
+  F --&gt;|"문지기 등장으로 방어"| G["공격자 생존 선언/패배 계산"]
+  F --&gt;|"매복으로 전투 조정"| H["공격 대상/힘 변화&lt;br/&gt;패배 루트 발생"]
+  F --&gt;|"방어 실패"| I["수신 문지기 공개/제거 성공"]
+  G --&gt; J{"2~3턴"}
+  H --&gt; J
+  I --&gt; J
+  J --&gt;|"수신 R01 출정"| K["흩어진 귀신&lt;br/&gt;징집소 희생 3&lt;br/&gt;큰 힘으로 문 압박"]
+  J --&gt;|"신모 방어 유지"| L["문지기 등장 + 매복으로 교환"]
+  J --&gt;|"서로 자원화 우선"| M["드로우/징집 유도&lt;br/&gt;덱 소모 비교"]
+  K --&gt; N{"4~5턴"}
+  L --&gt; N
+  M --&gt; N
+  N --&gt;|"상대 카드 패배"| O["빈 문 발생&lt;br/&gt;장악/성주 공격 루트"]
+  N --&gt;|"내 카드 패배"| P["전장 손실&lt;br/&gt;추가 징집/희생 부담"]
+  N --&gt;|"동힘 교착"| Q["군영 희생 1 선택&lt;br/&gt;제거 또는 교착"]
+  O --&gt; R["6~7턴 결말&lt;br/&gt;성주 첫 공개 또는 공개 성주 힘겨루기"]
+  P --&gt; R
+  Q --&gt; R
+</code></pre>
+<h2>시뮬레이션 체크 포인트</h2>
+<ol>
+<li>초기 9장에서 문지기/군영을 어떻게 나눴는지 기록한다.</li>
+<li>선공 첫 턴에는 징집 페이즈를 건너뛴다.</li>
+<li>매턴 보급병 1장을 내려놓되, 군영의 [매복]이 붙은 카드를 너무 빨리 자원화하면 방어 루트가 닫히는 것으로 표시한다.</li>
+<li>[전투광] 공격은 보급을 쓰지 않는 별도 간선으로 둔다.</li>
+<li>문지기 공격은 <code>매복 -&gt; 상시/매복 효과 -&gt; 문지기 공개 -&gt; 문지기 등장 -&gt; 생존 선언 -&gt; 힘겨루기</code> 순서로 처리한다.</li>
+<li>성주 첫 공개 공격은 [성주등장] 처리 후 힘겨루기를 하지 않는 특수 노드로 둔다.</li>
+<li>성주가 이미 공개된 뒤의 공격은 일반 힘겨루기와 패배 확인으로 이어진다.</li>
+<li><code>전쟁선전꾼</code>, <code>검은 숨의 찬미자</code>, <code>흩어진 귀신</code>처럼 징집소를 직접 당기거나 희생하는 카드는 별도 덱 소모 카운터를 올린다.</li>
+<li>공격 시에는 <code>공격자 패배</code>, <code>방어자 패배</code>, <code>동힘 후 군영 희생</code>, <code>생존 선언으로 징집소 대가 지불</code>을 모두 루트로 분리한다.</li>
+<li>긴 장기전보다 1~7턴 안에 성주 첫 공개, 문지기 제거, 장악, 덱 고갈 위험이 얼마나 빨리 오는지 우선 추적한다.</li>
+</ol>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+{
+  "id": "gaya-structure-v1",
+  "name": "가락 야철장 스트럭쳐 징집소",
+  "classId": "gaya",
+  "faction": "가락",
+  "className": "야철장",
+  "totalCards": 40,
+  "trapCards": 15,
+  "entries": [
+    {
+      "cardId": "gr-g-001",
+      "serial": "GRNS-0009",
+      "count": 3
+    },
+    {
+      "cardId": "gr-g-002",
+      "serial": "GRNS-0039",
+      "count": 3
+    },
+    {
+      "cardId": "gr-g-003",
+      "serial": "GRNS-0040",
+      "count": 3
+    },
+    {
+      "cardId": "gr-g-004",
+      "serial": "GRNS-0041",
+      "count": 3
+    },
+    {
+      "cardId": "gr-g-005",
+      "serial": "GRNS-0042",
+      "count": 3
+    },
+    {
+      "cardId": "gr-r-001",
+      "serial": "GRNS-0007",
+      "count": 2
+    },
+    {
+      "cardId": "gr-r-002",
+      "serial": "GRNS-0008",
+      "count": 2
+    },
+    {
+      "cardId": "gr-r-003",
+      "serial": "GRNS-0043",
+      "count": 2
+    },
+    {
+      "cardId": "gr-r-004",
+      "serial": "GRNS-0044",
+      "count": 2
+    },
+    {
+      "cardId": "gr-r-005",
+      "serial": "GRNS-0045",
+      "count": 2
+    },
+    {
+      "cardId": "gr-t-001",
+      "serial": "GRNS-0046",
+      "count": 3
+    },
+    {
+      "cardId": "gr-t-002",
+      "serial": "GRNS-0047",
+      "count": 3
+    },
+    {
+      "cardId": "gr-t-003",
+      "serial": "GRNS-0048",
+      "count": 3
+    },
+    {
+      "cardId": "gr-t-004",
+      "serial": "GRNS-0049",
+      "count": 2
+    },
+    {
+      "cardId": "gr-t-005",
+      "serial": "GRNS-0050",
+      "count": 2
+    },
+    {
+      "cardId": "gr-t-006",
+      "serial": "GRNS-0051",
+      "count": 2
+    }
+  ]
+}
