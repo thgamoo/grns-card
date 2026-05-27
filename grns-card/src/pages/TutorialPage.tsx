@@ -33,7 +33,17 @@ type PrintableDeck = {
   uniqueCount: number;
 };
 
-type PrintMode = "selected" | "all";
+type PrintMode = "selected" | "all" | "common";
+
+const commonCardIds = [
+  "st01-r-002",
+  "st01-n-001",
+  "st01-n-003",
+  "st01-n-005",
+  "st01-r-003",
+  "st01-i-005",
+  "st01-n-011",
+];
 
 function deckShortName(name: string) {
   if (name.includes("수신")) return "수신덱";
@@ -58,6 +68,29 @@ function expandDeck(deck: StructureDeck, cards: PrintCard[]): PrintableDeck {
   };
 }
 
+function expandCommonCards(cards: PrintCard[]): PrintableDeck {
+  const cardById = new Map(cards.map((card) => [card.id, card]));
+  const printableCards = commonCardIds
+    .flatMap((cardId) => Array.from({ length: 2 }, () => cardById.get(cardId)))
+    .filter((card): card is PrintCard => Boolean(card));
+
+  return {
+    deck: {
+      id: "st01-common-print",
+      name: "첫 성문: 공통 카드",
+      totalCards: printableCards.length,
+      mainDeckCards: printableCards.length,
+      entries: commonCardIds.map((cardId) => ({
+        cardId,
+        serial: cardById.get(cardId)?.serial ?? "",
+        count: 2,
+      })),
+    },
+    cards: printableCards,
+    uniqueCount: new Set(printableCards.map((card) => card.id)).size,
+  };
+}
+
 export function TutorialPage({
   cards,
   decks,
@@ -74,13 +107,19 @@ export function TutorialPage({
         .map((deck) => expandDeck(deck, cards)),
     [cards, decks],
   );
+  const commonPrintable = useMemo(() => expandCommonCards(cards), [cards]);
   const [selectedDeckId, setSelectedDeckId] = useState<string>("");
   const [printMode, setPrintMode] = useState<PrintMode>("selected");
   const selectedDeck =
     printableDecks.find(
       (item) => item.deck.id === (selectedDeckId || printableDecks[0]?.deck.id),
     ) ?? printableDecks[0];
-  const visibleDecks = printMode === "all" ? printableDecks : [selectedDeck];
+  const visibleDecks =
+    printMode === "all"
+      ? printableDecks
+      : printMode === "common"
+        ? [commonPrintable]
+        : [selectedDeck];
 
   useEffect(() => {
     const resetPrintMode = () => setPrintMode("selected");
@@ -124,6 +163,10 @@ export function TutorialPage({
           <button type="button" onClick={() => printDecks("all")}>
             <Printer />
             전체 덱 프린트
+          </button>
+          <button type="button" onClick={() => printDecks("common")}>
+            <Printer />
+            공통 카드 프린트
           </button>
         </div>
       </section>

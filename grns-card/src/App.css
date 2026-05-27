@@ -3934,6 +3934,10 @@ h3 {
     background: #ffffff !important;
   }
 
+  .tutorial-print-grid {
+    padding: 0 !important;
+  }
+
   .db-print-card,
   .tutorial-print-card {
     display: block !important;

@@ -13,102 +13,102 @@
   },
   "totalCards": 40,
   "trapCards": 0,
-  "notes": "덱별 프린트용 구성. 성주 1장과 징집소 39장을 함께 출력한다.",
+  "notes": "덱별 프린트용 구성. 성주 1장, 덱 전용 8종 2장씩, 공통 7종 2장씩, 보충 9장을 함께 출력한다.",
   "entries": [
     {
       "cardId": "st01-e-001",
-      "count": 2,
-      "serial": "GRNS-ST01-0020"
+      "serial": "GRNS-ST01-0020",
+      "count": 2
     },
     {
       "cardId": "st01-e-002",
-      "count": 2,
-      "serial": "GRNS-ST01-0022"
+      "serial": "GRNS-ST01-0022",
+      "count": 2
     },
     {
       "cardId": "st01-e-003",
-      "count": 2,
-      "serial": "GRNS-ST01-0023"
+      "serial": "GRNS-ST01-0023",
+      "count": 2
     },
     {
       "cardId": "st01-e-004",
-      "count": 2,
-      "serial": "GRNS-ST01-0025"
+      "serial": "GRNS-ST01-0025",
+      "count": 2
     },
     {
       "cardId": "st01-e-005",
-      "count": 2,
-      "serial": "GRNS-ST01-0026"
+      "serial": "GRNS-ST01-0026",
+      "count": 2
     },
     {
       "cardId": "st01-e-006",
-      "count": 2,
-      "serial": "GRNS-ST01-0021"
+      "serial": "GRNS-ST01-0021",
+      "count": 2
     },
     {
       "cardId": "st01-e-007",
-      "count": 2,
-      "serial": "GRNS-ST01-0027"
+      "serial": "GRNS-ST01-0027",
+      "count": 2
     },
     {
       "cardId": "st01-e-008",
-      "count": 2,
-      "serial": "GRNS-ST01-0024"
+      "serial": "GRNS-ST01-0024",
+      "count": 2
+    },
+    {
+      "cardId": "st01-r-002",
+      "serial": "GRNS-ST01-0028",
+      "count": 2
     },
     {
       "cardId": "st01-n-001",
-      "count": 2,
-      "serial": "GRNS-ST01-0029"
-    },
-    {
-      "cardId": "st01-n-002",
-      "count": 2,
-      "serial": "GRNS-ST01-0006"
+      "serial": "GRNS-ST01-0029",
+      "count": 2
     },
     {
       "cardId": "st01-n-003",
-      "count": 2,
-      "serial": "GRNS-ST01-0030"
-    },
-    {
-      "cardId": "st01-n-004",
-      "count": 2,
-      "serial": "GRNS-ST01-0005"
+      "serial": "GRNS-ST01-0030",
+      "count": 2
     },
     {
       "cardId": "st01-n-005",
-      "count": 2,
-      "serial": "GRNS-ST01-0031"
+      "serial": "GRNS-ST01-0031",
+      "count": 2
     },
     {
-      "cardId": "st01-n-007",
-      "count": 2,
-      "serial": "GRNS-ST01-0009"
+      "cardId": "st01-r-003",
+      "serial": "GRNS-ST01-0032",
+      "count": 2
+    },
+    {
+      "cardId": "st01-i-005",
+      "serial": "GRNS-ST01-0033",
+      "count": 2
     },
     {
       "cardId": "st01-n-011",
-      "count": 2,
-      "serial": "GRNS-ST01-0035"
+      "serial": "GRNS-ST01-0035",
+      "count": 2
     },
     {
       "cardId": "st01-n-008",
-      "count": 2,
-      "serial": "GRNS-ST01-0036"
+      "serial": "GRNS-ST01-0036",
+      "count": 2
     },
     {
       "cardId": "st01-n-013",
-      "count": 3,
-      "serial": "GRNS-ST01-0039"
+      "serial": "GRNS-ST01-0039",
+      "count": 3
     },
     {
       "cardId": "st01-n-006",
-      "count": 2,
-      "serial": "GRNS-ST01-0037"
+      "serial": "GRNS-ST01-0037",
+      "count": 2
     },
     {
       "cardId": "st01-n-012",
-      "count": 2,
-      "serial": "GRNS-ST01-0034"
+      "serial": "GRNS-ST01-0034",
+      "count": 2
     }
   ],
   "orderedEntries": [
@@ -194,23 +194,23 @@
     },
     {
       "position": 17,
-      "cardId": "st01-n-001",
-      "serial": "GRNS-ST01-0029"
+      "cardId": "st01-r-002",
+      "serial": "GRNS-ST01-0028"
     },
     {
       "position": 18,
+      "cardId": "st01-r-002",
+      "serial": "GRNS-ST01-0028"
+    },
+    {
+      "position": 19,
       "cardId": "st01-n-001",
       "serial": "GRNS-ST01-0029"
     },
     {
-      "position": 19,
-      "cardId": "st01-n-002",
-      "serial": "GRNS-ST01-0006"
-    },
-    {
       "position": 20,
-      "cardId": "st01-n-002",
-      "serial": "GRNS-ST01-0006"
+      "cardId": "st01-n-001",
+      "serial": "GRNS-ST01-0029"
     },
     {
       "position": 21,
@@ -224,33 +224,33 @@
     },
     {
       "position": 23,
-      "cardId": "st01-n-004",
-      "serial": "GRNS-ST01-0005"
+      "cardId": "st01-n-005",
+      "serial": "GRNS-ST01-0031"
     },
     {
       "position": 24,
-      "cardId": "st01-n-004",
-      "serial": "GRNS-ST01-0005"
+      "cardId": "st01-n-005",
+      "serial": "GRNS-ST01-0031"
     },
     {
       "position": 25,
-      "cardId": "st01-n-005",
-      "serial": "GRNS-ST01-0031"
+      "cardId": "st01-r-003",
+      "serial": "GRNS-ST01-0032"
     },
     {
       "position": 26,
-      "cardId": "st01-n-005",
-      "serial": "GRNS-ST01-0031"
+      "cardId": "st01-r-003",
+      "serial": "GRNS-ST01-0032"
     },
     {
       "position": 27,
-      "cardId": "st01-n-007",
-      "serial": "GRNS-ST01-0009"
+      "cardId": "st01-i-005",
+      "serial": "GRNS-ST01-0033"
     },
     {
       "position": 28,
-      "cardId": "st01-n-007",
-      "serial": "GRNS-ST01-0009"
+      "cardId": "st01-i-005",
+      "serial": "GRNS-ST01-0033"
     },
     {
       "position": 29,
