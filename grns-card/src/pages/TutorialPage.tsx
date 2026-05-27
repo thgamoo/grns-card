@@ -1,284 +1,185 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
-import {
-  CheckCircle2,
-  Crown,
-  Dices,
-  Hand,
-  RotateCcw,
-  Shield,
-  Shuffle,
-  Swords,
-} from "lucide-react";
+import { Printer } from "lucide-react";
 
-type SetupPath = "gatekeepers" | "camp" | null;
+type PrintCard = {
+  id: string;
+  name: string;
+  serial: string;
+};
 
-const recruitCards = ["훈련병", "척후병", "궁수", "방패병"];
-const campCards = ["군영 1", "군영 2", "군영 3", "군영 4", "군영 5"];
+type DeckEntry = {
+  cardId: string;
+  serial: string;
+  count: number;
+};
 
-const stepTitles = [
-  "풍향 관찰",
-  "성주 배치",
-  "훈련병 징발",
-  "문지기 선택",
-  "군영 구성",
-  "전쟁 준비 완료",
-];
+type StructureDeck = {
+  id: string;
+  name: string;
+  totalCards: number;
+  mainDeckCards?: number;
+  hero?: {
+    cardId: string;
+    serial: string;
+    name: string;
+  };
+  entries: DeckEntry[];
+};
 
-function TutorialCard({
-  children,
-  faceDown = false,
-  active = false,
-}: {
-  children: string;
-  faceDown?: boolean;
-  active?: boolean;
-}) {
-  return (
-    <span className={active ? "tutorial-card active" : "tutorial-card"}>
-      {faceDown ? "비공개" : children}
-    </span>
-  );
+type PrintableDeck = {
+  deck: StructureDeck;
+  cards: PrintCard[];
+  uniqueCount: number;
+};
+
+type PrintMode = "selected" | "all";
+
+function deckShortName(name: string) {
+  if (name.includes("수신")) return "수신덱";
+  if (name.includes("신모")) return "신모덱";
+  if (name.includes("선구자")) return "선구자덱";
+  return name.replace(/^첫 성문:\s*/, "").replace(/\s*고정 징집소$/, "");
 }
 
-function Zone({
-  title,
-  children,
-  active = false,
-  onClick,
-}: {
-  title: string;
-  children: ReactNode;
-  active?: boolean;
-  onClick?: () => void;
-}) {
-  return (
-    <button
-      className={active ? "tutorial-zone active" : "tutorial-zone"}
-      type="button"
-      onClick={onClick}
-      disabled={!onClick}
-    >
-      <span>{title}</span>
-      <div>{children}</div>
-    </button>
-  );
+function expandDeck(deck: StructureDeck, cards: PrintCard[]): PrintableDeck {
+  const cardById = new Map(cards.map((card) => [card.id, card]));
+  const printableCards = [
+    ...(deck.hero?.cardId ? [cardById.get(deck.hero.cardId)] : []),
+    ...deck.entries.flatMap((entry) =>
+      Array.from({ length: entry.count }, () => cardById.get(entry.cardId)),
+    ),
+  ].filter((card): card is PrintCard => Boolean(card));
+
+  return {
+    deck,
+    cards: printableCards,
+    uniqueCount: new Set(printableCards.map((card) => card.id)).size,
+  };
 }
 
-export function TutorialPage() {
-  const [step, setStep] = useState(0);
-  const [setupPath, setSetupPath] = useState<SetupPath>(null);
-  const [log, setLog] = useState<string[]>([]);
-
-  const addLog = (message: string) => {
-    setLog((current) => [message, ...current].slice(0, 5));
-  };
-
-  const reset = () => {
-    setStep(0);
-    setSetupPath(null);
-    setLog([]);
-  };
-
-  const progress = useMemo(
-    () => Math.round((step / (stepTitles.length - 1)) * 100),
-    [step],
+export function TutorialPage({
+  cards,
+  decks,
+  renderCard,
+}: {
+  cards: PrintCard[];
+  decks: StructureDeck[];
+  renderCard: (card: PrintCard) => ReactNode;
+}) {
+  const printableDecks = useMemo(
+    () =>
+      decks
+        .filter((deck) => deck.id.startsWith("st01-"))
+        .map((deck) => expandDeck(deck, cards)),
+    [cards, decks],
   );
-  const deckCount =
-    step >= 5 ? 31 : step >= 4 && setupPath === "camp" ? 35 : step >= 3 ? 36 : 40;
+  const [selectedDeckId, setSelectedDeckId] = useState<string>("");
+  const [printMode, setPrintMode] = useState<PrintMode>("selected");
+  const selectedDeck =
+    printableDecks.find(
+      (item) => item.deck.id === (selectedDeckId || printableDecks[0]?.deck.id),
+    ) ?? printableDecks[0];
+  const visibleDecks = printMode === "all" ? printableDecks : [selectedDeck];
 
-  const chooseWind = () => {
-    setStep(1);
-    addLog("가위바위보에서 이겨 선공을 가져옵니다.");
+  useEffect(() => {
+    const resetPrintMode = () => setPrintMode("selected");
+    window.addEventListener("afterprint", resetPrintMode);
+    return () => window.removeEventListener("afterprint", resetPrintMode);
+  }, []);
+
+  const printDecks = (mode: PrintMode) => {
+    setPrintMode(mode);
+    window.requestAnimationFrame(() => window.print());
   };
 
-  const placeLord = () => {
-    setStep(2);
-    addLog("성주를 비공개 상태로 성에 배치했습니다.");
-  };
-
-  const draftRecruits = () => {
-    setStep(3);
-    addLog("징집소에서 훈련병 4장을 징집했습니다.");
-  };
-
-  const choosePath = (path: Exclude<SetupPath, null>) => {
-    setSetupPath(path);
-    setStep(4);
-    addLog(
-      path === "gatekeepers"
-        ? "징집한 4장을 문지기로 배치합니다."
-        : "카드 1장을 먼저 군영으로 삼고, 다시 4장을 문지기로 배치합니다.",
+  if (!selectedDeck) {
+    return (
+      <div className="tutorial-print-view">
+        <section className="tutorial-print-head">
+          <p className="eyebrow">deck print</p>
+          <h2>덱 프린트</h2>
+          <p>출력할 첫 성문 덱 데이터가 없습니다.</p>
+        </section>
+      </div>
     );
-  };
-
-  const finishSetup = () => {
-    setStep(5);
-    addLog("문지기와 군영을 갖추었습니다. 이제 첫 턴을 시작할 수 있습니다.");
-  };
-
-  const gatekeeperSlots = Array.from({ length: 4 }, (_, index) => {
-    if (step < 4) return null;
-    return setupPath === "gatekeepers"
-      ? recruitCards[index]
-      : `문지기 ${index + 1}`;
-  });
-  const camp = step >= 5 ? (setupPath === "gatekeepers" ? campCards : ["시작 군영"]) : [];
+  }
 
   return (
-    <div className="tutorial-view">
-      <section className="tutorial-brief">
+    <div className="tutorial-print-view">
+      <section className="tutorial-print-head">
         <div>
-          <p className="eyebrow">interactive tutorial</p>
-          <h2>전쟁 시작 튜토리얼</h2>
+          <p className="eyebrow">deck print</p>
+          <h2>첫 성문 덱 프린트</h2>
           <p>
-            룰의 전쟁 준비 절차를 직접 눌러보며 익힙니다. 선공을 정하고,
-            성주를 숨기고, 훈련병을 징발해 문지기와 군영을 구성하세요.
+            덱을 선택하면 성주 1장과 징집소 39장을 한 번에 출력합니다.
+            프린트용 카드 얼굴은 DB 화면과 같은 컴포넌트를 사용합니다.
           </p>
-          <div className="tutorial-callout" role="note">
-            아직 만드는 중입니다. 현재는 전쟁 준비 흐름만 가볍게 체험할 수 있습니다.
-          </div>
         </div>
-        <button className="tutorial-reset" type="button" onClick={reset}>
-          <RotateCcw />
-          다시 시작
-        </button>
+        <div className="tutorial-print-actions">
+          <button type="button" onClick={() => printDecks("selected")}>
+            <Printer />
+            선택 덱 프린트
+          </button>
+          <button type="button" onClick={() => printDecks("all")}>
+            <Printer />
+            전체 덱 프린트
+          </button>
+        </div>
       </section>
 
-      <section className="tutorial-layout">
-        <aside className="tutorial-panel">
-          <div className="tutorial-progress">
-            <span style={{ width: `${progress}%` }} />
+      <section className="tutorial-deck-tabs" aria-label="프린트할 덱 선택">
+        {printableDecks.map((item) => (
+          <button
+            key={item.deck.id}
+            className={item.deck.id === selectedDeck.deck.id ? "active" : ""}
+            type="button"
+            onClick={() => setSelectedDeckId(item.deck.id)}
+          >
+            <strong>{deckShortName(item.deck.name)}</strong>
+          <span>{item.cards.length}장</span>
+          </button>
+        ))}
+      </section>
+
+      <section className="tutorial-print-summary" aria-label="선택한 덱 정보">
+        <article>
+          <span>선택 덱</span>
+          <strong>{deckShortName(selectedDeck.deck.name)}</strong>
+        </article>
+        <article>
+          <span>성주</span>
+          <strong>{selectedDeck.deck.hero?.name ?? "없음"}</strong>
+        </article>
+        <article>
+          <span>징집소</span>
+          <strong>{selectedDeck.deck.mainDeckCards ?? selectedDeck.deck.totalCards - 1}장</strong>
+        </article>
+        <article>
+          <span>고유 카드</span>
+          <strong>{selectedDeck.uniqueCount}종</strong>
+        </article>
+      </section>
+
+      {visibleDecks.map((item) => (
+        <section
+          className="tutorial-print-sheet"
+          key={item.deck.id}
+          aria-label={`${item.deck.name} 카드 목록`}
+        >
+          <div className="tutorial-print-title">
+            <span>{deckShortName(item.deck.name)}</span>
+            <strong>{item.cards.length}장</strong>
           </div>
-          <p className="tutorial-step-count">
-            {step + 1} / {stepTitles.length}
-          </p>
-          <h3>{stepTitles[step]}</h3>
-          {step === 0 && (
-            <>
-              <p>먼저 풍향을 관찰합니다. 가위바위보에서 이긴 사람이 선공입니다.</p>
-              <button type="button" onClick={chooseWind}>
-                <Dices />
-                선공 가져가기
-              </button>
-            </>
-          )}
-          {step === 1 && (
-            <>
-              <p>성주는 처음에 정체를 숨깁니다. 성의 중앙에 비공개로 놓으세요.</p>
-              <button type="button" onClick={placeLord}>
-                <Crown />
-                성주 비공개 배치
-              </button>
-            </>
-          )}
-          {step === 2 && (
-            <>
-              <p>징집소에서 4장을 징집합니다. 이 카드들은 문지기가 되거나, 시작 군영 선택에 쓰입니다.</p>
-              <button type="button" onClick={draftRecruits}>
-                <Shuffle />
-                4장 징집
-              </button>
-            </>
-          )}
-          {step === 3 && (
-            <>
-              <p>징집한 4장을 바로 문지기로 둘지, 군영 1장을 먼저 정하고 다시 4장을 징집할지 선택합니다.</p>
-              <button type="button" onClick={() => choosePath("gatekeepers")}>
-                <Shield />
-                4장을 문지기로 배치
-              </button>
-              <button type="button" onClick={() => choosePath("camp")}>
-                <Hand />
-                군영 1장 먼저 선택
-              </button>
-            </>
-          )}
-          {step === 4 && (
-            <>
-              <p>
-                {setupPath === "gatekeepers"
-                  ? "문지기 4장을 배치했습니다. 이제 5장을 추가로 뽑아 군영으로 삼습니다."
-                  : "시작 군영 1장을 정했습니다. 다시 4장을 징집해 문지기로 배치합니다."}
-              </p>
-              <button type="button" onClick={finishSetup}>
-                <CheckCircle2 />
-                준비 마치기
-              </button>
-            </>
-          )}
-          {step === 5 && (
-            <>
-              <p>전쟁 준비가 끝났습니다. 첫 턴에는 정비, 징집, 보급병 배치, 전쟁, 소강의 흐름을 따라 진행합니다.</p>
-              <button type="button" onClick={reset}>
-                <Swords />
-                한 번 더 해보기
-              </button>
-            </>
-          )}
-        </aside>
-
-        <div className="tutorial-board" aria-label="튜토리얼 필드">
-          <Zone title="상대 성" active={step === 1} onClick={step === 1 ? placeLord : undefined}>
-            <div className="tutorial-castle">
-              {gatekeeperSlots.map((card, index) => (
-                <TutorialCard key={index} faceDown={Boolean(card)} active={step >= 4}>
-                  {card ?? "빈 문"}
-                </TutorialCard>
-              ))}
-              <TutorialCard faceDown={step >= 2} active={step === 1 || step >= 2}>
-                성주
-              </TutorialCard>
-            </div>
-          </Zone>
-
-          <Zone title="전장">
-            <div className="tutorial-lanes">
-              {Array.from({ length: 5 }, (_, index) => (
-                <span key={index}>야전 {index + 1}</span>
-              ))}
-            </div>
-          </Zone>
-
-          <div className="tutorial-support-row">
-            <Zone title="후방기지">
-              <TutorialCard>보급 대기</TutorialCard>
-            </Zone>
-            <Zone title="전진기지">
-              <TutorialCard>보급 완료</TutorialCard>
-            </Zone>
-          </div>
-
-          <div className="tutorial-support-row">
-            <Zone title="징집소" active={step === 2} onClick={step === 2 ? draftRecruits : undefined}>
-              <strong>{deckCount}장</strong>
-            </Zone>
-            <Zone title="군영" active={step === 4 || step === 5}>
-              <div className="tutorial-hand">
-                {(step >= 3 && step < 5 ? recruitCards : camp).map((card) => (
-                  <TutorialCard key={card}>{card}</TutorialCard>
-                ))}
+          <div className="tutorial-print-grid">
+            {item.cards.map((card, index) => (
+              <div className="tutorial-print-card" key={`${card.id}-${index}`}>
+                {renderCard(card)}
               </div>
-            </Zone>
-            <Zone title="매장지">
-              <strong>0장</strong>
-            </Zone>
+            ))}
           </div>
-        </div>
-
-        <aside className="tutorial-log" aria-label="튜토리얼 진행 기록">
-          <h3>진행 기록</h3>
-          {log.length ? (
-            <ol>
-              {log.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ol>
-          ) : (
-            <p>아직 아무 행동도 하지 않았습니다.</p>
-          )}
-        </aside>
-      </section>
+        </section>
+      ))}
     </div>
   );
 }

@@ -67,7 +67,7 @@
         "packId": "st01",
         "classId": "neutral",
         "file": "./data/card-2026-05-25-v1/cards/st01/neutral.json",
-        "count": 28
+        "count": 39
       }
     ],
     "structureDecks": [
@@ -94,6 +94,10 @@
       {
         "classId": "neutral",
         "file": "./data/card-2026-05-25-v1/decks/st01/sinmo.json"
+      },
+      {
+        "classId": "neutral",
+        "file": "./data/card-2026-05-25-v1/decks/st01/han.json"
       }
     ]
   }

@@ -125,7 +125,13 @@ type StructureDeck = {
   faction: string;
   className: string;
   totalCards: number;
+  mainDeckCards?: number;
   trapCards?: number;
+  hero?: {
+    cardId: string;
+    serial: string;
+    name: string;
+  };
   entries: DeckEntry[];
 };
 
@@ -1140,11 +1146,12 @@ function App() {
               </div>
               <div className="card-grid">
                 {filteredCards.map((card) => (
-                  <CardTile
-                    key={card.id}
-                    card={card}
-                    onClick={() => setModalCardId(card.id)}
-                  />
+                  <div className="db-print-card" key={card.id}>
+                    <CardTile
+                      card={card}
+                      onClick={() => setModalCardId(card.id)}
+                    />
+                  </div>
                 ))}
               </div>
             </section>
@@ -1175,7 +1182,13 @@ function App() {
           />
         )}
 
-        {activeTab === "tutorial" && <TutorialPage />}
+        {activeTab === "tutorial" && (
+          <TutorialPage
+            cards={cards}
+            decks={decks}
+            renderCard={(card) => <CardTile card={card as Card} />}
+          />
+        )}
 
         {activeTab === "deckSim" && (
           <DeckSimulatorPage cards={cards} decks={decks} />
