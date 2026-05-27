@@ -8,7 +8,7 @@
   "packName": "옛이야기",
   "hero": {
     "cardId": "st01-h-004",
-    "serial": "GRNS-ST01-0004",
+    "serial": "GRNS-ST01-0040",
     "name": "쉬고 있는 산군"
   },
   "totalCards": 7,
@@ -18,59 +18,59 @@
     {
       "cardId": "st01-t-001",
       "count": 1,
-      "serial": "GRNS-ST01-0033"
+      "serial": "GRNS-ST01-0041"
     },
     {
       "cardId": "st01-t-002",
       "count": 2,
-      "serial": "GRNS-ST01-0036"
+      "serial": "GRNS-ST01-0042"
     },
     {
       "cardId": "st01-t-004",
       "count": 1,
-      "serial": "GRNS-ST01-0038"
+      "serial": "GRNS-ST01-0044"
     },
     {
       "cardId": "st01-t-003",
       "count": 1,
-      "serial": "GRNS-ST01-0037"
+      "serial": "GRNS-ST01-0043"
     },
     {
       "cardId": "st01-t-005",
       "count": 1,
-      "serial": "GRNS-ST01-0039"
+      "serial": "GRNS-ST01-0045"
     }
   ],
   "orderedEntries": [
     {
       "position": 1,
       "cardId": "st01-t-001",
-      "serial": "GRNS-ST01-0033"
+      "serial": "GRNS-ST01-0041"
     },
     {
       "position": 2,
       "cardId": "st01-t-002",
-      "serial": "GRNS-ST01-0036"
+      "serial": "GRNS-ST01-0042"
     },
     {
       "position": 3,
       "cardId": "st01-t-004",
-      "serial": "GRNS-ST01-0038"
+      "serial": "GRNS-ST01-0044"
     },
     {
       "position": 4,
       "cardId": "st01-t-002",
-      "serial": "GRNS-ST01-0036"
+      "serial": "GRNS-ST01-0042"
     },
     {
       "position": 5,
       "cardId": "st01-t-003",
-      "serial": "GRNS-ST01-0037"
+      "serial": "GRNS-ST01-0043"
     },
     {
       "position": 6,
       "cardId": "st01-t-005",
-      "serial": "GRNS-ST01-0039"
+      "serial": "GRNS-ST01-0045"
     }
   ],
   "mainDeckCards": 6
