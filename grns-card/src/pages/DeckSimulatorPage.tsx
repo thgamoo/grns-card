@@ -109,28 +109,45 @@ export function DeckSimulatorPage({
   );
 
   const rows = useMemo(() => {
-    let firstIndex = 0;
-    let secondIndex = 0;
-
-    return Array.from({ length: turnCount }, (_, index) => {
+    return Array.from({ length: turnCount }).reduce<
+      Array<{
+        turn: number;
+        firstDraw: DrawCard[];
+        secondDraw: DrawCard[];
+        firstRemaining: number;
+        secondRemaining: number;
+      }>
+    >((items, _, index) => {
       const turn = index + 1;
       const firstDrawCount = skipFirstPlayerFirstDraw && turn === 1 ? 0 : 2;
+      const previous = items.at(-1);
+      const firstIndex = previous
+        ? (firstDeck?.cards.length ?? 0) - previous.firstRemaining
+        : 0;
+      const secondIndex = previous
+        ? (secondDeck?.cards.length ?? 0) - previous.secondRemaining
+        : 0;
       const firstDraw = drawCards(firstDeck, firstIndex, firstDrawCount);
       const secondDraw = drawCards(secondDeck, secondIndex, 2);
-      firstIndex += firstDraw.length;
-      secondIndex += secondDraw.length;
+      const nextFirstIndex = firstIndex + firstDraw.length;
+      const nextSecondIndex = secondIndex + secondDraw.length;
 
-      return {
+      items.push({
         turn,
         firstDraw,
         secondDraw,
-        firstRemaining: Math.max((firstDeck?.cards.length ?? 0) - firstIndex, 0),
-        secondRemaining: Math.max(
-          (secondDeck?.cards.length ?? 0) - secondIndex,
+        firstRemaining: Math.max(
+          (firstDeck?.cards.length ?? 0) - nextFirstIndex,
           0,
         ),
-      };
-    });
+        secondRemaining: Math.max(
+          (secondDeck?.cards.length ?? 0) - nextSecondIndex,
+          0,
+        ),
+      });
+
+      return items;
+    }, []);
   }, [firstDeck, secondDeck, skipFirstPlayerFirstDraw, turnCount]);
 
   const reset = () => {
