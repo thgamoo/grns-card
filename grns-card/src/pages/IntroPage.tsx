@@ -13,9 +13,10 @@ export function IntroPage({
 }: IntroPageProps) {
   return (
     <div className="intro-view">
+      <div className="intro-wash" aria-hidden="true"></div>
       <div className="intro-copy">
         <p className="eyebrow">한국형 판타지 TCG</p>
-        <h1>갈래누리</h1>
+        <h1>괴력난신</h1>
         <p>
           사실 군자께서는 괴이와 용력, 반란과 귀신이 역사의 이면이라 하셨다.
         </p>
@@ -29,15 +30,15 @@ export function IntroPage({
         </div>
       </div>
       <div className="hero-board" aria-hidden="true">
-        <span className="lane north"></span>
-        <span className="lane south"></span>
-        <span className="lane east"></span>
-        <span className="lane west"></span>
-        <span className="lord">城主</span>
-        <span className="gate gate-a"></span>
-        <span className="gate gate-b"></span>
-        <span className="gate gate-c"></span>
-        <span className="gate gate-d"></span>
+        <span className="ink-sun"></span>
+        <span className="ink-peak ink-peak-a"></span>
+        <span className="ink-peak ink-peak-b"></span>
+        <span className="ink-peak ink-peak-c"></span>
+        <span className="ink-ridge ink-ridge-a"></span>
+        <span className="ink-ridge ink-ridge-b"></span>
+        <span className="ink-river"></span>
+        <span className="ink-forest ink-forest-a"></span>
+        <span className="ink-forest ink-forest-b"></span>
       </div>
       <div className="intro-stats" aria-label="통계">
         <span>

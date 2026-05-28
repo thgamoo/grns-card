@@ -37,6 +37,7 @@ import type { TimelineEvent } from "./components/TimelineView";
 import { FieldPage } from "./pages/FieldPage";
 import { IntroPage } from "./pages/IntroPage";
 import { DeckSimulatorPage } from "./pages/DeckSimulatorPage";
+import { DeckListPage } from "./pages/DeckListPage";
 import { RulesPage } from "./pages/RulesPage";
 import { TutorialPage } from "./pages/TutorialPage";
 import { WorldPage } from "./pages/WorldPage";
@@ -148,6 +149,7 @@ type TabId =
   | "db"
   | "rules"
   | "tutorial"
+  | "deckList"
   | "deckSim"
   | "graph"
   | "field"
@@ -178,6 +180,7 @@ const tabs: Array<{ id: TabId; label: string; icon: typeof Sparkles }> = [
   { id: "db", label: "DB", icon: Library },
   { id: "rules", label: "룰", icon: Shield },
   { id: "tutorial", label: "튜토리얼", icon: Gamepad2 },
+  { id: "deckList", label: "덱 목록", icon: Printer },
   { id: "deckSim", label: "덱 시뮬", icon: Shuffle },
   { id: "graph", label: "그래프", icon: Activity },
   { id: "field", label: "필드", icon: MapIcon },
@@ -189,6 +192,7 @@ const tabPaths: Record<TabId, string> = {
   db: "/cards",
   rules: "/rules",
   tutorial: "/tutorial",
+  deckList: "/decks",
   deckSim: "/deck-sim",
   graph: "/graph",
   field: "/field",
@@ -221,7 +225,7 @@ async function fetchJson<T>(file: string): Promise<T> {
 }
 
 function packName(packId: string, expansions: Expansion[]) {
-  if (packId === "base") return "괴력난신";
+  if (packId === "base") return "기본";
   return expansions.find((item) => item.id === packId)?.name ?? packId;
 }
 
@@ -671,7 +675,7 @@ function App() {
       .then(setRulebookMarkdown)
       .catch(() =>
         setRulebookMarkdown(
-          "# 갈래누리 룰북\n\n룰북 문서를 불러오지 못했습니다.",
+          "# 괴력난신 룰북\n\n룰북 문서를 불러오지 못했습니다.",
         ),
       );
   }, []);
@@ -938,7 +942,7 @@ function App() {
         >
           <img
             src={publicAssetPath(activeWorldDoc.href)}
-            alt="갈래누리 세계 지도"
+            alt="괴력난신 세계 지도"
           />
         </button>
       </figure>
@@ -975,7 +979,7 @@ function App() {
           type="button"
           onClick={() => navigateTab("intro")}
         >
-          갈래누리
+          괴력난신
         </button>
         <nav className="tab-nav" aria-label="페이지 탭">
           {tabs.map(({ id, label, icon: Icon }) => (
@@ -1183,7 +1187,11 @@ function App() {
         )}
 
         {activeTab === "tutorial" && (
-          <TutorialPage
+          <TutorialPage />
+        )}
+
+        {activeTab === "deckList" && (
+          <DeckListPage
             cards={cards}
             decks={decks}
             renderCard={(card) => <CardTile card={card as Card} />}
@@ -1577,7 +1585,7 @@ function App() {
             className="map-modal"
             role="dialog"
             aria-modal="true"
-            aria-label="갈래누리 세계 지도"
+            aria-label="괴력난신 세계 지도"
             onClick={(event) => event.stopPropagation()}
           >
             <button
@@ -1590,7 +1598,7 @@ function App() {
             </button>
             <img
               src={publicAssetPath(activeWorldDoc.href)}
-              alt="갈래누리 세계 지도"
+              alt="괴력난신 세계 지도"
             />
           </section>
         </div>

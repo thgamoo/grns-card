@@ -50,5 +50,5 @@ const server = createServer(async (request, response) => {
 });
 
 server.listen(port, host, () => {
-  console.log(`갈래누리 카드 DB: http://${host}:${port}/index.html`);
+  console.log(`괴력난신 카드 DB: http://${host}:${port}/index.html`);
 });
