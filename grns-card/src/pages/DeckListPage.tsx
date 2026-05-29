@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { Printer } from "lucide-react";
 
@@ -95,10 +95,12 @@ export function DeckListPage({
   cards,
   decks,
   renderCard,
+  renderBack,
 }: {
   cards: PrintCard[];
   decks: StructureDeck[];
   renderCard: (card: PrintCard) => ReactNode;
+  renderBack?: () => ReactNode;
 }) {
   const printableDecks = useMemo(
     () =>
@@ -205,23 +207,45 @@ export function DeckListPage({
       </section>
 
       {visibleDecks.map((item) => (
-        <section
-          className="tutorial-print-sheet"
-          key={item.deck.id}
-          aria-label={`${item.deck.name} 카드 목록`}
-        >
-          <div className="tutorial-print-title">
-            <span>{deckShortName(item.deck.name)}</span>
-            <strong>{item.cards.length}장</strong>
-          </div>
-          <div className="tutorial-print-grid">
-            {item.cards.map((card, index) => (
-              <div className="tutorial-print-card" key={`${card.id}-${index}`}>
-                {renderCard(card)}
+        <Fragment key={item.deck.id}>
+          <section
+            className="tutorial-print-sheet"
+            key={`${item.deck.id}-front`}
+            aria-label={`${item.deck.name} 카드 앞면 목록`}
+          >
+            <div className="tutorial-print-title">
+              <span>{deckShortName(item.deck.name)} 앞면</span>
+              <strong>{item.cards.length}장</strong>
+            </div>
+            <div className="tutorial-print-grid">
+              {item.cards.map((card, index) => (
+                <div className="tutorial-print-card" key={`${card.id}-${index}`}>
+                  {renderCard(card)}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {renderBack && (
+            <section
+              className="tutorial-print-sheet tutorial-print-back-sheet"
+              key={`${item.deck.id}-back`}
+              aria-label={`${item.deck.name} 카드 뒷면 목록`}
+            >
+              <div className="tutorial-print-title">
+                <span>{deckShortName(item.deck.name)} 뒷면</span>
+                <strong>{item.cards.length}장</strong>
               </div>
-            ))}
-          </div>
-        </section>
+              <div className="tutorial-print-grid">
+                {item.cards.map((card, index) => (
+                  <div className="tutorial-print-card" key={`${card.id}-back-${index}`}>
+                    {renderBack()}
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+        </Fragment>
       ))}
     </div>
   );

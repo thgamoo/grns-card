@@ -19,6 +19,8 @@ import {
   Sparkles,
   Shuffle,
   X,
+  ZoomIn,
+  ZoomOut,
 } from "lucide-react";
 import "./App.css";
 import {
@@ -32,8 +34,6 @@ import { fieldTermNotes } from "./content/field";
 import { worldLinks } from "./content/world";
 import { FieldTermToken } from "./components/FieldTermToken";
 import { MissingCallout } from "./components/MissingCallout";
-import { TimelineView } from "./components/TimelineView";
-import type { TimelineEvent } from "./components/TimelineView";
 import { FieldPage } from "./pages/FieldPage";
 import { IntroPage } from "./pages/IntroPage";
 import { DeckSimulatorPage } from "./pages/DeckSimulatorPage";
@@ -107,6 +107,7 @@ type Card = {
   power: number;
   serial: string;
   sigil: string;
+  illustration?: string;
   classMark: string;
   classStripe: string;
   packId: string;
@@ -208,6 +209,8 @@ function tabFromPath(pathname: string): TabId {
 }
 
 const pinnedKeywordFilters = ["왕살"];
+const st01FrontFrame = "./docs/card-assets/st01/common/frontside-frame.png";
+const st01CardBack = "./docs/card-assets/st01/common/backside-card.png";
 
 function publicAssetPath(file: string) {
   if (/^(https?:)?\/\//.test(file)) return file;
@@ -408,7 +411,12 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
   const effectClassName = hasEffect
     ? "card-effect"
     : "card-effect card-effect-lore";
-  const handlePointerMove = (event: PointerEvent<HTMLButtonElement>) => {
+  const illustration = card.illustration?.trim();
+  const illustrationSrc = illustration ? publicAssetPath(illustration) : "";
+  const usesLayeredFrame =
+    Boolean(illustration) &&
+    (card.packId === "st01" || illustration?.includes("card-assets/st01"));
+  const handlePointerMove = (event: PointerEvent<HTMLElement>) => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const cardRect = event.currentTarget.getBoundingClientRect();
     const x = (event.clientX - cardRect.left) / cardRect.width;
@@ -421,31 +429,78 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
     event.currentTarget.style.setProperty("--glare-x", `${x * 100}%`);
     event.currentTarget.style.setProperty("--glare-y", `${y * 100}%`);
   };
-  const resetTilt = (target: HTMLButtonElement) => {
+  const resetTilt = (target: HTMLElement) => {
     target.style.setProperty("--tilt-x", "0deg");
     target.style.setProperty("--tilt-y", "0deg");
     target.style.setProperty("--glare-x", "50%");
     target.style.setProperty("--glare-y", "35%");
   };
+  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (!onClick) return;
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    onClick();
+  };
+  const tileStyle = {
+    "--class-stripe":
+      card.classStripe || classColors[card.classId] || "#ffffff",
+    "--tilt-x": "0deg",
+    "--tilt-y": "0deg",
+    "--glare-x": "50%",
+    "--glare-y": "35%",
+  } as CSSProperties;
+
+  if (usesLayeredFrame) {
+    return (
+      <article
+        className="card-tile card-frame-stack"
+        style={tileStyle}
+        onClick={onClick}
+        onKeyDown={handleKeyDown}
+        onPointerMove={handlePointerMove}
+        onPointerLeave={(event) => resetTilt(event.currentTarget)}
+        onBlur={(event) => resetTilt(event.currentTarget)}
+        role={onClick ? "button" : undefined}
+        tabIndex={onClick ? 0 : undefined}
+      >
+        <img
+          className="frame-stack-illustration"
+          src={illustrationSrc}
+          alt=""
+          aria-hidden="true"
+        />
+        <img
+          className="frame-stack-image"
+          src={publicAssetPath(st01FrontFrame)}
+          alt=""
+          aria-hidden="true"
+        />
+        <span className="frame-stack-cost">{card.cost}</span>
+        <span className="frame-stack-power">{card.power}</span>
+        <strong className={`frame-stack-name${compactName}`}>{card.name}</strong>
+        <span className={hasEffect ? "frame-stack-effect" : "frame-stack-effect frame-stack-lore"}>
+          {effectText.replace(/\\n/g, "\n")}
+        </span>
+        <span className="frame-stack-meta">
+          {card.faction}
+          {card.race ? ` · ${card.race}` : ""}
+        </span>
+        <span className="frame-stack-serial">{card.serial}</span>
+      </article>
+    );
+  }
 
   return (
-    <button
+    <article
       className="card-tile"
-      style={
-        {
-          "--class-stripe":
-            card.classStripe || classColors[card.classId] || "#ffffff",
-          "--tilt-x": "0deg",
-          "--tilt-y": "0deg",
-          "--glare-x": "50%",
-          "--glare-y": "35%",
-        } as CSSProperties
-      }
-      type="button"
+      style={tileStyle}
       onClick={onClick}
+      onKeyDown={handleKeyDown}
       onPointerMove={handlePointerMove}
       onPointerLeave={(event) => resetTilt(event.currentTarget)}
       onBlur={(event) => resetTilt(event.currentTarget)}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
     >
       <span className="card-stripe" aria-hidden="true" />
       <span className="card-top">
@@ -454,7 +509,11 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
         <span className="card-power">{card.power}</span>
       </span>
       <span className="card-art" aria-hidden="true">
-        <span>{card.sigil || "怪"}</span>
+        {illustrationSrc && !usesLayeredFrame ? (
+          <img src={illustrationSrc} alt="" />
+        ) : (
+          <span>{card.sigil || "怪"}</span>
+        )}
       </span>
       <span className="card-bottom">
         <span className="card-meta">
@@ -469,7 +528,15 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
           {card.classMark || fallbackClassMarks[card.classId] || "◇"}
         </span>
       </span>
-    </button>
+    </article>
+  );
+}
+
+function CardBackTile() {
+  return (
+    <div className="card-back-tile" aria-label="카드 뒷면">
+      <img src={publicAssetPath(st01CardBack)} alt="" aria-hidden="true" />
+    </div>
   );
 }
 
@@ -621,6 +688,36 @@ function MarkdownView({ source }: { source: string }) {
   );
 }
 
+function paginateMarkdown(source: string) {
+  const blocks = source.split(/\n{2,}/).filter(Boolean);
+  if (!blocks.length) return [source];
+
+  const pages: string[] = [];
+  let current: string[] = [];
+  let weight = 0;
+
+  blocks.forEach((block, index) => {
+    if (index === 0 && block.startsWith("# ")) {
+      pages.push(block);
+      return;
+    }
+
+    const blockWeight = block.startsWith("#")
+      ? 1.6
+      : Math.max(1, Math.ceil(block.length / 115));
+    if (current.length && weight + blockWeight > 4.5) {
+      pages.push(current.join("\n\n"));
+      current = [];
+      weight = 0;
+    }
+    current.push(block);
+    weight += blockWeight;
+  });
+
+  if (current.length) pages.push(current.join("\n\n"));
+  return pages.length % 2 === 0 ? pages : [...pages, ""];
+}
+
 function App() {
   const navigate = useNavigate();
   const pathname = useRouterState({
@@ -640,18 +737,17 @@ function App() {
     useState("base");
   const [modalCardId, setModalCardId] = useState<string | null>(null);
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
+  const [mapZoom, setMapZoom] = useState(1);
   const [rulebookMarkdown, setRulebookMarkdown] = useState("");
   const [showRulebook, setShowRulebook] = useState(false);
   const [worldDocIndex, setWorldDocIndex] = useState(0);
   const [worldMarkdown, setWorldMarkdown] = useState("");
-  const [timelineEvents, setTimelineEvents] = useState<TimelineEvent[]>([]);
-  const [showPrivateWorldDocs, setShowPrivateWorldDocs] = useState(false);
+  const [isWorldStoryOpen, setIsWorldStoryOpen] = useState(false);
+  const [worldBookSpread, setWorldBookSpread] = useState(0);
+  const [worldNotice, setWorldNotice] = useState("");
   const [error, setError] = useState("");
   const activeTab = tabFromPath(pathname);
-  const visibleWorldLinks = useMemo(
-    () => worldLinks.filter((link) => showPrivateWorldDocs || !link.private),
-    [showPrivateWorldDocs],
-  );
+  const visibleWorldLinks = worldLinks;
 
   useEffect(() => {
     fetchJson<Manifest>("./data/card-versions.json")
@@ -684,13 +780,7 @@ function App() {
     const selectedDoc = visibleWorldLinks[worldDocIndex] ?? visibleWorldLinks[0];
     if (!selectedDoc) return;
     if (selectedDoc.kind === "image") return;
-    if (selectedDoc.kind === "timeline") {
-      fetchJson<TimelineEvent[]>(selectedDoc.href)
-        .then(setTimelineEvents)
-        .catch(() => setTimelineEvents([]));
-      return;
-    }
-
+    if (selectedDoc.private) return;
     fetch(publicAssetPath(selectedDoc.href), { cache: "no-store" })
       .then((response) => {
         if (!response.ok) throw new Error("세계관 문서 로드 실패");
@@ -715,7 +805,17 @@ function App() {
           `# ${selectedDoc.title}\n\n세계관 문서를 불러오지 못했습니다.`,
         ),
       );
-  }, [visibleWorldLinks, worldDocIndex]);
+  }, [worldDocIndex]);
+
+  useEffect(() => {
+    setWorldBookSpread(0);
+  }, [worldMarkdown]);
+
+  useEffect(() => {
+    if (!worldNotice) return;
+    const timeout = window.setTimeout(() => setWorldNotice(""), 1800);
+    return () => window.clearTimeout(timeout);
+  }, [worldNotice]);
 
   useEffect(() => {
     if (!manifest || !versionId) return;
@@ -932,25 +1032,30 @@ function App() {
   const activeWorldDocIndex =
     worldDocIndex < visibleWorldLinks.length ? worldDocIndex : 0;
   const activeWorldDoc = visibleWorldLinks[activeWorldDocIndex];
-  const worldContent =
-    activeWorldDoc?.kind === "image" ? (
-      <figure className="world-map-figure">
-        <button
-          type="button"
-          aria-label="지도 크게 보기"
-          onClick={() => setIsMapModalOpen(true)}
-        >
-          <img
-            src={publicAssetPath(activeWorldDoc.href)}
-            alt="괴력난신 세계 지도"
-          />
-        </button>
-      </figure>
-    ) : activeWorldDoc?.kind === "timeline" ? (
-      <TimelineView events={timelineEvents} />
-    ) : (
-      <MarkdownView source={worldMarkdown} />
-    );
+  const worldStoryPages = useMemo(
+    () => paginateMarkdown(worldMarkdown),
+    [worldMarkdown],
+  );
+  const leftWorldPage = worldStoryPages[worldBookSpread * 2] ?? "";
+  const rightWorldPage = worldStoryPages[worldBookSpread * 2 + 1] ?? "";
+  const canTurnWorldBookLeft = worldBookSpread > 0;
+  const canTurnWorldBookRight =
+    worldBookSpread * 2 + 2 < worldStoryPages.length;
+  const openWorldStory = (index: number) => {
+    const selectedDoc = visibleWorldLinks[index];
+    if (selectedDoc?.private) {
+      setWorldNotice("이 책은 열리지 않는다.");
+      return;
+    }
+    setWorldDocIndex(index);
+    setWorldBookSpread(0);
+    setIsWorldStoryOpen(true);
+  };
+  const openWorldMap = (index: number) => {
+    setWorldDocIndex(index);
+    setMapZoom(1);
+    setIsMapModalOpen(true);
+  };
   const navigateRuleTerm = (term: string) => {
     const target =
       (term === "전투" ? document.getElementById("combat-resolution") : null) ??
@@ -1195,6 +1300,7 @@ function App() {
             cards={cards}
             decks={decks}
             renderCard={(card) => <CardTile card={card as Card} />}
+            renderBack={() => <CardBackTile />}
           />
         )}
 
@@ -1496,13 +1602,9 @@ function App() {
           <WorldPage
             activeDocIndex={activeWorldDocIndex}
             links={visibleWorldLinks}
-            content={worldContent}
-            onSelectDoc={setWorldDocIndex}
-            onTogglePrivateDocs={() => {
-              setShowPrivateWorldDocs((current) => !current);
-              setWorldDocIndex(0);
-            }}
-            showPrivateDocs={showPrivateWorldDocs}
+            onOpenStory={openWorldStory}
+            onOpenMap={openWorldMap}
+            onOpenLockedBook={() => setWorldNotice("이 책은 열리지 않는다.")}
           />
         )}
       </section>
@@ -1596,11 +1698,91 @@ function App() {
             >
               <X />
             </button>
-            <img
-              src={publicAssetPath(activeWorldDoc.href)}
-              alt="괴력난신 세계 지도"
-            />
+            <div className="map-modal-tools" aria-label="지도 확대 도구">
+              <button
+                type="button"
+                aria-label="지도 축소"
+                onClick={() => setMapZoom((zoom) => Math.max(1, zoom - 0.25))}
+              >
+                <ZoomOut />
+              </button>
+              <span>{Math.round(mapZoom * 100)}%</span>
+              <button
+                type="button"
+                aria-label="지도 확대"
+                onClick={() => setMapZoom((zoom) => Math.min(2.5, zoom + 0.25))}
+              >
+                <ZoomIn />
+              </button>
+            </div>
+            <div className="map-modal-scroll">
+              <img
+                src={publicAssetPath(activeWorldDoc.href)}
+                alt="괴력난신 세계 지도"
+                style={{ transform: `scale(${mapZoom})` }}
+              />
+            </div>
           </section>
+        </div>
+      )}
+
+      {isWorldStoryOpen && activeWorldDoc?.story && (
+        <div
+          className="world-story-backdrop"
+          role="presentation"
+          onClick={() => setIsWorldStoryOpen(false)}
+        >
+          <section
+            className="world-story-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${activeWorldDoc.title} 기록`}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              className="modal-close world-story-close"
+              type="button"
+              aria-label="닫기"
+              onClick={() => setIsWorldStoryOpen(false)}
+            >
+              <X />
+            </button>
+            <div className="world-story-book">
+              <div className="world-story-gutter" aria-hidden="true" />
+              <div className="world-story-pages" aria-label="펼친 책">
+                <button
+                  type="button"
+                  className="world-story-page world-story-page-left"
+                  aria-label="이전 쪽"
+                  onClick={() => {
+                    if (canTurnWorldBookLeft) {
+                      setWorldBookSpread((current) => current - 1);
+                    }
+                  }}
+                >
+                  <MarkdownView source={leftWorldPage} />
+                </button>
+                <button
+                  type="button"
+                  className="world-story-page world-story-page-right"
+                  aria-label="다음 쪽"
+                  onClick={() => {
+                    if (canTurnWorldBookRight) {
+                      setWorldBookSpread((current) => current + 1);
+                    }
+                  }}
+                >
+                  <MarkdownView source={rightWorldPage} />
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      )}
+
+      {worldNotice && (
+        <div className="world-notice" role="status">
+          {worldNotice}
         </div>
       )}
 
