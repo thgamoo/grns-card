@@ -46,6 +46,7 @@ const commonCardIds = [
 ];
 
 function deckShortName(name: string) {
+  if (name.includes("성주 공격 미니덱")) return "첫 전투";
   if (name.includes("수신")) return "수신덱";
   if (name.includes("신모")) return "신모덱";
   if (name.includes("선구자")) return "선구자덱";
@@ -150,11 +151,12 @@ export function DeckListPage({
     <div className="tutorial-print-view">
       <section className="tutorial-print-head">
         <div>
-          <p className="eyebrow">deck print</p>
-          <h2>옛이야기 덱 프린트</h2>
+          <p className="eyebrow">starter decks</p>
+          <h2>시작 덱</h2>
           <p>
-            덱을 선택하면 성주 1장과 징집소 39장을 한 번에 출력합니다.
-            프린트용 카드 얼굴은 DB 화면과 같은 컴포넌트를 사용합니다.
+            영령님. 처음 전장에 현현하셨다면, 이곳의 덱부터 펼쳐보시면
+            됩니다. 성주와 징집소가 이미 갖추어진 묶음이니, 하나를 골라
+            출력한 뒤 곧바로 첫 계시를 내려보세요.
           </p>
         </div>
         <div className="tutorial-print-actions">
@@ -182,7 +184,7 @@ export function DeckListPage({
             onClick={() => setSelectedDeckId(item.deck.id)}
           >
             <strong>{deckShortName(item.deck.name)}</strong>
-          <span>{item.cards.length}장</span>
+            <span>{item.cards.length}장</span>
           </button>
         ))}
       </section>

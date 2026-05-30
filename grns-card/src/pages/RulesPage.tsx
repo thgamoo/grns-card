@@ -1,6 +1,6 @@
-import { useState, type ReactNode } from "react";
-import { BookOpenText, Gamepad2, X, ZoomIn } from "lucide-react";
-import fieldCapture from "../assets/field-capture.png";
+import { type ReactNode } from "react";
+import { BookOpenText, Gamepad2, Map } from "lucide-react";
+import rulesGuideImage from "../assets/grns-ink-rules-guide-spirit.png";
 import { MissingCallout } from "../components/MissingCallout";
 import { RichText } from "../components/RichText";
 import {
@@ -18,17 +18,6 @@ import {
   warPrepSections,
 } from "../content/rules";
 import { fieldTermNotes } from "../content/field";
-
-const fieldPreviewCards = [
-  "전진기지",
-  "후방기지",
-  "야전병",
-  "문지기",
-  "성주",
-  "징집소",
-  "매장지",
-  "야생",
-];
 
 type RulesPageProps = {
   rulebook: ReactNode;
@@ -53,7 +42,6 @@ export function RulesPage({
   onNavigateTutorial,
   renderInlineText,
 }: RulesPageProps) {
-  const [fieldPreviewOpen, setFieldPreviewOpen] = useState(false);
   const termNotes = {
     ...combatConceptNotes,
     ...ruleTermNotes,
@@ -71,6 +59,9 @@ export function RulesPage({
   return (
     <div className="rules-view">
       <section className="rules-section rules-hero">
+        <div className="rules-hero-art" aria-hidden="true">
+          <img src={rulesGuideImage} alt="" />
+        </div>
         <p className="eyebrow">{ruleCopy.hero.eyebrow}</p>
         <h2>{ruleCopy.hero.title}</h2>
         <RichText
@@ -105,11 +96,13 @@ export function RulesPage({
           <p className="eyebrow">{ruleCopy.cardLayout.eyebrow}</p>
           <h2>{ruleCopy.cardLayout.title}</h2>
         </div>
-        <RichText
-          className="section-intro"
-          text={ruleCopy.cardLayout.intro}
-          {...richTextFieldProps}
-        />
+        {ruleCopy.cardLayout.intro && (
+          <RichText
+            className="section-intro"
+            text={ruleCopy.cardLayout.intro}
+            {...richTextFieldProps}
+          />
+        )}
         <div className="card-layout-guide">
           {sampleCard && (
             <div className="annotated-card">
@@ -150,67 +143,29 @@ export function RulesPage({
           <p className="eyebrow">field layout</p>
           <h2>필드 구성</h2>
         </div>
-        <p className="section-intro">
-          필드판의 전체 배치와 각 위치의 관계를 작은 지도로 먼저 살펴봅니다.
-        </p>
         <button
-          className="field-preview-map"
+          className="field-view-button"
           type="button"
-          onClick={() => setFieldPreviewOpen(true)}
-          aria-label="필드판 크게 보기"
+          onClick={onNavigateField}
+          aria-label="필드 보기"
         >
-          <img src={fieldCapture} alt="필드판 배치 프리뷰" />
-          <span>
-            <ZoomIn />
-            크게 보기
-          </span>
+          <Map />
+          필드 보기
         </button>
-        <ul className="field-preview-term-list" aria-label="필드 위치 목록">
-          {fieldPreviewCards.map((label) => (
-            <li key={label}>
-              <strong>{label}</strong>
-              <p>{fieldTermNotes[label]}</p>
-            </li>
-          ))}
-        </ul>
       </section>
-
-      {fieldPreviewOpen && (
-        <div
-          className="field-preview-modal-backdrop"
-          role="presentation"
-          onClick={() => setFieldPreviewOpen(false)}
-        >
-          <section
-            className="field-preview-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-label="필드판 프리뷰 확대"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <button
-              className="modal-close"
-              type="button"
-              aria-label="닫기"
-              onClick={() => setFieldPreviewOpen(false)}
-            >
-              <X />
-            </button>
-            <img src={fieldCapture} alt="필드판 배치 확대 이미지" />
-          </section>
-        </div>
-      )}
 
       <section className="rules-section">
         <div className="rules-section-head">
           <p className="eyebrow">{ruleCopy.setup.eyebrow}</p>
           <h2>{ruleCopy.setup.title}</h2>
         </div>
-        <RichText
-          className="section-intro rule-section-intro"
-          text={ruleCopy.setup.intro}
-          {...richTextFieldProps}
-        />
+        {ruleCopy.setup.intro && (
+          <RichText
+            className="section-intro rule-section-intro"
+            text={ruleCopy.setup.intro}
+            {...richTextFieldProps}
+          />
+        )}
         <div className="rule-chapter-flow">
           {warPrepSections.map((section, index) => (
             <article key={section.title}>
@@ -240,11 +195,13 @@ export function RulesPage({
           <p className="eyebrow">{ruleCopy.turnPhases.eyebrow}</p>
           <h2>{ruleCopy.turnPhases.title}</h2>
         </div>
-        <RichText
-          className="section-intro rule-section-intro"
-          text={ruleCopy.turnPhases.intro}
-          {...richTextFieldProps}
-        />
+        {ruleCopy.turnPhases.intro && (
+          <RichText
+            className="section-intro rule-section-intro"
+            text={ruleCopy.turnPhases.intro}
+            {...richTextFieldProps}
+          />
+        )}
         <div className="phase-list">
           {phases.map((phase, index) => (
             <article key={phase.title}>
@@ -268,11 +225,13 @@ export function RulesPage({
       <section className="rules-section combat-rules" id="combat-resolution">
         <p className="eyebrow">{ruleCopy.combat.eyebrow}</p>
         <h2>{ruleCopy.combat.title}</h2>
-        <RichText
-          className="section-intro"
-          text={ruleCopy.combat.intro}
-          {...richTextFieldProps}
-        />
+        {ruleCopy.combat.intro && (
+          <RichText
+            className="section-intro"
+            text={ruleCopy.combat.intro}
+            {...richTextFieldProps}
+          />
+        )}
         <div className="rule-chapter-flow combat-case-list">
           {battleCases.map((battleCase, index) => (
             <article key={battleCase.title}>
@@ -294,9 +253,11 @@ export function RulesPage({
           <p className="eyebrow">{ruleCopy.scoutSacrifice.eyebrow}</p>
           <h2>{ruleCopy.scoutSacrifice.title}</h2>
         </div>
-        <p className="section-intro">
-          {renderInlineText(ruleCopy.scoutSacrifice.intro)}
-        </p>
+        {ruleCopy.scoutSacrifice.intro && (
+          <p className="section-intro">
+            {renderInlineText(ruleCopy.scoutSacrifice.intro)}
+          </p>
+        )}
         <ol className="rules-ordered-list">
           {ruleCopy.scoutSacrifice.steps.map((step) => (
             <li key={step}>{renderInlineText(step)}</li>
@@ -309,9 +270,11 @@ export function RulesPage({
           <p className="eyebrow">{ruleCopy.bypassAttack.eyebrow}</p>
           <h2>{ruleCopy.bypassAttack.title}</h2>
         </div>
-        <p className="section-intro">
-          {renderInlineText(ruleCopy.bypassAttack.intro)}
-        </p>
+        {ruleCopy.bypassAttack.intro && (
+          <p className="section-intro">
+            {renderInlineText(ruleCopy.bypassAttack.intro)}
+          </p>
+        )}
         <ul className="rules-unordered-list">
           {ruleCopy.bypassAttack.items.map((item) => (
             <li key={item.title}>
@@ -326,9 +289,11 @@ export function RulesPage({
           <p className="eyebrow">{ruleCopy.control.eyebrow}</p>
           <h2>{ruleCopy.control.title}</h2>
         </div>
-        <p className="section-intro">
-          {renderInlineText(ruleCopy.control.intro)}
-        </p>
+        {ruleCopy.control.intro && (
+          <p className="section-intro">
+            {renderInlineText(ruleCopy.control.intro)}
+          </p>
+        )}
         <dl className="rules-definition-list">
           {combatConcepts.map((term) => (
             <div id={combatConceptId(term.term)} key={term.term}>
@@ -346,11 +311,13 @@ export function RulesPage({
       <section className="rules-section" id="retreat-resolution">
         <p className="eyebrow">{ruleCopy.retreat.eyebrow}</p>
         <h2>{ruleCopy.retreat.title}</h2>
-        <div className="section-intro">
-          {ruleCopy.retreat.intro.split(/\n\s*/).map((paragraph) => (
-            <p key={paragraph}>{renderInlineText(paragraph.trim())}</p>
-          ))}
-        </div>
+        {ruleCopy.retreat.intro && (
+          <div className="section-intro">
+            {ruleCopy.retreat.intro.split(/\n\s*/).map((paragraph) => (
+              <p key={paragraph}>{renderInlineText(paragraph.trim())}</p>
+            ))}
+          </div>
+        )}
         <dl className="rules-definition-list">
           {ruleCopy.retreat.terms.map((term) => (
             <div key={term.keyword}>
@@ -366,11 +333,13 @@ export function RulesPage({
           <p className="eyebrow">{ruleCopy.keywords.eyebrow}</p>
           <h2>{ruleCopy.keywords.title}</h2>
         </div>
-        <RichText
-          className="section-intro"
-          text={ruleCopy.keywords.intro}
-          {...richTextFieldProps}
-        />
+        {ruleCopy.keywords.intro && (
+          <RichText
+            className="section-intro"
+            text={ruleCopy.keywords.intro}
+            {...richTextFieldProps}
+          />
+        )}
         <div className="keyword-chip-list">
           {keywordRules.map(([keyword, , badge]) => (
             <button
@@ -412,20 +381,6 @@ export function RulesPage({
         </div>
       </section>
 
-      <section className="rules-section">
-        <div className="rules-section-head">
-          <p className="eyebrow">{ruleCopy.closing.eyebrow}</p>
-          <h2>{ruleCopy.closing.title}</h2>
-        </div>
-        <p className="section-intro">
-          {ruleCopy.closing.lines.map((line, index) => (
-            <span key={line}>
-              {index > 0 && <br />}
-              {line}
-            </span>
-          ))}
-        </p>
-      </section>
     </div>
   );
 }

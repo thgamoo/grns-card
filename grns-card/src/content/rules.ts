@@ -47,27 +47,22 @@ export const ruleCopy = {
   cardLayout: {
     eyebrow: "card layout",
     title: "카드 구성",
-    intro: `영령님께서 살펴보실 **민초**들은 영체세계에서 **카드 형태**로 보입니다.
-    이들은 매일 굶주려 있습니다. 이들에게 식량을 제공한다면 잠재되어 있는 힘을 낼 수 있을 것입니다.`,
+    intro: "",
   },
   setup: {
     eyebrow: "setup",
     title: "전쟁 준비",
-    intro:
-      "전쟁을 시작하려면 군역을 징발해야합니다. 외에도 어떻게 해야 승리할 수 있는지, 어떻게 시작하는지 살펴보세요.",
+    intro: "",
   },
   turnPhases: {
     eyebrow: "turn phases",
     title: "전쟁의 진행",
-    intro:
-      "각 턴은 정비, 징집, 보급병 배치, 전쟁, 소강의 순서로 진행됩니다. 차례마다 준비하고 움직이고 마무리하는 흐름을 반복합니다.",
+    intro: "",
   },
   retreat: {
     eyebrow: "retreat",
     title: "퇴각과 퇴출",
-    intro: `겁을 먹은 카드들은 <후방기지>로 돌아가고 싶어합니다.
-    한 턴에 한 번, 영령 님은 해당 종족의 지도자로서 간밤의 꿈을 통해 두려움과 공포를 안길 수 있습니다.
-    예를들면, 두려운 꿈을 꾼 개똥이는 후방기지에 전서구를 보내 보급 준비를 하고 있던 말똥이를 군에서 내보냅니다. 징발되었던 말똥이는 기쁜 마음으로 고향에 돌아 갈 채비를 하지만, 탈영병으로 몰려 즉결처분을 당하고 맙니다.`,
+    intro: "",
     terms: [
       {
         keyword: "[퇴출]",
@@ -82,14 +77,12 @@ export const ruleCopy = {
   combat: {
     eyebrow: "combat",
     title: "전투의 처리",
-    intro:
-      "전투는 별 것은 아니지만 살짝 복잡합니다. 영령 님이 승리를 거두려면 명확하게 순서를 파악해야 합니다.",
+    intro: "",
   },
   bypassAttack: {
     eyebrow: "bypass attack",
     title: "우회하는 공격",
-    intro:
-      "때때로는 대치하고 있는 카드가 너무 힘이 세다면 군영에서 양동작전으로 희생시킬 카드를 고를 수 있습니다.\n길만 뚫려 있다면 언제든지 공격할 수 있죠. 아래의 두 상황을 살펴보세요.",
+    intro: "",
     items: [
       {
         title: "야전병 우회 공격",
@@ -104,8 +97,7 @@ export const ruleCopy = {
   scoutSacrifice: {
     eyebrow: "survival declaration",
     title: "생존 선언",
-    intro:
-      "전쟁의 시작에서는 어떤 문지기가 성을 지키고 있는지 알 수 없습니다. 약한 문지기라면 상관없지만 강한 문지기였다면 정체를 드러낼 때 누군가는 <대가>를 치러야합니다. 제 생각에는 징집소에서 막 훈련을 시작한 병들을 대가로 치르는 게 좋을 거 같습니다. 해당 절차를 살펴보세요.",
+    intro: "",
     steps: [
       "뒷면인 카드에 공격선언을 합니다.",
       "상시 효과들과 매복 효과들을 처리한 후, 공격 대상이 공개됩니다.",
@@ -116,14 +108,12 @@ export const ruleCopy = {
   control: {
     eyebrow: "control",
     title: "장악",
-    intro:
-      "문 주변의 빈 자리는 곧 공격로입니다. <장악>하여 문지기의 방해 없이 성주를 직접 공격하세요.\n장악한 카드는 누구도 치울 수 없습니다. 모든 문지기 자리를 장악당하지 않도록 유념하세요.",
+    intro: "",
   },
   keywords: {
     eyebrow: "keywords",
     title: "진언의 종류",
-    intro:
-      '"**진언**" 은 민초가 갖고 있는 잠재력의 형태입니다. 흔히 영체언어로 "**키워드**"라고 설명됩니다.',
+    intro: "",
     otherTitle: "그 외의 키워드",
   },
   closing: {

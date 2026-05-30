@@ -178,7 +178,7 @@ const tabs: Array<{ id: TabId; label: string; icon: typeof Sparkles }> = [
   { id: "db", label: "DB", icon: Library },
   { id: "rules", label: "룰", icon: Shield },
   { id: "tutorial", label: "튜토리얼", icon: Gamepad2 },
-  { id: "deckList", label: "덱 목록", icon: Printer },
+  { id: "deckList", label: "시작 덱", icon: Printer },
   { id: "graph", label: "그래프", icon: Activity },
   { id: "field", label: "필드", icon: MapIcon },
   { id: "world", label: "서고", icon: BookOpenText },
@@ -946,6 +946,13 @@ function App() {
       );
     });
   }, [cards, classIds, keywordFilters, otherFilters, packIds, query]);
+  const printCardPages = useMemo(() => {
+    const pages: Card[][] = [];
+    for (let index = 0; index < filteredCards.length; index += 9) {
+      pages.push(filteredCards.slice(index, index + 9));
+    }
+    return pages;
+  }, [filteredCards]);
 
   const keywordCounts = useMemo(() => {
     const counts = new Map<string, number>();
@@ -1349,12 +1356,16 @@ function App() {
                 </div>
               </div>
               <div className="card-grid">
-                {filteredCards.map((card) => (
-                  <div className="db-print-card" key={card.id}>
-                    <CardTile
-                      card={card}
-                      onClick={() => setModalCardId(card.id)}
-                    />
+                {printCardPages.map((page, pageIndex) => (
+                  <div className="db-print-page" key={`print-page-${pageIndex}`}>
+                    {page.map((card) => (
+                      <div className="db-print-card" key={card.id}>
+                        <CardTile
+                          card={card}
+                          onClick={() => setModalCardId(card.id)}
+                        />
+                      </div>
+                    ))}
                   </div>
                 ))}
               </div>
