@@ -15,7 +15,7 @@
     "actionCost": 0,
     "serial": "GRNS-0001",
     "sigil": "兵",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/ym-g-001.png"
   },
   {
     "id": "ym-g-002",
@@ -33,7 +33,7 @@
     "actionCost": 0,
     "serial": "GRNS-0002",
     "sigil": "鎧",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/ym-g-002.png"
   },
   {
     "id": "ym-g-003",
@@ -51,7 +51,7 @@
     "actionCost": 0,
     "serial": "GRNS-0013",
     "sigil": "將",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/ym-g-003.png"
   },
   {
     "id": "ym-g-004",
@@ -69,7 +69,7 @@
     "actionCost": 0,
     "serial": "GRNS-0014",
     "sigil": "壁",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/ym-g-004.png"
   },
   {
     "id": "ym-g-005",
@@ -87,7 +87,7 @@
     "actionCost": 0,
     "serial": "GRNS-0003",
     "sigil": "怪",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/ym-g-005.png"
   },
   {
     "id": "ym-g-006",
@@ -105,7 +105,7 @@
     "actionCost": 0,
     "serial": "GRNS-0123",
     "sigil": "武",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/ym-g-006.png"
   },
   {
     "id": "ym-g-007",
@@ -123,7 +123,7 @@
     "actionCost": 0,
     "serial": "GRNS-0125",
     "sigil": "射",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/ym-g-007.png"
   },
   {
     "id": "ym-g-008",
@@ -141,7 +141,7 @@
     "actionCost": 0,
     "serial": "GRNS-0126",
     "sigil": "虎",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/ym-g-008.png"
   },
   {
     "id": "ym-g-009",

@@ -303,7 +303,7 @@
     "actionCost": 0,
     "serial": "GRNS-0048",
     "sigil": "盾",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-t-003.png"
   },
   {
     "id": "gr-t-004",
@@ -321,7 +321,7 @@
     "actionCost": 0,
     "serial": "GRNS-0049",
     "sigil": "書",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-t-004.png"
   },
   {
     "id": "gr-t-005",
@@ -339,7 +339,7 @@
     "actionCost": 0,
     "serial": "GRNS-0050",
     "sigil": "槌",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-t-005.png"
   },
   {
     "id": "gr-t-006",
@@ -357,6 +357,6 @@
     "actionCost": 0,
     "serial": "GRNS-0051",
     "sigil": "流",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-t-006.png"
   }
 ]
