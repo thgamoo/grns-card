@@ -38,7 +38,8 @@
 <ul>
 <li>진언 키워드는 카드 효과에서 <code>[]</code>로 감싼다. 예: <code>[출정]</code>, <code>[전투광]</code></li>
 <li>규칙 용어, 필드 위치, 종족, 카드명 참조는 <code>&lt;&gt;</code>로 감싼다. 예: <code>&lt;성주&gt;</code>, <code>&lt;전진기지&gt;</code>, <code>&lt;짐승&gt;</code>, <code>&lt;괴유 - 정벌자&gt;</code></li>
-<li>숫자나 X가 붙는 효과는 기본 키워드의 수치형으로 본다. 예: <code>[약화 1]</code>은 <code>[약화]</code>, <code>[희생 X]</code>는 <code>[희생]</code>의 수치형이다.</li>
+<li>숫자나 X가 붙는 효과는 기본 키워드의 수치형으로 본다. 예: <code>[희생 X]</code>는 <code>[희생]</code>의 수치형이다.</li>
+<li>힘을 낮추는 효과는 키워드로 쓰지 않고 <code>힘 -1</code>, <code>힘 -2</code>처럼 본문에 직접 적는다.</li>
 <li><code>&lt;전진기지&gt;</code>는 필드 위치이고, <code>[전진기지]</code>는 그 위치 맨 위에 있을 때 적용되는 진언이다. <code>&lt;후방기지&gt;</code>와 <code>[후방기지]</code>도 같은 방식으로 구분한다.</li>
 <li><code>매복</code>은 카드 타입이면서 진언으로도 쓰인다. 타입은 카드 정보의 <code>type</code>, 진언은 효과 안의 <code>[매복]</code>으로 구분한다.</li>
 </ul>
@@ -54,7 +55,6 @@
 <tr><td><code>[상시]</code></td><td>조건을 만족하는 동안 지속적으로 효과를 적용한다.</td><td>전장/위치 상태를 계속 본다</td></tr>
 <tr><td><code>[전투광]</code></td><td>공격 선언 시 <code>&lt;보급&gt;</code>하지 않는다.</td><td>공격적인 카드의 핵심 진언</td></tr>
 <tr><td><code>[강화]</code></td><td>지정한 카드의 힘을 +X 한다.</td><td>수치형으로 작성 가능</td></tr>
-<tr><td><code>[약화]</code></td><td>지정한 카드의 힘을 -X 한다. 단, 약화로 힘이 0 이하로 감소할 수 없다.</td><td><code>[약화 1]</code>, <code>[약화 2]</code> 사용 중</td></tr>
 <tr><td><code>[공개]</code></td><td><code>&lt;군영&gt;</code>의 카드를 상대에게 공개한다. 단, 한 번 공개했던 카드는 다시 공개할 수 없다.</td><td><code>[공개 1]</code> 표기 사용 중</td></tr>
 <tr><td><code>[문지기 등장]</code></td><td><code>&lt;비공개&gt;</code> 상태에서 <code>&lt;문지기&gt;</code> 위치로 배치되었을 경우 효과를 이행한다.</td><td>데이터에 <code>[문지기등장]</code> 1건 정리 필요</td></tr>
 <tr><td><code>[퇴각]</code></td><td><code>&lt;퇴각&gt;</code>할 경우 효과를 이행한다.</td><td>가락국 축적 흐름</td></tr>
@@ -65,7 +65,6 @@
 <h2>수치형 진언</h2>
 <table>
 <tr><th>표기</th><th>의미</th><th>정리 방향</th></tr>
-<tr><td><code>[약화 N]</code></td><td>대상의 힘을 N 낮춘다.</td><td>기본 키워드는 <code>[약화]</code></td></tr>
 <tr><td><code>[희생 N]</code></td><td>지정된 위치에서 N장을 비용으로 보낸다.</td><td>기본 키워드는 <code>[희생]</code></td></tr>
 <tr><td><code>[희생 X]</code></td><td>카드 텍스트가 정한 X장만큼 비용으로 보낸다.</td><td>X의 기준을 같은 문장 안에 적는다</td></tr>
 <tr><td><code>[공개 N]</code></td><td>조건에 맞는 카드 N장을 공개한다.</td><td>기본 키워드는 <code>[공개]</code></td></tr>
@@ -112,7 +111,6 @@
 <tr><td><code>[매복]</code></td><td>41</td><td>진언</td></tr>
 <tr><td><code>[출정]</code></td><td>28</td><td>진언</td></tr>
 <tr><td><code>[단말마]</code></td><td>12</td><td>진언</td></tr>
-<tr><td><code>[약화 1]</code></td><td>12</td><td>수치형 진언</td></tr>
 <tr><td><code>[성주등장]</code></td><td>11</td><td>진언</td></tr>
 <tr><td><code>[자체보급]</code></td><td>11</td><td>진언</td></tr>
 <tr><td><code>[전진기지]</code></td><td>10</td><td>위치 조건 진언</td></tr>
@@ -122,8 +120,6 @@
 <tr><td><code>[상시]</code></td><td>7</td><td>진언</td></tr>
 <tr><td><code>[퇴출]</code></td><td>5</td><td>진언</td></tr>
 <tr><td><code>[문지기 등장]</code></td><td>2</td><td>진언</td></tr>
-<tr><td><code>[약화]</code></td><td>2</td><td>진언</td></tr>
-<tr><td><code>[약화 2]</code></td><td>2</td><td>수치형 진언</td></tr>
 <tr><td><code>[퇴각]</code></td><td>2</td><td>진언</td></tr>
 <tr><td><code>[희생 3]</code></td><td>2</td><td>수치형 진언</td></tr>
 <tr><td><code>[공개 1]</code></td><td>1</td><td>수치형 진언</td></tr>

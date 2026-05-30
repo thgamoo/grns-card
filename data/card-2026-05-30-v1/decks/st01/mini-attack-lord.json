@@ -1,0 +1,77 @@
+{
+  "id": "st01-mini-attack-lord-v1",
+  "name": "옛이야기: 성주 공격 미니덱",
+  "classId": "neutral",
+  "faction": "중립",
+  "className": "중립",
+  "packId": "st01",
+  "packName": "옛이야기",
+  "hero": {
+    "cardId": "st01-h-004",
+    "serial": "GRNS-ST01-0040",
+    "name": "쉬고 있는 산군"
+  },
+  "totalCards": 7,
+  "trapCards": 0,
+  "notes": "튜토리얼 미니덱 1. 일반적인 공격으로 성주를 매장지로 보내 패배시키는 흐름을 익힌다.",
+  "entries": [
+    {
+      "cardId": "st01-t-001",
+      "count": 1,
+      "serial": "GRNS-ST01-0041"
+    },
+    {
+      "cardId": "st01-t-002",
+      "count": 2,
+      "serial": "GRNS-ST01-0042"
+    },
+    {
+      "cardId": "st01-t-004",
+      "count": 1,
+      "serial": "GRNS-ST01-0044"
+    },
+    {
+      "cardId": "st01-t-003",
+      "count": 1,
+      "serial": "GRNS-ST01-0043"
+    },
+    {
+      "cardId": "st01-t-005",
+      "count": 1,
+      "serial": "GRNS-ST01-0045"
+    }
+  ],
+  "orderedEntries": [
+    {
+      "position": 1,
+      "cardId": "st01-t-001",
+      "serial": "GRNS-ST01-0041"
+    },
+    {
+      "position": 2,
+      "cardId": "st01-t-002",
+      "serial": "GRNS-ST01-0042"
+    },
+    {
+      "position": 3,
+      "cardId": "st01-t-004",
+      "serial": "GRNS-ST01-0044"
+    },
+    {
+      "position": 4,
+      "cardId": "st01-t-002",
+      "serial": "GRNS-ST01-0042"
+    },
+    {
+      "position": 5,
+      "cardId": "st01-t-003",
+      "serial": "GRNS-ST01-0043"
+    },
+    {
+      "position": 6,
+      "cardId": "st01-t-005",
+      "serial": "GRNS-ST01-0045"
+    }
+  ],
+  "mainDeckCards": 6
+}

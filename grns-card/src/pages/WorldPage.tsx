@@ -1,12 +1,10 @@
 import { type CSSProperties, useEffect, useMemo, useState } from "react";
 import {
-  BookOpenText,
   ChevronLeft,
   ChevronRight,
   LockKeyhole,
-  Map as MapIcon,
-  ZoomIn,
 } from "lucide-react";
+import { WorldLibraryScene } from "../components/WorldLibraryScene";
 import type { WorldLink } from "../content/world";
 
 type WorldPageProps = {
@@ -15,9 +13,12 @@ type WorldPageProps = {
   onOpenStory: (index: number) => void;
   onOpenMap: (index: number) => void;
   onOpenLockedBook: () => void;
+  sealedBooksUnlocked: boolean;
 };
 
-const BOOKS_PER_SHELF = 18;
+const DESKTOP_COLUMNS = 6;
+const MOBILE_COLUMNS = 2;
+const SHELF_ROWS = 3;
 
 export function WorldPage({
   activeDocIndex,
@@ -25,22 +26,40 @@ export function WorldPage({
   onOpenStory,
   onOpenMap,
   onOpenLockedBook,
+  sealedBooksUnlocked,
 }: WorldPageProps) {
+  const [isMobileShelf, setIsMobileShelf] = useState(false);
+  const columnCount = isMobileShelf ? MOBILE_COLUMNS : DESKTOP_COLUMNS;
+  const booksPerShelf = columnCount * SHELF_ROWS;
   const shelfPages = useMemo(() => {
     const pages: Array<Array<{ link: WorldLink; index: number }>> = [];
     links.forEach((link, index) => {
-      const pageIndex = Math.floor(index / BOOKS_PER_SHELF);
+      const pageIndex = Math.floor(index / booksPerShelf);
       pages[pageIndex] ??= [];
       pages[pageIndex].push({ link, index });
     });
     return pages;
-  }, [links]);
+  }, [booksPerShelf, links]);
   const [activeShelfPage, setActiveShelfPage] = useState(0);
+  const [hoveredWorldIndex, setHoveredWorldIndex] = useState<number | null>(null);
   const totalShelfPages = Math.max(shelfPages.length, 1);
+  const clampedShelfPage = Math.min(activeShelfPage, totalShelfPages - 1);
+  const activeShelfItems = shelfPages[clampedShelfPage] ?? [];
+  const visibleShelfItems = sealedBooksUnlocked
+    ? activeShelfItems.map(({ link, index }) => ({
+        index,
+        link: { ...link, private: false },
+      }))
+    : activeShelfItems;
 
   useEffect(() => {
-    setActiveShelfPage((current) => Math.min(current, totalShelfPages - 1));
-  }, [totalShelfPages]);
+    const syncShelfSize = () => {
+      setIsMobileShelf(window.matchMedia("(max-width: 760px)").matches);
+    };
+    syncShelfSize();
+    window.addEventListener("resize", syncShelfSize);
+    return () => window.removeEventListener("resize", syncShelfSize);
+  }, []);
 
   const moveShelf = (direction: -1 | 1) => {
     setActiveShelfPage((current) =>
@@ -51,97 +70,79 @@ export function WorldPage({
   return (
     <div className="world-view">
       <div className="world-library" aria-label="세계관 도서관">
-        <div className="world-library-perspective" aria-hidden="true" />
-        <div className="world-library-controls">
-          <button
-            type="button"
-            className="world-shelf-arrow"
-            aria-label="이전 책장"
-            title="이전 책장"
-            onClick={() => moveShelf(-1)}
-            disabled={activeShelfPage === 0}
-          >
-            <ChevronLeft />
-          </button>
-          <span className="world-shelf-count" aria-label="책장 번호">
-            {activeShelfPage + 1}/{totalShelfPages}
-          </span>
-          <button
-            type="button"
-            className="world-shelf-arrow"
-            aria-label="다음 책장"
-            title="다음 책장"
-            onClick={() => moveShelf(1)}
-            disabled={activeShelfPage === totalShelfPages - 1}
-          >
-            <ChevronRight />
-          </button>
-        </div>
-        <div
-          className="world-shelf-window"
-          style={{ "--active-shelf-page": activeShelfPage } as CSSProperties}
+        <WorldLibraryScene
+          columnCount={columnCount}
+          hoveredIndex={hoveredWorldIndex}
+          items={visibleShelfItems}
+        />
+        <span className="world-shelf-count" aria-label="책장 번호">
+          {clampedShelfPage + 1}/{totalShelfPages}
+        </span>
+        <button
+          type="button"
+          className="world-shelf-edge-button left"
+          aria-label="이전 책장"
+          title="이전 책장"
+          onClick={() => moveShelf(-1)}
+          disabled={clampedShelfPage === 0}
         >
-          <div className="world-shelves">
-            {shelfPages.map((page, pageIndex) => (
-              <div
-                className="world-shelf-page"
-                key={`world-shelf-${pageIndex}`}
-                aria-hidden={pageIndex !== activeShelfPage}
-              >
-                {page.map(({ link, index }) => (
-                  <div
-                    className={link.kind === "image" ? "world-shelves-item map-item" : "world-shelves-item"}
-                    key={link.href}
-                  >
-                    <button
-                      type="button"
-                      className={`${activeDocIndex === index ? "active" : ""} ${
-                        link.story ? "story-book" : "map-scroll"
-                      } ${link.private ? "locked-book" : ""}`}
-                      aria-label={link.private ? `${link.title} 잠김` : undefined}
-                      onClick={() => {
-                        if (link.private) {
-                          onOpenLockedBook();
-                          return;
-                        }
-                        if (link.story) {
-                          onOpenStory(index);
-                          return;
-                        }
-                        if (link.kind === "image") {
-                          onOpenMap(index);
-                        }
-                      }}
-                    >
-                      <span className="world-doc-button-copy">
-                        <strong>{link.title}</strong>
-                        <span>{link.body}</span>
-                      </span>
-                      {link.story && (
-                        link.private ? (
-                          <LockKeyhole
-                            className="world-doc-book-icon"
-                            aria-hidden="true"
-                          />
-                        ) : (
-                          <BookOpenText
-                            className="world-doc-book-icon"
-                            aria-hidden="true"
-                          />
-                        )
-                      )}
-                      {link.kind === "image" && (
-                        <span className="world-map-icons" aria-hidden="true">
-                          <MapIcon />
-                          <ZoomIn />
-                        </span>
-                      )}
-                    </button>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
+          <ChevronLeft />
+        </button>
+        <button
+          type="button"
+          className="world-shelf-edge-button right"
+          aria-label="다음 책장"
+          title="다음 책장"
+          onClick={() => moveShelf(1)}
+          disabled={clampedShelfPage === totalShelfPages - 1}
+        >
+          <ChevronRight />
+        </button>
+        <div
+          className="world-book-hotspots"
+          style={{ "--world-shelf-columns": columnCount } as CSSProperties}
+        >
+          {activeShelfItems.map(({ link, index }, slot) => {
+            const isLocked = Boolean(link.private && !sealedBooksUnlocked);
+            const isTopShelf = Math.floor(slot / columnCount) === 0;
+            return (
+              <button
+              type="button"
+              className={`${activeDocIndex === index ? "active" : ""} ${
+                link.story ? "story-book" : "map-scroll"
+              } ${isLocked ? "locked-book" : ""} ${isTopShelf ? "top-shelf-hotspot" : ""}`}
+              aria-label={isLocked ? `${link.title} 잠김` : undefined}
+              key={link.href}
+              onBlur={() => setHoveredWorldIndex(null)}
+              onClick={() => {
+                if (isLocked) {
+                  onOpenLockedBook();
+                  return;
+                }
+                if (link.story) {
+                  onOpenStory(index);
+                  return;
+                }
+                if (link.kind === "image") {
+                  onOpenMap(index);
+                }
+              }}
+              onFocus={() => setHoveredWorldIndex(index)}
+              onMouseEnter={() => setHoveredWorldIndex(index)}
+              onMouseLeave={() => setHoveredWorldIndex(null)}
+            >
+              <span className="world-doc-button-copy">
+                <strong>{link.title}</strong>
+              </span>
+              {isLocked && (
+                <LockKeyhole
+                  className="world-doc-book-icon"
+                  aria-hidden="true"
+                />
+              )}
+            </button>
+            );
+          })}
         </div>
       </div>
     </div>

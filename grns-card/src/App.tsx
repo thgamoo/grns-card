@@ -17,7 +17,6 @@ import {
   Search,
   Shield,
   Sparkles,
-  Shuffle,
   X,
   ZoomIn,
   ZoomOut,
@@ -36,7 +35,6 @@ import { FieldTermToken } from "./components/FieldTermToken";
 import { MissingCallout } from "./components/MissingCallout";
 import { FieldPage } from "./pages/FieldPage";
 import { IntroPage } from "./pages/IntroPage";
-import { DeckSimulatorPage } from "./pages/DeckSimulatorPage";
 import { DeckListPage } from "./pages/DeckListPage";
 import { RulesPage } from "./pages/RulesPage";
 import { TutorialPage } from "./pages/TutorialPage";
@@ -151,7 +149,6 @@ type TabId =
   | "rules"
   | "tutorial"
   | "deckList"
-  | "deckSim"
   | "graph"
   | "field"
   | "world";
@@ -182,10 +179,9 @@ const tabs: Array<{ id: TabId; label: string; icon: typeof Sparkles }> = [
   { id: "rules", label: "룰", icon: Shield },
   { id: "tutorial", label: "튜토리얼", icon: Gamepad2 },
   { id: "deckList", label: "덱 목록", icon: Printer },
-  { id: "deckSim", label: "덱 시뮬", icon: Shuffle },
   { id: "graph", label: "그래프", icon: Activity },
   { id: "field", label: "필드", icon: MapIcon },
-  { id: "world", label: "세계관", icon: BookOpenText },
+  { id: "world", label: "서고", icon: BookOpenText },
 ];
 
 const tabPaths: Record<TabId, string> = {
@@ -194,7 +190,6 @@ const tabPaths: Record<TabId, string> = {
   rules: "/rules",
   tutorial: "/tutorial",
   deckList: "/decks",
-  deckSim: "/deck-sim",
   graph: "/graph",
   field: "/field",
   world: "/world",
@@ -209,8 +204,11 @@ function tabFromPath(pathname: string): TabId {
 }
 
 const pinnedKeywordFilters = ["왕살"];
-const st01FrontFrame = "./docs/card-assets/st01/common/frontside-frame.png";
-const st01CardBack = "./docs/card-assets/st01/common/backside-card.png";
+const st01FrontFrame =
+  "./docs/card-assets/st01/common/card-frame-20260530_f2.png";
+const st01CardBack = "./docs/card-assets/st01/common/backside.png";
+const st01FirstGateEmblem =
+  "./docs/card-assets/st01/common/emblem-first-sungmoon.png";
 
 function publicAssetPath(file: string) {
   if (/^(https?:)?\/\//.test(file)) return file;
@@ -236,10 +234,17 @@ function serialNumber(serial: string) {
   return Number(serial.match(/(\d+)$/)?.[1] ?? 0);
 }
 
+const packDisplayOrder = ["st01", "base", "ex01"];
+
+function packOrderIndex(packId: string) {
+  const index = packDisplayOrder.indexOf(packId);
+  return index === -1 ? packDisplayOrder.length : index;
+}
+
 function compareCardsBySerial(a: Card, b: Card) {
   if (a.packId !== b.packId) {
-    if (a.packId === "base") return -1;
-    if (b.packId === "base") return 1;
+    const packDiff = packOrderIndex(a.packId) - packOrderIndex(b.packId);
+    if (packDiff !== 0) return packDiff;
     return a.packId.localeCompare(b.packId);
   }
   return serialNumber(a.serial) - serialNumber(b.serial);
@@ -291,9 +296,7 @@ function keywords(effect: string) {
 
 function angleTerms(effect: string) {
   return Array.from(
-    new Set(
-      (effect.match(/<[^>]+>/g) ?? []).map((item) => item.slice(1, -1)),
-    ),
+    new Set((effect.match(/<[^>]+>/g) ?? []).map((item) => item.slice(1, -1))),
   );
 }
 
@@ -378,7 +381,7 @@ function buildGraphEdges(cards: Card[]) {
 }
 
 function normalizeKeyword(keyword: string) {
-  return keyword.replace(/^(강화|약화|공개|희생)\s+(N|X|\d+)$/i, "$1");
+  return keyword.replace(/^(강화|공개|희생)\s+(N|X|\d+)$/i, "$1");
 }
 
 function matchesKeywordFilter(cardKeywords: string[], filter: string) {
@@ -401,11 +404,13 @@ function keywordBadge(keyword: string) {
 
 function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
   const compactName =
-    card.name.length > 9
-      ? " name-compact"
-      : card.name.length > 6
-        ? " name-small"
-        : "";
+    card.name.length >= 11
+      ? " name-extra-long"
+      : card.name.length >= 9
+        ? " name-long"
+        : card.name.length > 6
+          ? " name-small"
+          : "";
   const hasEffect = Boolean(card.effect.trim());
   const effectText = card.effect.trim() || card.lore.trim();
   const effectClassName = hasEffect
@@ -475,16 +480,31 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
           alt=""
           aria-hidden="true"
         />
+        <img
+          className="frame-stack-emblem"
+          src={publicAssetPath(st01FirstGateEmblem)}
+          alt=""
+          aria-hidden="true"
+        />
         <span className="frame-stack-cost">{card.cost}</span>
         <span className="frame-stack-power">{card.power}</span>
-        <strong className={`frame-stack-name${compactName}`}>{card.name}</strong>
-        <span className={hasEffect ? "frame-stack-effect" : "frame-stack-effect frame-stack-lore"}>
-          {effectText.replace(/\\n/g, "\n")}
-        </span>
-        <span className="frame-stack-meta">
-          {card.faction}
-          {card.race ? ` · ${card.race}` : ""}
-        </span>
+        <strong className={`frame-stack-name${compactName}`}>
+          {card.name}
+        </strong>
+        {hasEffect ? (
+          <span className="frame-stack-effect">
+            <EmphasizedTerms text={effectText} plainTerms disableTermTooltips />
+          </span>
+        ) : (
+          <div className="frame-stack-lore-slot">
+            <span className="frame-stack-effect frame-stack-lore">
+              <EmphasizedTerms text={effectText} plainTerms disableTermTooltips />
+            </span>
+          </div>
+        )}
+        <div className="frame-stack-meta-slot">
+          <span className="frame-stack-meta">{card.race}</span>
+        </div>
         <span className="frame-stack-serial">{card.serial}</span>
       </article>
     );
@@ -521,7 +541,7 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
           {card.race && <span>{card.race}</span>}
         </span>
         <span className={effectClassName}>
-          <EmphasizedTerms text={effectText} />
+          <EmphasizedTerms text={effectText} plainTerms disableTermTooltips />
         </span>
         <span className="card-serial">{card.serial}</span>
         <span className="card-mark">
@@ -570,14 +590,19 @@ function EmphasizedTerms({
   text,
   onFieldTermClick,
   onRuleTermClick,
+  plainTerms = false,
+  disableTermTooltips = false,
 }: {
   text: string;
   onFieldTermClick?: () => void;
   onRuleTermClick?: (term: string) => void;
+  plainTerms?: boolean;
+  disableTermTooltips?: boolean;
 }) {
   return (
     <>
-      {text.replace(/\\n/g, "\n")
+      {text
+        .replace(/\\n/g, "\n")
         .split(/(\*\*[^*\n]+\*\*|_[^_\n]+_|\r?\n|<[^>]+>|\[[^\]]+\])/g)
         .map((part, index) => {
           if (/^\r?\n$/.test(part)) {
@@ -595,16 +620,22 @@ function EmphasizedTerms({
           }
 
           if (/^<[^>]+>$/.test(part)) {
+            if (disableTermTooltips) {
+              return part;
+            }
+
             const term = part.slice(1, -1);
-            const note =
-              fieldTermNotes[term] ??
-              ruleTermNotes[term] ??
-              combatConceptNotes[term];
+            const note = plainTerms
+              ? undefined
+              : (fieldTermNotes[term] ??
+                ruleTermNotes[term] ??
+                combatConceptNotes[term]);
             if (note) {
               return (
                 <FieldTermToken
                   key={`${part}-${index}`}
                   note={note}
+                  emphasize={!plainTerms}
                   onNavigateField={
                     fieldTermNotes[term]
                       ? onFieldTermClick
@@ -618,7 +649,11 @@ function EmphasizedTerms({
               );
             }
 
-            return <strong key={`${part}-${index}`}>{part}</strong>;
+            return plainTerms ? (
+              part
+            ) : (
+              <strong key={`${part}-${index}`}>{part}</strong>
+            );
           }
 
           return /^\[[^\]]+\]$/.test(part) ? (
@@ -688,20 +723,24 @@ function MarkdownView({ source }: { source: string }) {
   );
 }
 
-function paginateMarkdown(source: string) {
+function paginateMarkdown(source: string, title?: string, subtitle?: string) {
   const blocks = source.split(/\n{2,}/).filter(Boolean);
   if (!blocks.length) return [source];
 
   const pages: string[] = [];
   let current: string[] = [];
   let weight = 0;
+  const bodyBlocks = [...blocks];
 
-  blocks.forEach((block, index) => {
-    if (index === 0 && block.startsWith("# ")) {
-      pages.push(block);
-      return;
-    }
+  if (bodyBlocks[0]?.startsWith("# ")) {
+    bodyBlocks.shift();
+  }
 
+  if (title) {
+    pages.push(subtitle ? `# ${title}\n\n${subtitle}` : `# ${title}`);
+  }
+
+  bodyBlocks.forEach((block) => {
     const blockWeight = block.startsWith("#")
       ? 1.6
       : Math.max(1, Math.ceil(block.length / 115));
@@ -733,8 +772,7 @@ function App() {
   const [otherFilters, setOtherFilters] = useState<string[]>([]);
   const [graphClassId, setGraphClassId] = useState("all");
   const [graphTag, setGraphTag] = useState("전체");
-  const [openDistributionPackId, setOpenDistributionPackId] =
-    useState("base");
+  const [openDistributionPackId, setOpenDistributionPackId] = useState("base");
   const [modalCardId, setModalCardId] = useState<string | null>(null);
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
   const [mapZoom, setMapZoom] = useState(1);
@@ -745,6 +783,7 @@ function App() {
   const [isWorldStoryOpen, setIsWorldStoryOpen] = useState(false);
   const [worldBookSpread, setWorldBookSpread] = useState(0);
   const [worldNotice, setWorldNotice] = useState("");
+  const [sealedBooksUnlocked, setSealedBooksUnlocked] = useState(false);
   const [error, setError] = useState("");
   const activeTab = tabFromPath(pathname);
   const visibleWorldLinks = worldLinks;
@@ -777,10 +816,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const selectedDoc = visibleWorldLinks[worldDocIndex] ?? visibleWorldLinks[0];
+    const selectedDoc =
+      visibleWorldLinks[worldDocIndex] ?? visibleWorldLinks[0];
     if (!selectedDoc) return;
     if (selectedDoc.kind === "image") return;
-    if (selectedDoc.private) return;
+    if (selectedDoc.private && !sealedBooksUnlocked) return;
     fetch(publicAssetPath(selectedDoc.href), { cache: "no-store" })
       .then((response) => {
         if (!response.ok) throw new Error("세계관 문서 로드 실패");
@@ -789,12 +829,16 @@ function App() {
       .then((source) => {
         const trimmed = source.trim();
         if (!trimmed) {
-          setWorldMarkdown(`# ${selectedDoc.title}\n\n아직 작성된 내용이 없습니다.`);
+          setWorldMarkdown(
+            `# ${selectedDoc.title}\n\n아직 작성된 내용이 없습니다.`,
+          );
           return;
         }
 
         if (selectedDoc.href.endsWith(".json")) {
-          setWorldMarkdown(`# ${selectedDoc.title}\n\n\`\`\`json\n${trimmed}\n\`\`\``);
+          setWorldMarkdown(
+            `# ${selectedDoc.title}\n\n\`\`\`json\n${trimmed}\n\`\`\``,
+          );
           return;
         }
 
@@ -805,11 +849,47 @@ function App() {
           `# ${selectedDoc.title}\n\n세계관 문서를 불러오지 못했습니다.`,
         ),
       );
-  }, [worldDocIndex]);
+  }, [sealedBooksUnlocked, visibleWorldLinks, worldDocIndex]);
 
   useEffect(() => {
-    setWorldBookSpread(0);
-  }, [worldMarkdown]);
+    const command = [
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowLeft",
+      "ArrowRight",
+      " ",
+    ];
+    let progress = 0;
+
+    const handleKeyDown = (event: WindowEventMap["keydown"]) => {
+      const target = event.target;
+      if (
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target instanceof HTMLSelectElement
+      ) {
+        return;
+      }
+
+      const expected = command[progress];
+      const key = event.key === "Spacebar" ? " " : event.key;
+      if (key === expected) {
+        progress += 1;
+        if (progress === command.length) {
+          setSealedBooksUnlocked(true);
+          setWorldNotice("봉인이 풀렸다.");
+          progress = 0;
+        }
+        return;
+      }
+      progress = key === command[0] ? 1 : 0;
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   useEffect(() => {
     if (!worldNotice) return;
@@ -1033,17 +1113,28 @@ function App() {
     worldDocIndex < visibleWorldLinks.length ? worldDocIndex : 0;
   const activeWorldDoc = visibleWorldLinks[activeWorldDocIndex];
   const worldStoryPages = useMemo(
-    () => paginateMarkdown(worldMarkdown),
-    [worldMarkdown],
+    () =>
+      paginateMarkdown(
+        worldMarkdown,
+        activeWorldDoc?.title,
+        activeWorldDoc?.body,
+      ),
+    [activeWorldDoc?.body, activeWorldDoc?.title, worldMarkdown],
   );
-  const leftWorldPage = worldStoryPages[worldBookSpread * 2] ?? "";
-  const rightWorldPage = worldStoryPages[worldBookSpread * 2 + 1] ?? "";
-  const canTurnWorldBookLeft = worldBookSpread > 0;
-  const canTurnWorldBookRight =
+  const rightWorldPage = worldStoryPages[worldBookSpread * 2] ?? "";
+  const leftWorldPage = worldStoryPages[worldBookSpread * 2 + 1] ?? "";
+  const worldStoryPageCount = Math.max(
+    1,
+    worldStoryPages.filter((page) => page.trim()).length,
+  );
+  const rightWorldPageNumber = worldBookSpread * 2 + 1;
+  const leftWorldPageNumber = worldBookSpread * 2 + 2;
+  const canTurnWorldBookBackward = worldBookSpread > 0;
+  const canTurnWorldBookForward =
     worldBookSpread * 2 + 2 < worldStoryPages.length;
   const openWorldStory = (index: number) => {
     const selectedDoc = visibleWorldLinks[index];
-    if (selectedDoc?.private) {
+    if (selectedDoc?.private && !sealedBooksUnlocked) {
       setWorldNotice("이 책은 열리지 않는다.");
       return;
     }
@@ -1055,6 +1146,12 @@ function App() {
     setWorldDocIndex(index);
     setMapZoom(1);
     setIsMapModalOpen(true);
+  };
+  const zoomWorldMapIn = () => {
+    setMapZoom((zoom) => Math.min(2.5, zoom + 0.25));
+  };
+  const zoomWorldMapOut = () => {
+    setMapZoom((zoom) => Math.max(1, zoom - 0.25));
   };
   const navigateRuleTerm = (term: string) => {
     const target =
@@ -1084,7 +1181,7 @@ function App() {
           type="button"
           onClick={() => navigateTab("intro")}
         >
-          괴력난신
+          괴력난신DB
         </button>
         <nav className="tab-nav" aria-label="페이지 탭">
           {tabs.map(({ id, label, icon: Icon }) => (
@@ -1121,8 +1218,6 @@ function App() {
       <section className="tab-stage">
         {activeTab === "intro" && (
           <IntroPage
-            cardCount={cards.length}
-            classCount={classes.length}
             onNavigateCards={() => navigateTab("db")}
             onNavigateRules={() => navigateTab("rules")}
           />
@@ -1291,9 +1386,7 @@ function App() {
           />
         )}
 
-        {activeTab === "tutorial" && (
-          <TutorialPage />
-        )}
+        {activeTab === "tutorial" && <TutorialPage />}
 
         {activeTab === "deckList" && (
           <DeckListPage
@@ -1302,10 +1395,6 @@ function App() {
             renderCard={(card) => <CardTile card={card as Card} />}
             renderBack={() => <CardBackTile />}
           />
-        )}
-
-        {activeTab === "deckSim" && (
-          <DeckSimulatorPage cards={cards} decks={decks} />
         )}
 
         {activeTab === "graph" && (
@@ -1594,9 +1683,7 @@ function App() {
           </div>
         )}
 
-        {activeTab === "field" && (
-          <FieldPage />
-        )}
+        {activeTab === "field" && <FieldPage />}
 
         {activeTab === "world" && (
           <WorldPage
@@ -1604,6 +1691,7 @@ function App() {
             links={visibleWorldLinks}
             onOpenStory={openWorldStory}
             onOpenMap={openWorldMap}
+            sealedBooksUnlocked={sealedBooksUnlocked}
             onOpenLockedBook={() => setWorldNotice("이 책은 열리지 않는다.")}
           />
         )}
@@ -1660,7 +1748,11 @@ function App() {
                 <div className="modal-rule">
                   <strong>효과</strong>
                   <p>
-                    <EmphasizedTerms text={modalCard.effect} />
+                    <EmphasizedTerms
+                      text={modalCard.effect}
+                      plainTerms
+                      disableTermTooltips
+                    />
                   </p>
                 </div>
               )}
@@ -1668,7 +1760,11 @@ function App() {
                 <div className="modal-lore">
                   <strong>기록</strong>
                   <p>
-                    <EmphasizedTerms text={modalCard.lore} />
+                    <EmphasizedTerms
+                      text={modalCard.lore}
+                      plainTerms
+                      disableTermTooltips
+                    />
                   </p>
                 </div>
               )}
@@ -1702,7 +1798,7 @@ function App() {
               <button
                 type="button"
                 aria-label="지도 축소"
-                onClick={() => setMapZoom((zoom) => Math.max(1, zoom - 0.25))}
+                onClick={zoomWorldMapOut}
               >
                 <ZoomOut />
               </button>
@@ -1710,12 +1806,19 @@ function App() {
               <button
                 type="button"
                 aria-label="지도 확대"
-                onClick={() => setMapZoom((zoom) => Math.min(2.5, zoom + 0.25))}
+                onClick={zoomWorldMapIn}
               >
                 <ZoomIn />
               </button>
             </div>
-            <div className="map-modal-scroll">
+            <div
+              className="map-modal-scroll"
+              onClick={zoomWorldMapIn}
+              onContextMenu={(event) => {
+                event.preventDefault();
+                zoomWorldMapOut();
+              }}
+            >
               <img
                 src={publicAssetPath(activeWorldDoc.href)}
                 alt="괴력난신 세계 지도"
@@ -1753,26 +1856,36 @@ function App() {
                 <button
                   type="button"
                   className="world-story-page world-story-page-left"
-                  aria-label="이전 쪽"
-                  onClick={() => {
-                    if (canTurnWorldBookLeft) {
-                      setWorldBookSpread((current) => current - 1);
-                    }
-                  }}
-                >
-                  <MarkdownView source={leftWorldPage} />
-                </button>
-                <button
-                  type="button"
-                  className="world-story-page world-story-page-right"
                   aria-label="다음 쪽"
                   onClick={() => {
-                    if (canTurnWorldBookRight) {
+                    if (canTurnWorldBookForward) {
                       setWorldBookSpread((current) => current + 1);
                     }
                   }}
                 >
+                  <MarkdownView source={leftWorldPage} />
+                  {leftWorldPage.trim() && (
+                    <span className="world-story-page-number">
+                      {leftWorldPageNumber}/{worldStoryPageCount}
+                    </span>
+                  )}
+                </button>
+                <button
+                  type="button"
+                  className="world-story-page world-story-page-right"
+                  aria-label="이전 쪽"
+                  onClick={() => {
+                    if (canTurnWorldBookBackward) {
+                      setWorldBookSpread((current) => current - 1);
+                    }
+                  }}
+                >
                   <MarkdownView source={rightWorldPage} />
+                  {rightWorldPage.trim() && (
+                    <span className="world-story-page-number">
+                      {rightWorldPageNumber}/{worldStoryPageCount}
+                    </span>
+                  )}
                 </button>
               </div>
             </div>

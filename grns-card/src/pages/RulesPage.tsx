@@ -27,8 +27,7 @@ const fieldPreviewCards = [
   "성주",
   "징집소",
   "매장지",
-  "발각된 군영",
-  "검은 강",
+  "야생",
 ];
 
 type RulesPageProps = {

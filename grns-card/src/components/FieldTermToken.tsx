@@ -5,6 +5,7 @@ type FieldTermTokenProps = {
   children: ReactNode;
   note: string;
   onNavigateField?: () => void;
+  emphasize?: boolean;
 };
 
 function isTouchTooltipMode() {
@@ -18,6 +19,7 @@ export function FieldTermToken({
   children,
   note,
   onNavigateField,
+  emphasize = true,
 }: FieldTermTokenProps) {
   const tokenRef = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
@@ -47,7 +49,6 @@ export function FieldTermToken({
       ref={tokenRef}
       className="field-term-token"
       type="button"
-      title={note}
       data-open={open ? "true" : undefined}
       style={{ "--tooltip-shift": `${shift}px` } as CSSProperties}
       onBlur={() => setOpen(false)}
@@ -64,7 +65,7 @@ export function FieldTermToken({
       onFocus={alignTooltip}
       onMouseEnter={alignTooltip}
     >
-      <strong>{children}</strong>
+      {emphasize ? <strong>{children}</strong> : <span>{children}</span>}
       <span className="field-term-tooltip" role="tooltip">
         {note}
       </span>

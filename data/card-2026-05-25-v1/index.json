@@ -10,6 +10,12 @@
     "expansions": "./data/card-2026-05-25-v1/expansions.json",
     "cards": [
       {
+        "packId": "st01",
+        "classId": "neutral",
+        "file": "./data/card-2026-05-25-v1/cards/st01/neutral.json",
+        "count": 39
+      },
+      {
         "packId": "base",
         "classId": "gaya",
         "file": "./data/card-2026-05-25-v1/cards/base/gaya.json",
@@ -62,12 +68,6 @@
         "classId": "neutral",
         "file": "./data/card-2026-05-25-v1/cards/ex01/neutral.json",
         "count": 10
-      },
-      {
-        "packId": "st01",
-        "classId": "neutral",
-        "file": "./data/card-2026-05-25-v1/cards/st01/neutral.json",
-        "count": 39
       }
     ],
     "structureDecks": [
