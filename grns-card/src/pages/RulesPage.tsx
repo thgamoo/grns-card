@@ -118,7 +118,7 @@ export function RulesPage({
           <div className="term-grid">
             {cardPartTerms.map((term) => (
               <article key={term.id} className={term.id === 5 ? "wide" : ""}>
-                <span>{term.id}</span>
+                <div>{term.id}</div>
                 <h3>{term.title}</h3>
                 <p>
                   {renderInlineText(term.body)}
@@ -328,6 +328,16 @@ export function RulesPage({
         </dl>
       </section>
 
+      <section className="rules-section" id="forced-conscription">
+        <div className="rules-section-head">
+          <p className="eyebrow">{ruleCopy.forcedConscription.eyebrow}</p>
+          <h2>{ruleCopy.forcedConscription.title}</h2>
+        </div>
+        <p className="section-intro">
+          {renderInlineText(ruleCopy.forcedConscription.body)}
+        </p>
+      </section>
+
       <section className="rules-section">
         <div className="rules-section-head">
           <p className="eyebrow">{ruleCopy.keywords.eyebrow}</p>
@@ -380,7 +390,6 @@ export function RulesPage({
           </dl>
         </div>
       </section>
-
     </div>
   );
 }

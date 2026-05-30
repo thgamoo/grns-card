@@ -154,9 +154,9 @@ export function DeckListPage({
           <p className="eyebrow">starter decks</p>
           <h2>시작 덱</h2>
           <p>
-            영령님. 처음 전장에 현현하셨다면, 이곳의 덱부터 펼쳐보시면
-            됩니다. 성주와 징집소가 이미 갖추어진 묶음이니, 하나를 골라
-            출력한 뒤 곧바로 첫 계시를 내려보세요.
+            영령님. 처음 전장에 현현하셨다면, 이곳의 덱부터 펼쳐보시면 됩니다.
+            성주와 징집소가 이미 갖추어진 묶음이니, 하나를 골라 출력한 뒤 곧바로
+            첫 전쟁을 경험하세요.
           </p>
         </div>
         <div className="tutorial-print-actions">
@@ -200,7 +200,11 @@ export function DeckListPage({
         </article>
         <article>
           <span>징집소</span>
-          <strong>{selectedDeck.deck.mainDeckCards ?? selectedDeck.deck.totalCards - 1}장</strong>
+          <strong>
+            {selectedDeck.deck.mainDeckCards ??
+              selectedDeck.deck.totalCards - 1}
+            장
+          </strong>
         </article>
         <article>
           <span>고유 카드</span>
@@ -221,7 +225,10 @@ export function DeckListPage({
             </div>
             <div className="tutorial-print-grid">
               {item.cards.map((card, index) => (
-                <div className="tutorial-print-card" key={`${card.id}-${index}`}>
+                <div
+                  className="tutorial-print-card"
+                  key={`${card.id}-${index}`}
+                >
                   {renderCard(card)}
                 </div>
               ))}
@@ -240,7 +247,10 @@ export function DeckListPage({
               </div>
               <div className="tutorial-print-grid">
                 {item.cards.map((card, index) => (
-                  <div className="tutorial-print-card" key={`${card.id}-back-${index}`}>
+                  <div
+                    className="tutorial-print-card"
+                    key={`${card.id}-back-${index}`}
+                  >
                     {renderBack()}
                   </div>
                 ))}

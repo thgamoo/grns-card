@@ -13,7 +13,7 @@
     "lore": "왜 이렇게 성격이 급한지 모르겠네요",
     "power": 6,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0001",
+    "serial": "ST01-0001",
     "sigil": "河",
     "illustration": "./docs/card-assets/st01/illustrations/st01-h-001.png",
     "expansionId": "st01",
@@ -33,7 +33,7 @@
     "lore": "인사는 영체사회생활의 기본이죠.",
     "power": 6,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0002",
+    "serial": "ST01-0002",
     "sigil": "母",
     "illustration": "./docs/card-assets/st01/illustrations/st01-h-002.png",
     "expansionId": "st01",
@@ -57,7 +57,7 @@
     "race": "도깨비",
     "effect": "[성주등장] 내 매장지로 간 모든 <짐승> 카드를 <징집소> 에 되돌린 후 섞는다.\n\n_[성주등장]은 성주가 뒤집어 질 때 반드시 효과를 이행합니다_",
     "sigil": "驅",
-    "serial": "GRNS-ST01-0003"
+    "serial": "ST01-0003"
   },
   {
     "id": "st01-i-007",
@@ -73,7 +73,7 @@
     "lore": "호랑이 기운이 쑥쑥",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0004",
+    "serial": "ST01-0004",
     "sigil": "讚",
     "illustration": "./docs/card-assets/st01/illustrations/st01-i-007.png",
     "expansionId": "st01",
@@ -93,7 +93,7 @@
     "lore": "고양이 아니었나요?",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0005",
+    "serial": "ST01-0005",
     "sigil": "狼",
     "illustration": "./docs/card-assets/st01/illustrations/st01-n-004.png",
     "expansionId": "st01",
@@ -113,7 +113,7 @@
     "lore": "어흥! 호랑이입니다 (아님)",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0006",
+    "serial": "ST01-0006",
     "sigil": "虎",
     "illustration": "./docs/card-assets/st01/illustrations/st01-n-002.png",
     "expansionId": "st01",
@@ -133,7 +133,7 @@
     "lore": "고양이 맞죠?",
     "power": 3,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0007",
+    "serial": "ST01-0007",
     "sigil": "壯",
     "illustration": "./docs/card-assets/st01/illustrations/st01-r-001.png",
     "expansionId": "st01",
@@ -153,7 +153,7 @@
     "lore": "기도를 방해하면 물릴 수 있어요.",
     "power": 5,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0008",
+    "serial": "ST01-0008",
     "sigil": "讚",
     "illustration": "./docs/card-assets/st01/illustrations/st01-r-004.png",
     "expansionId": "st01",
@@ -173,7 +173,7 @@
     "lore": "떡 1장 주면 안 잡아먹지",
     "power": 4,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0009",
+    "serial": "ST01-0009",
     "sigil": "虎",
     "illustration": "./docs/card-assets/st01/illustrations/st01-n-007.png",
     "expansionId": "st01",
@@ -193,7 +193,7 @@
     "lore": "",
     "power": 7,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0010",
+    "serial": "ST01-0010",
     "sigil": "狂",
     "illustration": "./docs/card-assets/st01/illustrations/st01-i-006.png",
     "expansionId": "st01",
@@ -213,7 +213,7 @@
     "lore": "",
     "power": 7,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0011",
+    "serial": "ST01-0011",
     "sigil": "冥",
     "illustration": "./docs/card-assets/st01/illustrations/st01-n-014.png",
     "expansionId": "st01",
@@ -233,7 +233,7 @@
     "lore": "문지기를 곰들만큼 싫어해요",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0012",
+    "serial": "ST01-0012",
     "sigil": "副",
     "illustration": "./docs/card-assets/st01/illustrations/st01-i-004.png",
     "expansionId": "st01",
@@ -253,7 +253,7 @@
     "lore": "항상 먼저 나서죠",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0013",
+    "serial": "ST01-0013",
     "sigil": "先",
     "illustration": "./docs/card-assets/st01/illustrations/st01-i-001.png",
     "expansionId": "st01",
@@ -273,7 +273,7 @@
     "lore": "이 곰은 엄청 날렵해요",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0014",
+    "serial": "ST01-0014",
     "sigil": "殺",
     "illustration": "./docs/card-assets/st01/illustrations/st01-n-009.png",
     "expansionId": "st01",
@@ -293,7 +293,7 @@
     "lore": "항상 친구들을 도와줘요",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0015",
+    "serial": "ST01-0015",
     "sigil": "弓",
     "illustration": "./docs/card-assets/st01/illustrations/st01-i-003.png",
     "expansionId": "st01",
@@ -313,7 +313,7 @@
     "lore": "지키는 걸 좋아해요",
     "power": 2,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0016",
+    "serial": "ST01-0016",
     "sigil": "門",
     "illustration": "./docs/card-assets/st01/illustrations/st01-i-002.png",
     "expansionId": "st01",
@@ -333,7 +333,7 @@
     "lore": "곰처럼 날아서 곰처럼 쏜다(?)",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0017",
+    "serial": "ST01-0017",
     "sigil": "斥",
     "illustration": "./docs/card-assets/st01/illustrations/st01-i-009.png",
     "expansionId": "st01",
@@ -353,7 +353,7 @@
     "lore": "곰은 문지기를 찢어!",
     "power": 4,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0018",
+    "serial": "ST01-0018",
     "sigil": "黑",
     "illustration": "./docs/card-assets/st01/illustrations/st01-i-008.png",
     "expansionId": "st01",
@@ -376,7 +376,7 @@
     "race": "도깨비",
     "effect": "[출정] 내 전장에 이 카드 외에 <짐승> 카드가 존재할 경우 징집 +3\n\n_출정은 <군영>(패)에서 <전장>으로 배치하는 행동을 말합니다. [출정] 진언이 있다면 출정 시 효과를 이행합니다_",
     "lore": "",
-    "serial": "GRNS-ST01-0019",
+    "serial": "ST01-0019",
     "sigil": "貪"
   },
   {
@@ -397,7 +397,7 @@
     "race": "귀신/짐승",
     "effect": "[단말마] 내 <징집소> 맨 아래에서 <징집> +1\n\n_[단말마]는 이 카드가 전장 혹은 문지기 자리에서 <매장지>로 이동하였을 경우 발동됩니다. <징집소>(덱)에서 1장을 뽑으세요._",
     "sigil": "烏",
-    "serial": "GRNS-ST01-0020"
+    "serial": "ST01-0020"
   },
   {
     "faction": "중립",
@@ -417,7 +417,7 @@
     "race": "인간",
     "effect": "[전진기지] 내 [단말마]를 가진 모든 <짐승> 카드의 힘 +2\n\n_[전진기지] 는 전진기지 맨 위에 있을 때 발동되는 효과입니다._",
     "sigil": "呪",
-    "serial": "GRNS-ST01-0021"
+    "serial": "ST01-0021"
   },
   {
     "faction": "중립",
@@ -437,7 +437,7 @@
     "race": "짐승",
     "effect": "[단말마] 내 <군영>에서 <희생 2>\n\n_[단말마]는 이 카드가 전장 혹은 문지기 자리에서 <매장지>로 이동하였을 경우 발동됩니다. <군영>(손패)에서 1장 버리세요_",
     "sigil": "眼",
-    "serial": "GRNS-ST01-0022"
+    "serial": "ST01-0022"
   },
   {
     "faction": "중립",
@@ -457,7 +457,7 @@
     "race": "짐승",
     "effect": "이 카드는 <보급> 없이 <이동> 가능하다.\n이 카드는 <짐승> 공격 시 힘 +1\n\n_<이동>은 1장 <보급>하여 다른 위치의 전장으로 이동하는 행위를 말합니다. 조우 카드가 있다면 움직이기 위해 <군영>에서 1장을 <매장지>로 이동해야 합니다._",
     "sigil": "隼",
-    "serial": "GRNS-ST01-0023"
+    "serial": "ST01-0023"
   },
   {
     "faction": "중립",
@@ -477,7 +477,7 @@
     "race": "짐승",
     "effect": "이 카드는 이 카드가 <이동>한 턴에 힘 +2를 얻는다.\n\n_<이동>은 1장 <보급>하여 다른 위치의 전장으로 이동하는 행위를 말합니다. 조우 카드가 있다면 움직이기 위해 <군영>에서 1장을 <매장지>로 이동해야 합니다._",
     "sigil": "鷹",
-    "serial": "GRNS-ST01-0024"
+    "serial": "ST01-0024"
   },
   {
     "faction": "중립",
@@ -497,7 +497,7 @@
     "race": "짐승",
     "effect": "[단말마] 내 <징집소> 맨 아래에서 <징집> +3. 그 중 <짐승>이 아닌 카드는 <매장지>로 이동한다.\n\n_[단말마]는 이 카드가 전장 혹은 문지기 자리에서 <매장지>로 이동하였을 경우 발동됩니다._",
     "sigil": "三足",
-    "serial": "GRNS-ST01-0025"
+    "serial": "ST01-0025"
   },
   {
     "faction": "중립",
@@ -517,7 +517,7 @@
     "race": "짐승",
     "effect": "[단말마] 내 <징집소> 맨 아래에서 [희생 4]\n\n_[단말마]는 이 카드가 전장 혹은 문지기 자리에서 <매장지>로 이동하였을 경우 발동됩니다_",
     "sigil": "梟",
-    "serial": "GRNS-ST01-0026"
+    "serial": "ST01-0026"
   },
   {
     "faction": "중립",
@@ -537,7 +537,7 @@
     "race": "짐승",
     "effect": "이 카드는 공격 후 <매장지>로 이동한다.\n[단말마] 내 <군영>의 모든 카드를 희생한다.\n\n_이 게임은 <강제징집>이라는 룰이 있습니다. 만약 <군영>에 병사가 없다면 <징집소>에서 [희생 1]을 하고 <징집>해야 합니다._",
     "sigil": "怖",
-    "serial": "GRNS-ST01-0027"
+    "serial": "ST01-0027"
   },
   {
     "id": "st01-r-002",
@@ -553,7 +553,7 @@
     "lore": "집으로 돌아가고 싶어해요",
     "power": 0,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0028",
+    "serial": "ST01-0028",
     "sigil": "怯",
     "illustration": "./docs/card-assets/st01/illustrations/st01-r-002.png",
     "expansionId": "st01",
@@ -573,7 +573,7 @@
     "lore": "정말로 무시무시합니다.",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0029",
+    "serial": "ST01-0029",
     "sigil": "猫",
     "illustration": "./docs/card-assets/st01/illustrations/st01-n-001.png",
     "expansionId": "st01",
@@ -593,7 +593,7 @@
     "lore": "지금 전쟁에 참여하시면 무료 식량이 있어요!",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0030",
+    "serial": "ST01-0030",
     "sigil": "狐",
     "illustration": "./docs/card-assets/st01/illustrations/st01-n-003.png",
     "expansionId": "st01",
@@ -613,7 +613,7 @@
     "lore": "여우 아닌 척~",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0031",
+    "serial": "ST01-0031",
     "sigil": "狐",
     "illustration": "./docs/card-assets/st01/illustrations/st01-n-005.png",
     "expansionId": "st01",
@@ -633,7 +633,7 @@
     "lore": "희생하는 걸 주저하지 않는 귀염둥이죠",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0032",
+    "serial": "ST01-0032",
     "sigil": "狂",
     "illustration": "./docs/card-assets/st01/illustrations/st01-r-003.png",
     "expansionId": "st01",
@@ -653,7 +653,7 @@
     "lore": "",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0033",
+    "serial": "ST01-0033",
     "sigil": "反",
     "illustration": "./docs/card-assets/st01/illustrations/st01-i-005.png",
     "expansionId": "st01",
@@ -676,7 +676,7 @@
     "race": "도깨비",
     "effect": "",
     "lore": "이거 먹으면 물맛나요",
-    "serial": "GRNS-ST01-0034",
+    "serial": "ST01-0034",
     "sigil": "雲"
   },
   {
@@ -696,7 +696,7 @@
     "race": "도깨비",
     "effect": "[후방기지] 모든 전장의 <짐승> 카드 힘 -1\n\n_[후방기지]는 후방기지 맨 위에 있을 때 발동되는 효과입니다. 실수로 <보급>하여 효과를 없애지 마세요!_",
     "lore": "",
-    "serial": "GRNS-ST01-0035",
+    "serial": "ST01-0035",
     "sigil": "艾"
   },
   {
@@ -713,7 +713,7 @@
     "lore": "호랑이를 제일 무서워해요.",
     "power": 3,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0036",
+    "serial": "ST01-0036",
     "sigil": "떡",
     "illustration": "./docs/card-assets/st01/illustrations/st01-n-008.png",
     "expansionId": "st01",
@@ -733,7 +733,7 @@
     "lore": "도대체 이게 누가 갖다 놓은 거죠?",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0037",
+    "serial": "ST01-0037",
     "sigil": "卵",
     "illustration": "./docs/card-assets/st01/illustrations/st01-n-006.png",
     "expansionId": "st01",
@@ -753,7 +753,7 @@
     "lore": "이건 호랑이도 싫어해요.",
     "power": 1,
     "actionCost": 0,
-    "serial": "GRNS-ST01-0038",
+    "serial": "ST01-0038",
     "sigil": "苦",
     "illustration": "./docs/card-assets/st01/illustrations/st01-n-015.png",
     "expansionId": "st01",
@@ -776,7 +776,7 @@
     "race": "도구",
     "effect": "",
     "lore": "으아악! 이거 막 굴러다녀요!",
-    "serial": "GRNS-ST01-0039",
+    "serial": "ST01-0039",
     "sigil": "蒜"
   },
   {
@@ -797,7 +797,7 @@
     "effect": "이 카드는 <앞면> 상태로 <성주>에만 배치할 수 있다. 이 카드가 <성주>일 경우 <문지기>를 배치할 수 없다. 이 카드가 <매장지>로 이동하면 패배한다.\n\n_매장지는 전투에서 전사하면 이동하는 필드입니다. 성주가 매장지로 이동하면 게임에서 패배합니다. 문지기는 성주를 지키는 병사들 입니다. 일반적으로 배치하고 시작하지만, 산군이 쉬고 싶어 전부 내쫓았습니다_",
     "lore": "",
     "sigil": "休",
-    "serial": "GRNS-ST01-0040"
+    "serial": "ST01-0040"
   },
   {
     "faction": "중립",
@@ -817,7 +817,7 @@
     "effect": "",
     "lore": "무서운 이리도 아기였을 시절이 있죠.",
     "sigil": "仔",
-    "serial": "GRNS-ST01-0041"
+    "serial": "ST01-0041"
   },
   {
     "faction": "중립",
@@ -837,7 +837,7 @@
     "effect": "",
     "lore": "멍멍아 이리로 온,",
     "sigil": "溫",
-    "serial": "GRNS-ST01-0042"
+    "serial": "ST01-0042"
   },
   {
     "faction": "중립",
@@ -857,7 +857,7 @@
     "effect": "",
     "lore": "개조심! 물릴 수 있어요.",
     "sigil": "浪",
-    "serial": "GRNS-ST01-0043"
+    "serial": "ST01-0043"
   },
   {
     "faction": "중립",
@@ -877,7 +877,7 @@
     "effect": "",
     "lore": "그래도 애는 착해요.",
     "sigil": "骨",
-    "serial": "GRNS-ST01-0044"
+    "serial": "ST01-0044"
   },
   {
     "faction": "중립",
@@ -897,6 +897,6 @@
     "effect": "내 이 카드를 전쟁 시작 전 <징집소> 맨 아래에 앞면 상태로 둔다. 이 카드가 <징집소> 맨 위에 있는 한 <징집>하지 않는다.\n\n_<징집소> (e.g. 덱) 에서 <군영> (e.g. 손패) 로 가져오는 행동을 <징집>이라고 합니다._",
     "lore": "",
     "sigil": "守",
-    "serial": "GRNS-ST01-0045"
+    "serial": "ST01-0045"
   }
 ]

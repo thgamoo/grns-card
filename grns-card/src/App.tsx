@@ -209,6 +209,7 @@ const st01FrontFrame =
 const st01CardBack = "./docs/card-assets/st01/common/backside.png";
 const st01FirstGateEmblem =
   "./docs/card-assets/st01/common/emblem-first-sungmoon.png";
+const gayaEmblem = "./docs/faction-diamonds/garak-emblem.png";
 
 function publicAssetPath(file: string) {
   if (/^(https?:)?\/\//.test(file)) return file;
@@ -239,6 +240,11 @@ const packDisplayOrder = ["st01", "base", "ex01"];
 function packOrderIndex(packId: string) {
   const index = packDisplayOrder.indexOf(packId);
   return index === -1 ? packDisplayOrder.length : index;
+}
+
+function layeredFrameEmblem(card: Card) {
+  if (card.classId === "gaya" || card.faction === "가락") return gayaEmblem;
+  return st01FirstGateEmblem;
 }
 
 function compareCardsBySerial(a: Card, b: Card) {
@@ -420,7 +426,10 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
   const illustrationSrc = illustration ? publicAssetPath(illustration) : "";
   const usesLayeredFrame =
     Boolean(illustration) &&
-    (card.packId === "st01" || illustration?.includes("card-assets/st01"));
+    (card.packId === "st01" ||
+      card.packId === "base" ||
+      illustration?.includes("card-assets/st01") ||
+      illustration?.includes("card-assets/base"));
   const handlePointerMove = (event: PointerEvent<HTMLElement>) => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const cardRect = event.currentTarget.getBoundingClientRect();
@@ -482,7 +491,7 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
         />
         <img
           className="frame-stack-emblem"
-          src={publicAssetPath(st01FirstGateEmblem)}
+          src={publicAssetPath(layeredFrameEmblem(card))}
           alt=""
           aria-hidden="true"
         />
@@ -505,7 +514,9 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
         <div className="frame-stack-meta-slot">
           <span className="frame-stack-meta">{card.race}</span>
         </div>
-        <span className="frame-stack-serial">{card.serial}</span>
+        <div className="frame-stack-serial-slot">
+          <span className="frame-stack-serial">{card.serial}</span>
+        </div>
       </article>
     );
   }
@@ -731,6 +742,7 @@ function paginateMarkdown(source: string, title?: string, subtitle?: string) {
   let current: string[] = [];
   let weight = 0;
   const bodyBlocks = [...blocks];
+  const pageBudget = 390;
 
   if (bodyBlocks[0]?.startsWith("# ")) {
     bodyBlocks.shift();
@@ -740,11 +752,17 @@ function paginateMarkdown(source: string, title?: string, subtitle?: string) {
     pages.push(subtitle ? `# ${title}\n\n${subtitle}` : `# ${title}`);
   }
 
-  bodyBlocks.forEach((block) => {
-    const blockWeight = block.startsWith("#")
-      ? 1.6
-      : Math.max(1, Math.ceil(block.length / 115));
-    if (current.length && weight + blockWeight > 4.5) {
+  const readableBlocks = bodyBlocks.flatMap((block) => {
+    if (block.startsWith("#") || block.startsWith("- ") || block.includes("\n- ")) {
+      return [block];
+    }
+    const sentences = block.split(/(?<=[.!?。])\s+/).filter(Boolean);
+    return sentences.length > 1 ? sentences : [block];
+  });
+
+  readableBlocks.forEach((block) => {
+    const blockWeight = block.startsWith("#") ? 120 : block.length + 28;
+    if (current.length && weight + blockWeight > pageBudget) {
       pages.push(current.join("\n\n"));
       current = [];
       weight = 0;
@@ -784,9 +802,13 @@ function App() {
   const [worldBookSpread, setWorldBookSpread] = useState(0);
   const [worldNotice, setWorldNotice] = useState("");
   const [sealedBooksUnlocked, setSealedBooksUnlocked] = useState(false);
+  const [graphUnlocked, setGraphUnlocked] = useState(false);
   const [error, setError] = useState("");
   const activeTab = tabFromPath(pathname);
   const visibleWorldLinks = worldLinks;
+  const visibleTabs = graphUnlocked
+    ? tabs
+    : tabs.filter((tab) => tab.id !== "graph");
 
   useEffect(() => {
     fetchJson<Manifest>("./data/card-versions.json")
@@ -800,6 +822,12 @@ function App() {
   const navigateTab = (tabId: TabId) => {
     navigate({ to: tabPaths[tabId] });
   };
+
+  useEffect(() => {
+    if (activeTab === "graph" && !graphUnlocked) {
+      navigateTab("intro");
+    }
+  }, [activeTab, graphUnlocked]);
 
   useEffect(() => {
     fetch(publicAssetPath("./docs/rulebook.md"), { cache: "no-store" })
@@ -890,6 +918,40 @@ function App() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  useEffect(() => {
+    const command = ["ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown", " "];
+    let progress = 0;
+
+    const handleKeyDown = (event: WindowEventMap["keydown"]) => {
+      if (activeTab !== "intro") return;
+
+      const target = event.target;
+      if (
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target instanceof HTMLSelectElement
+      ) {
+        return;
+      }
+
+      const expected = command[progress];
+      const key = event.key === "Spacebar" ? " " : event.key;
+      if (key === expected) {
+        progress += 1;
+        if (progress === command.length) {
+          setGraphUnlocked(true);
+          navigateTab("graph");
+          progress = 0;
+        }
+        return;
+      }
+      progress = key === command[0] ? 1 : 0;
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeTab]);
 
   useEffect(() => {
     if (!worldNotice) return;
@@ -1128,14 +1190,14 @@ function App() {
       ),
     [activeWorldDoc?.body, activeWorldDoc?.title, worldMarkdown],
   );
-  const rightWorldPage = worldStoryPages[worldBookSpread * 2] ?? "";
-  const leftWorldPage = worldStoryPages[worldBookSpread * 2 + 1] ?? "";
+  const leftWorldPage = worldStoryPages[worldBookSpread * 2] ?? "";
+  const rightWorldPage = worldStoryPages[worldBookSpread * 2 + 1] ?? "";
   const worldStoryPageCount = Math.max(
     1,
     worldStoryPages.filter((page) => page.trim()).length,
   );
-  const rightWorldPageNumber = worldBookSpread * 2 + 1;
-  const leftWorldPageNumber = worldBookSpread * 2 + 2;
+  const leftWorldPageNumber = worldBookSpread * 2 + 1;
+  const rightWorldPageNumber = worldBookSpread * 2 + 2;
   const canTurnWorldBookBackward = worldBookSpread > 0;
   const canTurnWorldBookForward =
     worldBookSpread * 2 + 2 < worldStoryPages.length;
@@ -1191,7 +1253,7 @@ function App() {
           괴력난신DB
         </button>
         <nav className="tab-nav" aria-label="페이지 탭">
-          {tabs.map(({ id, label, icon: Icon }) => (
+          {visibleTabs.map(({ id, label, icon: Icon }) => (
             <a
               key={id}
               href={tabPaths[id]}
@@ -1408,7 +1470,7 @@ function App() {
           />
         )}
 
-        {activeTab === "graph" && (
+        {activeTab === "graph" && graphUnlocked && (
           <div className="graph-view">
             <section
               className="level-graph-section"
@@ -1867,10 +1929,10 @@ function App() {
                 <button
                   type="button"
                   className="world-story-page world-story-page-left"
-                  aria-label="다음 쪽"
+                  aria-label="이전 쪽"
                   onClick={() => {
-                    if (canTurnWorldBookForward) {
-                      setWorldBookSpread((current) => current + 1);
+                    if (canTurnWorldBookBackward) {
+                      setWorldBookSpread((current) => current - 1);
                     }
                   }}
                 >
@@ -1884,10 +1946,10 @@ function App() {
                 <button
                   type="button"
                   className="world-story-page world-story-page-right"
-                  aria-label="이전 쪽"
+                  aria-label="다음 쪽"
                   onClick={() => {
-                    if (canTurnWorldBookBackward) {
-                      setWorldBookSpread((current) => current - 1);
+                    if (canTurnWorldBookForward) {
+                      setWorldBookSpread((current) => current + 1);
                     }
                   }}
                 >

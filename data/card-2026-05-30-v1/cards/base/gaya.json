@@ -15,7 +15,7 @@
     "actionCost": 0,
     "serial": "GRNS-0009",
     "sigil": "巨",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-g-001.png"
   },
   {
     "id": "gr-g-002",
@@ -33,7 +33,7 @@
     "actionCost": 0,
     "serial": "GRNS-0039",
     "sigil": "牛",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-g-002.png"
   },
   {
     "id": "gr-g-003",
@@ -51,7 +51,7 @@
     "actionCost": 0,
     "serial": "GRNS-0040",
     "sigil": "爐",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-g-003.png"
   },
   {
     "id": "gr-g-004",
@@ -69,7 +69,7 @@
     "actionCost": 0,
     "serial": "GRNS-0041",
     "sigil": "工",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-g-004.png"
   },
   {
     "id": "gr-g-005",
@@ -87,7 +87,7 @@
     "actionCost": 0,
     "serial": "GRNS-0042",
     "sigil": "盟",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-g-005.png"
   },
   {
     "id": "gr-g-006",
@@ -105,7 +105,7 @@
     "actionCost": 0,
     "serial": "GRNS-0131",
     "sigil": "干",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-g-006.png"
   },
   {
     "id": "gr-g-007",
@@ -123,7 +123,7 @@
     "actionCost": 0,
     "serial": "GRNS-0132",
     "sigil": "鐵",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-g-007.png"
   },
   {
     "id": "gr-r-006",
@@ -141,7 +141,7 @@
     "actionCost": 0,
     "serial": "GRNS-0133",
     "sigil": "書",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-r-006.png"
   },
   {
     "id": "gr-g-008",
@@ -159,7 +159,7 @@
     "actionCost": 0,
     "serial": "GRNS-0134",
     "sigil": "蛛",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-g-008.png"
   },
   {
     "id": "gr-r-001",
@@ -177,7 +177,7 @@
     "actionCost": 0,
     "serial": "GRNS-0007",
     "sigil": "火",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-r-001.png"
   },
   {
     "id": "gr-r-002",
@@ -195,7 +195,7 @@
     "actionCost": 0,
     "serial": "GRNS-0008",
     "sigil": "鐵",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-r-002.png"
   },
   {
     "id": "gr-r-003",
@@ -213,7 +213,7 @@
     "actionCost": 0,
     "serial": "GRNS-0043",
     "sigil": "鑛",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-r-003.png"
   },
   {
     "id": "gr-r-004",
@@ -231,7 +231,7 @@
     "actionCost": 0,
     "serial": "GRNS-0044",
     "sigil": "型",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-r-004.png"
   },
   {
     "id": "gr-r-005",
@@ -249,7 +249,7 @@
     "actionCost": 0,
     "serial": "GRNS-0045",
     "sigil": "炭",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-r-005.png"
   },
   {
     "id": "gr-t-001",
@@ -267,7 +267,7 @@
     "actionCost": 0,
     "serial": "GRNS-0046",
     "sigil": "爆",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-t-001.png"
   },
   {
     "id": "gr-t-002",
@@ -285,7 +285,7 @@
     "actionCost": 0,
     "serial": "GRNS-0047",
     "sigil": "鎖",
-    "illustration": ""
+    "illustration": "./docs/card-assets/base/illustrations/gr-t-002.png"
   },
   {
     "id": "gr-t-003",
