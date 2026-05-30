@@ -597,6 +597,10 @@ function toggleValue(values: string[], value: string) {
     : [...values, value];
 }
 
+function isBasePositionKeyword(part: string) {
+  return part === "[전진기지]" || part === "[후방기지]";
+}
+
 function EmphasizedTerms({
   text,
   onFieldTermClick,
@@ -668,7 +672,14 @@ function EmphasizedTerms({
           }
 
           return /^\[[^\]]+\]$/.test(part) ? (
-            <strong key={`${part}-${index}`}>{part}</strong>
+            <strong
+              key={`${part}-${index}`}
+              className={
+                isBasePositionKeyword(part) ? "keyword-base-position" : undefined
+              }
+            >
+              {part}
+            </strong>
           ) : (
             part
           );

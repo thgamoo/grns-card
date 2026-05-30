@@ -952,6 +952,16 @@ h3 {
   font-weight: 900;
 }
 
+.keyword-base-position {
+  color: #b51f17;
+  font-weight: 950;
+}
+
+.frame-stack-effect .keyword-base-position {
+  color: #bd1f16;
+  text-shadow: 0 0.35px 0 rgba(255, 240, 210, 0.82);
+}
+
 .card-effect em {
   display: inline-block;
   font-family: inherit;
