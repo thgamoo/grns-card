@@ -211,6 +211,8 @@ const st01FirstGateEmblem =
   "./docs/card-assets/st01/common/emblem-first-sungmoon.png";
 const gayaEmblem = "./docs/faction-diamonds/garak-emblem.png";
 
+const baseGarakFrontFrame = "./docs/card-assets/base/common/card-frame-20260531-garak-blue.png";
+
 function publicAssetPath(file: string) {
   if (/^(https?:)?\/\//.test(file)) return file;
   const base = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -485,7 +487,7 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
         />
         <img
           className="frame-stack-image"
-          src={publicAssetPath(st01FrontFrame)}
+          src={card.classId === "gaya" ? publicAssetPath(baseGarakFrontFrame) : publicAssetPath(st01FrontFrame)}
           alt=""
           aria-hidden="true"
         />
