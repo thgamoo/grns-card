@@ -28,12 +28,11 @@
         <a href="./rulebook.html">룰북</a>
         <a href="./keywords.html">키워드</a>
         <a href="./card-design.html">카드/클래스 설계</a>
-        <a href="./card-db-plan.html">카드 DB 운영</a>
         <a href="../card-db.html">카드 DB로 돌아가기</a>
       </nav>
 <h1>괴력난신 키워드 정리</h1>
 <p>이 문서는 카드 효과에 쓰는 대괄호 진언과 꺾쇄 규칙 용어를 정리한다. 룰북은 진행 순서를 설명하고, 이 문서는 카드 텍스트를 읽거나 작성할 때 참고하는 짧은 표로 사용한다.</p>
-<p>기준은 <code>grns-card/src/content/rules.ts</code>와 최신 카드 데이터 <code>data/card-2026-05-28-v1</code>이다.</p>
+<p>기준은 <code>grns-card/src/content/rules.ts</code>와 최신 카드 데이터 <code>data/card-2026-05-31-v1</code>이다.</p>
 <h2>표기 원칙</h2>
 <ul>
 <li>진언 키워드는 카드 효과에서 <code>[]</code>로 감싼다. 예: <code>[출정]</code>, <code>[전투광]</code></li>
@@ -105,33 +104,34 @@
 <tr><td><code>&lt;장악&gt;</code></td><td>상대 문지기 위치가 비어 있을 때 보급 후 그 위치에 카드를 배치해 상대가 문지기를 다시 배치할 수 없도록 하는 행동</td></tr>
 </table>
 <h2>최신 데이터의 대괄호 항목</h2>
-<p><code>data/card-2026-05-28-v1</code>의 카드 효과에서 발견한 대괄호 항목이다.</p>
+<p><code>data/card-2026-05-31-v1</code>의 카드 효과에서 발견한 대괄호 항목이다.</p>
 <table>
 <tr><th>항목</th><th>횟수</th><th>분류</th></tr>
-<tr><td><code>[매복]</code></td><td>41</td><td>진언</td></tr>
-<tr><td><code>[출정]</code></td><td>28</td><td>진언</td></tr>
-<tr><td><code>[단말마]</code></td><td>12</td><td>진언</td></tr>
-<tr><td><code>[성주등장]</code></td><td>11</td><td>진언</td></tr>
-<tr><td><code>[자체보급]</code></td><td>11</td><td>진언</td></tr>
-<tr><td><code>[전진기지]</code></td><td>10</td><td>위치 조건 진언</td></tr>
-<tr><td><code>[희생 1]</code></td><td>9</td><td>수치형 진언</td></tr>
-<tr><td><code>[전투광]</code></td><td>8</td><td>진언</td></tr>
-<tr><td><code>[후방기지]</code></td><td>8</td><td>위치 조건 진언</td></tr>
-<tr><td><code>[상시]</code></td><td>7</td><td>진언</td></tr>
-<tr><td><code>[퇴출]</code></td><td>5</td><td>진언</td></tr>
+<tr><td><code>[매복]</code></td><td>46</td><td>진언</td></tr>
+<tr><td><code>[출정]</code></td><td>29</td><td>진언</td></tr>
+<tr><td><code>[단말마]</code></td><td>16</td><td>진언</td></tr>
+<tr><td><code>[전진기지]</code></td><td>14</td><td>위치 조건 진언</td></tr>
+<tr><td><code>[성주등장]</code></td><td>12</td><td>진언</td></tr>
+<tr><td><code>[자체보급]</code></td><td>12</td><td>진언</td></tr>
+<tr><td><code>[상시]</code></td><td>11</td><td>진언</td></tr>
+<tr><td><code>[전투광]</code></td><td>10</td><td>진언</td></tr>
+<tr><td><code>[희생 1]</code></td><td>10</td><td>수치형 진언</td></tr>
+<tr><td><code>[후방기지]</code></td><td>9</td><td>위치 조건 진언</td></tr>
+<tr><td><code>[퇴출]</code></td><td>6</td><td>진언</td></tr>
+<tr><td><code>[퇴각]</code></td><td>3</td><td>진언</td></tr>
 <tr><td><code>[문지기 등장]</code></td><td>2</td><td>진언</td></tr>
-<tr><td><code>[퇴각]</code></td><td>2</td><td>진언</td></tr>
-<tr><td><code>[희생 3]</code></td><td>2</td><td>수치형 진언</td></tr>
-<tr><td><code>[공개 1]</code></td><td>1</td><td>수치형 진언</td></tr>
+<tr><td><code>[희생]</code></td><td>2</td><td>수치형 진언</td></tr>
 <tr><td><code>[문지기등장]</code></td><td>1</td><td>정리 필요</td></tr>
 <tr><td><code>[왕살]</code></td><td>1</td><td>진언</td></tr>
+<tr><td><code>[희생 3]</code></td><td>1</td><td>수치형 진언</td></tr>
+<tr><td><code>[희생 4]</code></td><td>1</td><td>수치형 진언</td></tr>
 <tr><td><code>[희생 5]</code></td><td>1</td><td>수치형 진언</td></tr>
 <tr><td><code>[희생 X]</code></td><td>1</td><td>수치형 진언</td></tr>
 </table>
 <h2>정리 필요 항목</h2>
 <ul>
 <li><code>[문지기등장]</code>은 <code>[문지기 등장]</code>으로 띄어쓰기 통일이 필요하다.</li>
-<li><code>[공개 1]</code>은 <code>[공개]</code>의 수치형으로 유지할지, 문장형으로 풀어쓸지 결정이 필요하다.</li>
+<li><code>[희생]</code> 단독 표기와 <code>[희생 N]</code> 수치형 표기를 어느 수준까지 통일할지 결정이 필요하다.</li>
 <li><code>[희생 N]</code>은 카드 효과 비용이고, 생존 선언에서 쓰는 비용은 <code>&lt;대가&gt;</code>로 쓴다.</li>
 <li><code>[매복]</code>은 진언으로 쓰되, 카드 타입 <code>매복</code>과 혼동되지 않게 카드 작성 시 문맥을 분명히 한다.</li>
 <li><code>&lt;퇴출&gt;</code>은 <code>&lt;매장지&gt;</code>가 아니라 <code>&lt;검은 강&gt;</code>으로 보내는 처리로 정리한다.</li>

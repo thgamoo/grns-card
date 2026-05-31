@@ -1,6 +1,8 @@
 import { useMemo, useState } from "react";
 import type { CSSProperties } from "react";
-import { StepBack } from "lucide-react";
+import { List, LogOut, RotateCcw, StepBack, X } from "lucide-react";
+import { InkButton } from "@/components/InkButton";
+import { TutorialModal } from "@/components/TutorialModal";
 
 type ZoneId =
   | "hand"
@@ -75,7 +77,95 @@ type EngineState = {
   cardModalId: string | null;
 };
 
+type TutorialCardFace = {
+  cost: number;
+  power: number;
+  race: string;
+  effect: string;
+  lore: string;
+  sigil: string;
+  serial: string;
+  illustration: string;
+};
+
 const turnPhaseNames = ["정비페이즈", "징집페이즈", "보급배치페이즈", "전쟁페이즈", "소강페이즈"];
+
+const tutorialFramePath = "./docs/card-assets/common/card-frame-20260531.png";
+const tutorialEmblemPath = "./docs/faction-diamonds/tu01-emblem.png";
+const tutorialPaperModalPath = "./docs/card-assets/ui/modals/paper-modal-secondary.png";
+
+const tutorialCardFaces: Record<string, TutorialCardFace> = {
+  "문지기 여우": {
+    cost: 1,
+    power: 1,
+    race: "짐승",
+    effect: "",
+    lore: "문 앞에서 가장 먼저 냄새를 맡는다.",
+    sigil: "狐",
+    serial: "tu01-0029",
+    illustration: "./docs/card-assets/illustrations/tu01/tu01-0029.png",
+  },
+  "문지기 고양이": {
+    cost: 1,
+    power: 1,
+    race: "짐승",
+    effect: "",
+    lore: "낯선 발소리를 놓치지 않는다.",
+    sigil: "猫",
+    serial: "tu01-0027",
+    illustration: "./docs/card-assets/illustrations/tu01/tu01-0027.png",
+  },
+  "새끼 이리": {
+    cost: 0,
+    power: 0,
+    race: "짐승",
+    effect: "",
+    lore: "무서운 이리도 아기였을 시절이 있죠.",
+    sigil: "仔",
+    serial: "ob01-0002",
+    illustration: "./docs/card-assets/illustrations/ob01/ob01-0002.png",
+  },
+  "온순한 이리": {
+    cost: 1,
+    power: 1,
+    race: "짐승",
+    effect: "",
+    lore: "멍멍아 이리로 온,",
+    sigil: "溫",
+    serial: "ob01-0003",
+    illustration: "./docs/card-assets/illustrations/ob01/ob01-0003.png",
+  },
+  "떠돌이 이리": {
+    cost: 2,
+    power: 2,
+    race: "짐승",
+    effect: "",
+    lore: "개조심! 물릴 수 있어요.",
+    sigil: "浪",
+    serial: "ob01-0004",
+    illustration: "./docs/card-assets/illustrations/ob01/ob01-0004.png",
+  },
+  "징집소 지키는 이리": {
+    cost: 2,
+    power: 2,
+    race: "짐승",
+    effect: "징집소 맨 위에 있는 한 징집하지 않는다.",
+    lore: "",
+    sigil: "守",
+    serial: "ob01-0006",
+    illustration: "./docs/card-assets/illustrations/ob01/ob01-0006.png",
+  },
+  "쓰디 쓴 쑥떡": {
+    cost: 3,
+    power: 1,
+    race: "도깨비",
+    effect: "",
+    lore: "이건 호랑이도 싫어해요.",
+    sigil: "苦",
+    serial: "tu01-0038",
+    illustration: "./docs/card-assets/illustrations/tu01/tu01-0038.png",
+  },
+};
 
 const campaigns: Campaign[] = [
   {
@@ -253,6 +343,26 @@ function cardPower(name: string) {
   return Math.max(0, name.length % 4);
 }
 
+function tutorialAssetPath(file: string) {
+  if (/^(https?:)?\/\//.test(file)) return file;
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  const path = file.replace(/^\.?\//, "");
+  return `${base}/${path}`;
+}
+
+function tutorialCardFace(card: CardModel): TutorialCardFace {
+  return tutorialCardFaces[card.name] ?? {
+    cost: card.name.length % 4,
+    power: cardPower(card.name),
+    race: card.name.includes("떡") ? "도구" : "짐승",
+    effect: "",
+    lore: `${shortCardName(card.name)} 튜토리얼 카드`,
+    sigil: cardSigil(card.name),
+    serial: `tu-${String(card.deckIndex + 1).padStart(2, "0")}`,
+    illustration: "",
+  };
+}
+
 function zoneTitle(zone: ZoneId) {
   const titles: Record<ZoneId, string> = {
     hand: "군영",
@@ -316,9 +426,20 @@ function TutorialCard({
   horizontal?: boolean;
   onClick: () => void;
 }) {
+  const face = tutorialCardFace(card);
+  const rulesText = face.effect || face.lore;
+  const compactName =
+    card.name.length >= 11
+      ? " name-extra-long"
+      : card.name.length >= 9
+        ? " name-long"
+        : card.name.length > 6
+          ? " name-small"
+          : "";
+
   return (
     <button
-      className={`tabletop-card${selected ? " selected" : ""}${drawing ? " drawing" : ""}${horizontal ? " horizontal" : ""}`}
+      className={`tutorial-real-card${selected ? " selected" : ""}${drawing ? " drawing" : ""}${horizontal ? " horizontal" : ""}`}
       style={
         {
           "--draw-index": drawIndex,
@@ -328,10 +449,38 @@ function TutorialCard({
       type="button"
       onClick={onClick}
     >
-      <span className="tabletop-card-cost">{card.name.length % 4}</span>
-      <span className="tabletop-card-art">{cardSigil(card.name)}</span>
-      <strong>{shortCardName(card.name)}</strong>
-      <span className="tabletop-card-power">{cardPower(card.name)}</span>
+      {face.illustration ? (
+        <img
+          className="tutorial-real-card-art"
+          src={tutorialAssetPath(face.illustration)}
+          alt=""
+          aria-hidden="true"
+        />
+      ) : (
+        <span className="tutorial-real-card-art tutorial-real-card-fallback">
+          {face.sigil}
+        </span>
+      )}
+      <img
+        className="tutorial-real-card-frame"
+        src={tutorialAssetPath(tutorialFramePath)}
+        alt=""
+        aria-hidden="true"
+      />
+      <img
+        className="tutorial-real-card-emblem"
+        src={tutorialAssetPath(tutorialEmblemPath)}
+        alt=""
+        aria-hidden="true"
+      />
+      <span className="tutorial-real-card-cost">{face.cost}</span>
+      <span className="tutorial-real-card-power">{face.power}</span>
+      <strong className={`tutorial-real-card-name${compactName}`}>
+        {shortCardName(card.name)}
+      </strong>
+      <span className="tutorial-real-card-text">{rulesText}</span>
+      <span className="tutorial-real-card-race">{face.race}</span>
+      <span className="tutorial-real-card-serial">{face.serial}</span>
     </button>
   );
 }
@@ -433,8 +582,9 @@ function ZoneSlot({
   );
 }
 
-export function TutorialPage() {
+export function TutorialPage({ onExit }: { onExit: () => void }) {
   const [campaignIndex, setCampaignIndex] = useState(0);
+  const [stageModalOpen, setStageModalOpen] = useState(false);
   const campaign = campaigns[campaignIndex];
   const [state, setState] = useState<EngineState>(() => initialState(campaign));
   const selectedCard = state.cards.find((card) => card.id === state.selectedCardId);
@@ -472,6 +622,7 @@ export function TutorialPage() {
     const nextCampaign = campaigns[nextIndex];
     setCampaignIndex(nextIndex);
     setState(initialState(nextCampaign));
+    setStageModalOpen(false);
   };
 
   const showBanner = (text: string) => {
@@ -725,44 +876,96 @@ export function TutorialPage() {
 
   return (
     <div className="tutorial-view">
-      <section className="tutorial-campaign-tabs" aria-label="튜토리얼 캠페인 선택">
-        {campaigns.map((item, index) => (
-          <button
-            key={item.id}
-            className={index === campaignIndex ? "active" : ""}
-            type="button"
-            onClick={() => resetCampaign(index)}
+      <div className="tutorial-orientation-lock" role="alert" aria-live="assertive">
+        <div className="tutorial-orientation-panel">
+          <RotateCcw aria-hidden="true" />
+          <strong>핸드폰을 가로로 돌려주세요</strong>
+          <span>튜토리얼은 가로 화면에서만 진행할 수 있습니다.</span>
+        </div>
+      </div>
+
+      <div className="tutorial-floating-actions" aria-label="튜토리얼 메뉴">
+        <button className="tutorial-exit-button" type="button" onClick={onExit}>
+          <LogOut />
+          나가기
+        </button>
+        <button
+          className="tutorial-stage-button"
+          type="button"
+          onClick={() => setStageModalOpen(true)}
+        >
+          <List />
+          튜토리얼 단계 선택
+        </button>
+      </div>
+
+      {stageModalOpen && (
+        <div className="tutorial-stage-modal-backdrop" role="presentation">
+          <section
+            className="tutorial-stage-modal"
+            aria-label="튜토리얼 단계 선택"
           >
-            <span>{item.number}</span>
-            <strong>{item.title}</strong>
-            <em>{item.subtitle}</em>
-          </button>
-        ))}
-      </section>
+            <header>
+              <div>
+                <p className="eyebrow">tutorial stages</p>
+                <h2>튜토리얼 단계 선택</h2>
+              </div>
+              <button
+                className="tutorial-stage-close"
+                type="button"
+                aria-label="단계 선택 닫기"
+                onClick={() => setStageModalOpen(false)}
+              >
+                <X />
+              </button>
+            </header>
+            <div className="tutorial-stage-list">
+              {campaigns.map((item, index) => (
+                <button
+                  key={item.id}
+                  className={index === campaignIndex ? "active" : ""}
+                  type="button"
+                  onClick={() => resetCampaign(index)}
+                >
+                  <span>{item.number}</span>
+                  <strong>{item.title}</strong>
+                  <em>{item.subtitle}</em>
+                </button>
+              ))}
+            </div>
+          </section>
+        </div>
+      )}
 
       <section className="tabletop-layout tabletop-layout-full">
         <div className="tabletop-engine grns-field-engine">
           {state.phase === "intro" && (
-            <div className="tutorial-start-overlay">
-              <div className="tutorial-start-modal">
-                <p className="eyebrow">tutorial {campaign.number}</p>
-                <h2>{campaign.title}</h2>
-                <p>{campaign.subtitle}</p>
-                <button type="button" onClick={startTutorial}>
-                  튜토리얼 {campaign.number} 시작
-                </button>
-              </div>
-            </div>
+            <TutorialModal
+              className="tutorial-start-overlay"
+              panelClassName="tutorial-start-modal"
+              eyebrow={`tutorial ${campaign.number}`}
+              title={campaign.title}
+              description={campaign.subtitle}
+            >
+              <InkButton onClick={startTutorial}>튜토리얼 {campaign.number} 시작</InkButton>
+            </TutorialModal>
           )}
 
           {state.phase === "tour" && (
             <div className={`tour-overlay tour-focus-${tourSteps[state.tourIndex].zone}`}>
-              <div className="tour-card">
+              <div
+                className="tour-card"
+                style={
+                  {
+                    "--paper-modal-bg": `url("${tutorialAssetPath(tutorialPaperModalPath)}")`,
+                  } as CSSProperties
+                }
+              >
                 <p className="eyebrow">field tour</p>
                 <h2>{tourSteps[state.tourIndex].title}</h2>
                 <p>{tourSteps[state.tourIndex].detail}</p>
                 <button type="button" onClick={advanceTour}>
-                  {state.tourIndex === tourSteps.length - 1 ? "코인플립으로" : "다음"}
+                {state.tourIndex === tourSteps.length - 1 ? "코인플립으로" : "다음"}
                 </button>
               </div>
             </div>
@@ -786,19 +989,18 @@ export function TutorialPage() {
           )}
 
           {state.phase === "mulliganIntro" && (
-            <div className="tutorial-modal-overlay">
-              <div className="tutorial-guide-modal">
-                <p className="eyebrow">mulligan</p>
-                <h2>멀리건</h2>
-                <p>
-                  게임 시작 전에 징집소 위에서 4장을 공개합니다. 이 4장을 먼저 문지기로 세울지,
-                  군영으로 사용할지 선택하게 됩니다.
-                </p>
-                <button type="button" onClick={drawToMulligan}>
-                  4장 공개하기
-                </button>
-              </div>
-            </div>
+            <TutorialModal
+              className="tutorial-modal-overlay"
+              panelClassName="tutorial-guide-modal"
+              compact
+              eyebrow="mulligan"
+              title="멀리건"
+              description="게임 시작 전에 징집소 위에서 4장을 공개합니다. 이 4장을 먼저 문지기로 세울지, 군영으로 사용할지 선택하게 됩니다."
+            >
+              <InkButton size="sm" onClick={drawToMulligan}>
+                4장 공개하기
+              </InkButton>
+            </TutorialModal>
           )}
 
           {shouldGuideDraw && (
@@ -934,17 +1136,20 @@ export function TutorialPage() {
                 ))}
               </div>
               <div className="mulligan-actions">
-                <button type="button" onClick={() => placeInitialGates("gate-first")}>
+                <InkButton onClick={() => placeInitialGates("gate-first")}>
                   문지기 배치
-                </button>
-                <button type="button" onClick={() => placeInitialGates("army-first")}>
+                </InkButton>
+                <InkButton tone="paper" onClick={() => placeInitialGates("army-first")}>
                   군영으로 사용
-                </button>
+                </InkButton>
               </div>
             </section>
           )}
 
-          <section className={`tabletop-hand${activeTourZone === "hand" ? " tour-highlight" : ""}`} aria-label="군영">
+          <section
+            className={`tabletop-hand${activeTourZone === "hand" ? " tour-highlight" : ""}${state.selectedCardId ? " hand-has-selection" : ""}`}
+            aria-label="군영"
+          >
             {zones.hand.length === 0 ? (
               <p>군영 비어 있음</p>
             ) : (
@@ -977,16 +1182,18 @@ export function TutorialPage() {
         )}
 
         {state.victory && (
-          <div className="victory-modal-backdrop">
-            <div className="victory-modal">
-              <p className="eyebrow">tutorial clear</p>
-              <h2>승리!</h2>
-              <p>멀리건과 첫 턴 징집까지 확인했습니다.</p>
-              <button type="button" onClick={() => resetCampaign(1)}>
-                다음 튜토리얼로
-              </button>
-            </div>
-          </div>
+          <TutorialModal
+            className="victory-modal-backdrop"
+            panelClassName="victory-modal"
+            compact
+            eyebrow="tutorial clear"
+            title="승리!"
+            description="멀리건과 첫 턴 징집까지 확인했습니다."
+          >
+            <InkButton size="sm" onClick={() => resetCampaign(1)}>
+              다음 튜토리얼로
+            </InkButton>
+          </TutorialModal>
         )}
 
         <aside className="tutorial-log rail-log" aria-label="행동 로그">

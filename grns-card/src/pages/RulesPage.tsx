@@ -1,6 +1,5 @@
 import { type ReactNode } from "react";
 import { BookOpenText, Gamepad2, Map } from "lucide-react";
-import rulesGuideImage from "../assets/grns-ink-rules-guide-spirit.png";
 import { MissingCallout } from "../components/MissingCallout";
 import { RichText } from "../components/RichText";
 import {
@@ -59,9 +58,6 @@ export function RulesPage({
   return (
     <div className="rules-view">
       <section className="rules-section rules-hero">
-        <div className="rules-hero-art" aria-hidden="true">
-          <img src={rulesGuideImage} alt="" />
-        </div>
         <p className="eyebrow">{ruleCopy.hero.eyebrow}</p>
         <h2>{ruleCopy.hero.title}</h2>
         <RichText

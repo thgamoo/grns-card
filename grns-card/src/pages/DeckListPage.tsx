@@ -1,11 +1,18 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
-import type { ReactNode } from "react";
+import type { CSSProperties, MouseEvent, ReactNode } from "react";
 import { Printer } from "lucide-react";
+import pioneerDeckBannerUrl from "../assets/pioneer-deck-banner-crow.png";
+import shinmoDeckBannerUrl from "../assets/shinmo-deck-banner-bear.png";
+import sushinDeckBannerUrl from "../assets/sushin-deck-banner-tiger.png";
 
 type PrintCard = {
   id: string;
   name: string;
   serial: string;
+  cost?: number;
+  power?: number;
+  race?: string;
+  effect?: string;
 };
 
 type DeckEntry = {
@@ -33,7 +40,16 @@ type PrintableDeck = {
   uniqueCount: number;
 };
 
+type DeckCardLine = {
+  card: PrintCard;
+  count: number;
+};
+
 type PrintMode = "selected" | "all" | "common";
+type PrintSideMode = "simplex" | "duplex";
+type PreviewAnchor = "top" | "bottom";
+
+const cardsPerPrintPage = 9;
 
 const commonCardIds = [
   "st01-r-002",
@@ -53,6 +69,24 @@ function deckShortName(name: string) {
   return name.replace(/^옛이야기:\s*/, "").replace(/\s*고정 징집소$/, "");
 }
 
+function deckBannerStyle(deck: StructureDeck): CSSProperties | undefined {
+  const shortName = deckShortName(deck.name);
+  const bannerUrl =
+    shortName === "수신덱"
+      ? sushinDeckBannerUrl
+      : shortName === "신모덱"
+        ? shinmoDeckBannerUrl
+        : shortName === "선구자덱"
+          ? pioneerDeckBannerUrl
+          : undefined;
+
+  return bannerUrl
+    ? ({
+        "--starter-deck-banner": `url(${bannerUrl})`,
+      } as CSSProperties)
+    : undefined;
+}
+
 function expandDeck(deck: StructureDeck, cards: PrintCard[]): PrintableDeck {
   const cardById = new Map(cards.map((card) => [card.id, card]));
   const printableCards = [
@@ -69,6 +103,38 @@ function expandDeck(deck: StructureDeck, cards: PrintCard[]): PrintableDeck {
   };
 }
 
+function serialNumber(serial: string) {
+  return Number(serial.match(/(\d+)$/)?.[1] ?? 0);
+}
+
+function starterDeckColumns(deck: StructureDeck, cards: PrintCard[]) {
+  const cardById = new Map(cards.map((card) => [card.id, card]));
+  const counts = new Map<string, number>();
+  for (const entry of deck.entries) {
+    counts.set(entry.cardId, (counts.get(entry.cardId) ?? 0) + entry.count);
+  }
+
+  const lines = Array.from(counts.entries())
+    .map(([cardId, count]) => ({
+      card: cardById.get(cardId),
+      count,
+    }))
+    .filter((line): line is DeckCardLine => Boolean(line.card))
+    .sort(
+      (a, b) =>
+        serialNumber(a.card.serial) - serialNumber(b.card.serial) ||
+        a.card.name.localeCompare(b.card.name),
+    );
+
+  const rightStartIndex = lines.findIndex(
+    (line) => line.card.id === "st01-r-002",
+  );
+  const splitIndex =
+    rightStartIndex === -1 ? Math.ceil(lines.length / 2) : rightStartIndex;
+
+  return [lines.slice(0, splitIndex), lines.slice(splitIndex)];
+}
+
 function expandCommonCards(cards: PrintCard[]): PrintableDeck {
   const cardById = new Map(cards.map((card) => [card.id, card]));
   const printableCards = commonCardIds
@@ -77,7 +143,7 @@ function expandCommonCards(cards: PrintCard[]): PrintableDeck {
 
   return {
     deck: {
-      id: "st01-common-print",
+      id: "tu01-common-print",
       name: "옛이야기: 공통 카드",
       totalCards: printableCards.length,
       mainDeckCards: printableCards.length,
@@ -90,6 +156,20 @@ function expandCommonCards(cards: PrintCard[]): PrintableDeck {
     cards: printableCards,
     uniqueCount: new Set(printableCards.map((card) => card.id)).size,
   };
+}
+
+function chunkCards(cards: PrintCard[], size: number) {
+  const chunks: PrintCard[][] = [];
+  for (let index = 0; index < cards.length; index += size) {
+    chunks.push(cards.slice(index, index + size));
+  }
+  return chunks;
+}
+
+function effectSummary(effect?: string) {
+  const text = effect?.replace(/_[\s\S]*$/g, "").trim();
+  if (!text) return "(효과없음)";
+  return text.length > 46 ? `${text.slice(0, 45)}...` : text;
 }
 
 export function DeckListPage({
@@ -106,13 +186,18 @@ export function DeckListPage({
   const printableDecks = useMemo(
     () =>
       decks
-        .filter((deck) => deck.id.startsWith("st01-"))
+        .filter((deck) => deck.id.startsWith("tu01-"))
         .map((deck) => expandDeck(deck, cards)),
     [cards, decks],
   );
   const commonPrintable = useMemo(() => expandCommonCards(cards), [cards]);
   const [selectedDeckId, setSelectedDeckId] = useState<string>("");
   const [printMode, setPrintMode] = useState<PrintMode>("selected");
+  const [printSideMode, setPrintSideMode] =
+    useState<PrintSideMode>("simplex");
+  const [previewCard, setPreviewCard] = useState<PrintCard | null>(null);
+  const [previewPosition, setPreviewPosition] = useState({ x: 0, y: 0 });
+  const [previewAnchor, setPreviewAnchor] = useState<PreviewAnchor>("top");
   const selectedDeck =
     printableDecks.find(
       (item) => item.deck.id === (selectedDeckId || printableDecks[0]?.deck.id),
@@ -135,6 +220,13 @@ export function DeckListPage({
     window.requestAnimationFrame(() => window.print());
   };
 
+  const movePreview = (event: MouseEvent) => {
+    setPreviewPosition({ x: event.clientX, y: event.clientY });
+    setPreviewAnchor(
+      event.clientY > window.innerHeight - 280 ? "bottom" : "top",
+    );
+  };
+
   if (!selectedDeck) {
     return (
       <div className="tutorial-print-view">
@@ -152,14 +244,25 @@ export function DeckListPage({
       <section className="tutorial-print-head">
         <div>
           <p className="eyebrow">starter decks</p>
-          <h2>시작 덱</h2>
-          <p>
-            영령님. 처음 전장에 현현하셨다면, 이곳의 덱부터 펼쳐보시면 됩니다.
-            성주와 징집소가 이미 갖추어진 묶음이니, 하나를 골라 출력한 뒤 곧바로
-            첫 전쟁을 경험하세요.
-          </p>
+          <h2>온보딩 덱</h2>
         </div>
         <div className="tutorial-print-actions">
+          <div className="tutorial-print-toggle" aria-label="인쇄 방식">
+            <button
+              type="button"
+              className={printSideMode === "simplex" ? "active" : ""}
+              onClick={() => setPrintSideMode("simplex")}
+            >
+              단면인쇄
+            </button>
+            <button
+              type="button"
+              className={printSideMode === "duplex" ? "active" : ""}
+              onClick={() => setPrintSideMode("duplex")}
+            >
+              양면인쇄
+            </button>
+          </div>
           <button type="button" onClick={() => printDecks("selected")}>
             <Printer />
             선택 덱 프린트
@@ -189,74 +292,139 @@ export function DeckListPage({
         ))}
       </section>
 
-      <section className="tutorial-print-summary" aria-label="선택한 덱 정보">
-        <article>
-          <span>선택 덱</span>
-          <strong>{deckShortName(selectedDeck.deck.name)}</strong>
-        </article>
-        <article>
-          <span>성주</span>
-          <strong>{selectedDeck.deck.hero?.name ?? "없음"}</strong>
-        </article>
-        <article>
-          <span>징집소</span>
-          <strong>
-            {selectedDeck.deck.mainDeckCards ??
-              selectedDeck.deck.totalCards - 1}
-            장
-          </strong>
-        </article>
-        <article>
-          <span>고유 카드</span>
-          <strong>{selectedDeck.uniqueCount}종</strong>
-        </article>
+      <section className="starter-deck-browser" aria-label="선택한 덱 구성">
+        <div
+          className="starter-deck-hero"
+          style={deckBannerStyle(selectedDeck.deck)}
+        >
+          <div>
+            <span>성주</span>
+            <strong>{selectedDeck.deck.hero?.name ?? "없음"}</strong>
+          </div>
+          <span>{selectedDeck.deck.hero?.serial ?? "-"}</span>
+        </div>
+
+        {(() => {
+          const columns = starterDeckColumns(selectedDeck.deck, cards);
+
+          const renderLines = (items: DeckCardLine[]) =>
+            items.map(({ card, count }) => (
+              <li
+                key={card.id}
+                tabIndex={0}
+                onBlur={() => setPreviewCard(null)}
+                onFocus={() => setPreviewCard(card)}
+                onMouseEnter={(event) => {
+                  setPreviewCard(card);
+                  movePreview(event);
+                }}
+                onMouseMove={movePreview}
+                onMouseLeave={() => setPreviewCard(null)}
+              >
+                <span className="starter-card-cost">{card.cost ?? "-"}</span>
+                <div className="starter-card-copy">
+                  <strong>
+                    {card.name}
+                    <small>{card.serial}</small>
+                  </strong>
+                  <span>{effectSummary(card.effect)}</span>
+                </div>
+                <span className="starter-card-race">{card.race || "일반"}</span>
+                <span className="starter-card-count">{count}</span>
+              </li>
+            ));
+
+          return (
+            <div className="starter-deck-columns">
+              {columns.map((column, index) => (
+                <article className="starter-deck-list" key={index}>
+                  {index === 0 && (
+                    <header className="starter-card-list-header">
+                      <span>허기</span>
+                      <span>카드</span>
+                      <span>종족</span>
+                      <span>장수</span>
+                    </header>
+                  )}
+                  <ol>{renderLines(column)}</ol>
+                </article>
+              ))}
+            </div>
+          );
+        })()}
+        {previewCard && (
+          <aside
+            className={`starter-card-preview ${previewAnchor}`}
+            style={{
+              left: `${previewPosition.x}px`,
+              top: `${previewPosition.y}px`,
+            }}
+            aria-hidden="true"
+          >
+            {renderCard(previewCard)}
+          </aside>
+        )}
       </section>
 
       {visibleDecks.map((item) => (
         <Fragment key={item.deck.id}>
-          <section
-            className="tutorial-print-sheet"
-            key={`${item.deck.id}-front`}
-            aria-label={`${item.deck.name} 카드 앞면 목록`}
-          >
-            <div className="tutorial-print-title">
-              <span>{deckShortName(item.deck.name)} 앞면</span>
-              <strong>{item.cards.length}장</strong>
-            </div>
-            <div className="tutorial-print-grid">
-              {item.cards.map((card, index) => (
-                <div
-                  className="tutorial-print-card"
-                  key={`${card.id}-${index}`}
-                >
-                  {renderCard(card)}
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {renderBack && (
+          {chunkCards(item.cards, cardsPerPrintPage).map((pageCards, pageIndex) => (
             <section
-              className="tutorial-print-sheet tutorial-print-back-sheet"
-              key={`${item.deck.id}-back`}
-              aria-label={`${item.deck.name} 카드 뒷면 목록`}
+              className="tutorial-print-sheet print-only"
+              key={`${item.deck.id}-front-${pageIndex}`}
+              aria-label={`${item.deck.name} 카드 앞면 ${pageIndex + 1}쪽`}
             >
               <div className="tutorial-print-title">
-                <span>{deckShortName(item.deck.name)} 뒷면</span>
-                <strong>{item.cards.length}장</strong>
+                <span>
+                  {deckShortName(item.deck.name)} 앞면 {pageIndex + 1}
+                </span>
+                <strong>
+                  {pageCards.length}장 / {item.cards.length}장
+                </strong>
               </div>
               <div className="tutorial-print-grid">
-                {item.cards.map((card, index) => (
+                {pageCards.map((card, index) => (
                   <div
                     className="tutorial-print-card"
-                    key={`${card.id}-back-${index}`}
+                    key={`${card.id}-${pageIndex}-${index}`}
                   >
-                    {renderBack()}
+                    {renderCard(card)}
                   </div>
                 ))}
               </div>
             </section>
-          )}
+          ))}
+
+          {renderBack &&
+            printSideMode === "duplex" &&
+            chunkCards(item.cards, cardsPerPrintPage).map(
+              (pageCards, pageIndex) => (
+                <section
+                  className="tutorial-print-sheet tutorial-print-back-sheet print-only"
+                  key={`${item.deck.id}-back-${pageIndex}`}
+                  aria-label={`${item.deck.name} 카드 뒷면 ${pageIndex + 1}쪽`}
+                >
+                  <div className="tutorial-print-title">
+                    <span>
+                      {deckShortName(item.deck.name)} 뒷면 {pageIndex + 1}
+                    </span>
+                    <strong>
+                      {pageCards.length}장 / {item.cards.length}장
+                    </strong>
+                  </div>
+                  <div className="tutorial-print-grid">
+                    {pageCards.map((card, index) => (
+                      <div
+                        className="tutorial-print-card"
+                        key={`${card.id}-back-${pageIndex}-${index}`}
+                      >
+                        {renderBack()}
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              ),
+            )}
         </Fragment>
       ))}
     </div>

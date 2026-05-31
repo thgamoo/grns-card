@@ -22,6 +22,8 @@ import {
   ZoomOut,
 } from "lucide-react";
 import "./App.css";
+import introHeroImage from "./assets/grns-ink-hero-dokkaebi-right-focus-duel.png";
+import grnsLogoTop from "./assets/grns-logo-top.png";
 import {
   combatConceptId,
   combatConceptNotes,
@@ -32,6 +34,7 @@ import {
 import { fieldTermNotes } from "./content/field";
 import { worldLinks } from "./content/world";
 import { FieldTermToken } from "./components/FieldTermToken";
+import { InkButton } from "./components/InkButton";
 import { MissingCallout } from "./components/MissingCallout";
 import { FieldPage } from "./pages/FieldPage";
 import { IntroPage } from "./pages/IntroPage";
@@ -39,6 +42,8 @@ import { DeckListPage } from "./pages/DeckListPage";
 import { RulesPage } from "./pages/RulesPage";
 import { TutorialPage } from "./pages/TutorialPage";
 import { WorldPage } from "./pages/WorldPage";
+
+type ClassId = "ym" | "sr" | "gr" | "sj" | "ne";
 
 type VersionEntry = {
   id: string;
@@ -55,7 +60,7 @@ type Manifest = {
 
 type CardSource = {
   packId: string;
-  classId: string;
+  classId: ClassId;
   file: string;
   count: number;
 };
@@ -72,12 +77,12 @@ type SplitDb = {
 };
 
 type DeckSource = {
-  classId: string;
+  classId: ClassId;
   file: string;
 };
 
 type ClassInfo = {
-  id: string;
+  id: ClassId;
   faction: string;
   name?: string;
   className?: string;
@@ -95,7 +100,7 @@ type Card = {
   name: string;
   cost: number;
   faction: string;
-  classId: string;
+  classId: ClassId;
   className: string;
   theme: string;
   type: string;
@@ -121,7 +126,7 @@ type DeckEntry = {
 type StructureDeck = {
   id: string;
   name: string;
-  classId: string;
+  classId: ClassId;
   faction: string;
   className: string;
   totalCards: number;
@@ -157,20 +162,20 @@ const emptyCards: Card[] = [];
 const emptyClasses: ClassInfo[] = [];
 const emptyDecks: StructureDeck[] = [];
 
-const classColors: Record<string, string> = {
-  goguryeo: "#d7d7d7",
-  jinhan: "#bfbfbf",
-  gaya: "#ececec",
-  mahan: "#cfcfcf",
-  neutral: "#ffffff",
+const classColors: Record<ClassId, string> = {
+  ym: "#b42318",
+  sr: "#15803d",
+  gr: "#1d4ed8",
+  sj: "#7e22ce",
+  ne: "#ffffff",
 };
 
-const fallbackClassMarks: Record<string, string> = {
-  goguryeo: "△",
-  jinhan: "★",
-  gaya: "■",
-  mahan: "●",
-  neutral: "◇",
+const fallbackClassMarks: Record<ClassId, string> = {
+  ym: "△",
+  sr: "★",
+  gr: "■",
+  sj: "●",
+  ne: "◇",
 };
 
 const tabs: Array<{ id: TabId; label: string; icon: typeof Sparkles }> = [
@@ -195,6 +200,38 @@ const tabPaths: Record<TabId, string> = {
   world: "/world",
 };
 
+const headerClassName =
+  "sticky top-0 z-20 flex items-center justify-end gap-4 border-b border-[var(--line)] bg-white/[0.18] px-[clamp(16px,4vw,48px)] py-3.5 [backdrop-filter:blur(1px)] print:hidden max-[1120px]:static max-[760px]:px-3 max-[760px]:py-3";
+const headerBrandClassName =
+  "mr-auto inline-flex w-fit shrink-0 items-center border-0 bg-transparent p-0 text-[var(--ink)] max-2xl:hidden";
+const headerLogoClassName = "block h-auto w-[clamp(132px,14vw,196px)]";
+const headerNavClassName =
+  "flex justify-end gap-8 max-xl:hidden";
+const headerTabButtonClassName =
+  "inline-flex font-extrabold drop-shadow-[0_8px_14px_rgba(17,17,17,0.12)] [--ink-button-width:130px]";
+const headerMenuButtonClassName =
+  "hidden size-12 shrink-0 place-items-center border-0 bg-transparent p-0 max-xl:grid";
+const versionPickerClassName = "grid w-[190px] shrink-0 gap-1 max-xl:hidden";
+const versionPickerLabelClassName = "text-xs font-black text-[var(--muted)]";
+const versionPickerSelectClassName =
+  "min-h-[38px] w-full rounded-lg border border-[var(--line)] bg-[var(--paper)] px-2.5 font-extrabold text-[var(--ink)]";
+const navDrawerOverlayClassName =
+  "fixed inset-0 z-40 hidden bg-black/36 print:hidden max-xl:block";
+const navDrawerPanelClassName =
+  "absolute right-0 top-0 flex h-full w-[min(320px,86vw)] flex-col gap-5 border-l border-[var(--line)] bg-[rgba(245,242,234,0.94)] px-6 py-5 shadow-[-24px_0_70px_rgba(0,0,0,0.32)] [backdrop-filter:blur(8px)]";
+const navDrawerHeaderClassName = "flex items-center justify-between gap-3";
+const navDrawerTitleClassName =
+  "font-['Gowun_Batang',serif] text-2xl font-black text-[var(--ink)]";
+const navDrawerCloseButtonClassName =
+  "grid size-11 place-items-center border-0 bg-transparent p-0";
+const navDrawerListClassName = "flex flex-col items-stretch gap-4";
+const navDrawerTabButtonClassName =
+  "w-full justify-center font-extrabold [--ink-button-width:100%]";
+const navDrawerVersionClassName = "mt-auto grid gap-1";
+const uiIconBasePath = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/docs/card-assets/ui/icons`;
+const menuIconPath = `${uiIconBasePath}/icon-menu-ink.png`;
+const closeIconPath = `${uiIconBasePath}/icon-close-ink.png`;
+
 function tabFromPath(pathname: string): TabId {
   const normalized = pathname.replace(/\/+$/, "") || "/";
   const found = Object.entries(tabPaths).find(
@@ -205,13 +242,15 @@ function tabFromPath(pathname: string): TabId {
 
 const pinnedKeywordFilters = ["왕살"];
 const st01FrontFrame =
-  "./docs/card-assets/st01/common/card-frame-20260530_f2.png";
-const st01CardBack = "./docs/card-assets/st01/common/backside.png";
-const st01FirstGateEmblem =
-  "./docs/card-assets/st01/common/emblem-first-sungmoon.png";
-const gayaEmblem = "./docs/faction-diamonds/garak-emblem.png";
-
-const baseGarakFrontFrame = "./docs/card-assets/base/common/card-frame-20260531-garak-blue.png";
+  "./docs/card-assets/common/card-frame-20260531.png";
+const st01CardBack = "./docs/card-assets/common/backside.png";
+const classFrameEmblems: Record<ClassId, string> = {
+  ym: "./docs/faction-diamonds/yemaek-emblem.png",
+  sr: "./docs/faction-diamonds/saro-emblem.png",
+  gr: "./docs/faction-diamonds/garak-emblem.png",
+  sj: "./docs/faction-diamonds/sipje-emblem.png",
+  ne: "./docs/faction-diamonds/tu01-emblem.png",
+};
 
 function publicAssetPath(file: string) {
   if (/^(https?:)?\/\//.test(file)) return file;
@@ -229,7 +268,6 @@ async function fetchJson<T>(file: string): Promise<T> {
 }
 
 function packName(packId: string, expansions: Expansion[]) {
-  if (packId === "base") return "기본";
   return expansions.find((item) => item.id === packId)?.name ?? packId;
 }
 
@@ -237,7 +275,7 @@ function serialNumber(serial: string) {
   return Number(serial.match(/(\d+)$/)?.[1] ?? 0);
 }
 
-const packDisplayOrder = ["st01", "base", "ex01"];
+const packDisplayOrder = ["tu01", "ob01", "st01", "st02", "st03", "st04", "ex01"];
 
 function packOrderIndex(packId: string) {
   const index = packDisplayOrder.indexOf(packId);
@@ -245,8 +283,7 @@ function packOrderIndex(packId: string) {
 }
 
 function layeredFrameEmblem(card: Card) {
-  if (card.classId === "gaya" || card.faction === "가락") return gayaEmblem;
-  return st01FirstGateEmblem;
+  return classFrameEmblems[card.classId] ?? classFrameEmblems.ne;
 }
 
 function compareCardsBySerial(a: Card, b: Card) {
@@ -426,12 +463,21 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
     : "card-effect card-effect-lore";
   const illustration = card.illustration?.trim();
   const illustrationSrc = illustration ? publicAssetPath(illustration) : "";
+  const isLayeredPack =
+    card.packId === "tu01" ||
+    card.packId === "ob01" ||
+    card.packId === "st01" ||
+    card.packId === "st02" ||
+    card.packId === "st03" ||
+    card.packId === "st04" ||
+    card.packId === "base";
   const usesLayeredFrame =
-    Boolean(illustration) &&
-    (card.packId === "st01" ||
-      card.packId === "base" ||
-      illustration?.includes("card-assets/st01") ||
-      illustration?.includes("card-assets/base"));
+    isLayeredPack ||
+      illustration?.includes("card-assets/illustrations/tu01") ||
+      illustration?.includes("card-assets/illustrations/ob01") ||
+      illustration?.includes("card-assets/illustrations/st01") ||
+      illustration?.includes("card-assets/illustrations/base") ||
+      illustration?.includes("card-assets/base");
   const handlePointerMove = (event: PointerEvent<HTMLElement>) => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const cardRect = event.currentTarget.getBoundingClientRect();
@@ -479,15 +525,19 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
         role={onClick ? "button" : undefined}
         tabIndex={onClick ? 0 : undefined}
       >
-        <img
-          className="frame-stack-illustration"
-          src={illustrationSrc}
-          alt=""
-          aria-hidden="true"
-        />
+        {illustrationSrc ? (
+          <img
+            className="frame-stack-illustration"
+            src={illustrationSrc}
+            alt=""
+            aria-hidden="true"
+          />
+        ) : (
+          <span className="frame-stack-illustration" aria-hidden="true" />
+        )}
         <img
           className="frame-stack-image"
-          src={card.classId === "gaya" ? publicAssetPath(baseGarakFrontFrame) : publicAssetPath(st01FrontFrame)}
+          src={publicAssetPath(st01FrontFrame)}
           alt=""
           aria-hidden="true"
         />
@@ -817,6 +867,7 @@ function App() {
   const [sealedBooksUnlocked, setSealedBooksUnlocked] = useState(false);
   const [graphUnlocked, setGraphUnlocked] = useState(false);
   const [error, setError] = useState("");
+  const [isNavDrawerOpen, setIsNavDrawerOpen] = useState(false);
   const activeTab = tabFromPath(pathname);
   const visibleWorldLinks = worldLinks;
   const visibleTabs = graphUnlocked
@@ -954,7 +1005,7 @@ function App() {
         progress += 1;
         if (progress === command.length) {
           setGraphUnlocked(true);
-          navigateTab("graph");
+          setWorldNotice("그래프와 카드 버전이 해금되었습니다.");
           progress = 0;
         }
         return;
@@ -1190,7 +1241,9 @@ function App() {
 
   const modalCard = cards.find((card) => card.id === modalCardId);
   const sampleCard =
-    cards.find((card) => card.serial === "GRNS-0009") ?? cards[0];
+    cards.find((card) => card.name === "금관의 철거인") ??
+    cards.find((card) => card.serial === "GRNS-0009") ??
+    cards[0];
   const activeWorldDocIndex =
     worldDocIndex < visibleWorldLinks.length ? worldDocIndex : 0;
   const activeWorldDoc = visibleWorldLinks[activeWorldDocIndex];
@@ -1256,46 +1309,141 @@ function App() {
   };
 
   return (
-    <main className="site-shell">
-      <header className="site-header">
-        <button
-          className="brand"
-          type="button"
-          onClick={() => navigateTab("intro")}
-        >
-          괴력난신DB
-        </button>
-        <nav className="tab-nav" aria-label="페이지 탭">
-          {visibleTabs.map(({ id, label, icon: Icon }) => (
-            <a
-              key={id}
-              href={tabPaths[id]}
-              className={activeTab === id ? "active" : ""}
-              onClick={(event) => {
-                event.preventDefault();
-                navigateTab(id);
-              }}
-            >
-              <Icon />
-              {label}
-            </a>
-          ))}
-        </nav>
-        <label className="version-picker">
-          <span>카드 버전</span>
-          <select
-            value={versionId}
-            onChange={(event) => setVersionId(event.target.value)}
-            aria-label="카드 버전"
+    <main
+      className={`site-shell${activeTab === "intro" ? "" : ` site-shell-${activeTab}`}${activeTab === "tutorial" ? " tutorial-fullscreen-shell" : ""}`}
+      style={
+        activeTab === "intro"
+          ? {
+              background: `url(${introHeroImage}) left center / cover fixed no-repeat, var(--bg)`,
+            }
+          : undefined
+      }
+    >
+      {activeTab !== "tutorial" && (
+        <header className={headerClassName}>
+          <button
+            className={headerBrandClassName}
+            type="button"
+            onClick={() => navigateTab("intro")}
           >
-            {manifest?.versions.map((version) => (
-              <option key={version.id} value={version.id}>
-                {version.createdAt}
-              </option>
+            <img
+              className={headerLogoClassName}
+              src={grnsLogoTop}
+              alt="괴력난신DB"
+            />
+          </button>
+          <nav
+            className={headerNavClassName}
+            aria-label="페이지 탭"
+          >
+            {visibleTabs.map(({ id, label }) => (
+              <InkButton
+                key={id}
+                aria-current={activeTab === id ? "page" : undefined}
+                className={headerTabButtonClassName}
+                size="sm"
+                variant={activeTab === id ? "primary" : "pale"}
+                onClick={() => navigateTab(id)}
+              >
+                {label}
+              </InkButton>
             ))}
-          </select>
-        </label>
-      </header>
+          </nav>
+          {graphUnlocked && (
+            <label className={versionPickerClassName}>
+              <span className={versionPickerLabelClassName}>카드 버전</span>
+              <select
+                className={versionPickerSelectClassName}
+                value={versionId}
+                onChange={(event) => setVersionId(event.target.value)}
+                aria-label="카드 버전"
+              >
+                {manifest?.versions.map((version) => (
+                  <option key={version.id} value={version.id}>
+                    {version.createdAt}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+          <button
+            className={headerMenuButtonClassName}
+            type="button"
+            aria-label="메뉴 열기"
+            aria-expanded={isNavDrawerOpen}
+            onClick={() => setIsNavDrawerOpen(true)}
+          >
+            <img className="size-12" src={menuIconPath} alt="" aria-hidden="true" />
+          </button>
+        </header>
+      )}
+
+      {activeTab !== "tutorial" && isNavDrawerOpen && (
+        <div
+          className={navDrawerOverlayClassName}
+          role="presentation"
+          onClick={() => setIsNavDrawerOpen(false)}
+        >
+          <aside
+            className={navDrawerPanelClassName}
+            role="dialog"
+            aria-modal="true"
+            aria-label="페이지 메뉴"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <header className={navDrawerHeaderClassName}>
+              <strong className={navDrawerTitleClassName}>메뉴</strong>
+              <button
+                className={navDrawerCloseButtonClassName}
+                type="button"
+                aria-label="메뉴 닫기"
+                onClick={() => setIsNavDrawerOpen(false)}
+              >
+                <img
+                  className="size-11"
+                  src={closeIconPath}
+                  alt=""
+                  aria-hidden="true"
+                />
+              </button>
+            </header>
+            <nav className={navDrawerListClassName} aria-label="페이지 메뉴">
+              {visibleTabs.map(({ id, label }) => (
+                <InkButton
+                  key={id}
+                  aria-current={activeTab === id ? "page" : undefined}
+                  className={navDrawerTabButtonClassName}
+                  size="sm"
+                  variant={activeTab === id ? "primary" : "pale"}
+                  onClick={() => {
+                    navigateTab(id);
+                    setIsNavDrawerOpen(false);
+                  }}
+                >
+                  {label}
+                </InkButton>
+              ))}
+            </nav>
+            {graphUnlocked && (
+              <label className={navDrawerVersionClassName}>
+                <span className={versionPickerLabelClassName}>카드 버전</span>
+                <select
+                  className={versionPickerSelectClassName}
+                  value={versionId}
+                  onChange={(event) => setVersionId(event.target.value)}
+                  aria-label="카드 버전"
+                >
+                  {manifest?.versions.map((version) => (
+                    <option key={version.id} value={version.id}>
+                      {version.createdAt}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
+          </aside>
+        </div>
+      )}
 
       <section className="tab-stage">
         {activeTab === "intro" && (
@@ -1472,7 +1620,9 @@ function App() {
           />
         )}
 
-        {activeTab === "tutorial" && <TutorialPage />}
+        {activeTab === "tutorial" && (
+          <TutorialPage onExit={() => navigateTab("intro")} />
+        )}
 
         {activeTab === "deckList" && (
           <DeckListPage

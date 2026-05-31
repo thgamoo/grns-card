@@ -12,6 +12,7 @@
       h2 { margin-top: 3rem; border-top: 1px solid #111; padding-top: 1.3rem; }
       h3 { margin-top: 2rem; }
       a { color: inherit; }
+      blockquote { margin: 1.5rem 0; border-left: 4px solid #111; background: #fff; padding: 0.8rem 1rem; }
       code { background: #fff; border: 1px solid #d4d4d4; padding: 0.1em 0.35em; border-radius: 4px; }
       pre { overflow: auto; background: #fff; border: 1px solid #111; padding: 1rem; }
       table { width: 100%; border-collapse: collapse; margin: 1rem 0 2rem; background: #fff; }
@@ -28,10 +29,10 @@
         <a href="./rulebook.html">룰북</a>
         <a href="./keywords.html">키워드</a>
         <a href="./card-design.html">카드/클래스 설계</a>
-        <a href="./card-db-plan.html">카드 DB 운영</a>
         <a href="../card-db.html">카드 DB로 돌아가기</a>
       </nav>
 <h1>옛이야기 스타터 설계 초안</h1>
+<blockquote><p>보존 문서: 이 문서는 <code>2026-05-31-v1</code> 이전의 ST01 기반 옛이야기 스타터 초안이다. 최신 데이터에서는 옛이야기 카드풀이 <code>tu01</code>, 웹 전용 첫 전투 카드풀이 <code>ob01</code>로 분리되었고, 실제 튜토리얼 구현은 <code>grns-card/src/pages/TutorialPage.tsx</code>와 <code>data/card-2026-05-31-v1</code>을 기준으로 본다.</p></blockquote>
 <p>이 문서는 <code>옛이야기</code> 초보자용 카드풀을 고정 덱 순서 튜토리얼로 운용하기 위한 초안이다.</p>
 <p>룰 기준점:</p>
 <ul>
@@ -318,8 +319,7 @@
 </table>
 <h2>초기 9장 준비 루트</h2>
 <p>수신의 길 첫 9장은 <code>C01 C02 C07 R01 C03 C07 R01 C05 C04</code>다.</p>
-<pre><code>
-flowchart TD
+<pre><code>flowchart TD
   S["수신 초기 9장&lt;br/&gt;C01 C02 C07 R01 C03 C07 R01 C05 C04"] --&gt; A{"기본 정답 배치"}
   A --&gt; G1["문지기 4장&lt;br/&gt;C01 고양이&lt;br/&gt;C07 산군&lt;br/&gt;R01 귀신&lt;br/&gt;C07 산군"]
   A --&gt; H1["군영 5장&lt;br/&gt;C02 호랑이 그림자&lt;br/&gt;C03 전쟁선전꾼&lt;br/&gt;R01 귀신&lt;br/&gt;C05 장난꾸러기 여우&lt;br/&gt;C04 날뛰는 이리"]
@@ -328,11 +328,9 @@ flowchart TD
   B --&gt; H2["군영 5장&lt;br/&gt;C02 그림자&lt;br/&gt;C03 전쟁선전꾼&lt;br/&gt;C07 산군&lt;br/&gt;R01 귀신&lt;br/&gt;C04 이리"]
   S --&gt; C{"방어 우선 배치"}
   C --&gt; G3["문지기 4장&lt;br/&gt;C01 고양이&lt;br/&gt;C05 여우&lt;br/&gt;C07 산군&lt;br/&gt;R01 귀신"]
-  C --&gt; H3["군영 5장&lt;br/&gt;C02 그림자&lt;br/&gt;C03 전쟁선전꾼&lt;br/&gt;C07 산군&lt;br/&gt;R01 귀신&lt;br/&gt;C04 이리"]
-</code></pre>
+  C --&gt; H3["군영 5장&lt;br/&gt;C02 그림자&lt;br/&gt;C03 전쟁선전꾼&lt;br/&gt;C07 산군&lt;br/&gt;R01 귀신&lt;br/&gt;C04 이리"]</code></pre>
 <p>신모의 길 첫 9장은 <code>I02 I03 R01 I05 C03 R01 I08 C01 C02</code>다.</p>
-<pre><code>
-flowchart TD
+<pre><code>flowchart TD
   S["신모 초기 9장&lt;br/&gt;I02 I03 R01 I05 C03 R01 I08 C01 C02"] --&gt; A{"기본 정답 배치"}
   A --&gt; G1["문지기 4장&lt;br/&gt;I02 붉은 눈의 문지기&lt;br/&gt;I03 붉은 눈의 궁사&lt;br/&gt;R01 흩어진 귀신&lt;br/&gt;I08 검은 숨 문지기"]
   A --&gt; H1["군영 5장&lt;br/&gt;I05 반격병&lt;br/&gt;C03 전쟁선전꾼&lt;br/&gt;R01 흩어진 귀신&lt;br/&gt;C01 고양이&lt;br/&gt;C02 호랑이 그림자"]
@@ -341,8 +339,7 @@ flowchart TD
   B --&gt; H2["군영 5장&lt;br/&gt;I05 반격병&lt;br/&gt;C03 전쟁선전꾼&lt;br/&gt;R01 귀신&lt;br/&gt;I08 검은 숨 문지기&lt;br/&gt;C02 그림자"]
   S --&gt; C{"반격 우선 배치"}
   C --&gt; G3["문지기 4장&lt;br/&gt;I02 문지기&lt;br/&gt;I03 궁사&lt;br/&gt;I08 검은 숨 문지기&lt;br/&gt;R01 귀신"]
-  C --&gt; H3["군영 5장&lt;br/&gt;I05 반격병&lt;br/&gt;C03 전쟁선전꾼&lt;br/&gt;R01 귀신&lt;br/&gt;C01 고양이&lt;br/&gt;C02 그림자"]
-</code></pre>
+  C --&gt; H3["군영 5장&lt;br/&gt;I05 반격병&lt;br/&gt;C03 전쟁선전꾼&lt;br/&gt;R01 귀신&lt;br/&gt;C01 고양이&lt;br/&gt;C02 그림자"]</code></pre>
 <h2>1~7턴 루트 그래프</h2>
 <p>아래 그래프는 <code>매턴 보급병 1장 배치</code>를 전제로 한다. 이 스타터의 목적은 긴 장기전이 아니라, 초반에 보급병/자체보급/징집/희생을 거의 강제로 밟게 만들어 덱 소모 감각을 익히게 하는 것이다.</p>
 <p>특히 수신의 길은 선공 첫 턴에 징집이 없으므로, <code>전쟁선전꾼</code>의 자체보급을 통해 1장 징집을 유도한다. 이 선택을 하지 않으면 선공은 초반 군영 폭이 좁아지고, 이후 <code>흩어진 귀신</code>을 내기 위한 자원과 희생 타이밍도 늦어진다.</p>
@@ -354,8 +351,7 @@ flowchart TD
 </ol>
 <p>따라서 루트는 <code>17턴 이상 버티는 장기전</code>보다 <code>1~7턴 사이에 얼마나 많이 당겨 쓰고, 어디서 공격을 패배/교환/성주 공개로 연결하느냐</code>를 보는 쪽으로 잡는다.</p>
 <h3>수신의 길 루트</h3>
-<pre><code>
-flowchart TD
+<pre><code>flowchart TD
   T0["준비 완료&lt;br/&gt;문지기 4 + 군영 5&lt;br/&gt;성급한 수신의 화신으로 선공"] --&gt; T1A{"1턴 보급병"}
   T1A --&gt;|"C03 전쟁선전꾼"| T1B["후방기지: 전쟁선전꾼&lt;br/&gt;선공 첫 턴 징집 없음"]
   T1A --&gt;|"C02/C05 매복 보급"| T1X["매복을 자원화&lt;br/&gt;방어 선택지 감소&lt;br/&gt;흩어진 귀신 루트 지연"]
@@ -405,11 +401,9 @@ flowchart TD
   T6A --&gt; T7A["7턴: 성주 첫 공개 또는 추가 문지기 제거"]
   T6B --&gt; T7A
   T6C --&gt; T7B["7턴: 덱 소모 위험 구간&lt;br/&gt;흩어진 귀신 2장째는 신중"]
-  T6D --&gt; T7A
-</code></pre>
+  T6D --&gt; T7A</code></pre>
 <h3>신모의 길 루트</h3>
-<pre><code>
-flowchart TD
+<pre><code>flowchart TD
   T0["준비 완료&lt;br/&gt;문지기 4 + 군영 5&lt;br/&gt;인사하는 신모의 우상"] --&gt; T1A["1턴 후공 정비/징집&lt;br/&gt;후공은 2장 징집 가능"]
   T1A --&gt; T1B{"상대 선공 공격 여부"}
   T1B --&gt;|"날뛰는 이리 공격"| D1["매복 후보&lt;br/&gt;C01 고양이/C02 그림자/C05 여우&lt;br/&gt;공격 카드 패배 루트 계산"]
@@ -456,11 +450,9 @@ flowchart TD
   T5C --&gt; T6C["6턴: 희생하면 제거&lt;br/&gt;안 하면 방어 유지"]
   T6A --&gt; T7A["7턴: 상대 자원 소모 후 역공"]
   T6B --&gt; T7B["7턴: 성주 보호 유지"]
-  T6C --&gt; T7A
-</code></pre>
+  T6C --&gt; T7A</code></pre>
 <h3>양 덱 대전 통합 루트</h3>
-<pre><code>
-flowchart LR
+<pre><code>flowchart LR
   A["초기 9장&lt;br/&gt;문지기 4 + 군영 5 결정"] --&gt; B["수신 선공&lt;br/&gt;신모 후공"]
   B --&gt; C{"수신 1턴"}
   C --&gt;|"전쟁선전꾼 보급 + 자체보급"| D["수신 빠른 전개&lt;br/&gt;징집 +1&lt;br/&gt;덱 소모 시작"]
@@ -484,8 +476,7 @@ flowchart LR
   N --&gt;|"동힘 교착"| Q["군영 희생 1 선택&lt;br/&gt;제거 또는 교착"]
   O --&gt; R["6~7턴 결말&lt;br/&gt;성주 첫 공개 또는 공개 성주 힘겨루기"]
   P --&gt; R
-  Q --&gt; R
-</code></pre>
+  Q --&gt; R</code></pre>
 <h2>시뮬레이션 체크 포인트</h2>
 <ol>
 <li>초기 9장에서 문지기/군영을 어떻게 나눴는지 기록한다.</li>

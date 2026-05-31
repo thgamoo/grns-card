@@ -1,0 +1,91 @@
+{
+  "id": "goguryeo-structure-v1",
+  "name": "예맥 개마무사 스트럭쳐 징집소",
+  "classId": "ym",
+  "faction": "예맥",
+  "className": "개마무사",
+  "totalCards": 40,
+  "trapCards": 15,
+  "entries": [
+    {
+      "cardId": "ym-g-001",
+      "serial": "st01-0001",
+      "count": 3
+    },
+    {
+      "cardId": "ym-g-002",
+      "serial": "st01-0002",
+      "count": 3
+    },
+    {
+      "cardId": "ym-g-003",
+      "serial": "st01-0003",
+      "count": 3
+    },
+    {
+      "cardId": "ym-g-004",
+      "serial": "st01-0004",
+      "count": 3
+    },
+    {
+      "cardId": "ym-g-005",
+      "serial": "st01-0005",
+      "count": 3
+    },
+    {
+      "cardId": "ym-r-001",
+      "serial": "st01-0010",
+      "count": 2
+    },
+    {
+      "cardId": "ym-r-002",
+      "serial": "st01-0011",
+      "count": 2
+    },
+    {
+      "cardId": "ym-r-003",
+      "serial": "st01-0012",
+      "count": 2
+    },
+    {
+      "cardId": "ym-r-004",
+      "serial": "st01-0013",
+      "count": 2
+    },
+    {
+      "cardId": "ym-r-005",
+      "serial": "st01-0020",
+      "count": 2
+    },
+    {
+      "cardId": "ym-t-001",
+      "serial": "st01-0014",
+      "count": 3
+    },
+    {
+      "cardId": "ym-t-002",
+      "serial": "st01-0015",
+      "count": 3
+    },
+    {
+      "cardId": "ym-t-003",
+      "serial": "st01-0016",
+      "count": 3
+    },
+    {
+      "cardId": "ym-t-004",
+      "serial": "st01-0017",
+      "count": 2
+    },
+    {
+      "cardId": "ym-t-005",
+      "serial": "st01-0018",
+      "count": 2
+    },
+    {
+      "cardId": "ym-t-006",
+      "serial": "st01-0019",
+      "count": 2
+    }
+  ]
+}
