@@ -3,6 +3,7 @@ import type { CSSProperties } from "react";
 import { List, LogOut, RotateCcw, StepBack, X } from "lucide-react";
 import { InkButton } from "@/components/InkButton";
 import { TutorialModal } from "@/components/TutorialModal";
+import { cn } from "@/lib/utils";
 
 type ZoneId =
   | "hand"
@@ -53,6 +54,7 @@ type Campaign = {
   subtitle: string;
   firstPlayer: string;
   opponentLord: string;
+  opponentLordArt: string;
   playerDeck: string[];
   opponentDeck: string[];
 };
@@ -90,9 +92,200 @@ type TutorialCardFace = {
 
 const turnPhaseNames = ["정비페이즈", "징집페이즈", "보급배치페이즈", "전쟁페이즈", "소강페이즈"];
 
-const tutorialFramePath = "./docs/card-assets/common/card-frame-20260531.png";
+const tutorialFramePath = "./docs/card-assets/common/card-frame-20260601.png";
 const tutorialEmblemPath = "./docs/faction-diamonds/tu01-emblem.png";
 const tutorialPaperModalPath = "./docs/card-assets/ui/modals/paper-modal-secondary.png";
+
+const tutorialUi = {
+  root:
+    "relative grid min-h-svh gap-px overflow-hidden bg-[var(--line)] max-[900px]:portrait:max-h-svh",
+  orientationLock:
+    "hidden max-[900px]:portrait:fixed max-[900px]:portrait:inset-0 max-[900px]:portrait:z-[1000] max-[900px]:portrait:grid max-[900px]:portrait:place-items-center max-[900px]:portrait:bg-[radial-gradient(circle_at_50%_18%,rgba(159,47,34,0.22),transparent_32%),rgba(17,17,17,0.84)] max-[900px]:portrait:p-5",
+  orientationPanel:
+    "grid w-[min(360px,calc(100vw-40px))] justify-items-center gap-3 border border-[var(--line)] bg-[var(--paper)] px-5 py-6 text-center shadow-[0_24px_80px_rgba(0,0,0,0.38)] [&>svg]:size-[42px] [&>svg]:text-[#9f2f22] [&>strong]:font-['Gowun_Batang'] [&>strong]:text-[1.55rem] [&>strong]:font-black [&>strong]:leading-[1.15] [&>span]:text-[0.95rem] [&>span]:font-extrabold [&>span]:leading-normal [&>span]:text-[#333]",
+  floatingActions:
+    "pointer-events-none fixed left-3.5 right-3.5 top-3.5 z-[70] flex justify-between gap-3",
+  overlayButton:
+    "pointer-events-auto inline-flex min-h-[38px] items-center justify-center gap-[7px] border border-black/70 bg-white/75 px-3 text-[0.82rem] font-black text-[var(--ink)] backdrop-blur-md [&>svg]:size-4",
+  stageBackdrop:
+    "fixed inset-0 z-[90] grid place-items-center bg-black/60 p-6",
+  stageModal:
+    "grid max-h-[min(680px,calc(100svh-48px))] w-[min(520px,100%)] gap-4 overflow-hidden border border-[var(--line)] bg-[var(--paper)] p-[18px] shadow-[0_24px_90px_rgba(0,0,0,0.42)]",
+  stageHeader: "flex items-start justify-between gap-3.5",
+  stageTitle: "text-[clamp(1.65rem,3vw,2.35rem)]",
+  stageClose: "size-[38px] p-0",
+  stageList: "grid gap-2 overflow-y-auto pr-0.5",
+  stageListButton:
+    "grid min-h-[62px] grid-cols-[34px_minmax(0,1fr)] items-center gap-x-2.5 gap-y-1 border border-[var(--line)] bg-[var(--paper-soft)] p-2.5 text-left text-[var(--ink)]",
+  stageListButtonActive: "bg-[var(--ink)] text-[var(--paper)]",
+  stageNumber:
+    "row-span-2 grid aspect-square w-7 place-items-center border border-current font-['Gowun_Batang'] font-black",
+  stageName: "font-['Gowun_Batang'] text-[1.08rem]",
+  stageSubtitle: "text-[0.78rem] font-black not-italic opacity-70",
+  layout:
+    "grid min-h-svh grid-cols-[minmax(0,1fr)_58px] bg-[var(--paper-soft)] px-3.5 pb-3.5 pt-[42px]",
+  engine:
+    "relative grid min-h-[calc(100svh-84px)] grid-cols-[minmax(104px,0.14fr)_minmax(0,1fr)_minmax(104px,0.14fr)] grid-rows-[auto_minmax(300px,1fr)_auto] gap-3 border-[3px] border-[var(--line)] bg-white p-[clamp(12px,2vw,22px)] [grid-template-areas:'opponent_opponent_opponent'_'camps_field_side'_'mulligan_mulligan_side']",
+  opponent:
+    "grid [grid-area:opponent] grid-cols-[120px_minmax(180px,1fr)_120px] items-center gap-2.5",
+  fieldMain:
+    "grid [grid-area:field] grid-cols-[minmax(80px,1fr)_minmax(340px,0.74fr)_minmax(80px,1fr)] grid-rows-[minmax(122px,0.52fr)_minmax(112px,0.28fr)_minmax(82px,0.2fr)] items-stretch gap-3 [grid-template-areas:'battle_battle_battle'_'.gates.'_'.lord.']",
+  camps: "grid [grid-area:camps] grid-rows-2 gap-2.5 self-start",
+  sideStacks: "grid [grid-area:side] grid-rows-2 gap-2.5 self-start",
+  zoneBase:
+    "relative grid min-h-[98px] min-w-0 gap-2 border-[3px] bg-white/80 p-2.5 text-left text-[var(--ink)] shadow-none",
+  zoneActive:
+    "outline-[3px] outline-[rgba(159,47,34,0.52)] shadow-[0_0_0_7px_rgba(255,245,214,0.78),0_14px_28px_rgba(17,17,17,0.2)]",
+  tourHighlight:
+    "relative z-20 border-[#fff5d6] outline outline-4 outline-[#fff5d6] shadow-[0_0_26px_rgba(255,245,214,0.88)]",
+  zoneTitle: "text-[0.72rem] font-black text-[#5c554d]",
+  zoneCards: "flex min-w-0 flex-wrap items-center gap-1.5",
+  zoneCardsGrid5: "grid grid-cols-5 items-stretch",
+  zoneCardsGrid4: "grid grid-cols-4 justify-center",
+  zoneEmpty: "text-[0.8rem] font-extrabold not-italic text-[#756d63]",
+  zoneSlot:
+    "grid min-h-[82px] min-w-0 place-items-center border border-dashed border-black/40 bg-white/40 p-[5px] text-center text-[0.72rem] font-black leading-[1.18] text-black/45",
+  zoneSlotGate: "min-h-[72px]",
+  zoneSlotFilled: "border-solid bg-[var(--paper)] text-[var(--ink)]",
+  zoneSlotSelected: "bg-[#fff5d6] outline outline-2 outline-[rgba(159,47,34,0.7)]",
+  zoneSlotDrawing: "animate-[drawTokenToZone_520ms_ease_both]",
+  recruitStack: "content-center justify-items-center text-center",
+  recruitVisual:
+    "relative h-[84px] w-[66px] [&>span]:absolute [&>span]:inset-0 [&>span]:border [&>span]:border-[var(--line)] [&>span]:bg-[linear-gradient(135deg,#111_0_12%,#fff_12%_20%,#d8e1d8_20%_100%)] [&>span]:shadow-[0_8px_12px_rgba(17,17,17,0.16)] [&>span:nth-child(1)]:-translate-x-1.5 [&>span:nth-child(1)]:translate-y-[5px] [&>span:nth-child(1)]:-rotate-[5deg] [&>span:nth-child(2)]:translate-x-0.5 [&>span:nth-child(2)]:translate-y-px [&>span:nth-child(2)]:rotate-2 [&>span:nth-child(3)]:translate-x-[7px] [&>span:nth-child(3)]:-translate-y-[3px] [&>span:nth-child(3)]:rotate-[5deg]",
+  recruitCount:
+    "grid aspect-square w-[38px] place-items-center rounded-full border border-[var(--line)] bg-[var(--paper)] text-base",
+  recruitTop:
+    "max-w-full overflow-hidden text-ellipsis whitespace-nowrap text-[0.72rem] font-black not-italic text-[#5c554d]",
+  lordBase:
+    "relative grid min-h-[112px] min-w-0 content-center justify-items-center gap-2 border-[3px] border-[rgba(17,17,17,0.72)] bg-[radial-gradient(circle_at_center_44%,#fff_0_26%,#efe7d8_27%_48%,#d7dfd4_49%),#fff] p-2.5 text-center text-[var(--ink)] shadow-none",
+  playerLord:
+    "min-h-[86px] rounded-[26px] border-[#5fc96c] [grid-area:lord] [&>span]:text-[0.72rem] [&>span]:font-black [&>span]:text-[#5c554d] [&>strong]:max-w-full [&>strong]:overflow-hidden [&>strong]:text-ellipsis [&>strong]:whitespace-nowrap [&>strong]:font-['Gowun_Batang'] [&>strong]:text-[clamp(1.1rem,2.5vw,1.6rem)] [&>strong]:leading-[1.08] [&>em]:grid [&>em]:aspect-square [&>em]:w-[42px] [&>em]:place-items-center [&>em]:rounded-full [&>em]:border [&>em]:border-[var(--line)] [&>em]:bg-white [&>em]:font-black [&>em]:not-italic",
+  opponentLord:
+    "relative grid aspect-video min-h-0 w-[min(248px,100%)] justify-self-center overflow-hidden rounded-lg border-[3px] border-[rgba(17,17,17,0.72)] bg-[#17130f] p-2.5 text-left text-white shadow-[0_14px_24px_rgba(27,21,14,0.22)] [grid-template-areas:'label_power'_'name_power'] [grid-template-columns:minmax(0,1fr)_auto] [grid-template-rows:auto_1fr] after:pointer-events-none after:absolute after:inset-0 after:z-0 after:content-[''] after:bg-[linear-gradient(90deg,rgba(9,8,7,0.72),rgba(9,8,7,0.22)_54%,rgba(9,8,7,0.66)),linear-gradient(180deg,rgba(9,8,7,0.12),rgba(9,8,7,0.8))]",
+  opponentArt: "absolute inset-0 h-full w-full object-cover",
+  opponentLabel:
+    "relative z-[1] [grid-area:label] text-[0.72rem] font-black text-[#fffaf0]/80 [text-shadow:0_2px_7px_rgba(0,0,0,0.72)]",
+  opponentName:
+    "relative z-[1] self-end [grid-area:name] max-w-[calc(100%-4px)] whitespace-normal text-left font-['Gowun_Batang'] text-[clamp(1rem,1.45vw,1.22rem)] leading-[1.08] text-[#fffaf0] [text-shadow:0_2px_8px_rgba(0,0,0,0.78)]",
+  opponentPower:
+    "relative z-[1] grid aspect-square w-8 place-items-center self-end justify-self-end rounded-full border border-[var(--line)] bg-[#fffaf0]/90 text-[0.72rem] font-black not-italic text-[var(--ink)] [grid-area:power]",
+  opponentSpeech:
+    "absolute -bottom-[18px] -right-[22px] max-w-[220px] border border-[var(--line)] bg-white px-2.5 py-2 text-[0.82rem] leading-[1.35] shadow-[0_10px_22px_rgba(17,17,17,0.16)]",
+  hand:
+    "absolute bottom-0 left-[clamp(16px,4vw,72px)] right-[clamp(16px,4vw,72px)] z-[18] flex min-h-[236px] min-w-0 translate-y-[calc(100%-34px)] items-end overflow-x-auto overflow-y-visible border border-black/50 bg-white/75 px-[18px] pb-5 pt-[42px] shadow-[0_-18px_44px_rgba(17,17,17,0.16)] backdrop-blur-md transition-[transform,background] duration-200 hover:translate-y-0 hover:bg-white/90 focus-within:translate-y-0 focus-within:bg-white/90",
+  handSelected:
+    "translate-y-[calc(100%-104px)] hover:translate-y-0 focus-within:translate-y-0 [&_.tutorial-card-face:not(.selected)]:translate-y-[72px] [&_.tutorial-card-face:not(.selected)]:scale-[0.92] [&_.tutorial-card-face:not(.selected)]:opacity-35 [&_.tutorial-card-face.selected]:z-40 [&_.tutorial-card-face.selected]:-translate-y-[18px] [&_.tutorial-card-face.selected]:drop-shadow-[0_14px_22px_rgba(17,17,17,0.32)]",
+  handLabel:
+    "absolute left-1/2 top-2 -translate-x-1/2 border border-black/50 bg-[var(--paper)] px-3 py-[3px] text-[0.72rem] font-black text-[#5c554d]",
+  handEmpty: "m-auto font-black text-[#5c554d]",
+  mulliganRow:
+    "absolute bottom-[clamp(12px,2vw,22px)] left-0 right-0 z-20 grid min-h-[260px] content-center justify-center gap-3 bg-black/65 px-[clamp(18px,4vw,42px)] py-6 [grid-template-columns:minmax(0,720px)]",
+  mulliganCards: "flex min-w-0 justify-center overflow-x-auto px-3 py-5 [&_.tutorial-card-face]:basis-[100px]",
+  mulliganActions: "flex justify-center gap-2 [&_button]:min-h-[42px] [&_button]:font-black",
+  cardZoomBackdrop:
+    "fixed inset-0 z-[80] grid place-items-center bg-black/30 p-5",
+  cardZoomPanel:
+    "grid w-[min(calc(var(--card-zoom-width)+36px),100%)] justify-items-center gap-3 border border-[var(--line)] bg-[var(--paper)] p-[18px] shadow-[0_28px_90px_rgba(0,0,0,0.36)] [&>strong]:font-['Gowun_Batang'] [&>strong]:text-[1.35rem] [&>em]:font-black [&>em]:not-italic [&>em]:text-[#5c554d]",
+  tutorialCard:
+    "tutorial-card-face relative isolate -ml-2 aspect-[1080/1508] min-h-[152px] w-[108px] flex-[0_0_108px] cursor-pointer rounded-[4.2%/2.8%] border-0 bg-transparent text-[#100d0a] transition-[transform,filter] duration-150 first:ml-0 hover:z-[3] hover:-translate-y-2 hover:-rotate-1 hover:drop-shadow-[0_14px_20px_rgba(17,17,17,0.28)] focus-visible:z-[3] focus-visible:-translate-y-2 focus-visible:-rotate-1 focus-visible:drop-shadow-[0_14px_20px_rgba(17,17,17,0.28)]",
+  tutorialCardSelected: "selected z-[3] -translate-y-2 -rotate-1 outline outline-3 outline-offset-2 outline-[rgba(159,47,34,0.55)] drop-shadow-[0_14px_20px_rgba(17,17,17,0.28)]",
+  tutorialCardDrawing: "drawing animate-[drawCardToHand_560ms_cubic-bezier(0.2,0.82,0.24,1)_both]",
+  tutorialCardHorizontal: "rotate-90",
+  tutorialCardZoom:
+    "pointer-events-none ml-0 h-[var(--card-zoom-height)] w-[var(--card-zoom-width)] flex-none transform-none hover:translate-y-0 hover:rotate-0 focus-visible:translate-y-0 focus-visible:rotate-0",
+  cardLayer: "absolute pointer-events-none select-none",
+  cardArt:
+    "absolute inset-0 z-0 h-[80%] w-full bg-[#f4eee4] object-contain object-center pointer-events-none select-none",
+  cardFallback:
+    "grid place-items-center font-['Gowun_Batang'] text-[2.4rem] font-black text-[#100d0a]/80",
+  cardFrame: "absolute inset-0 z-[1] h-full w-full object-contain object-center pointer-events-none select-none",
+  cardEmblem:
+    "absolute bottom-[1.6%] left-[43.9%] z-[2] aspect-square w-[11.4%] object-contain drop-shadow-[0_1px_1px_rgba(0,0,0,0.68)] pointer-events-none select-none",
+  cardCostPower:
+    "absolute top-[18.4%] z-[3] grid aspect-square w-[12.4%] place-items-center font-['Gowun_Batang'] text-[1.02rem] font-black leading-none text-[#f7ead5] [text-shadow:0_1px_2px_rgba(0,0,0,0.7)]",
+  cardCost: "left-[7.1%]",
+  cardPower: "right-[7.6%]",
+  cardName:
+    "absolute left-[22%] right-[22%] top-[8.5%] z-[3] -translate-y-1/2 text-center font-['Gowun_Batang'] text-[0.76rem] font-black leading-[1.04] text-[#100d0a] [text-shadow:0_1px_0_rgba(255,245,226,0.78)]",
+  cardNameSmall: "text-[0.68rem]",
+  cardNameLong: "text-[0.58rem]",
+  cardNameExtraLong: "text-[0.5rem]",
+  cardText:
+    "absolute left-[18.1%] right-[16.4%] top-[68%] z-[3] line-clamp-4 overflow-hidden whitespace-pre-line break-keep text-left text-[0.44rem] font-extrabold leading-[1.24] text-[#100d0a]",
+  cardRace:
+    "absolute bottom-[3.7%] left-[8.5%] z-[3] w-[22.8%] translate-x-[10%] overflow-hidden text-ellipsis whitespace-nowrap text-center text-[0.48rem] font-black leading-none text-[#ead3ef]",
+  cardSerial:
+    "absolute bottom-[3.7%] right-[11.9%] z-[3] w-[22.8%] text-center text-[0.42rem] font-black leading-none text-[#f7ead5] [text-shadow:0_1px_2px_rgba(0,0,0,0.65)]",
+  tourOverlay: "pointer-events-none absolute inset-0 z-30 bg-transparent",
+  tourDim:
+    "after:pointer-events-none after:absolute after:inset-0 after:z-[11] after:bg-black/50 after:content-['']",
+  tourCard:
+    "pointer-events-auto relative z-40 grid min-h-[178px] w-[min(330px,calc(100%-32px))] content-center gap-[7px] border-0 bg-[image:var(--paper-modal-bg)] bg-[length:100%_100%] bg-center bg-no-repeat px-[42px] py-[34px] pl-[46px] text-left text-[var(--ink)] drop-shadow-[0_16px_34px_rgba(17,17,17,0.24)] [&>h2]:m-0 [&>h2]:font-['Gowun_Batang'] [&>h2]:text-[clamp(1.24rem,2vw,1.7rem)] [&>h2]:leading-[1.1] [&>p:not(.eyebrow)]:m-0 [&>p:not(.eyebrow)]:break-keep [&>p:not(.eyebrow)]:text-[0.88rem] [&>p:not(.eyebrow)]:font-extrabold [&>p:not(.eyebrow)]:leading-normal [&>p:not(.eyebrow)]:text-[#333] [&>button]:min-h-[34px] [&>button]:justify-self-start [&>button]:border-0 [&>button]:bg-[var(--ink)] [&>button]:px-3 [&>button]:text-[0.82rem] [&>button]:font-black [&>button]:text-[var(--paper)]",
+  tourRecruit: "absolute right-[clamp(124px,13vw,180px)] top-[48%] -translate-y-1/2",
+  tourHand: "absolute bottom-[118px] left-[clamp(28px,8vw,96px)]",
+  tourGate: "absolute bottom-[34%] left-1/2 -translate-x-1/2",
+  tourOpponentLord: "absolute left-1/2 top-[118px] -translate-x-1/2",
+  drawGuideOverlay:
+    "pointer-events-none absolute inset-0 z-30 grid items-end justify-items-center p-[22px]",
+  drawGuideCard:
+    "grid w-[min(360px,calc(100%-32px))] gap-3 border border-[var(--line)] bg-[var(--paper)] p-5 text-center shadow-[0_24px_80px_rgba(0,0,0,0.32)] [&>h2]:text-[clamp(1.55rem,3vw,2.3rem)] [&>p:not(.eyebrow)]:text-[#333] [&>p:not(.eyebrow)]:leading-[1.62]",
+  coinOverlay:
+    "pointer-events-auto absolute inset-0 z-30 grid place-items-center gap-[18px] bg-white/70",
+  coinToken:
+    "relative aspect-square w-28 [transform:rotateY(var(--coin-result-rotation,900deg))] [transform-style:preserve-3d]",
+  coinTokenFlipping: "animate-[coinFlip_1200ms_cubic-bezier(0.2,0.78,0.24,1)_both]",
+  coinFace:
+    "absolute inset-0 grid place-items-center rounded-full border-4 border-[var(--line)] bg-[#fff5d6] font-['Gowun_Batang'] text-[2.6rem] font-black [backface-visibility:hidden]",
+  coinBack: "[transform:rotateY(180deg)]",
+  coinLabel:
+    "border border-[var(--line)] bg-[var(--paper)] px-4 py-2.5 text-[1.1rem] font-black",
+  turnBanner:
+    "pointer-events-none absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 animate-[turnBannerPulse_950ms_ease_both] border border-[var(--line)] bg-white/95 px-[34px] py-4 font-['Gowun_Batang'] text-[clamp(2rem,5vw,4rem)] font-black text-[var(--ink)]",
+  modalOverlay: "absolute inset-0 z-20 grid place-items-center bg-black/40",
+  victoryBackdrop:
+    "fixed inset-0 z-[100] grid place-items-center bg-black/60 p-5",
+  victoryModal: "animate-[victoryModalIn_360ms_ease_both] [&>h2]:text-[clamp(2rem,5vw,3.2rem)]",
+  rail:
+    "sticky top-3.5 grid max-h-[calc(100svh-116px)] w-[58px] self-start gap-2 border border-[var(--line)] bg-[var(--paper)] p-2",
+  railHead: "grid justify-items-center gap-2",
+  railTitle:
+    "w-full overflow-hidden text-ellipsis whitespace-nowrap text-center text-[0.68rem] font-black",
+  railList: "flex min-h-0 flex-col gap-1.5 overflow-y-auto overflow-x-visible p-px",
+  railButton:
+    "relative grid size-8 flex-[0_0_32px] place-items-center border border-[var(--line)] bg-[var(--paper-soft)] p-0 font-['Gowun_Batang'] text-[0.86rem] font-black text-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper)] focus-visible:bg-[var(--ink)] focus-visible:text-[var(--paper)]",
+  railButtonActive: "active bg-[var(--ink)] text-[var(--paper)]",
+  railTooltip:
+    "pointer-events-none absolute right-[calc(100%+10px)] top-1/2 z-[26] hidden w-[min(240px,58vw)] -translate-y-1/2 border border-[var(--line)] bg-[var(--paper)] p-[9px] text-left font-sans text-[0.78rem] leading-[1.4] text-[var(--ink)] shadow-[0_12px_26px_rgba(17,17,17,0.18)] group-hover:grid group-hover:gap-1 group-focus-visible:grid group-focus-visible:gap-1 group-[.active]:hidden [&>strong]:font-black [&>em]:not-italic [&>em]:text-[#333]",
+  railPopover:
+    "absolute right-[calc(100%+10px)] top-0 z-30 grid w-[min(260px,62vw)] gap-1.5 border border-[var(--line)] bg-[var(--paper)] p-2.5 text-left font-sans text-[0.82rem] leading-[1.42] text-[var(--ink)] shadow-[0_14px_30px_rgba(17,17,17,0.2)] [&>strong]:font-black [&>em]:not-italic [&>em]:text-[#333]",
+  railRestore:
+    "inline-flex min-h-[30px] items-center justify-center gap-1.5 border border-[var(--line)] bg-[var(--paper-soft)] px-2 font-black text-[var(--ink)] [&>svg]:size-[15px]",
+} as const;
+
+const zoneBorderClass: Record<ZoneId, string> = {
+  hand: "",
+  mulligan: "",
+  battlefield: "border-[#e0483d]",
+  gate: "border-[#f1cc3a]",
+  rear: "border-[#a64ac9]",
+  front: "border-[#e0483d]",
+  grave: "border-[#222]",
+  recruit: "border-[#5b86e5]",
+  opponentLord: "",
+};
+
+const zoneAreaClass: Partial<Record<ZoneId, string>> = {
+  battlefield: "[grid-area:battle] min-h-[132px] bg-white/50",
+  gate:
+    "[grid-area:gates] bg-[repeating-linear-gradient(135deg,rgba(17,17,17,0.05),rgba(17,17,17,0.05)_7px,transparent_7px,transparent_14px),rgba(255,255,255,0.72)]",
+};
+
+const tourCardPositionClass: Record<"recruit" | "hand" | "gate" | "opponentLord", string> = {
+  recruit: tutorialUi.tourRecruit,
+  hand: tutorialUi.tourHand,
+  gate: tutorialUi.tourGate,
+  opponentLord: tutorialUi.tourOpponentLord,
+};
 
 const tutorialCardFaces: Record<string, TutorialCardFace> = {
   "문지기 여우": {
@@ -175,6 +368,7 @@ const campaigns: Campaign[] = [
     subtitle: "게임 준비 및 멀리건",
     firstPlayer: "나: 후공",
     opponentLord: "하룻 이리 1/2",
+    opponentLordArt: "./docs/card-assets/illustrations/tutorial-lords/harut-wolf.png",
     opponentDeck: ["징집소 지키는 이리 x1"],
     playerDeck: [
       "문지기 여우",
@@ -198,6 +392,7 @@ const campaigns: Campaign[] = [
     subtitle: "기지 키워드",
     firstPlayer: "나: 선공",
     opponentLord: "평화주의 곰 2/3",
+    opponentLordArt: "./docs/card-assets/illustrations/tutorial-lords/peace-bear.png",
     opponentDeck: ["징집소 지키는 이리 x1"],
     playerDeck: [
       "새끼 이리",
@@ -219,6 +414,7 @@ const campaigns: Campaign[] = [
     subtitle: "공격, 전투광, 정복 승리",
     firstPlayer: "나: 선공",
     opponentLord: "배신 범 3/4",
+    opponentLordArt: "./docs/card-assets/illustrations/tutorial-lords/betrayal-tiger.png",
     opponentDeck: ["징집소 지키는 이리 x1"],
     playerDeck: [
       "문지기 고양이",
@@ -238,6 +434,7 @@ const campaigns: Campaign[] = [
     subtitle: "출정, 희생, 단말마",
     firstPlayer: "나: 선공",
     opponentLord: "호가호위 여우 4/5",
+    opponentLordArt: "./docs/card-assets/illustrations/tutorial-lords/fox-entourage.png",
     opponentDeck: ["징집소 지키는 이리 x1"],
     playerDeck: [
       "미래를 뒤트는 까마귀",
@@ -417,6 +614,7 @@ function TutorialCard({
   drawing = false,
   drawIndex = 0,
   horizontal = false,
+  zoomed = false,
   onClick,
 }: {
   card: CardModel;
@@ -424,22 +622,29 @@ function TutorialCard({
   drawing?: boolean;
   drawIndex?: number;
   horizontal?: boolean;
+  zoomed?: boolean;
   onClick: () => void;
 }) {
   const face = tutorialCardFace(card);
   const rulesText = face.effect || face.lore;
   const compactName =
     card.name.length >= 11
-      ? " name-extra-long"
+      ? tutorialUi.cardNameExtraLong
       : card.name.length >= 9
-        ? " name-long"
+        ? tutorialUi.cardNameLong
         : card.name.length > 6
-          ? " name-small"
-          : "";
+          ? tutorialUi.cardNameSmall
+          : undefined;
 
   return (
     <button
-      className={`tutorial-real-card${selected ? " selected" : ""}${drawing ? " drawing" : ""}${horizontal ? " horizontal" : ""}`}
+      className={cn(
+        tutorialUi.tutorialCard,
+        selected && tutorialUi.tutorialCardSelected,
+        drawing && tutorialUi.tutorialCardDrawing,
+        horizontal && tutorialUi.tutorialCardHorizontal,
+        zoomed && tutorialUi.tutorialCardZoom,
+      )}
       style={
         {
           "--draw-index": drawIndex,
@@ -451,36 +656,36 @@ function TutorialCard({
     >
       {face.illustration ? (
         <img
-          className="tutorial-real-card-art"
+          className={tutorialUi.cardArt}
           src={tutorialAssetPath(face.illustration)}
           alt=""
           aria-hidden="true"
         />
       ) : (
-        <span className="tutorial-real-card-art tutorial-real-card-fallback">
+        <span className={cn(tutorialUi.cardArt, tutorialUi.cardFallback)}>
           {face.sigil}
         </span>
       )}
       <img
-        className="tutorial-real-card-frame"
+        className={tutorialUi.cardFrame}
         src={tutorialAssetPath(tutorialFramePath)}
         alt=""
         aria-hidden="true"
       />
       <img
-        className="tutorial-real-card-emblem"
+        className={tutorialUi.cardEmblem}
         src={tutorialAssetPath(tutorialEmblemPath)}
         alt=""
         aria-hidden="true"
       />
-      <span className="tutorial-real-card-cost">{face.cost}</span>
-      <span className="tutorial-real-card-power">{face.power}</span>
-      <strong className={`tutorial-real-card-name${compactName}`}>
+      <span className={cn(tutorialUi.cardCostPower, tutorialUi.cardCost)}>{face.cost}</span>
+      <span className={cn(tutorialUi.cardCostPower, tutorialUi.cardPower)}>{face.power}</span>
+      <strong className={cn(tutorialUi.cardName, compactName)}>
         {shortCardName(card.name)}
       </strong>
-      <span className="tutorial-real-card-text">{rulesText}</span>
-      <span className="tutorial-real-card-race">{face.race}</span>
-      <span className="tutorial-real-card-serial">{face.serial}</span>
+      <span className={tutorialUi.cardText}>{rulesText}</span>
+      <span className={tutorialUi.cardRace}>{face.race}</span>
+      <span className={tutorialUi.cardSerial}>{face.serial}</span>
     </button>
   );
 }
@@ -501,18 +706,23 @@ function RecruitStackZone({
 
   return (
     <button
-      className={`tabletop-zone tabletop-zone-recruit tabletop-recruit-stack${tourActive ? " tour-highlight" : ""}`}
+      className={cn(
+        tutorialUi.zoneBase,
+        zoneBorderClass.recruit,
+        tutorialUi.recruitStack,
+        tourActive && tutorialUi.tourHighlight,
+      )}
       type="button"
       onClick={onClick}
     >
-      <span className="tabletop-zone-title">{label}</span>
-      <div className="recruit-stack-visual" aria-hidden="true">
+      <span className={tutorialUi.zoneTitle}>{label}</span>
+      <div className={tutorialUi.recruitVisual} aria-hidden="true">
         <span />
         <span />
         <span />
       </div>
-      <strong>{orderedCards.length}장</strong>
-      <em>{topCard ? `맨 위: ${shortCardName(topCard.name)}` : "비어 있음"}</em>
+      <strong className={tutorialUi.recruitCount}>{orderedCards.length}장</strong>
+      <em className={tutorialUi.recruitTop}>{topCard ? `맨 위: ${shortCardName(topCard.name)}` : "비어 있음"}</em>
     </button>
   );
 }
@@ -542,19 +752,37 @@ function ZoneSlot({
 
   return (
     <button
-      className={`tabletop-zone tabletop-zone-${zone}${active ? " active" : ""}${tourActive ? " tour-highlight" : ""}`}
+      className={cn(
+        tutorialUi.zoneBase,
+        zoneBorderClass[zone],
+        zoneAreaClass[zone],
+        active && tutorialUi.zoneActive,
+        tourActive && tutorialUi.tourHighlight,
+      )}
       type="button"
       onClick={onClick}
     >
-      <span className="tabletop-zone-title">{zoneTitle(zone)}</span>
-      <div className="tabletop-zone-cards">
+      <span className={tutorialUi.zoneTitle}>{zoneTitle(zone)}</span>
+      <div
+        className={cn(
+          tutorialUi.zoneCards,
+          zone === "battlefield" && tutorialUi.zoneCardsGrid5,
+          zone === "gate" && tutorialUi.zoneCardsGrid4,
+        )}
+      >
         {slotCount > 0 ? (
           Array.from({ length: slotCount }, (_, index) => {
             const card = cards[index];
             return (
               <span
                 key={card?.id ?? `${zone}-slot-${index}`}
-                className={`tabletop-zone-slot${card ? " filled" : ""}${card?.id === selectedCardId ? " selected" : ""}${card && animatingCardIds.includes(card.id) ? " drawing" : ""}`}
+                className={cn(
+                  tutorialUi.zoneSlot,
+                  zone === "gate" && tutorialUi.zoneSlotGate,
+                  card && tutorialUi.zoneSlotFilled,
+                  card?.id === selectedCardId && tutorialUi.zoneSlotSelected,
+                  card && animatingCardIds.includes(card.id) && tutorialUi.zoneSlotDrawing,
+                )}
                 role={card ? "button" : undefined}
                 tabIndex={card ? 0 : undefined}
                 onClick={(event) => {
@@ -575,7 +803,7 @@ function ZoneSlot({
             );
           })
         ) : (
-          <em>빈 슬롯</em>
+          <em className={tutorialUi.zoneEmpty}>빈 슬롯</em>
         )}
       </div>
     </button>
@@ -873,24 +1101,25 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
   const shouldGuideDraw = state.phase === "playerTurn" && state.playerTurnDraws < 2;
   const expandedCard = state.cardModalId ? state.cards.find((card) => card.id === state.cardModalId) : null;
   const coinResultFace = campaign.firstPlayer.includes("후공") ? "後" : "先";
+  const fieldDimmed = state.phase === "tour" || shouldGuideDraw;
 
   return (
-    <div className="tutorial-view">
-      <div className="tutorial-orientation-lock" role="alert" aria-live="assertive">
-        <div className="tutorial-orientation-panel">
+    <div className={tutorialUi.root}>
+      <div className={tutorialUi.orientationLock} role="alert" aria-live="assertive">
+        <div className={tutorialUi.orientationPanel}>
           <RotateCcw aria-hidden="true" />
           <strong>핸드폰을 가로로 돌려주세요</strong>
           <span>튜토리얼은 가로 화면에서만 진행할 수 있습니다.</span>
         </div>
       </div>
 
-      <div className="tutorial-floating-actions" aria-label="튜토리얼 메뉴">
-        <button className="tutorial-exit-button" type="button" onClick={onExit}>
+      <div className={tutorialUi.floatingActions} aria-label="튜토리얼 메뉴">
+        <button className={tutorialUi.overlayButton} type="button" onClick={onExit}>
           <LogOut />
           나가기
         </button>
         <button
-          className="tutorial-stage-button"
+          className={tutorialUi.overlayButton}
           type="button"
           onClick={() => setStageModalOpen(true)}
         >
@@ -900,18 +1129,18 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
       </div>
 
       {stageModalOpen && (
-        <div className="tutorial-stage-modal-backdrop" role="presentation">
+        <div className={tutorialUi.stageBackdrop} role="presentation">
           <section
-            className="tutorial-stage-modal"
+            className={tutorialUi.stageModal}
             aria-label="튜토리얼 단계 선택"
           >
-            <header>
+            <header className={tutorialUi.stageHeader}>
               <div>
                 <p className="eyebrow">tutorial stages</p>
-                <h2>튜토리얼 단계 선택</h2>
+                <h2 className={tutorialUi.stageTitle}>튜토리얼 단계 선택</h2>
               </div>
               <button
-                className="tutorial-stage-close"
+                className={cn(tutorialUi.overlayButton, tutorialUi.stageClose)}
                 type="button"
                 aria-label="단계 선택 닫기"
                 onClick={() => setStageModalOpen(false)}
@@ -919,17 +1148,20 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
                 <X />
               </button>
             </header>
-            <div className="tutorial-stage-list">
+            <div className={tutorialUi.stageList}>
               {campaigns.map((item, index) => (
                 <button
                   key={item.id}
-                  className={index === campaignIndex ? "active" : ""}
+                  className={cn(
+                    tutorialUi.stageListButton,
+                    index === campaignIndex && tutorialUi.stageListButtonActive,
+                  )}
                   type="button"
                   onClick={() => resetCampaign(index)}
                 >
-                  <span>{item.number}</span>
-                  <strong>{item.title}</strong>
-                  <em>{item.subtitle}</em>
+                  <span className={tutorialUi.stageNumber}>{item.number}</span>
+                  <strong className={tutorialUi.stageName}>{item.title}</strong>
+                  <em className={tutorialUi.stageSubtitle}>{item.subtitle}</em>
                 </button>
               ))}
             </div>
@@ -937,12 +1169,11 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
         </div>
       )}
 
-      <section className="tabletop-layout tabletop-layout-full">
-        <div className="tabletop-engine grns-field-engine">
+      <section className={tutorialUi.layout}>
+        <div className={cn(tutorialUi.engine, fieldDimmed && tutorialUi.tourDim)}>
           {state.phase === "intro" && (
             <TutorialModal
-              className="tutorial-start-overlay"
-              panelClassName="tutorial-start-modal"
+              className="absolute inset-0 z-[12] grid place-items-center bg-[radial-gradient(circle_at_50%_35%,rgba(196,223,238,0.14),transparent_32%),linear-gradient(180deg,rgba(0,0,0,0.72),rgba(0,0,0,0.62))] p-[18px] backdrop-blur-[3px]"
               eyebrow={`tutorial ${campaign.number}`}
               title={campaign.title}
               description={campaign.subtitle}
@@ -952,9 +1183,12 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
           )}
 
           {state.phase === "tour" && (
-            <div className={`tour-overlay tour-focus-${tourSteps[state.tourIndex].zone}`}>
+            <div className={tutorialUi.tourOverlay}>
               <div
-                className="tour-card"
+                className={cn(
+                  tutorialUi.tourCard,
+                  tourCardPositionClass[tourSteps[state.tourIndex].zone],
+                )}
                 style={
                   {
                     "--paper-modal-bg": `url("${tutorialAssetPath(tutorialPaperModalPath)}")`,
@@ -972,26 +1206,25 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
           )}
 
           {state.phase === "coin" && (
-            <div className="coin-flip-overlay">
+            <div className={tutorialUi.coinOverlay}>
               <div
-                className={`coin-token${state.coinFlipping ? " flipping" : ""}`}
+                className={cn(tutorialUi.coinToken, state.coinFlipping && tutorialUi.coinTokenFlipping)}
                 style={
                   {
                     "--coin-result-rotation": coinResultFace === "後" ? "900deg" : "720deg",
                   } as CSSProperties
                 }
               >
-                <span>先</span>
-                <span>後</span>
+                <span className={tutorialUi.coinFace}>先</span>
+                <span className={cn(tutorialUi.coinFace, tutorialUi.coinBack)}>後</span>
               </div>
-              <strong>{campaign.firstPlayer}</strong>
+              <strong className={tutorialUi.coinLabel}>{campaign.firstPlayer}</strong>
             </div>
           )}
 
           {state.phase === "mulliganIntro" && (
             <TutorialModal
-              className="tutorial-modal-overlay"
-              panelClassName="tutorial-guide-modal"
+              className={tutorialUi.modalOverlay}
               compact
               eyebrow="mulligan"
               title="멀리건"
@@ -1004,8 +1237,8 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
           )}
 
           {shouldGuideDraw && (
-            <div className="draw-guide-overlay">
-              <div className="draw-guide-card">
+            <div className={tutorialUi.drawGuideOverlay}>
+              <div className={tutorialUi.drawGuideCard}>
                 <p className="eyebrow">나의 턴 · {turnPhaseNames[state.turnPhaseIndex]}</p>
                 <h2>징집 {state.playerTurnDraws}/2</h2>
                 <p>내 징집소를 클릭해서 카드를 2장 군영으로 가져오세요.</p>
@@ -1013,9 +1246,9 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
             </div>
           )}
 
-          {state.turnBanner && <div className="turn-banner">{state.turnBanner}</div>}
+          {state.turnBanner && <div className={tutorialUi.turnBanner}>{state.turnBanner}</div>}
 
-          <div className="tabletop-opponent">
+          <div className={tutorialUi.opponent}>
             <RecruitStackZone
               cards={campaign.opponentDeck.map((name, index) => ({
                 id: `${campaign.id}-opponent-${index}`,
@@ -1028,14 +1261,24 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
               label="상대 징집소"
             />
             <button
-              className={`tabletop-lord opponent-lord${state.victory ? " shattered" : ""}${activeTourZone === "opponentLord" ? " tour-highlight" : ""}`}
+              className={cn(
+                tutorialUi.opponentLord,
+                state.victory && "animate-[lordBreak_900ms_ease_both]",
+                activeTourZone === "opponentLord" && tutorialUi.tourHighlight,
+              )}
               type="button"
               onClick={() => undefined}
             >
-              <span>상대 성주</span>
-              <strong>{campaign.opponentLord}</strong>
-              <em>힘 {state.opponentLordPower}</em>
-              {state.opponentBubble && <b className="opponent-speech">{state.opponentBubble}</b>}
+              <img
+                className={tutorialUi.opponentArt}
+                src={tutorialAssetPath(campaign.opponentLordArt)}
+                alt=""
+                aria-hidden="true"
+              />
+              <span className={tutorialUi.opponentLabel}>상대 성주</span>
+              <strong className={tutorialUi.opponentName}>{campaign.opponentLord}</strong>
+              <em className={tutorialUi.opponentPower}>힘 {state.opponentLordPower}</em>
+              {state.opponentBubble && <b className={tutorialUi.opponentSpeech}>{state.opponentBubble}</b>}
             </button>
             <ZoneSlot
               zone="grave"
@@ -1049,7 +1292,7 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
             />
           </div>
 
-          <div className="grns-field-main">
+          <div className={tutorialUi.fieldMain}>
             <ZoneSlot
               zone="battlefield"
               cards={zones.battlefield}
@@ -1072,14 +1315,14 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
               onClick={() => moveSelectedTo("gate")}
               onCardClick={selectCard}
             />
-            <button className="tabletop-lord player-lord" type="button" onClick={() => undefined}>
+            <button className={cn(tutorialUi.lordBase, tutorialUi.playerLord)} type="button" onClick={() => undefined}>
               <span>내 성주</span>
               <strong>계시를 받은 범</strong>
               <em>{campaign.firstPlayer}</em>
             </button>
           </div>
 
-          <div className="tabletop-camps">
+          <div className={tutorialUi.camps}>
             <ZoneSlot
               zone="front"
               cards={zones.front}
@@ -1102,7 +1345,7 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
             />
           </div>
 
-          <div className="tabletop-side-stacks">
+          <div className={tutorialUi.sideStacks}>
             <ZoneSlot
               zone="grave"
               cards={zones.grave}
@@ -1122,8 +1365,8 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
           </div>
 
           {zones.mulligan.length > 0 && (
-            <section className="mulligan-choice-row" aria-label="초기 멀리건 선택">
-              <div className="mulligan-cards">
+            <section className={tutorialUi.mulliganRow} aria-label="초기 멀리건 선택">
+              <div className={tutorialUi.mulliganCards}>
                 {zones.mulligan.map((card) => (
                   <TutorialCard
                     key={card.id}
@@ -1135,7 +1378,7 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
                   />
                 ))}
               </div>
-              <div className="mulligan-actions">
+              <div className={tutorialUi.mulliganActions}>
                 <InkButton onClick={() => placeInitialGates("gate-first")}>
                   문지기 배치
                 </InkButton>
@@ -1147,11 +1390,16 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
           )}
 
           <section
-            className={`tabletop-hand${activeTourZone === "hand" ? " tour-highlight" : ""}${state.selectedCardId ? " hand-has-selection" : ""}`}
+            className={cn(
+              tutorialUi.hand,
+              state.selectedCardId && tutorialUi.handSelected,
+              activeTourZone === "hand" && tutorialUi.tourHighlight,
+            )}
             aria-label="군영"
           >
+            <span className={tutorialUi.handLabel}>군영</span>
             {zones.hand.length === 0 ? (
-              <p>군영 비어 있음</p>
+              <p className={tutorialUi.handEmpty}>군영 비어 있음</p>
             ) : (
               zones.hand.map((card) => (
                 <TutorialCard
@@ -1168,11 +1416,12 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
         </div>
 
         {expandedCard && (
-          <div className="card-zoom-backdrop" onClick={closeCardModal} role="presentation">
-            <div className="card-zoom-panel" onClick={(event) => event.stopPropagation()}>
+          <div className={tutorialUi.cardZoomBackdrop} onClick={closeCardModal} role="presentation">
+            <div className={tutorialUi.cardZoomPanel} onClick={(event) => event.stopPropagation()}>
               <TutorialCard
                 card={expandedCard}
                 selected={expandedCard.id === state.selectedCardId}
+                zoomed
                 onClick={() => undefined}
               />
               <strong>{shortCardName(expandedCard.name)}</strong>
@@ -1183,8 +1432,8 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
 
         {state.victory && (
           <TutorialModal
-            className="victory-modal-backdrop"
-            panelClassName="victory-modal"
+            className={tutorialUi.victoryBackdrop}
+            panelClassName={tutorialUi.victoryModal}
             compact
             eyebrow="tutorial clear"
             title="승리!"
@@ -1196,15 +1445,19 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
           </TutorialModal>
         )}
 
-        <aside className="tutorial-log rail-log" aria-label="행동 로그">
-          <div className="rail-log-head">
-            <strong>{campaign.title}</strong>
+        <aside className={tutorialUi.rail} aria-label="행동 로그">
+          <div className={tutorialUi.railHead}>
+            <strong className={tutorialUi.railTitle}>{campaign.title}</strong>
           </div>
-          <div className="rail-log-list">
+          <div className={tutorialUi.railList}>
             {state.logs.map((entry) => (
               <button
                 key={entry.id}
-                className={entry.id === state.activeLogId ? "active" : ""}
+                className={cn(
+                  "group",
+                  tutorialUi.railButton,
+                  entry.id === state.activeLogId && tutorialUi.railButtonActive,
+                )}
                 type="button"
                 title={`${entry.title}: ${entry.detail}`}
                 onClick={() =>
@@ -1215,12 +1468,12 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
                 }
               >
                 {entry.icon}
-                <span className="rail-log-tooltip">
+                <span className={tutorialUi.railTooltip}>
                   <strong>{entry.title}</strong>
                   <em>{entry.detail}</em>
                 </span>
                 {entry.id === state.activeLogId && (
-                  <span className="rail-log-popover">
+                  <span className={tutorialUi.railPopover}>
                     <strong>{entry.title}</strong>
                     <em>{entry.detail}</em>
                     {entry.snapshot && (
@@ -1237,6 +1490,7 @@ export function TutorialPage({ onExit }: { onExit: () => void }) {
                           event.stopPropagation();
                           restoreLog(entry);
                         }}
+                        className={tutorialUi.railRestore}
                       >
                         <StepBack />
                         되돌리기

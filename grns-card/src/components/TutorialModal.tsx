@@ -43,7 +43,10 @@ export function TutorialModal({
   return (
     <InkModal
       className={className}
-      panelClassName={cn("tutorial-ink-modal", panelClassName)}
+      panelClassName={cn(
+        "w-[min(520px,calc(100vw-32px))] min-h-[clamp(250px,34vw,318px)] px-[clamp(48px,7vw,78px)] py-[clamp(44px,6vw,66px)]",
+        panelClassName,
+      )}
       eyebrow={eyebrow}
       title={title}
       description={description}

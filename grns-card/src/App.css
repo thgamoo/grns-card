@@ -1,5 +1,6 @@
 @reference "./index.css";
 
+/* Shared: design tokens and app-wide reset/base element styles. */
 :root {
   color-scheme: light;
   --card-width: 63mm;
@@ -37,6 +38,7 @@ button {
   @apply cursor-pointer;
 }
 
+/* App shell: global page background and per-tab hero image variables. */
 .site-shell {
   --shell-hero-image: url("./assets/grns-ink-hero-dokkaebi-right-focus-duel.png");
   --shell-hero-position: 66% center;
@@ -105,6 +107,7 @@ button {
   --shell-dark-wash: rgba(17, 17, 17, 0.54);
 }
 
+/* Shared: small inline keyword controls used across informational panels. */
 .keyword-panel button {
   @apply inline-flex items-center justify-center font-extrabold no-underline;
   min-height: 38px;
@@ -122,6 +125,7 @@ button {
   color: var(--paper);
 }
 
+/* App layout: tab content host and tutorial fullscreen override. */
 .tab-stage {
   @apply min-h-0;
 }
@@ -134,6 +138,7 @@ button {
   min-height: 100svh;
 }
 
+/* Shared typography: reusable eyebrow and heading defaults. */
 .eyebrow {
   @apply block text-xs font-black uppercase;
   margin: 0 0 0.35rem;
@@ -180,6 +185,7 @@ h3 {
   min-height: 100%;
 }
 
+/* Main page: intro hero background image layer. */
 @keyframes introTypographyIn {
   from {
     opacity: 0;
@@ -235,6 +241,7 @@ h3 {
   opacity: 0.75;
 }
 
+/* DB page: filters, toolbar, and card grid layout. */
 .db-view {
   display: grid;
   grid-template-columns: 300px minmax(0, 1fr);
@@ -420,6 +427,7 @@ h3 {
   display: contents;
 }
 
+/* Card renderer: shared card face/back styles used by DB, rules guide, and print views. */
 .card-tile {
   --class-stripe: #ffffff;
   position: relative;
@@ -588,7 +596,7 @@ h3 {
   z-index: 2;
   color: #100d0a;
   font-family: "Gowun Batang", serif;
-  font-size: 4.85mm;
+  font-size: 4.45mm;
   font-weight: 900;
   line-height: 1.08;
   text-align: center;
@@ -597,15 +605,15 @@ h3 {
 }
 
 .frame-stack-name.name-small {
-  font-size: 4.25mm;
+  font-size: 3.95mm;
 }
 
 .frame-stack-name.name-long {
-  font-size: 3.35mm;
+  font-size: 3.15mm;
 }
 
 .frame-stack-name.name-extra-long {
-  font-size: 2.85mm;
+  font-size: 2.7mm;
   line-height: 1.02;
 }
 
@@ -905,6 +913,7 @@ h3 {
   transform-origin: center;
 }
 
+/* Rules and about pages: document panels, card layout guide, glossary, and rulebook reader. */
 .rules-view,
 .about-view {
   overflow: auto;
@@ -1654,6 +1663,7 @@ h3 {
   line-height: 1.7;
 }
 
+/* Graph page: level distribution chart, filters, metrics, and legend. */
 .graph-view {
   padding: clamp(24px, 4vw, 46px);
 }
@@ -1970,6 +1980,7 @@ h3 {
   font-weight: 900;
 }
 
+/* Field page: printable/static board preview and field zone geometry. */
 .field-screen-board {
   display: grid;
   justify-items: center;
@@ -2548,6 +2559,7 @@ h3 {
   max-width: 760px;
 }
 
+/* World page: library shelf, document reader, map preview, and story book modal. */
 .world-view {
   position: relative;
   box-sizing: border-box;
@@ -3056,6 +3068,7 @@ h3 {
   }
 }
 
+/* Timeline page: historical chart, marker cards, detail panel, and tooltip. */
 .timeline-view {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
@@ -3288,6 +3301,7 @@ h3 {
   line-height: 1.7;
 }
 
+/* Legacy info panels: rule/about card lists, shared keyword panel, and error callout. */
 .rule-list,
 .about-grid {
   display: grid;
@@ -3379,6 +3393,7 @@ h3 {
   box-shadow: 0 16px 40px rgba(17, 17, 17, 0.12);
 }
 
+/* Shared overlays: card zoom/detail modal and map modal. */
 .card-modal-backdrop {
   position: fixed;
   inset: 0;
@@ -3571,6 +3586,7 @@ h3 {
   font-family: "Gowun Batang", serif;
 }
 
+/* Shared responsive adjustments for DB, rules/about, graph, and modal pages. */
 @media (max-width: 1120px) {
   .db-view {
     grid-template-columns: 1fr;
@@ -3969,6 +3985,7 @@ h3 {
   }
 }
 
+/* Tutorial page: campaign shell, practice board, tabletop engine, and in-game cards. */
 .tutorial-view {
   position: relative;
   display: grid;
@@ -5553,6 +5570,7 @@ h3 {
   font-weight: 900;
 }
 
+/* Tutorial animations: card draw and token movement. */
 @keyframes drawCardToHand {
   0% {
     opacity: 0;
@@ -5582,6 +5600,7 @@ h3 {
   }
 }
 
+/* Tutorial modal system and image-backed buttons. */
 .ink-modal-overlay,
 .tutorial-start-overlay {
   @apply absolute inset-0 z-[12] grid place-items-center;
@@ -5808,6 +5827,7 @@ h3 {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
 }
 
+/* Tutorial overlays: mulligan, tour highlights, coin flip, turn banner, zoom, and victory states. */
 .tutorial-modal-overlay {
   position: absolute;
   z-index: 24;
@@ -6291,6 +6311,7 @@ h3 {
   }
 }
 
+/* Tutorial rail log: compact turn/action history beside the tabletop. */
 .rail-log {
   position: sticky;
   top: 14px;
@@ -6454,6 +6475,7 @@ h3 {
   height: 15px;
 }
 
+/* Tutorial responsive adjustments. */
 @media (max-width: 1040px) {
   .tutorial-layout {
     grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
@@ -6576,6 +6598,7 @@ h3 {
   }
 }
 
+/* Tutorial print and starter deck pages. */
 .tutorial-print-view {
   display: grid;
   gap: 18px;
@@ -6940,6 +6963,7 @@ h3 {
   height: var(--card-zoom-height);
 }
 
+/* Tutorial print/starter deck responsive adjustments. */
 @media (max-width: 760px) {
   .tutorial-print-view {
     padding: 14px;
@@ -6997,6 +7021,7 @@ h3 {
   }
 }
 
+/* Print output: A4 card sheets and A3 field board layout. */
 @page {
   size: A4 portrait;
   margin: 0;

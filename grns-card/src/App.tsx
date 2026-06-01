@@ -182,11 +182,11 @@ const tabs: Array<{ id: TabId; label: string; icon: typeof Sparkles }> = [
   { id: "intro", label: "처음", icon: Sparkles },
   { id: "db", label: "DB", icon: Library },
   { id: "rules", label: "룰", icon: Shield },
-  { id: "tutorial", label: "튜토리얼", icon: Gamepad2 },
   { id: "deckList", label: "시작 덱", icon: Printer },
   { id: "graph", label: "그래프", icon: Activity },
   { id: "field", label: "필드", icon: MapIcon },
   { id: "world", label: "서고", icon: BookOpenText },
+  { id: "tutorial", label: "온보딩", icon: Gamepad2 },
 ];
 
 const tabPaths: Record<TabId, string> = {
@@ -228,6 +228,51 @@ const navDrawerListClassName = "flex flex-col items-stretch gap-4";
 const navDrawerTabButtonClassName =
   "w-full justify-center font-extrabold [--ink-button-width:100%]";
 const navDrawerVersionClassName = "mt-auto grid gap-1";
+const dbFilterOpenButtonClassName =
+  "hidden min-h-[38px] items-center justify-center gap-2 rounded-lg border border-[var(--line)] bg-[rgba(255,253,247,0.72)] px-3 text-sm font-black text-[var(--ink)] [backdrop-filter:blur(4px)] max-lg:inline-flex";
+const dbFilterOverlayClassName =
+  "fixed inset-0 z-40 hidden bg-[rgba(245,242,234,0.3)] [animation:navDrawerOverlayIn_180ms_ease-out_both] [backdrop-filter:blur(2px)] print:hidden max-lg:block";
+const dbFilterModalClassName =
+  "absolute inset-x-3 top-4 grid max-h-[calc(100svh-32px)] gap-4 overflow-hidden rounded-lg border border-[rgba(20,18,15,0.22)] bg-[rgba(255,253,247,0.76)] p-4 shadow-[0_18px_48px_rgba(35,30,20,0.16)] [animation:dbFilterModalIn_240ms_cubic-bezier(0.16,1,0.3,1)_both] [backdrop-filter:blur(8px)]";
+const dbFilterModalHeaderClassName =
+  "flex items-center justify-between gap-3 border-b border-[rgba(20,18,15,0.16)] pb-3";
+const dbFilterModalBodyClassName =
+  "grid gap-3 overflow-y-auto pr-1";
+const dbViewClassName =
+  "grid min-h-full grid-cols-[300px_minmax(0,1fr)] gap-px border-t border-[var(--line)] bg-transparent max-[1024px]:grid-cols-1 print:block print:min-h-0 print:border-0 print:bg-white print:p-0 print:overflow-visible";
+const dbFiltersClassName =
+  "sticky top-[73px] grid max-h-[calc(100svh-73px)] content-start gap-3 overflow-auto bg-[rgba(251,250,247,0.64)] p-[clamp(16px,3vw,28px)] text-[var(--ink)] [backdrop-filter:blur(1px)] max-lg:hidden print:hidden";
+const dbFilterTitleClassName =
+  "font-inherit text-[0.85rem] font-black leading-none text-[var(--ink)]";
+const searchBoxClassName =
+  "flex min-h-11 items-center gap-2 rounded-lg border border-[var(--line)] bg-[var(--paper)] px-3 text-[var(--ink)]";
+const searchInputClassName =
+  "w-full border-0 bg-transparent text-[var(--ink)] outline-none";
+const filterHintClassName =
+  "text-[0.82rem] font-extrabold leading-normal text-[var(--muted)]";
+const filterGroupClassName = "grid gap-2 max-[760px]:gap-1.5";
+const filterGroupLabelClassName =
+  "text-[0.8rem] font-black text-[var(--muted)]";
+const chipListClassName = "flex flex-wrap gap-1.5";
+const keywordChipListClassName =
+  "flex max-h-[150px] flex-wrap gap-1.5 overflow-auto pr-0.5 max-[760px]:max-h-24";
+const filterChipClassName =
+  "inline-flex min-h-[34px] items-center justify-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--paper)] px-2.5 text-[0.85rem] font-extrabold text-[var(--ink)]";
+const activeFilterChipClassName = "bg-[var(--ink)] text-[var(--paper)]";
+const clearFiltersClassName =
+  "inline-flex min-h-[34px] w-full items-center justify-center gap-1.5 rounded-lg border border-[var(--line)] bg-[var(--paper)] px-2.5 text-[0.85rem] font-extrabold text-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper)]";
+const dbGridClassName =
+  "min-w-0 overflow-hidden bg-[rgba(251,250,247,0.64)] p-[clamp(14px,3vw,28px)] text-[var(--ink)] max-[760px]:p-3.5 print:block print:min-h-0 print:border-0 print:bg-white print:p-0 print:overflow-visible";
+const panelHeadClassName =
+  "mb-3.5 flex items-center justify-between gap-3 font-black text-[var(--muted)] max-[760px]:flex-col max-[760px]:items-start print:hidden";
+const panelActionsClassName =
+  "flex flex-wrap items-center justify-end gap-2";
+const panelActionButtonClassName =
+  "inline-flex min-h-[34px] items-center justify-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--paper)] px-2.5 text-[0.85rem] font-extrabold text-[var(--ink)] hover:not-disabled:bg-[var(--ink)] hover:not-disabled:text-[var(--paper)] disabled:cursor-not-allowed disabled:opacity-45 [&_svg]:size-4";
+const cardGridClassName =
+  "grid max-h-[calc(100svh-146px)] grid-cols-[repeat(auto-fill,minmax(var(--card-width),1fr))] items-start gap-3.5 overflow-auto px-[1px] pb-6 pr-1.5 [--print-card-offset:10mm] [--print-right-cut-space:11mm] [perspective:1200px] max-[1120px]:max-h-none max-[760px]:grid-cols-2 max-[760px]:gap-2.5 print:block print:w-[210mm] print:max-h-none print:overflow-visible print:bg-white print:p-0";
+const dbPrintPageClassName = "db-print-page contents";
+const dbPrintCardClassName = "db-print-card contents";
 const uiIconBasePath = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/docs/card-assets/ui/icons`;
 const menuIconPath = `${uiIconBasePath}/icon-menu-ink.png`;
 const closeIconPath = `${uiIconBasePath}/icon-close-ink.png`;
@@ -242,7 +287,7 @@ function tabFromPath(pathname: string): TabId {
 
 const pinnedKeywordFilters = ["왕살"];
 const st01FrontFrame =
-  "./docs/card-assets/common/card-frame-20260531.png";
+  "./docs/card-assets/common/card-frame-20260601.png";
 const st01CardBack = "./docs/card-assets/common/backside.png";
 const classFrameEmblems: Record<ClassId, string> = {
   ym: "./docs/faction-diamonds/yemaek-emblem.png",
@@ -634,7 +679,7 @@ function FilterChip({
 }) {
   return (
     <button
-      className={active ? "filter-chip active" : "filter-chip"}
+      className={`${filterChipClassName}${active ? ` ${activeFilterChipClassName}` : ""}`}
       type="button"
       onClick={onClick}
     >
@@ -868,11 +913,25 @@ function App() {
   const [graphUnlocked, setGraphUnlocked] = useState(false);
   const [error, setError] = useState("");
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useState(false);
+  const [isNavDrawerClosing, setIsNavDrawerClosing] = useState(false);
+  const [isDbFilterModalOpen, setIsDbFilterModalOpen] = useState(false);
   const activeTab = tabFromPath(pathname);
   const visibleWorldLinks = worldLinks;
   const visibleTabs = graphUnlocked
     ? tabs
     : tabs.filter((tab) => tab.id !== "graph");
+
+  const openNavDrawer = () => {
+    setIsNavDrawerClosing(false);
+    setIsNavDrawerOpen(true);
+  };
+  const closeNavDrawer = () => {
+    setIsNavDrawerClosing(true);
+    window.setTimeout(() => {
+      setIsNavDrawerOpen(false);
+      setIsNavDrawerClosing(false);
+    }, 180);
+  };
 
   useEffect(() => {
     fetchJson<Manifest>("./data/card-versions.json")
@@ -1079,6 +1138,20 @@ function App() {
     }
     return pages;
   }, [filteredCards]);
+
+  const activeFilterCount =
+    (query.trim() ? 1 : 0) +
+    classIds.length +
+    packIds.length +
+    keywordFilters.length +
+    otherFilters.length;
+  const clearDbFilters = () => {
+    setQuery("");
+    setClassIds([]);
+    setPackIds([]);
+    setKeywordFilters([]);
+    setOtherFilters([]);
+  };
 
   const keywordCounts = useMemo(() => {
     const counts = new Map<string, number>();
@@ -1308,6 +1381,102 @@ function App() {
     });
   };
 
+  const dbFilterContent = (
+    <>
+      <p className="eyebrow">card database</p>
+      <h2 className={dbFilterTitleClassName}>필터</h2>
+      <label className={searchBoxClassName}>
+        <Search />
+        <input
+          className={searchInputClassName}
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="카드명, 효과, 종족"
+        />
+      </label>
+      <div className={filterHintClassName}>
+        선택한 조건은 AND로 적용됩니다. 같은 묶음 안에서는 하나 이상과
+        일치하면 통과합니다.
+      </div>
+      <div className={filterGroupClassName}>
+        <span className={filterGroupLabelClassName}>세력</span>
+        <div className={chipListClassName}>
+          {classes.map((item) => (
+            <FilterChip
+              key={item.id}
+              active={classIds.includes(item.id)}
+              onClick={() =>
+                setClassIds((current) => toggleValue(current, item.id))
+              }
+            >
+              {item.faction}
+            </FilterChip>
+          ))}
+        </div>
+      </div>
+      <div className={filterGroupClassName}>
+        <span className={filterGroupLabelClassName}>팩</span>
+        <div className={chipListClassName}>
+          {packs.map((item) => (
+            <FilterChip
+              key={item.id}
+              active={packIds.includes(item.id)}
+              onClick={() =>
+                setPackIds((current) => toggleValue(current, item.id))
+              }
+            >
+              {item.name}
+            </FilterChip>
+          ))}
+        </div>
+      </div>
+      <div className={filterGroupClassName}>
+        <span className={filterGroupLabelClassName}>키워드</span>
+        <div className={keywordChipListClassName}>
+          {keywordFilterItems.map((item) => (
+            <FilterChip
+              key={item.keyword}
+              active={keywordFilters.includes(item.keyword)}
+              onClick={() =>
+                setKeywordFilters((current) =>
+                  toggleValue(current, item.keyword),
+                )
+              }
+            >
+              [{item.keyword}] <span className="text-xs text-inherit">{item.count}</span>
+              {keywordBadge(item.keyword) === "new" && (
+                <span className="ml-1.5 rounded-full bg-[#f0d35a] px-1.5 py-1 text-[0.68rem] font-black uppercase leading-none text-[#14110c]">
+                  new
+                </span>
+              )}
+            </FilterChip>
+          ))}
+        </div>
+      </div>
+      <div className={filterGroupClassName}>
+        <span className={filterGroupLabelClassName}>그 외</span>
+        <div className={keywordChipListClassName}>
+          {otherTermCounts.slice(0, 18).map((item) => (
+            <FilterChip
+              key={item.term}
+              active={otherFilters.includes(item.term)}
+              onClick={() =>
+                setOtherFilters((current) => toggleValue(current, item.term))
+              }
+            >
+              &lt;{item.term}&gt; <span className="text-xs text-inherit">{item.count}</span>
+            </FilterChip>
+          ))}
+        </div>
+      </div>
+      {activeFilterCount > 0 && (
+        <button className={clearFiltersClassName} type="button" onClick={clearDbFilters}>
+          필터 초기화
+        </button>
+      )}
+    </>
+  );
+
   return (
     <main
       className={`site-shell${activeTab === "intro" ? "" : ` site-shell-${activeTab}`}${activeTab === "tutorial" ? " tutorial-fullscreen-shell" : ""}`}
@@ -1371,7 +1540,7 @@ function App() {
             type="button"
             aria-label="메뉴 열기"
             aria-expanded={isNavDrawerOpen}
-            onClick={() => setIsNavDrawerOpen(true)}
+            onClick={openNavDrawer}
           >
             <img className="size-12" src={menuIconPath} alt="" aria-hidden="true" />
           </button>
@@ -1380,12 +1549,20 @@ function App() {
 
       {activeTab !== "tutorial" && isNavDrawerOpen && (
         <div
-          className={navDrawerOverlayClassName}
+          className={`${navDrawerOverlayClassName} ${
+            isNavDrawerClosing
+              ? "[animation:navDrawerOverlayOut_160ms_ease-in_both]"
+              : "[animation:navDrawerOverlayIn_180ms_ease-out_both]"
+          }`}
           role="presentation"
-          onClick={() => setIsNavDrawerOpen(false)}
+          onClick={closeNavDrawer}
         >
           <aside
-            className={navDrawerPanelClassName}
+            className={`${navDrawerPanelClassName} ${
+              isNavDrawerClosing
+                ? "[animation:navDrawerPanelOut_180ms_ease-in_both]"
+                : "[animation:navDrawerPanelIn_240ms_cubic-bezier(0.16,1,0.3,1)_both]"
+            }`}
             role="dialog"
             aria-modal="true"
             aria-label="페이지 메뉴"
@@ -1397,7 +1574,7 @@ function App() {
                 className={navDrawerCloseButtonClassName}
                 type="button"
                 aria-label="메뉴 닫기"
-                onClick={() => setIsNavDrawerOpen(false)}
+                onClick={closeNavDrawer}
               >
                 <img
                   className="size-11"
@@ -1417,7 +1594,7 @@ function App() {
                   variant={activeTab === id ? "primary" : "pale"}
                   onClick={() => {
                     navigateTab(id);
-                    setIsNavDrawerOpen(false);
+                    closeNavDrawer();
                   }}
                 >
                   {label}
@@ -1454,121 +1631,25 @@ function App() {
         )}
 
         {activeTab === "db" && (
-          <div className="db-view">
-            <aside className="db-filters">
-              <p className="eyebrow">card database</p>
-              <h2 className="db-filter-title">필터</h2>
-              <label className="search-box">
-                <Search />
-                <input
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-                  placeholder="카드명, 효과, 종족"
-                />
-              </label>
-              <div className="filter-hint">
-                선택한 조건은 AND로 적용됩니다. 같은 묶음 안에서는 하나 이상과
-                일치하면 통과합니다.
-              </div>
-              <div className="filter-group">
-                <span>세력</span>
-                <div className="chip-list">
-                  {classes.map((item) => (
-                    <FilterChip
-                      key={item.id}
-                      active={classIds.includes(item.id)}
-                      onClick={() =>
-                        setClassIds((current) => toggleValue(current, item.id))
-                      }
-                    >
-                      {item.faction}
-                    </FilterChip>
-                  ))}
-                </div>
-              </div>
-              <div className="filter-group">
-                <span>팩</span>
-                <div className="chip-list">
-                  {packs.map((item) => (
-                    <FilterChip
-                      key={item.id}
-                      active={packIds.includes(item.id)}
-                      onClick={() =>
-                        setPackIds((current) => toggleValue(current, item.id))
-                      }
-                    >
-                      {item.name}
-                    </FilterChip>
-                  ))}
-                </div>
-              </div>
-              <div className="filter-group">
-                <span>키워드</span>
-                <div className="chip-list keyword-chips">
-                  {keywordFilterItems.map((item) => (
-                    <FilterChip
-                      key={item.keyword}
-                      active={keywordFilters.includes(item.keyword)}
-                      onClick={() =>
-                        setKeywordFilters((current) =>
-                          toggleValue(current, item.keyword),
-                        )
-                      }
-                    >
-                      [{item.keyword}] <span>{item.count}</span>
-                      {keywordBadge(item.keyword) === "new" && (
-                        <span className="keyword-new-badge">new</span>
-                      )}
-                    </FilterChip>
-                  ))}
-                </div>
-              </div>
-              <div className="filter-group">
-                <span>그 외</span>
-                <div className="chip-list keyword-chips">
-                  {otherTermCounts.slice(0, 18).map((item) => (
-                    <FilterChip
-                      key={item.term}
-                      active={otherFilters.includes(item.term)}
-                      onClick={() =>
-                        setOtherFilters((current) =>
-                          toggleValue(current, item.term),
-                        )
-                      }
-                    >
-                      &lt;{item.term}&gt; <span>{item.count}</span>
-                    </FilterChip>
-                  ))}
-                </div>
-              </div>
-              {Boolean(
-                query ||
-                classIds.length ||
-                packIds.length ||
-                keywordFilters.length ||
-                otherFilters.length,
-              ) && (
-                <button
-                  className="clear-filters"
-                  type="button"
-                  onClick={() => {
-                    setQuery("");
-                    setClassIds([]);
-                    setPackIds([]);
-                    setKeywordFilters([]);
-                    setOtherFilters([]);
-                  }}
-                >
-                  필터 초기화
-                </button>
-              )}
+          <div className={dbViewClassName}>
+            <aside className={dbFiltersClassName}>
+              {dbFilterContent}
             </aside>
-            <section className="db-grid" aria-label="카드 목록">
-              <div className="panel-head">
+            <section className={dbGridClassName} aria-label="카드 목록">
+              <div className={panelHeadClassName}>
                 <span>{filteredCards.length}장</span>
-                <div className="panel-actions">
+                <div className={panelActionsClassName}>
+                  <button
+                    className={dbFilterOpenButtonClassName}
+                    type="button"
+                    onClick={() => setIsDbFilterModalOpen(true)}
+                  >
+                    <Search className="size-4" aria-hidden="true" />
+                    필터{activeFilterCount ? ` ${activeFilterCount}` : ""}
+                  </button>
                   <span>{dbState?.version.label}</span>
                   <button
+                    className={panelActionButtonClassName}
                     type="button"
                     onClick={() => window.print()}
                     disabled={filteredCards.length === 0}
@@ -1578,11 +1659,11 @@ function App() {
                   </button>
                 </div>
               </div>
-              <div className="card-grid">
+              <div className={cardGridClassName}>
                 {printCardPages.map((page, pageIndex) => (
-                  <div className="db-print-page" key={`print-page-${pageIndex}`}>
+                  <div className={dbPrintPageClassName} key={`print-page-${pageIndex}`}>
                     {page.map((card) => (
-                      <div className="db-print-card" key={card.id}>
+                      <div className={dbPrintCardClassName} key={card.id}>
                         <CardTile
                           card={card}
                           onClick={() => setModalCardId(card.id)}
@@ -1593,6 +1674,43 @@ function App() {
                 ))}
               </div>
             </section>
+            {isDbFilterModalOpen && (
+              <div
+                className={dbFilterOverlayClassName}
+                role="presentation"
+                onClick={() => setIsDbFilterModalOpen(false)}
+              >
+                <section
+                  className={dbFilterModalClassName}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label="카드 필터"
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  <header className={dbFilterModalHeaderClassName}>
+                    <strong className="text-lg font-black text-[var(--ink)]">
+                      카드 필터
+                    </strong>
+                    <button
+                      className={navDrawerCloseButtonClassName}
+                      type="button"
+                      aria-label="필터 닫기"
+                      onClick={() => setIsDbFilterModalOpen(false)}
+                    >
+                      <img
+                        className="size-11"
+                        src={closeIconPath}
+                        alt=""
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </header>
+                  <div className={dbFilterModalBodyClassName}>
+                    {dbFilterContent}
+                  </div>
+                </section>
+              </div>
+            )}
           </div>
         )}
 

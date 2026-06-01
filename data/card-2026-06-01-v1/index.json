@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 2,
+  "dbVersion": "2026-06-01-v1",
+  "gameTitle": "괴력난신",
+  "updatedAt": "2026-06-01",
+  "split": true,
+  "sources": {
+    "classes": "./data/card-2026-06-01-v1/classes.json",
+    "cardTypes": "./data/card-2026-06-01-v1/card-types.json",
+    "expansions": "./data/card-2026-06-01-v1/expansions.json",
+    "cards": [
+      {
+        "packId": "tu01",
+        "classId": "ne",
+        "file": "./data/card-2026-06-01-v1/cards/tu01/tu01-pack.json",
+        "count": 39
+      },
+      {
+        "packId": "ob01",
+        "classId": "ne",
+        "file": "./data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "count": 6
+      },
+      {
+        "packId": "st01",
+        "classId": "ym",
+        "file": "./data/card-2026-06-01-v1/cards/st01/st01-pack.json",
+        "count": 20
+      },
+      {
+        "packId": "st02",
+        "classId": "gr",
+        "file": "./data/card-2026-06-01-v1/cards/st02/st02-pack.json",
+        "count": 20
+      },
+      {
+        "packId": "st03",
+        "classId": "sr",
+        "file": "./data/card-2026-06-01-v1/cards/st03/st03-pack.json",
+        "count": 20
+      },
+      {
+        "packId": "st04",
+        "classId": "sj",
+        "file": "./data/card-2026-06-01-v1/cards/st04/st04-pack.json",
+        "count": 20
+      },
+      {
+        "packId": "ex01",
+        "classId": "ym",
+        "file": "./data/card-2026-06-01-v1/cards/ex01/pack01.json",
+        "count": 8
+      },
+      {
+        "packId": "ex01",
+        "classId": "gr",
+        "file": "./data/card-2026-06-01-v1/cards/ex01/pack02.json",
+        "count": 8
+      },
+      {
+        "packId": "ex01",
+        "classId": "sr",
+        "file": "./data/card-2026-06-01-v1/cards/ex01/pack03.json",
+        "count": 8
+      },
+      {
+        "packId": "ex01",
+        "classId": "sj",
+        "file": "./data/card-2026-06-01-v1/cards/ex01/pack04.json",
+        "count": 8
+      },
+      {
+        "packId": "ex01",
+        "classId": "ne",
+        "file": "./data/card-2026-06-01-v1/cards/ex01/pack05.json",
+        "count": 10
+      }
+    ],
+    "structureDecks": [
+      {
+        "classId": "ym",
+        "file": "./data/card-2026-06-01-v1/decks/goguryeo.json"
+      },
+      {
+        "classId": "sr",
+        "file": "./data/card-2026-06-01-v1/decks/jinhan.json"
+      },
+      {
+        "classId": "gr",
+        "file": "./data/card-2026-06-01-v1/decks/gaya.json"
+      },
+      {
+        "classId": "sj",
+        "file": "./data/card-2026-06-01-v1/decks/mahan.json"
+      },
+      {
+        "classId": "ne",
+        "file": "./data/card-2026-06-01-v1/decks/tu01/susin.json"
+      },
+      {
+        "classId": "ne",
+        "file": "./data/card-2026-06-01-v1/decks/tu01/sinmo.json"
+      },
+      {
+        "classId": "ne",
+        "file": "./data/card-2026-06-01-v1/decks/tu01/han.json"
+      }
+    ]
+  }
+}
