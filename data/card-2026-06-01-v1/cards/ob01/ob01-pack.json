@@ -9,15 +9,15 @@
     "illustration": "./docs/card-assets/illustrations/ob01/ob01-0001.png",
     "expansionId": "ob01",
     "expansionName": "온보딩",
-    "id": "st01-h-004",
     "name": "쉬고 있는 산군",
     "cost": 3,
     "power": 2,
     "race": "짐승",
-    "effect": "이 카드는 <앞면> 상태로 <성주>에만 배치할 수 있다. 이 카드가 <성주>일 경우 <문지기>를 배치할 수 없다. 이 카드가 <매장지>로 이동하면 패배한다.\n\n_매장지는 전투에서 전사하면 이동하는 필드입니다. 성주가 매장지로 이동하면 게임에서 패배합니다. 문지기는 성주를 지키는 병사들 입니다. 일반적으로 배치하고 시작하지만, 산군이 쉬고 싶어 전부 내쫓았습니다_",
+    "effect": "이 카드는 <앞면> 상태로 <성주>에만 배치할 수 있다. 이 카드가 <성주>일 경우 <문지기>를 배치할 수 없다. 이 카드가 <매장지>로 이동하면 패배한다.",
     "lore": "",
     "sigil": "休",
-    "serial": "ob01-0001"
+    "serial": "ob01-0001",
+    "guide": "매장지는 전투에서 전사하면 이동하는 필드입니다. 성주가 매장지로 이동하면 게임에서 패배합니다. 문지기는 성주를 지키는 병사들 입니다. 일반적으로 배치하고 시작하지만, 산군이 쉬고 싶어 전부 내쫓았습니다"
   },
   {
     "faction": "중립",
@@ -29,7 +29,6 @@
     "illustration": "./docs/card-assets/illustrations/ob01/ob01-0002.png",
     "expansionId": "ob01",
     "expansionName": "온보딩",
-    "id": "st01-t-001",
     "name": "새끼 이리",
     "cost": 0,
     "power": 0,
@@ -49,7 +48,6 @@
     "illustration": "./docs/card-assets/illustrations/ob01/ob01-0003.png",
     "expansionId": "ob01",
     "expansionName": "온보딩",
-    "id": "st01-t-002",
     "name": "온순한 이리",
     "cost": 1,
     "power": 1,
@@ -69,7 +67,6 @@
     "illustration": "./docs/card-assets/illustrations/ob01/ob01-0004.png",
     "expansionId": "ob01",
     "expansionName": "온보딩",
-    "id": "st01-t-003",
     "name": "떠돌이 이리",
     "cost": 2,
     "power": 2,
@@ -89,7 +86,6 @@
     "illustration": "./docs/card-assets/illustrations/ob01/ob01-0005.png",
     "expansionId": "ob01",
     "expansionName": "온보딩",
-    "id": "st01-t-004",
     "name": "뼈 물어다주는 이리",
     "cost": 2,
     "power": 1,
@@ -109,14 +105,14 @@
     "illustration": "./docs/card-assets/illustrations/ob01/ob01-0006.png",
     "expansionId": "ob01",
     "expansionName": "온보딩",
-    "id": "st01-t-005",
     "name": "징집소 지키는 이리",
     "cost": 2,
     "power": 2,
     "race": "짐승",
-    "effect": "내 이 카드를 전쟁 시작 전 <징집소> 맨 아래에 앞면 상태로 둔다. 이 카드가 <징집소> 맨 위에 있는 한 <징집>하지 않는다.\n\n_<징집소> (e.g. 덱) 에서 <군영> (e.g. 손패) 로 가져오는 행동을 <징집>이라고 합니다._",
+    "effect": "내 이 카드를 전쟁 시작 전 <징집소> 맨 아래에 앞면 상태로 둔다. 이 카드가 <징집소> 맨 위에 있는 한 <징집>하지 않는다.",
     "lore": "",
     "sigil": "守",
-    "serial": "ob01-0006"
+    "serial": "ob01-0006",
+    "guide": "<징집소> (e.g. 덱) 에서 <군영> (e.g. 손패) 로 가져오는 행동을 <징집>이라고 합니다."
   }
 ]

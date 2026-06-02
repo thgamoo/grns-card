@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 type InkButtonProps = Omit<ComponentProps<typeof Button>, "variant" | "size"> & {
   tone?: "ink" | "paper";
-  variant?: "primary" | "secondary" | "danger" | "pale";
+  variant?: "primary" | "selected" | "secondary" | "danger" | "pale";
   size?: "sm" | "md" | "lg";
   children: ReactNode;
 };
@@ -20,6 +20,7 @@ const sizeClassName: Record<NonNullable<InkButtonProps["size"]>, string> = {
 
 const buttonAssets: Record<NonNullable<InkButtonProps["variant"]>, string> = {
   primary: "button-primary.png",
+  selected: "button-primary-selected.png",
   secondary: "button-secondary.png",
   danger: "button-destructive.png",
   pale: "button-ghost.png",
@@ -45,14 +46,14 @@ export function InkButton({
   return (
     <Button
       className={cn(
-        "group relative isolate inline-grid min-h-0 min-w-0 w-[var(--ink-button-width,auto)] place-items-center rounded bg-transparent text-center font-black leading-none text-[#f8f1df] transition-[filter,transform] duration-150 hover:-translate-y-px focus-visible:-translate-y-px focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[rgba(246,228,168,0.85)] active:translate-y-px disabled:cursor-not-allowed disabled:text-[rgba(255,250,238,0.56)]",
+        "group relative isolate inline-grid min-h-0 min-w-0 w-[var(--ink-button-width,auto)] shrink-0 select-none place-items-center rounded border border-transparent bg-transparent text-center font-black leading-none whitespace-nowrap text-[#f8f1df] outline-none transition-[filter,transform] duration-150 hover:-translate-y-px hover:bg-transparent hover:text-[#f8f1df] focus-visible:-translate-y-px focus-visible:bg-transparent focus-visible:text-[#f8f1df] focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[rgba(246,228,168,0.85)] active:translate-y-px aria-expanded:bg-transparent disabled:pointer-events-none disabled:cursor-not-allowed disabled:text-[rgba(255,250,238,0.56)] disabled:opacity-50",
         sizeClassName[size],
         className,
       )}
       size="default"
       style={buttonStyle}
       type="button"
-      variant="ghost"
+      variant="unstyled"
       {...props}
     >
       <span

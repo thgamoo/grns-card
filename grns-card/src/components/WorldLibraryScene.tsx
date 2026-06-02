@@ -11,6 +11,7 @@ type WorldLibrarySceneProps = {
   columnCount: number;
   items: LibraryItem[];
   hoveredIndex: number | null;
+  viewMode?: "overview" | "focused";
 };
 
 const ROWS = 3;
@@ -155,6 +156,54 @@ function addBookletStack({
   group.add(stack);
 }
 
+function addLoosePaperSheet({
+  group,
+  item,
+  slot,
+  baseX,
+  baseY,
+  hovered,
+}: {
+  group: THREE.Group;
+  item: LibraryItem;
+  slot: number;
+  baseX: number;
+  baseY: number;
+  hovered: boolean;
+}) {
+  const seed = item.index + slot * 11;
+  const sheet = new THREE.Group();
+  const pull = hovered ? 0.5 : 0.12;
+  const lift = hovered ? 0.13 : 0;
+  const paperMaterial = makeMaterial(0xd8c38f, 0.9);
+  const edgeMaterial = makeMaterial(0x7a5c32, 0.94);
+  const inkMaterial = makeMaterial(0x3b2712, 0.82);
+  const shadowMaterial = makeMaterial(0x5a3a1d, 0.96);
+
+  sheet.position.set(baseX, baseY + 0.15 + lift, pull);
+  sheet.rotation.x = -0.06;
+  sheet.rotation.y = hovered ? -0.08 : (seededOffset(seed) - 0.5) * 0.04;
+  sheet.rotation.z = (seededOffset(seed + 4) - 0.5) * 0.05;
+
+  addBox(sheet, [1.32, 0.026, 1.02], [0, 0, 0], paperMaterial);
+  addBox(sheet, [1.32, 0.018, 0.025], [0, 0.018, 0.51], edgeMaterial);
+  addBox(sheet, [0.025, 0.018, 1.0], [-0.66, 0.018, 0], edgeMaterial);
+  addBox(sheet, [0.24, 0.022, 0.18], [0.51, 0.036, -0.39], paperMaterial, [0.1, -0.22, 0.32]);
+  addBox(sheet, [0.24, 0.012, 0.02], [0.5, 0.05, -0.3], shadowMaterial, [0.04, -0.18, 0.28]);
+
+  [-0.24, -0.1, 0.04, 0.18].forEach((z, index) => {
+    addBox(
+      sheet,
+      [0.72 - index * 0.08, 0.014, 0.018],
+      [-0.05, 0.04 + index * 0.002, z],
+      inkMaterial,
+      [0, 0, (seededOffset(seed + index + 20) - 0.5) * 0.02],
+    );
+  });
+
+  group.add(sheet);
+}
+
 function addFillerStack(group: THREE.Group, x: number, y: number, seed: number) {
   const stack = new THREE.Group();
   const paperPalette = [0x806640, 0x725836, 0x8a7048, 0x6b5234, 0x7a603d];
@@ -229,13 +278,22 @@ function addMapBundle(
   group.add(stack);
 }
 
-export function WorldLibraryScene({ columnCount, items, hoveredIndex }: WorldLibrarySceneProps) {
+export function WorldLibraryScene({
+  columnCount,
+  items,
+  hoveredIndex,
+  viewMode = "focused",
+}: WorldLibrarySceneProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const contentRef = useRef<THREE.Group | null>(null);
   const frameRef = useRef<number | null>(null);
+  const cameraTargetRef = useRef({
+    lookAt: new THREE.Vector3(0, -0.55, 0),
+    position: new THREE.Vector3(0, 0.55, 10.2),
+  });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -255,8 +313,8 @@ export function WorldLibraryScene({ columnCount, items, hoveredIndex }: WorldLib
     scene.fog = new THREE.Fog(0xc29d62, 7, 18);
 
     const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
-    camera.position.set(0, 0.55, 10.2);
-    camera.lookAt(0, -0.55, 0);
+    camera.position.copy(cameraTargetRef.current.position);
+    camera.lookAt(cameraTargetRef.current.lookAt);
 
     const ambient = new THREE.HemisphereLight(0xfff0ca, 0x2b1a0e, 1.8);
     scene.add(ambient);
@@ -290,6 +348,8 @@ export function WorldLibraryScene({ columnCount, items, hoveredIndex }: WorldLib
       frameRef.current = window.requestAnimationFrame(animate);
       const elapsed = performance.now() / 1000;
       content.rotation.y = Math.sin(elapsed * 0.18) * 0.018;
+      camera.position.lerp(cameraTargetRef.current.position, 0.08);
+      camera.lookAt(cameraTargetRef.current.lookAt);
       renderer.render(scene, camera);
     };
 
@@ -317,6 +377,20 @@ export function WorldLibraryScene({ columnCount, items, hoveredIndex }: WorldLib
       contentRef.current = null;
     };
   }, []);
+
+  useEffect(() => {
+    const target =
+      viewMode === "overview"
+        ? {
+            lookAt: new THREE.Vector3(0, -0.45, 0),
+            position: new THREE.Vector3(0, 0.8, 13.8),
+          }
+        : {
+            lookAt: new THREE.Vector3(0, -0.55, 0),
+            position: new THREE.Vector3(0, 0.55, 10.2),
+          };
+    cameraTargetRef.current = target;
+  }, [viewMode]);
 
   useEffect(() => {
     const content = contentRef.current;
@@ -358,15 +432,17 @@ export function WorldLibraryScene({ columnCount, items, hoveredIndex }: WorldLib
         firstX + (columnCount - 1) * itemGap + itemGap * 0.55,
       ].filter((x) => Math.abs(x) < 5.65 && mapXs.every((mapX) => Math.abs(x - mapX) > itemGap * 0.82));
 
-      fillerXs.forEach((x, filler) => {
-        const finalX = x + (seededOffset(row * 40 + filler) - 0.5) * 0.14;
-        addFillerStack(content, finalX, y + 0.12, row * 100 + filler * 9);
-      });
-      if (columnCount >= 6) {
-        [-5.25, 5.25].forEach((x, filler) => {
-          if (mapXs.some((mapX) => Math.abs(x - mapX) <= itemGap * 0.82)) return;
-          addFillerStack(content, x, y + 0.1, row * 120 + filler * 17 + 80);
+      if (row === 0) {
+        fillerXs.forEach((x, filler) => {
+          const finalX = x + (seededOffset(row * 40 + filler) - 0.5) * 0.14;
+          addFillerStack(content, finalX, y + 0.12, row * 100 + filler * 9);
         });
+        if (columnCount >= 6) {
+          [-5.25, 5.25].forEach((x, filler) => {
+            if (mapXs.some((mapX) => Math.abs(x - mapX) <= itemGap * 0.82)) return;
+            addFillerStack(content, x, y + 0.1, row * 120 + filler * 17 + 80);
+          });
+        }
       }
     }
 
@@ -381,6 +457,10 @@ export function WorldLibraryScene({ columnCount, items, hoveredIndex }: WorldLib
 
       if (item.link.kind === "image") {
         addMapBundle(content, item, slot, column === columnCount - 1 ? x - 0.34 : x, y, hover);
+        return;
+      }
+      if (item.link.title === "도깨비 문지기 노래") {
+        addLoosePaperSheet({ group: content, item, slot, baseX: x, baseY: y, hovered: hover });
         return;
       }
       addBookletStack({ group: content, item, slot, baseX: x, baseY: y, hovered: hover });

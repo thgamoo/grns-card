@@ -12,6 +12,7 @@ import {
   ChevronDown,
   Gamepad2,
   Library,
+  LogOut,
   Map as MapIcon,
   Printer,
   Search,
@@ -31,17 +32,24 @@ import {
   ruleTermId,
   ruleTermNotes,
 } from "./content/rules";
+import {
+  keywordHighlightLabel,
+  keywordHighlightStyle,
+} from "./content/keywordHighlights";
 import { fieldTermNotes } from "./content/field";
 import { worldLinks } from "./content/world";
 import { FieldTermToken } from "./components/FieldTermToken";
 import { InkButton } from "./components/InkButton";
 import { MissingCallout } from "./components/MissingCallout";
+import { PaperButton } from "./components/PaperButton";
+import { Button } from "./components/ui/button";
 import { FieldPage } from "./pages/FieldPage";
 import { IntroPage } from "./pages/IntroPage";
 import { DeckListPage } from "./pages/DeckListPage";
 import { RulesPage } from "./pages/RulesPage";
 import { TutorialPage } from "./pages/TutorialPage";
 import { WorldPage } from "./pages/WorldPage";
+import { cn } from "./lib/utils";
 
 type ClassId = "ym" | "sr" | "gr" | "sj" | "ne";
 
@@ -96,7 +104,6 @@ type Expansion = {
 };
 
 type Card = {
-  id: string;
   name: string;
   cost: number;
   faction: string;
@@ -106,6 +113,7 @@ type Card = {
   type: string;
   race: string;
   effect: string;
+  guide?: string;
   lore: string;
   power: number;
   serial: string;
@@ -118,7 +126,6 @@ type Card = {
 };
 
 type DeckEntry = {
-  cardId: string;
   serial: string;
   count: number;
 };
@@ -133,7 +140,6 @@ type StructureDeck = {
   mainDeckCards?: number;
   trapCards?: number;
   hero?: {
-    cardId: string;
     serial: string;
     name: string;
   };
@@ -201,7 +207,7 @@ const tabPaths: Record<TabId, string> = {
 };
 
 const headerClassName =
-  "sticky top-0 z-20 flex items-center justify-end gap-4 border-b border-[var(--line)] bg-white/[0.18] px-[clamp(16px,4vw,48px)] py-3.5 [backdrop-filter:blur(1px)] print:hidden max-[1120px]:static max-[760px]:px-3 max-[760px]:py-3";
+  "sticky top-0 z-20 flex items-center justify-end gap-4 border-b border-[var(--line)] bg-white/[0.32] px-[clamp(16px,4vw,48px)] py-3.5 [backdrop-filter:blur(2px)] print:hidden max-[1120px]:static max-[760px]:px-3 max-[760px]:py-3";
 const headerBrandClassName =
   "mr-auto inline-flex w-fit shrink-0 items-center border-0 bg-transparent p-0 text-[var(--ink)] max-2xl:hidden";
 const headerLogoClassName = "block h-auto w-[clamp(132px,14vw,196px)]";
@@ -257,8 +263,7 @@ const chipListClassName = "flex flex-wrap gap-1.5";
 const keywordChipListClassName =
   "flex max-h-[150px] flex-wrap gap-1.5 overflow-auto pr-0.5 max-[760px]:max-h-24";
 const filterChipClassName =
-  "inline-flex min-h-[34px] items-center justify-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--paper)] px-2.5 text-[0.85rem] font-extrabold text-[var(--ink)]";
-const activeFilterChipClassName = "bg-[var(--ink)] text-[var(--paper)]";
+  "min-h-[34px] rounded-full border-[var(--line)] bg-[var(--paper)] px-2.5 text-[0.85rem] font-extrabold text-[var(--ink)] hover:bg-[rgba(17,17,17,0.08)] hover:text-[var(--ink)]";
 const clearFiltersClassName =
   "inline-flex min-h-[34px] w-full items-center justify-center gap-1.5 rounded-lg border border-[var(--line)] bg-[var(--paper)] px-2.5 text-[0.85rem] font-extrabold text-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper)]";
 const dbGridClassName =
@@ -436,11 +441,11 @@ function buildGraphEdges(cards: Card[]) {
     target?: Card,
     kind: "curve" | "synergy" = "curve",
   ) => {
-    if (!source || !target || source.id === target.id) return;
-    const key = `${source.id}->${target.id}:${kind}`;
+    if (!source || !target || source.serial === target.serial) return;
+    const key = `${source.serial}->${target.serial}:${kind}`;
     if (seen.has(key)) return;
     seen.add(key);
-    edges.push({ source: source.id, target: target.id, kind });
+    edges.push({ source: source.serial, target: target.serial, kind });
   };
 
   classGroups.forEach((classCards) => {
@@ -454,7 +459,10 @@ function buildGraphEdges(cards: Card[]) {
     const sourceKeywords = new Set(keywords(source.effect));
     const targets = cards
       .filter((target) => {
-        if (target.id === source.id || target.classId !== source.classId)
+        if (
+          target.serial === source.serial ||
+          target.classId !== source.classId
+        )
           return false;
         const race = primaryRace(target);
         if (race && source.effect.includes(race)) return true;
@@ -492,6 +500,33 @@ function keywordBadge(keyword: string) {
   )?.[2];
 }
 
+function effectScaleClass() {
+  return " effect-medium";
+}
+
+const frameStackTileClassName =
+  "card-tile !relative isolate !block !border-0 !bg-transparent ![border-radius:4.2%/2.8%]";
+const frameStackIllustrationClassName =
+  "pointer-events-none !absolute inset-0 !z-0 top-[10%] h-[80%] w-full select-none bg-[#f4eee4] object-cover";
+const frameStackImageClassName =
+  "pointer-events-none !absolute inset-0 !z-[1] h-full w-full select-none object-contain object-center";
+const frameStackEmblemClassName =
+  "pointer-events-none !absolute bottom-[1.6%] left-[43.9%] !z-[2] aspect-square w-[11.4%] select-none object-contain drop-shadow-[0_1px_1px_rgba(0,0,0,0.68)]";
+const frameStackStatClassName =
+  "!absolute top-[18.4%] !z-[3] grid aspect-square w-[12.4%] place-items-center text-[7.6mm] font-black leading-none text-[#f7ead5] [font-family:'Gowun_Batang',serif] [text-shadow:0_1px_2px_rgba(0,0,0,0.7)]";
+const frameStackNameBaseClassName =
+  "!absolute left-[25%] right-[25%] top-[8.5%] !z-[3] -translate-y-1/2 text-center text-[4.45mm] font-black leading-[1.08] text-[#100d0a] [font-family:'Gowun_Batang',serif] [text-shadow:0_1px_0_rgba(255,245,226,0.78)]";
+const frameStackEffectBaseClassName =
+  "!absolute left-[11%] right-[10.4%] top-[68%] !z-[3] whitespace-pre-line break-keep text-left text-[2mm] font-extrabold leading-[1.26] text-[#100d0a]";
+const frameStackLoreSlotClassName =
+  "!absolute left-[18.1%] right-[16.4%] top-[78%] !z-[3] flex h-[25%] min-h-[11.5%] -translate-y-1/2 items-center justify-center";
+const frameStackLoreClassName =
+  "static block skew-x-[-7deg] text-center text-[2.95mm] font-bold italic leading-[1.5] text-[#3f352d] [font-family:'Gowun_Batang',serif] [font-synthesis:style]";
+const frameStackMetaSlotClassName =
+  "!absolute bottom-[3.7%] left-[8.5%] !z-[3] flex min-h-[3.1mm] w-[22.8%] translate-x-[10%] items-center justify-center";
+const frameStackSerialSlotClassName =
+  "!absolute bottom-[3.7%] right-[11.9%] !z-[3] flex min-h-[3.1mm] w-[22.8%] items-center justify-center";
+
 function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
   const compactName =
     card.name.length >= 11
@@ -503,9 +538,26 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
           : "";
   const hasEffect = Boolean(card.effect.trim());
   const effectText = card.effect.trim() || card.lore.trim();
+  const guideText = card.guide?.trim() ?? "";
+  const effectScale = hasEffect ? effectScaleClass() : "";
   const effectClassName = hasEffect
-    ? "card-effect"
+    ? `card-effect${effectScale}`
     : "card-effect card-effect-lore";
+  const frameStackNameClassName = cn(
+    frameStackNameBaseClassName,
+    card.name.length >= 11
+      ? "text-[2.7mm] leading-[1.02]"
+      : card.name.length >= 9
+        ? "text-[3.15mm]"
+        : card.name.length > 6
+          ? "text-[3.95mm]"
+          : "",
+  );
+  const frameStackEffectClassName = cn(
+    frameStackEffectBaseClassName,
+    effectScale === " effect-medium" &&
+      "text-[2.7mm] font-normal leading-[1.08]",
+  );
   const illustration = card.illustration?.trim();
   const illustrationSrc = illustration ? publicAssetPath(illustration) : "";
   const isLayeredPack =
@@ -560,7 +612,7 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
   if (usesLayeredFrame) {
     return (
       <article
-        className="card-tile card-frame-stack"
+        className={frameStackTileClassName}
         style={tileStyle}
         onClick={onClick}
         onKeyDown={handleKeyDown}
@@ -572,47 +624,65 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
       >
         {illustrationSrc ? (
           <img
-            className="frame-stack-illustration"
+            className={frameStackIllustrationClassName}
             src={illustrationSrc}
             alt=""
             aria-hidden="true"
           />
         ) : (
-          <span className="frame-stack-illustration" aria-hidden="true" />
+          <span
+            className={frameStackIllustrationClassName}
+            aria-hidden="true"
+          />
         )}
         <img
-          className="frame-stack-image"
+          className={frameStackImageClassName}
           src={publicAssetPath(st01FrontFrame)}
           alt=""
           aria-hidden="true"
         />
         <img
-          className="frame-stack-emblem"
+          className={frameStackEmblemClassName}
           src={publicAssetPath(layeredFrameEmblem(card))}
           alt=""
           aria-hidden="true"
         />
-        <span className="frame-stack-cost">{card.cost}</span>
-        <span className="frame-stack-power">{card.power}</span>
-        <strong className={`frame-stack-name${compactName}`}>
-          {card.name}
-        </strong>
+        <span className={cn(frameStackStatClassName, "left-[7.1%]")}>
+          {card.cost}
+        </span>
+        <span className={cn(frameStackStatClassName, "right-[7.6%]")}>
+          {card.power}
+        </span>
+        <strong className={frameStackNameClassName}>{card.name}</strong>
         {hasEffect ? (
-          <span className="frame-stack-effect">
+          <span className={frameStackEffectClassName}>
             <EmphasizedTerms text={effectText} plainTerms disableTermTooltips />
+            {guideText && (
+              <span className="card-guide mt-[0.75mm] block origin-left -skew-x-6 whitespace-pre-line text-left text-[1.5mm] font-semibold italic leading-[1.22] [font-synthesis:style]">
+                <EmphasizedTerms
+                  text={guideText}
+                  plainTerms
+                  disableTermTooltips
+                />
+              </span>
+            )}
           </span>
         ) : (
-          <div className="frame-stack-lore-slot">
-            <span className="frame-stack-effect frame-stack-lore">
+          <div className={frameStackLoreSlotClassName}>
+            <span className={frameStackLoreClassName}>
               <EmphasizedTerms text={effectText} plainTerms disableTermTooltips />
             </span>
           </div>
         )}
-        <div className="frame-stack-meta-slot">
-          <span className="frame-stack-meta">{card.race}</span>
+        <div className={frameStackMetaSlotClassName}>
+          <span className="overflow-hidden text-ellipsis whitespace-nowrap text-[2.35mm] font-black leading-none text-[#ead3ef]">
+            {card.race}
+          </span>
         </div>
-        <div className="frame-stack-serial-slot">
-          <span className="frame-stack-serial">{card.serial}</span>
+        <div className={frameStackSerialSlotClassName}>
+          <span className="text-[1.7mm] font-black leading-none text-[#f7ead5] [text-shadow:0_1px_2px_rgba(0,0,0,0.65)]">
+            {card.serial}
+          </span>
         </div>
       </article>
     );
@@ -650,6 +720,15 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
         </span>
         <span className={effectClassName}>
           <EmphasizedTerms text={effectText} plainTerms disableTermTooltips />
+          {guideText && (
+            <span className="card-guide origin-left -skew-x-6 italic [font-synthesis:style]">
+              <EmphasizedTerms
+                text={guideText}
+                plainTerms
+                disableTermTooltips
+              />
+            </span>
+          )}
         </span>
         <span className="card-serial">{card.serial}</span>
         <span className="card-mark">
@@ -678,13 +757,20 @@ function FilterChip({
   onClick: () => void;
 }) {
   return (
-    <button
-      className={`${filterChipClassName}${active ? ` ${activeFilterChipClassName}` : ""}`}
+    <Button
+      aria-pressed={active}
+      className={cn(
+        filterChipClassName,
+        active &&
+          "border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] hover:bg-[var(--ink)] hover:text-[var(--paper)]",
+      )}
+      size="sm"
       type="button"
+      variant="outline"
       onClick={onClick}
     >
       {children}
-    </button>
+    </Button>
   );
 }
 
@@ -692,10 +778,6 @@ function toggleValue(values: string[], value: string) {
   return values.includes(value)
     ? values.filter((item) => item !== value)
     : [...values, value];
-}
-
-function isBasePositionKeyword(part: string) {
-  return part === "[전진기지]" || part === "[후방기지]";
 }
 
 function EmphasizedTerms({
@@ -728,12 +810,23 @@ function EmphasizedTerms({
           }
 
           if (/^_[^_]+_$/.test(part)) {
-            return <em key={`${part}-${index}`}>{part.slice(1, -1)}</em>;
+            return (
+              <em
+                key={`${part}-${index}`}
+                className="inline-block origin-left-bottom -skew-x-[10deg] not-italic"
+              >
+                {part.slice(1, -1)}
+              </em>
+            );
           }
 
           if (/^<[^>]+>$/.test(part)) {
             if (disableTermTooltips) {
-              return part;
+              return (
+                <span key={`${part}-${index}`} className="angle-term font-black">
+                  {part}
+                </span>
+              );
             }
 
             const term = part.slice(1, -1);
@@ -768,18 +861,18 @@ function EmphasizedTerms({
             );
           }
 
-          return /^\[[^\]]+\]$/.test(part) ? (
-            <strong
-              key={`${part}-${index}`}
-              className={
-                isBasePositionKeyword(part) ? "keyword-base-position" : undefined
-              }
-            >
-              {part}
-            </strong>
-          ) : (
-            part
-          );
+          if (/^\[[^\]]+\]$/.test(part)) {
+            return (
+              <strong
+                key={`${part}-${index}`}
+                style={keywordHighlightStyle(part)}
+              >
+                {keywordHighlightLabel(part)}
+              </strong>
+            );
+          }
+
+          return part;
         })}
     </>
   );
@@ -907,6 +1000,7 @@ function App() {
   const [worldDocIndex, setWorldDocIndex] = useState(0);
   const [worldMarkdown, setWorldMarkdown] = useState("");
   const [isWorldStoryOpen, setIsWorldStoryOpen] = useState(false);
+  const [isWorldShelfFocused, setIsWorldShelfFocused] = useState(false);
   const [worldBookSpread, setWorldBookSpread] = useState(0);
   const [worldNotice, setWorldNotice] = useState("");
   const [sealedBooksUnlocked, setSealedBooksUnlocked] = useState(false);
@@ -1222,7 +1316,7 @@ function App() {
       Math.max(1, ...graphCards.map((card) => card.power || 0)),
     );
     const nodes = graphCards.map((card) => {
-      const hash = hashNumber(card.id);
+      const hash = hashNumber(card.serial);
       const jitterX = (hash % 19) - 9;
       const jitterY = ((Math.floor(hash / 19) % 19) - 9) * 0.85;
       return {
@@ -1233,7 +1327,7 @@ function App() {
         color: card.classStripe || classColors[card.classId] || "#ffffff",
       };
     });
-    const nodeById = new Map(nodes.map((node) => [node.card.id, node]));
+    const nodeById = new Map(nodes.map((node) => [node.card.serial, node]));
     const edges = buildGraphEdges(graphCards);
     const costTicks = Array.from(
       { length: maxCost + 1 },
@@ -1312,7 +1406,7 @@ function App() {
     cardDistribution.byPack[0]?.id ??
     "";
 
-  const modalCard = cards.find((card) => card.id === modalCardId);
+  const modalCard = cards.find((card) => card.serial === modalCardId);
   const sampleCard =
     cards.find((card) => card.name === "금관의 철거인") ??
     cards.find((card) => card.serial === "GRNS-0009") ??
@@ -1320,6 +1414,8 @@ function App() {
   const activeWorldDocIndex =
     worldDocIndex < visibleWorldLinks.length ? worldDocIndex : 0;
   const activeWorldDoc = visibleWorldLinks[activeWorldDocIndex];
+  const isWorldPoemSheet = activeWorldDoc?.title === "도깨비 문지기 노래";
+  const worldPoemSheetSource = worldMarkdown;
   const worldStoryPages = useMemo(
     () =>
       paginateMarkdown(
@@ -1479,7 +1575,11 @@ function App() {
 
   return (
     <main
-      className={`site-shell${activeTab === "intro" ? "" : ` site-shell-${activeTab}`}${activeTab === "tutorial" ? " tutorial-fullscreen-shell" : ""}`}
+      className={cn(
+        "site-shell",
+        activeTab !== "intro" && activeTab !== "tutorial" && `site-shell-${activeTab}`,
+        (activeTab === "tutorial" || activeTab === "world") && "bg-[#111]",
+      )}
       style={
         activeTab === "intro"
           ? {
@@ -1488,7 +1588,7 @@ function App() {
           : undefined
       }
     >
-      {activeTab !== "tutorial" && (
+      {activeTab !== "tutorial" && activeTab !== "world" && (
         <header className={headerClassName}>
           <button
             className={headerBrandClassName}
@@ -1511,7 +1611,7 @@ function App() {
                 aria-current={activeTab === id ? "page" : undefined}
                 className={headerTabButtonClassName}
                 size="sm"
-                variant={activeTab === id ? "primary" : "pale"}
+                variant={activeTab === id ? "selected" : "primary"}
                 onClick={() => navigateTab(id)}
               >
                 {label}
@@ -1547,7 +1647,7 @@ function App() {
         </header>
       )}
 
-      {activeTab !== "tutorial" && isNavDrawerOpen && (
+      {activeTab !== "tutorial" && activeTab !== "world" && isNavDrawerOpen && (
         <div
           className={`${navDrawerOverlayClassName} ${
             isNavDrawerClosing
@@ -1591,7 +1691,7 @@ function App() {
                   aria-current={activeTab === id ? "page" : undefined}
                   className={navDrawerTabButtonClassName}
                   size="sm"
-                  variant={activeTab === id ? "primary" : "pale"}
+                  variant={activeTab === id ? "selected" : "primary"}
                   onClick={() => {
                     navigateTab(id);
                     closeNavDrawer();
@@ -1622,7 +1722,12 @@ function App() {
         </div>
       )}
 
-      <section className="tab-stage">
+      <section
+        className={cn(
+          "tab-stage",
+          (activeTab === "tutorial" || activeTab === "world") && "min-h-svh",
+        )}
+      >
         {activeTab === "intro" && (
           <IntroPage
             onNavigateCards={() => navigateTab("db")}
@@ -1663,10 +1768,10 @@ function App() {
                 {printCardPages.map((page, pageIndex) => (
                   <div className={dbPrintPageClassName} key={`print-page-${pageIndex}`}>
                     {page.map((card) => (
-                      <div className={dbPrintCardClassName} key={card.id}>
+                      <div className={dbPrintCardClassName} key={card.serial}>
                         <CardTile
                           card={card}
-                          onClick={() => setModalCardId(card.id)}
+                          onClick={() => setModalCardId(card.serial)}
                         />
                       </div>
                     ))}
@@ -1936,7 +2041,7 @@ function App() {
                           {graphData.nodes.map((node) => {
                             const label = `${node.card.name} · 허기 ${node.card.cost} / 힘 ${node.card.power}`;
                             const openGraphCard = () =>
-                              setModalCardId(node.card.id);
+                              setModalCardId(node.card.serial);
                             const handleGraphKeyDown = (
                               event: KeyboardEvent<SVGElement>,
                             ) => {
@@ -1947,7 +2052,7 @@ function App() {
                             };
                             return (
                               <circle
-                                key={node.card.id}
+                                key={node.card.serial}
                                 className="graph-node"
                                 role="button"
                                 tabIndex={0}
@@ -2040,14 +2145,29 @@ function App() {
         {activeTab === "field" && <FieldPage />}
 
         {activeTab === "world" && (
-          <WorldPage
-            activeDocIndex={activeWorldDocIndex}
-            links={visibleWorldLinks}
-            onOpenStory={openWorldStory}
-            onOpenMap={openWorldMap}
-            sealedBooksUnlocked={sealedBooksUnlocked}
-            onOpenLockedBook={() => setWorldNotice("이 책은 열리지 않는다.")}
-          />
+          <>
+            {!isWorldShelfFocused && (
+              <div className="world-floating-actions" aria-label="서고 메뉴">
+              <PaperButton
+                className="[--paper-button-height:42px] [--paper-button-padding-x:24px]"
+                contentClassName="gap-1.5"
+                onClick={() => navigateTab("intro")}
+              >
+                <LogOut />
+                나가기
+              </PaperButton>
+              </div>
+            )}
+            <WorldPage
+              activeDocIndex={activeWorldDocIndex}
+              links={visibleWorldLinks}
+              onOpenStory={openWorldStory}
+              onOpenMap={openWorldMap}
+              onShelfFocusChange={setIsWorldShelfFocused}
+              sealedBooksUnlocked={sealedBooksUnlocked}
+              onOpenLockedBook={() => setWorldNotice("이 책은 열리지 않는다.")}
+            />
+          </>
         )}
       </section>
 
@@ -2104,6 +2224,18 @@ function App() {
                   <p>
                     <EmphasizedTerms
                       text={modalCard.effect}
+                      plainTerms
+                      disableTermTooltips
+                    />
+                  </p>
+                </div>
+              )}
+              {modalCard.guide?.trim() && (
+                <div className="modal-rule">
+                  <strong>가이드</strong>
+                  <p>
+                    <EmphasizedTerms
+                      text={modalCard.guide}
                       plainTerms
                       disableTermTooltips
                     />
@@ -2183,7 +2315,35 @@ function App() {
         </div>
       )}
 
-      {isWorldStoryOpen && activeWorldDoc?.story && (
+      {isWorldStoryOpen && activeWorldDoc?.story && isWorldPoemSheet && (
+        <div
+          className="world-story-backdrop"
+          role="presentation"
+          onClick={() => setIsWorldStoryOpen(false)}
+        >
+          <section
+            className="world-poem-sheet-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${activeWorldDoc.title} 종이`}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              className="modal-close world-story-close"
+              type="button"
+              aria-label="닫기"
+              onClick={() => setIsWorldStoryOpen(false)}
+            >
+              <X />
+            </button>
+            <article className="world-poem-sheet">
+              <MarkdownView source={worldPoemSheetSource} />
+            </article>
+          </section>
+        </div>
+      )}
+
+      {isWorldStoryOpen && activeWorldDoc?.story && !isWorldPoemSheet && (
         <div
           className="world-story-backdrop"
           role="presentation"

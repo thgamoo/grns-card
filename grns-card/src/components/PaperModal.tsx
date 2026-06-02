@@ -8,6 +8,7 @@ type PaperModalProps = {
   description?: ReactNode;
   children?: ReactNode;
   className?: string;
+  childrenClassName?: string;
   panelClassName?: string;
 };
 
@@ -19,6 +20,7 @@ export function PaperModal({
   description,
   children,
   className,
+  childrenClassName,
   panelClassName,
 }: PaperModalProps) {
   const base = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -55,7 +57,11 @@ export function PaperModal({
             {description}
           </p>
         )}
-        {children && <div className="mt-1 flex justify-center">{children}</div>}
+        {children && (
+          <div className={cn("mt-1 flex justify-center", childrenClassName)}>
+            {children}
+          </div>
+        )}
       </section>
     </div>
   );

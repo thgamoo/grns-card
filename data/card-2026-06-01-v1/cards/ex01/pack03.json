@@ -1,6 +1,5 @@
 [
   {
-    "id": "sr-r-005",
     "name": "요술방울끈",
     "cost": 1,
     "faction": "사로국",
@@ -24,7 +23,6 @@
     "illustration": "",
     "expansionId": "ex01",
     "expansionName": "드러나는 이면",
-    "id": "ex01-sr-001",
     "name": "좌우반전 탈",
     "cost": 1,
     "faction": "사로국",
@@ -44,7 +42,6 @@
     "illustration": "",
     "expansionId": "ex01",
     "expansionName": "드러나는 이면",
-    "id": "ex01-sr-002",
     "name": "숭배하는 말",
     "cost": 2,
     "faction": "사로국",
@@ -64,7 +61,6 @@
     "illustration": "",
     "expansionId": "ex01",
     "expansionName": "드러나는 이면",
-    "id": "ex01-sr-003",
     "name": "뒤집힌 장승",
     "cost": 2,
     "faction": "사로국",
@@ -80,7 +76,6 @@
     "sigil": "將"
   },
   {
-    "id": "sr-t-006",
     "name": "공포도깨비불",
     "cost": 3,
     "faction": "사로국",
@@ -100,7 +95,6 @@
     "expansionName": "드러나는 이면"
   },
   {
-    "id": "sr-g-005",
     "name": "유리 - 망량",
     "cost": 3,
     "faction": "사로국",
@@ -124,7 +118,6 @@
     "illustration": "",
     "expansionId": "ex01",
     "expansionName": "드러나는 이면",
-    "id": "ex01-sr-004",
     "name": "굴러온 거대알",
     "cost": 4,
     "faction": "사로국",
@@ -144,7 +137,6 @@
     "illustration": "",
     "expansionId": "ex01",
     "expansionName": "드러나는 이면",
-    "id": "ex01-sr-005",
     "name": "유리 - 이사금",
     "cost": 8,
     "faction": "사로국",

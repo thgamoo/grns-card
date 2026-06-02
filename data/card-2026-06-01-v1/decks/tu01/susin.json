@@ -7,7 +7,6 @@
   "packId": "tu01",
   "packName": "옛이야기",
   "hero": {
-    "cardId": "st01-h-001",
     "serial": "tu01-0001",
     "name": "성급한 수신의 화신"
   },
@@ -16,97 +15,78 @@
   "notes": "덱별 프린트용 구성. 성주 1장, 덱 전용 8종 2장씩, 공통 7종 2장씩, 보충 9장을 함께 출력한다.",
   "entries": [
     {
-      "cardId": "st01-r-001",
       "serial": "tu01-0007",
       "count": 2
     },
     {
-      "cardId": "st01-r-004",
       "serial": "tu01-0008",
       "count": 2
     },
     {
-      "cardId": "st01-n-014",
       "serial": "tu01-0011",
       "count": 2
     },
     {
-      "cardId": "st01-i-007",
       "serial": "tu01-0004",
       "count": 2
     },
     {
-      "cardId": "st01-i-006",
       "serial": "tu01-0010",
       "count": 2
     },
     {
-      "cardId": "st01-n-007",
       "serial": "tu01-0009",
       "count": 2
     },
     {
-      "cardId": "st01-n-002",
       "serial": "tu01-0006",
       "count": 2
     },
     {
-      "cardId": "st01-n-004",
       "serial": "tu01-0005",
       "count": 2
     },
     {
-      "cardId": "st01-r-002",
       "serial": "tu01-0028",
       "count": 2
     },
     {
-      "cardId": "st01-n-001",
       "serial": "tu01-0029",
       "count": 2
     },
     {
-      "cardId": "st01-n-003",
       "serial": "tu01-0030",
       "count": 2
     },
     {
-      "cardId": "st01-n-005",
       "serial": "tu01-0031",
       "count": 2
     },
     {
-      "cardId": "st01-r-003",
       "serial": "tu01-0032",
       "count": 2
     },
     {
-      "cardId": "st01-i-005",
       "serial": "tu01-0033",
       "count": 2
     },
     {
-      "cardId": "st01-n-011",
       "serial": "tu01-0035",
       "count": 2
     },
     {
-      "cardId": "st01-n-008",
       "serial": "tu01-0036",
       "count": 2
     },
     {
-      "cardId": "st01-n-013",
       "serial": "tu01-0039",
       "count": 3
     },
     {
-      "cardId": "st01-n-012",
       "serial": "tu01-0034",
       "count": 2
     },
     {
-      "cardId": "st01-n-015",
       "serial": "tu01-0038",
       "count": 2
     }
@@ -114,197 +94,158 @@
   "orderedEntries": [
     {
       "position": 1,
-      "cardId": "st01-r-001",
       "serial": "tu01-0007"
     },
     {
       "position": 2,
-      "cardId": "st01-r-001",
       "serial": "tu01-0007"
     },
     {
       "position": 3,
-      "cardId": "st01-r-004",
       "serial": "tu01-0008"
     },
     {
       "position": 4,
-      "cardId": "st01-r-004",
       "serial": "tu01-0008"
     },
     {
       "position": 5,
-      "cardId": "st01-n-014",
       "serial": "tu01-0011"
     },
     {
       "position": 6,
-      "cardId": "st01-n-014",
       "serial": "tu01-0011"
     },
     {
       "position": 7,
-      "cardId": "st01-i-007",
       "serial": "tu01-0004"
     },
     {
       "position": 8,
-      "cardId": "st01-i-007",
       "serial": "tu01-0004"
     },
     {
       "position": 9,
-      "cardId": "st01-i-006",
       "serial": "tu01-0010"
     },
     {
       "position": 10,
-      "cardId": "st01-i-006",
       "serial": "tu01-0010"
     },
     {
       "position": 11,
-      "cardId": "st01-n-007",
       "serial": "tu01-0009"
     },
     {
       "position": 12,
-      "cardId": "st01-n-007",
       "serial": "tu01-0009"
     },
     {
       "position": 13,
-      "cardId": "st01-n-002",
       "serial": "tu01-0006"
     },
     {
       "position": 14,
-      "cardId": "st01-n-002",
       "serial": "tu01-0006"
     },
     {
       "position": 15,
-      "cardId": "st01-n-004",
       "serial": "tu01-0005"
     },
     {
       "position": 16,
-      "cardId": "st01-n-004",
       "serial": "tu01-0005"
     },
     {
       "position": 17,
-      "cardId": "st01-r-002",
       "serial": "tu01-0028"
     },
     {
       "position": 18,
-      "cardId": "st01-r-002",
       "serial": "tu01-0028"
     },
     {
       "position": 19,
-      "cardId": "st01-n-001",
       "serial": "tu01-0029"
     },
     {
       "position": 20,
-      "cardId": "st01-n-001",
       "serial": "tu01-0029"
     },
     {
       "position": 21,
-      "cardId": "st01-n-003",
       "serial": "tu01-0030"
     },
     {
       "position": 22,
-      "cardId": "st01-n-003",
       "serial": "tu01-0030"
     },
     {
       "position": 23,
-      "cardId": "st01-n-005",
       "serial": "tu01-0031"
     },
     {
       "position": 24,
-      "cardId": "st01-n-005",
       "serial": "tu01-0031"
     },
     {
       "position": 25,
-      "cardId": "st01-r-003",
       "serial": "tu01-0032"
     },
     {
       "position": 26,
-      "cardId": "st01-r-003",
       "serial": "tu01-0032"
     },
     {
       "position": 27,
-      "cardId": "st01-i-005",
       "serial": "tu01-0033"
     },
     {
       "position": 28,
-      "cardId": "st01-i-005",
       "serial": "tu01-0033"
     },
     {
       "position": 29,
-      "cardId": "st01-n-011",
       "serial": "tu01-0035"
     },
     {
       "position": 30,
-      "cardId": "st01-n-011",
       "serial": "tu01-0035"
     },
     {
       "position": 31,
-      "cardId": "st01-n-008",
       "serial": "tu01-0036"
     },
     {
       "position": 32,
-      "cardId": "st01-n-008",
       "serial": "tu01-0036"
     },
     {
       "position": 33,
-      "cardId": "st01-n-013",
       "serial": "tu01-0039"
     },
     {
       "position": 34,
-      "cardId": "st01-n-013",
       "serial": "tu01-0039"
     },
     {
       "position": 35,
-      "cardId": "st01-n-013",
       "serial": "tu01-0039"
     },
     {
       "position": 36,
-      "cardId": "st01-n-012",
       "serial": "tu01-0034"
     },
     {
       "position": 37,
-      "cardId": "st01-n-012",
       "serial": "tu01-0034"
     },
     {
       "position": 38,
-      "cardId": "st01-n-015",
       "serial": "tu01-0038"
     },
     {
       "position": 39,
-      "cardId": "st01-n-015",
       "serial": "tu01-0038"
     }
   ],

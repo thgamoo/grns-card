@@ -6,7 +6,6 @@ import shinmoDeckBannerUrl from "../assets/shinmo-deck-banner-bear.png";
 import sushinDeckBannerUrl from "../assets/sushin-deck-banner-tiger.png";
 
 type PrintCard = {
-  id: string;
   name: string;
   serial: string;
   cost?: number;
@@ -16,7 +15,6 @@ type PrintCard = {
 };
 
 type DeckEntry = {
-  cardId: string;
   serial: string;
   count: number;
 };
@@ -27,7 +25,6 @@ type StructureDeck = {
   totalCards: number;
   mainDeckCards?: number;
   hero?: {
-    cardId: string;
     serial: string;
     name: string;
   };
@@ -51,14 +48,14 @@ type PreviewAnchor = "top" | "bottom";
 
 const cardsPerPrintPage = 9;
 
-const commonCardIds = [
-  "st01-r-002",
-  "st01-n-001",
-  "st01-n-003",
-  "st01-n-005",
-  "st01-r-003",
-  "st01-i-005",
-  "st01-n-011",
+const commonCardSerials = [
+  "tu01-0028",
+  "tu01-0029",
+  "tu01-0030",
+  "tu01-0031",
+  "tu01-0032",
+  "tu01-0033",
+  "tu01-0035",
 ];
 
 function deckShortName(name: string) {
@@ -88,18 +85,20 @@ function deckBannerStyle(deck: StructureDeck): CSSProperties | undefined {
 }
 
 function expandDeck(deck: StructureDeck, cards: PrintCard[]): PrintableDeck {
-  const cardById = new Map(cards.map((card) => [card.id, card]));
+  const cardBySerial = new Map(cards.map((card) => [card.serial, card]));
   const printableCards = [
-    ...(deck.hero?.cardId ? [cardById.get(deck.hero.cardId)] : []),
+    ...(deck.hero?.serial ? [cardBySerial.get(deck.hero.serial)] : []),
     ...deck.entries.flatMap((entry) =>
-      Array.from({ length: entry.count }, () => cardById.get(entry.cardId)),
+      Array.from({ length: entry.count }, () =>
+        cardBySerial.get(entry.serial),
+      ),
     ),
   ].filter((card): card is PrintCard => Boolean(card));
 
   return {
     deck,
     cards: printableCards,
-    uniqueCount: new Set(printableCards.map((card) => card.id)).size,
+    uniqueCount: new Set(printableCards.map((card) => card.serial)).size,
   };
 }
 
@@ -108,15 +107,15 @@ function serialNumber(serial: string) {
 }
 
 function starterDeckColumns(deck: StructureDeck, cards: PrintCard[]) {
-  const cardById = new Map(cards.map((card) => [card.id, card]));
+  const cardBySerial = new Map(cards.map((card) => [card.serial, card]));
   const counts = new Map<string, number>();
   for (const entry of deck.entries) {
-    counts.set(entry.cardId, (counts.get(entry.cardId) ?? 0) + entry.count);
+    counts.set(entry.serial, (counts.get(entry.serial) ?? 0) + entry.count);
   }
 
   const lines = Array.from(counts.entries())
-    .map(([cardId, count]) => ({
-      card: cardById.get(cardId),
+    .map(([serial, count]) => ({
+      card: cardBySerial.get(serial),
       count,
     }))
     .filter((line): line is DeckCardLine => Boolean(line.card))
@@ -127,7 +126,7 @@ function starterDeckColumns(deck: StructureDeck, cards: PrintCard[]) {
     );
 
   const rightStartIndex = lines.findIndex(
-    (line) => line.card.id === "st01-r-002",
+    (line) => line.card.serial === "tu01-0028",
   );
   const splitIndex =
     rightStartIndex === -1 ? Math.ceil(lines.length / 2) : rightStartIndex;
@@ -136,9 +135,11 @@ function starterDeckColumns(deck: StructureDeck, cards: PrintCard[]) {
 }
 
 function expandCommonCards(cards: PrintCard[]): PrintableDeck {
-  const cardById = new Map(cards.map((card) => [card.id, card]));
-  const printableCards = commonCardIds
-    .flatMap((cardId) => Array.from({ length: 2 }, () => cardById.get(cardId)))
+  const cardBySerial = new Map(cards.map((card) => [card.serial, card]));
+  const printableCards = commonCardSerials
+    .flatMap((serial) =>
+      Array.from({ length: 2 }, () => cardBySerial.get(serial)),
+    )
     .filter((card): card is PrintCard => Boolean(card));
 
   return {
@@ -147,14 +148,13 @@ function expandCommonCards(cards: PrintCard[]): PrintableDeck {
       name: "옛이야기: 공통 카드",
       totalCards: printableCards.length,
       mainDeckCards: printableCards.length,
-      entries: commonCardIds.map((cardId) => ({
-        cardId,
-        serial: cardById.get(cardId)?.serial ?? "",
+      entries: commonCardSerials.map((serial) => ({
+        serial,
         count: 2,
       })),
     },
     cards: printableCards,
-    uniqueCount: new Set(printableCards.map((card) => card.id)).size,
+    uniqueCount: new Set(printableCards.map((card) => card.serial)).size,
   };
 }
 
@@ -310,7 +310,7 @@ export function DeckListPage({
           const renderLines = (items: DeckCardLine[]) =>
             items.map(({ card, count }) => (
               <li
-                key={card.id}
+                key={card.serial}
                 tabIndex={0}
                 onBlur={() => setPreviewCard(null)}
                 onFocus={() => setPreviewCard(card)}
@@ -386,7 +386,7 @@ export function DeckListPage({
                 {pageCards.map((card, index) => (
                   <div
                     className="tutorial-print-card"
-                    key={`${card.id}-${pageIndex}-${index}`}
+                    key={`${card.serial}-${pageIndex}-${index}`}
                   >
                     {renderCard(card)}
                   </div>
@@ -416,7 +416,7 @@ export function DeckListPage({
                     {pageCards.map((card, index) => (
                       <div
                         className="tutorial-print-card"
-                        key={`${card.id}-back-${pageIndex}-${index}`}
+                        key={`${card.serial}-back-${pageIndex}-${index}`}
                       >
                         {renderBack()}
                       </div>

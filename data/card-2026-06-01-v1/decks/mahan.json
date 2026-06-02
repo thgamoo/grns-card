@@ -8,82 +8,66 @@
   "trapCards": 15,
   "entries": [
     {
-      "cardId": "sj-g-001",
       "serial": "st04-0016",
       "count": 3
     },
     {
-      "cardId": "sj-g-002",
       "serial": "st04-0020",
       "count": 3
     },
     {
-      "cardId": "sj-g-003",
       "serial": "st04-0014",
       "count": 3
     },
     {
-      "cardId": "sj-g-004",
       "serial": "st04-0005",
       "count": 3
     },
     {
-      "cardId": "sj-g-005",
       "serial": "st04-0017",
       "count": 3
     },
     {
-      "cardId": "sj-r-001",
       "serial": "st04-0006",
       "count": 2
     },
     {
-      "cardId": "sj-r-002",
       "serial": "st04-0001",
       "count": 2
     },
     {
-      "cardId": "sj-r-003",
       "serial": "st04-0012",
       "count": 2
     },
     {
-      "cardId": "sj-r-004",
       "serial": "st04-0013",
       "count": 2
     },
     {
-      "cardId": "sj-r-005",
       "serial": "st04-0015",
       "count": 2
     },
     {
-      "cardId": "sj-t-001",
       "serial": "st04-0002",
       "count": 3
     },
     {
-      "cardId": "sj-t-002",
       "serial": "st04-0003",
       "count": 3
     },
     {
-      "cardId": "sj-t-003",
       "serial": "st04-0007",
       "count": 3
     },
     {
-      "cardId": "sj-t-004",
       "serial": "st04-0008",
       "count": 2
     },
     {
-      "cardId": "sj-t-005",
       "serial": "st04-0004",
       "count": 2
     },
     {
-      "cardId": "sj-t-006",
       "serial": "st04-0018",
       "count": 2
     }
