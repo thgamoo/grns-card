@@ -3246,6 +3246,11 @@ h3 {
   color: var(--paper);
 }
 
+.tutorial-print-head button.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
 .tutorial-print-head svg {
   width: 16px;
   height: 16px;

@@ -51,7 +51,7 @@ import { TutorialPage } from "./pages/TutorialPage";
 import { WorldPage } from "./pages/WorldPage";
 import { cn } from "./lib/utils";
 
-type ClassId = "ym" | "sr" | "gr" | "sj" | "ne";
+type ClassId = "ym" | "sr" | "gr" | "sj" | "ne" | "ob" | "tu";
 
 type VersionEntry = {
   id: string;
@@ -174,6 +174,8 @@ const classColors: Record<ClassId, string> = {
   gr: "#1d4ed8",
   sj: "#7e22ce",
   ne: "#ffffff",
+  ob: "#7a4f1d",
+  tu: "#315f8f",
 };
 
 const fallbackClassMarks: Record<ClassId, string> = {
@@ -182,6 +184,8 @@ const fallbackClassMarks: Record<ClassId, string> = {
   gr: "■",
   sj: "●",
   ne: "◇",
+  ob: "◇",
+  tu: "◇",
 };
 
 const tabs: Array<{ id: TabId; label: string; icon: typeof Sparkles }> = [
@@ -192,7 +196,7 @@ const tabs: Array<{ id: TabId; label: string; icon: typeof Sparkles }> = [
   { id: "graph", label: "그래프", icon: Activity },
   { id: "field", label: "필드", icon: MapIcon },
   { id: "world", label: "서고", icon: BookOpenText },
-  { id: "tutorial", label: "온보딩", icon: Gamepad2 },
+  { id: "tutorial", label: "튜토리얼", icon: Gamepad2 },
 ];
 
 const tabPaths: Record<TabId, string> = {
@@ -300,6 +304,8 @@ const classFrameEmblems: Record<ClassId, string> = {
   gr: "./docs/faction-diamonds/garak-emblem.png",
   sj: "./docs/faction-diamonds/sipje-emblem.png",
   ne: "./docs/faction-diamonds/tu01-emblem.png",
+  ob: "./docs/faction-diamonds/tu01-emblem.png",
+  tu: "./docs/faction-diamonds/tu01-emblem.png",
 };
 
 function publicAssetPath(file: string) {
@@ -321,11 +327,18 @@ function packName(packId: string, expansions: Expansion[]) {
   return expansions.find((item) => item.id === packId)?.name ?? packId;
 }
 
+function classDisplayName(classInfo: ClassInfo) {
+  const className = classInfo.className ?? classInfo.name ?? classInfo.id;
+  return classInfo.faction === className
+    ? classInfo.faction
+    : `${classInfo.faction} · ${className}`;
+}
+
 function serialNumber(serial: string) {
   return Number(serial.match(/(\d+)$/)?.[1] ?? 0);
 }
 
-const packDisplayOrder = ["tu01", "ob01", "st01", "st02", "st03", "st04", "ex01"];
+const packDisplayOrder = ["ob01", "tu01", "st01", "st02", "st03", "st04", "ex01"];
 
 function packOrderIndex(packId: string) {
   const index = packDisplayOrder.indexOf(packId);
@@ -527,7 +540,15 @@ const frameStackMetaSlotClassName =
 const frameStackSerialSlotClassName =
   "!absolute bottom-[3.7%] right-[11.9%] !z-[3] flex min-h-[3.1mm] w-[22.8%] items-center justify-center";
 
-function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
+function CardTile({
+  card,
+  onClick,
+  renderGuide = false,
+}: {
+  card: Card;
+  onClick?: () => void;
+  renderGuide?: boolean;
+}) {
   const compactName =
     card.name.length >= 11
       ? " name-extra-long"
@@ -538,7 +559,7 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
           : "";
   const hasEffect = Boolean(card.effect.trim());
   const effectText = card.effect.trim() || card.lore.trim();
-  const guideText = card.guide?.trim() ?? "";
+  const guideText = renderGuide ? (card.guide?.trim() ?? "") : "";
   const effectScale = hasEffect ? effectScaleClass() : "";
   const effectClassName = hasEffect
     ? `card-effect${effectScale}`
@@ -567,11 +588,13 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
     card.packId === "st02" ||
     card.packId === "st03" ||
     card.packId === "st04" ||
+    card.packId === "ex01" ||
     card.packId === "base";
   const usesLayeredFrame =
     isLayeredPack ||
       illustration?.includes("card-assets/illustrations/tu01") ||
       illustration?.includes("card-assets/illustrations/ob01") ||
+      illustration?.includes("card-assets/illustrations/ex01") ||
       illustration?.includes("card-assets/illustrations/st01") ||
       illustration?.includes("card-assets/illustrations/base") ||
       illustration?.includes("card-assets/base");
@@ -656,13 +679,19 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
         <strong className={frameStackNameClassName}>{card.name}</strong>
         {hasEffect ? (
           <span className={frameStackEffectClassName}>
-            <EmphasizedTerms text={effectText} plainTerms disableTermTooltips />
+            <EmphasizedTerms
+              text={effectText}
+              plainTerms
+              disableTermTooltips
+              compactKeywordBadges
+            />
             {guideText && (
               <span className="card-guide mt-[0.75mm] block origin-left -skew-x-6 whitespace-pre-line text-left text-[1.5mm] font-semibold italic leading-[1.22] [font-synthesis:style]">
                 <EmphasizedTerms
                   text={guideText}
                   plainTerms
                   disableTermTooltips
+                  compactKeywordBadges
                 />
               </span>
             )}
@@ -670,7 +699,12 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
         ) : (
           <div className={frameStackLoreSlotClassName}>
             <span className={frameStackLoreClassName}>
-              <EmphasizedTerms text={effectText} plainTerms disableTermTooltips />
+              <EmphasizedTerms
+                text={effectText}
+                plainTerms
+                disableTermTooltips
+                compactKeywordBadges
+              />
             </span>
           </div>
         )}
@@ -719,13 +753,19 @@ function CardTile({ card, onClick }: { card: Card; onClick?: () => void }) {
           {card.race && <span>{card.race}</span>}
         </span>
         <span className={effectClassName}>
-          <EmphasizedTerms text={effectText} plainTerms disableTermTooltips />
+          <EmphasizedTerms
+            text={effectText}
+            plainTerms
+            disableTermTooltips
+            compactKeywordBadges
+          />
           {guideText && (
             <span className="card-guide origin-left -skew-x-6 italic [font-synthesis:style]">
               <EmphasizedTerms
                 text={guideText}
                 plainTerms
                 disableTermTooltips
+                compactKeywordBadges
               />
             </span>
           )}
@@ -786,12 +826,14 @@ function EmphasizedTerms({
   onRuleTermClick,
   plainTerms = false,
   disableTermTooltips = false,
+  compactKeywordBadges = false,
 }: {
   text: string;
   onFieldTermClick?: () => void;
   onRuleTermClick?: (term: string) => void;
   plainTerms?: boolean;
   disableTermTooltips?: boolean;
+  compactKeywordBadges?: boolean;
 }) {
   return (
     <>
@@ -821,15 +863,16 @@ function EmphasizedTerms({
           }
 
           if (/^<[^>]+>$/.test(part)) {
+            const term = part.slice(1, -1);
+
             if (disableTermTooltips) {
               return (
                 <span key={`${part}-${index}`} className="angle-term font-black">
-                  {part}
+                  {term}
                 </span>
               );
             }
 
-            const term = part.slice(1, -1);
             const note = plainTerms
               ? undefined
               : (fieldTermNotes[term] ??
@@ -849,15 +892,15 @@ function EmphasizedTerms({
                         : undefined
                   }
                 >
-                  {part}
+                  {term}
                 </FieldTermToken>
               );
             }
 
             return plainTerms ? (
-              part
+              term
             ) : (
-              <strong key={`${part}-${index}`}>{part}</strong>
+              <strong key={`${part}-${index}`}>{term}</strong>
             );
           }
 
@@ -865,7 +908,12 @@ function EmphasizedTerms({
             return (
               <strong
                 key={`${part}-${index}`}
-                style={keywordHighlightStyle(part)}
+                style={keywordHighlightStyle(
+                  part,
+                  compactKeywordBadges
+                    ? { fontSize: "0.78em", verticalAlign: "0.07em" }
+                    : undefined,
+                )}
               >
                 {keywordHighlightLabel(part)}
               </strong>
@@ -1201,6 +1249,18 @@ function App() {
       return items;
     }, []);
   }, [cards]);
+  const factionFilterItems = useMemo(() => {
+    const grouped = new Map<string, { faction: string; classIds: string[] }>();
+    for (const item of classes) {
+      const current = grouped.get(item.faction) ?? {
+        faction: item.faction,
+        classIds: [],
+      };
+      current.classIds.push(item.id);
+      grouped.set(item.faction, current);
+    }
+    return Array.from(grouped.values());
+  }, [classes]);
 
   const filteredCards = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -1366,14 +1426,7 @@ function App() {
 
   const cardDistribution = useMemo(() => {
     const classLabels = new Map(
-      classes.map((classInfo) => {
-        const className = classInfo.className ?? classInfo.name ?? classInfo.id;
-        const label =
-          classInfo.faction === className
-            ? classInfo.faction
-            : `${classInfo.faction} · ${className}`;
-        return [classInfo.id, label];
-      }),
+      classes.map((classInfo) => [classInfo.id, classDisplayName(classInfo)]),
     );
     const packClassCounts = cards.reduce((counts, card) => {
       const packCounts = counts.get(card.packId) ?? new Map<string, number>();
@@ -1497,13 +1550,23 @@ function App() {
       <div className={filterGroupClassName}>
         <span className={filterGroupLabelClassName}>세력</span>
         <div className={chipListClassName}>
-          {classes.map((item) => (
+          {factionFilterItems.map((item) => (
             <FilterChip
-              key={item.id}
-              active={classIds.includes(item.id)}
-              onClick={() =>
-                setClassIds((current) => toggleValue(current, item.id))
-              }
+              key={item.faction}
+              active={item.classIds.every((classId) => classIds.includes(classId))}
+              onClick={() => {
+                setClassIds((current) => {
+                  const active = item.classIds.every((classId) =>
+                    current.includes(classId),
+                  );
+                  if (active) {
+                    return current.filter(
+                      (classId) => !item.classIds.includes(classId),
+                    );
+                  }
+                  return Array.from(new Set([...current, ...item.classIds]));
+                });
+              }}
             >
               {item.faction}
             </FilterChip>
@@ -1851,7 +1914,12 @@ function App() {
           <DeckListPage
             cards={cards}
             decks={decks}
-            renderCard={(card) => <CardTile card={card as Card} />}
+            renderCard={(card, options) => (
+              <CardTile
+                card={card as Card}
+                renderGuide={options?.renderGuide}
+              />
+            )}
             renderBack={() => <CardBackTile />}
           />
         )}
@@ -1880,7 +1948,7 @@ function App() {
                     <option value="all">전체</option>
                     {classes.map((item) => (
                       <option key={item.id} value={item.id}>
-                        {item.faction}
+                        {classDisplayName(item)}
                       </option>
                     ))}
                   </select>

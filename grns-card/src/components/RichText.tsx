@@ -16,7 +16,7 @@ type RichTextProps = {
 function toMarkdownishText(text: string) {
   return text
     .replace(/\\n/g, "\n")
-    .replace(/<([^>\n]+)>/g, "**\\<$1\\>**")
+    .replace(/<([^>\n]+)>/g, "**$1**")
     .replace(/\[([^\]\n]+)\]/g, "**[$1]**")
     .replace(/\r?\n/g, "  \n");
 }
@@ -50,7 +50,14 @@ export function RichText({
         components={{
           strong: ({ children }) => {
             const label = plainText(children);
-            const term = label.match(/^<(.+)>$/)?.[1];
+            const term =
+              label.match(/^<(.+)>$/)?.[1] ??
+              (termNotes?.[label] ||
+              navigableTermNotes?.[label] ||
+              ruleTermNotes?.[label] ||
+              combatConceptNotes?.[label]
+                ? label
+                : undefined);
             const note = term ? termNotes?.[term] : undefined;
             const canNavigate = Boolean(term && navigableTermNotes?.[term]);
             const canNavigateRule = Boolean(

@@ -12,6 +12,7 @@ type PrintCard = {
   power?: number;
   race?: string;
   effect?: string;
+  guide?: string;
 };
 
 type DeckEntry = {
@@ -42,21 +43,11 @@ type DeckCardLine = {
   count: number;
 };
 
-type PrintMode = "selected" | "all" | "common";
+type PrintMode = "selected" | "all";
 type PrintSideMode = "simplex" | "duplex";
 type PreviewAnchor = "top" | "bottom";
 
 const cardsPerPrintPage = 9;
-
-const commonCardSerials = [
-  "tu01-0028",
-  "tu01-0029",
-  "tu01-0030",
-  "tu01-0031",
-  "tu01-0032",
-  "tu01-0033",
-  "tu01-0035",
-];
 
 function deckShortName(name: string) {
   if (name.includes("성주 공격 미니덱")) return "첫 전투";
@@ -126,36 +117,12 @@ function starterDeckColumns(deck: StructureDeck, cards: PrintCard[]) {
     );
 
   const rightStartIndex = lines.findIndex(
-    (line) => line.card.serial === "tu01-0028",
+    (line) => line.card.serial === "ob01-0028",
   );
   const splitIndex =
     rightStartIndex === -1 ? Math.ceil(lines.length / 2) : rightStartIndex;
 
   return [lines.slice(0, splitIndex), lines.slice(splitIndex)];
-}
-
-function expandCommonCards(cards: PrintCard[]): PrintableDeck {
-  const cardBySerial = new Map(cards.map((card) => [card.serial, card]));
-  const printableCards = commonCardSerials
-    .flatMap((serial) =>
-      Array.from({ length: 2 }, () => cardBySerial.get(serial)),
-    )
-    .filter((card): card is PrintCard => Boolean(card));
-
-  return {
-    deck: {
-      id: "tu01-common-print",
-      name: "옛이야기: 공통 카드",
-      totalCards: printableCards.length,
-      mainDeckCards: printableCards.length,
-      entries: commonCardSerials.map((serial) => ({
-        serial,
-        count: 2,
-      })),
-    },
-    cards: printableCards,
-    uniqueCount: new Set(printableCards.map((card) => card.serial)).size,
-  };
 }
 
 function chunkCards(cards: PrintCard[], size: number) {
@@ -180,21 +147,24 @@ export function DeckListPage({
 }: {
   cards: PrintCard[];
   decks: StructureDeck[];
-  renderCard: (card: PrintCard) => ReactNode;
+  renderCard: (
+    card: PrintCard,
+    options?: { renderGuide?: boolean },
+  ) => ReactNode;
   renderBack?: () => ReactNode;
 }) {
   const printableDecks = useMemo(
     () =>
       decks
-        .filter((deck) => deck.id.startsWith("tu01-"))
+        .filter((deck) => deck.id.startsWith("ob01-"))
         .map((deck) => expandDeck(deck, cards)),
     [cards, decks],
   );
-  const commonPrintable = useMemo(() => expandCommonCards(cards), [cards]);
   const [selectedDeckId, setSelectedDeckId] = useState<string>("");
   const [printMode, setPrintMode] = useState<PrintMode>("selected");
   const [printSideMode, setPrintSideMode] =
     useState<PrintSideMode>("simplex");
+  const [printGuide, setPrintGuide] = useState(false);
   const [previewCard, setPreviewCard] = useState<PrintCard | null>(null);
   const [previewPosition, setPreviewPosition] = useState({ x: 0, y: 0 });
   const [previewAnchor, setPreviewAnchor] = useState<PreviewAnchor>("top");
@@ -205,9 +175,7 @@ export function DeckListPage({
   const visibleDecks =
     printMode === "all"
       ? printableDecks
-      : printMode === "common"
-        ? [commonPrintable]
-        : [selectedDeck];
+      : [selectedDeck];
 
   useEffect(() => {
     const resetPrintMode = () => setPrintMode("selected");
@@ -233,7 +201,7 @@ export function DeckListPage({
         <section className="tutorial-print-head">
           <p className="eyebrow">deck print</p>
           <h2>덱 프린트</h2>
-          <p>출력할 옛이야기 덱 데이터가 없습니다.</p>
+          <p>출력할 온보딩 덱 데이터가 없습니다.</p>
         </section>
       </div>
     );
@@ -271,9 +239,13 @@ export function DeckListPage({
             <Printer />
             전체 덱 프린트
           </button>
-          <button type="button" onClick={() => printDecks("common")}>
-            <Printer />
-            공통 카드 프린트
+          <button
+            type="button"
+            className={printGuide ? "active" : ""}
+            aria-pressed={printGuide}
+            onClick={() => setPrintGuide((value) => !value)}
+          >
+            가이드 포함
           </button>
         </div>
       </section>
@@ -361,7 +333,7 @@ export function DeckListPage({
             }}
             aria-hidden="true"
           >
-            {renderCard(previewCard)}
+            {renderCard(previewCard, { renderGuide: true })}
           </aside>
         )}
       </section>
@@ -388,7 +360,7 @@ export function DeckListPage({
                     className="tutorial-print-card"
                     key={`${card.serial}-${pageIndex}-${index}`}
                   >
-                    {renderCard(card)}
+                    {renderCard(card, { renderGuide: printGuide })}
                   </div>
                 ))}
               </div>

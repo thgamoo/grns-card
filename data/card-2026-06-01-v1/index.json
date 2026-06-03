@@ -11,15 +11,15 @@
     "cards": [
       {
         "packId": "tu01",
-        "classId": "ne",
+        "classId": "tu",
         "file": "./data/card-2026-06-01-v1/cards/tu01/tu01-pack.json",
-        "count": 39
+        "count": 8
       },
       {
         "packId": "ob01",
-        "classId": "ne",
+        "classId": "ob",
         "file": "./data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
-        "count": 6
+        "count": 39
       },
       {
         "packId": "st01",
@@ -94,16 +94,16 @@
         "file": "./data/card-2026-06-01-v1/decks/mahan.json"
       },
       {
-        "classId": "ne",
-        "file": "./data/card-2026-06-01-v1/decks/tu01/susin.json"
+        "classId": "ob",
+        "file": "./data/card-2026-06-01-v1/decks/ob01/susin.json"
       },
       {
-        "classId": "ne",
-        "file": "./data/card-2026-06-01-v1/decks/tu01/sinmo.json"
+        "classId": "ob",
+        "file": "./data/card-2026-06-01-v1/decks/ob01/sinmo.json"
       },
       {
-        "classId": "ne",
-        "file": "./data/card-2026-06-01-v1/decks/tu01/han.json"
+        "classId": "ob",
+        "file": "./data/card-2026-06-01-v1/decks/ob01/han.json"
       }
     ]
   }

@@ -309,24 +309,24 @@ const tourCardPositionClass: Record<"recruit" | "hand" | "gate" | "opponentLord"
 
 const tutorialCardFaces: Record<string, TutorialCardFace> = {
   "문지기 여우": {
-    cost: 1,
-    power: 1,
+    cost: 2,
+    power: 3,
     race: "짐승",
-    effect: "",
+    effect: "이 카드는 공격할 수 없다.",
     lore: "문 앞에서 가장 먼저 냄새를 맡는다.",
     sigil: "狐",
-    serial: "tu01-0029",
-    illustration: "./docs/card-assets/illustrations/tu01/tu01-0029.png",
+    serial: "tu01-0008",
+    illustration: "./docs/card-assets/illustrations/tu01/tu01-0008.png",
   },
   "문지기 고양이": {
     cost: 1,
-    power: 1,
+    power: 2,
     race: "짐승",
-    effect: "",
+    effect: "이 카드는 공격할 수 없다.",
     lore: "낯선 발소리를 놓치지 않는다.",
     sigil: "猫",
-    serial: "tu01-0027",
-    illustration: "./docs/card-assets/illustrations/tu01/tu01-0027.png",
+    serial: "tu01-0007",
+    illustration: "./docs/card-assets/illustrations/tu01/tu01-0007.png",
   },
   "새끼 이리": {
     cost: 0,
@@ -335,8 +335,8 @@ const tutorialCardFaces: Record<string, TutorialCardFace> = {
     effect: "",
     lore: "무서운 이리도 아기였을 시절이 있죠.",
     sigil: "仔",
-    serial: "ob01-0002",
-    illustration: "./docs/card-assets/illustrations/ob01/ob01-0002.png",
+    serial: "tu01-0002",
+    illustration: "./docs/card-assets/illustrations/tu01/tu01-0002.png",
   },
   "온순한 이리": {
     cost: 1,
@@ -345,8 +345,8 @@ const tutorialCardFaces: Record<string, TutorialCardFace> = {
     effect: "",
     lore: "멍멍아 이리로 온,",
     sigil: "溫",
-    serial: "ob01-0003",
-    illustration: "./docs/card-assets/illustrations/ob01/ob01-0003.png",
+    serial: "tu01-0003",
+    illustration: "./docs/card-assets/illustrations/tu01/tu01-0003.png",
   },
   "떠돌이 이리": {
     cost: 2,
@@ -355,8 +355,8 @@ const tutorialCardFaces: Record<string, TutorialCardFace> = {
     effect: "",
     lore: "개조심! 물릴 수 있어요.",
     sigil: "浪",
-    serial: "ob01-0004",
-    illustration: "./docs/card-assets/illustrations/ob01/ob01-0004.png",
+    serial: "tu01-0004",
+    illustration: "./docs/card-assets/illustrations/tu01/tu01-0004.png",
   },
   "징집소 지키는 이리": {
     cost: 2,
@@ -365,8 +365,8 @@ const tutorialCardFaces: Record<string, TutorialCardFace> = {
     effect: "징집소 맨 위에 있는 한 징집하지 않는다.",
     lore: "",
     sigil: "守",
-    serial: "ob01-0006",
-    illustration: "./docs/card-assets/illustrations/ob01/ob01-0006.png",
+    serial: "tu01-0006",
+    illustration: "./docs/card-assets/illustrations/tu01/tu01-0006.png",
   },
   "쓰디 쓴 쑥떡": {
     cost: 3,
@@ -375,8 +375,8 @@ const tutorialCardFaces: Record<string, TutorialCardFace> = {
     effect: "",
     lore: "이건 호랑이도 싫어해요.",
     sigil: "苦",
-    serial: "tu01-0038",
-    illustration: "./docs/card-assets/illustrations/tu01/tu01-0038.png",
+    serial: "ob01-0038",
+    illustration: "./docs/card-assets/illustrations/ob01/ob01-0038.png",
   },
 };
 

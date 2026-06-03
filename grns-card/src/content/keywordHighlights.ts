@@ -19,6 +19,7 @@ const keywordColorMap = new Map<string, string>([
   ["단말마", KEYWORD_HIGHLIGHT_COLORS.deathrattle],
   ["출정", KEYWORD_HIGHLIGHT_COLORS.deploy],
   ["전투광", KEYWORD_HIGHLIGHT_COLORS.basePosition],
+  ["문지기등장", KEYWORD_HIGHLIGHT_COLORS.supply],
   ["왕살", KEYWORD_HIGHLIGHT_COLORS.yellow],
 ]);
 
@@ -39,7 +40,10 @@ export function keywordHighlightColor(keyword: string) {
   return keywordColorMap.get(keywordHighlightLabel(keyword));
 }
 
-export function keywordHighlightStyle(keyword: string) {
+export function keywordHighlightStyle(
+  keyword: string,
+  options: { fontSize?: string; verticalAlign?: string } = {},
+) {
   const normalizedKeyword = keywordHighlightLabel(keyword);
   const badgeColor = keywordBadgeColorMap.get(normalizedKeyword);
   const color = keywordColorMap.get(normalizedKeyword);
@@ -47,12 +51,12 @@ export function keywordHighlightStyle(keyword: string) {
     borderRadius: "0.28em",
     boxDecorationBreak: "clone",
     display: "inline-block",
-    fontSize: "0.88em",
+    fontSize: options.fontSize ?? "0.88em",
     fontWeight: 950,
-    lineHeight: 1.12,
+    lineHeight: 1,
     paddingBlock: "0.22em",
     paddingInline: "0.22em",
-    verticalAlign: "0.02em",
+    verticalAlign: options.verticalAlign ?? "0.02em",
     WebkitBoxDecorationBreak: "clone",
   } as const;
 

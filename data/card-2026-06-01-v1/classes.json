@@ -48,5 +48,25 @@
     "color": "#525252",
     "stripe": "#d4d4d4",
     "mark": "◇"
+  },
+  {
+    "id": "ob",
+    "label": "온보딩 · 시작덱",
+    "faction": "중립",
+    "className": "온보딩",
+    "theme": "시작덱",
+    "color": "#7a4f1d",
+    "stripe": "#f2dfb8",
+    "mark": "◇"
+  },
+  {
+    "id": "tu",
+    "label": "튜토리얼",
+    "faction": "중립",
+    "className": "튜토리얼",
+    "theme": "규칙 학습",
+    "color": "#315f8f",
+    "stripe": "#dbeafe",
+    "mark": "◇"
   }
 ]

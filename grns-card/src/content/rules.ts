@@ -267,7 +267,7 @@ export const combatConcepts: CombatConcept[] = [
 ];
 
 export const combatConceptNotes = {
-  전투: "공격 선언 이후 매복, 문지기 등장, 상시 효과, 힘겨루기 등을 순서대로 처리하는 절차입니다.",
+  전투: "공격 선언 이후 매복, 문지기등장, 상시 효과, 힘겨루기 등을 순서대로 처리하는 절차입니다.",
   ...Object.fromEntries(combatConcepts.map(({ term, body }) => [term, body])),
 } as Record<string, string>;
 
@@ -284,7 +284,7 @@ export const keywordRules = [
   ["[상시]", "조건을 만족하는 동안 지속적으로 효과를 적용"],
   ["[전투광]", "공격 선언 시 <보급> 하지 않는다."],
   [
-    "[문지기 등장]",
+    "[문지기등장]",
     "<비공개> 상태에서 <문지기> 위치로 배치 되었을 경우 효과를 이행",
   ],
   ["[퇴각]", "<퇴각> 할 경우 효과를 이행"],
