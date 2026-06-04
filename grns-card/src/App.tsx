@@ -1125,7 +1125,6 @@ function App() {
   const [graphClassIds, setGraphClassIds] = useState<string[]>([]);
   const [graphPackIds, setGraphPackIds] = useState<string[]>([]);
   const [graphKeywordFilters, setGraphKeywordFilters] = useState<string[]>([]);
-  const [graphFiltersInitialized, setGraphFiltersInitialized] = useState(false);
   const [modalCardId, setModalCardId] = useState<string | null>(null);
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
   const [mapZoom, setMapZoom] = useState(1);
@@ -1337,7 +1336,13 @@ function App() {
     if (!version) return;
     loadDb(version)
       .then((nextDb) => {
+        const nextPackIds = Array.from(
+          new Set(nextDb.cards.map((card) => card.packId)),
+        ).filter((packId) => !defaultHiddenGraphPackIds.has(packId));
         setDbState(nextDb);
+        setGraphClassIds(nextDb.classes.map((item) => item.id));
+        setGraphPackIds(nextPackIds);
+        setGraphKeywordFilters([]);
         setError("");
         setModalCardId(null);
       })
@@ -1462,16 +1467,6 @@ function App() {
         .map((pack) => pack.id),
     [packs],
   );
-
-  useEffect(() => {
-    if (graphFiltersInitialized || classes.length === 0 || packs.length === 0) {
-      return;
-    }
-    setGraphClassIds(classes.map((item) => item.id));
-    setGraphPackIds(defaultGraphPackIds);
-    setGraphKeywordFilters([]);
-    setGraphFiltersInitialized(true);
-  }, [classes, defaultGraphPackIds, graphFiltersInitialized, packs]);
 
   const graphKeywordItems = useMemo(
     () => keywordCounts.slice(0, 24),
