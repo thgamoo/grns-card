@@ -172,7 +172,7 @@
   },
   {
     "name": "불내예왕",
-    "cost": 3,
+    "cost": 4,
     "faction": "중립",
     "classId": "ne",
     "className": "중립",

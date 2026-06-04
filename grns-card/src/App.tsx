@@ -317,6 +317,7 @@ function tabFromPath(pathname: string): TabId {
 }
 
 const pinnedKeywordFilters = ["왕살"];
+const dbFiltersStorageKey = "grns-card-db-filters-v1";
 const st01FrontFrame =
   "./docs/card-assets/common/card-frame-20260601.png";
 const st01CardBack = "./docs/card-assets/common/backside.png";
@@ -335,6 +336,55 @@ function publicAssetPath(file: string) {
   const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   const path = file.replace(/^\.?\//, "");
   return `${base}/${path}`;
+}
+
+type StoredDbFilters = {
+  query: string;
+  classIds: string[];
+  packIds: string[];
+  keywordFilters: string[];
+  otherFilters: string[];
+};
+
+const emptyDbFilters: StoredDbFilters = {
+  query: "",
+  classIds: [],
+  packIds: [],
+  keywordFilters: [],
+  otherFilters: [],
+};
+
+function stringArray(value: unknown) {
+  return Array.isArray(value)
+    ? value.filter((item): item is string => typeof item === "string")
+    : [];
+}
+
+function loadStoredDbFilters(): StoredDbFilters {
+  if (typeof window === "undefined") return emptyDbFilters;
+  try {
+    const raw = window.localStorage.getItem(dbFiltersStorageKey);
+    if (!raw) return emptyDbFilters;
+    const parsed = JSON.parse(raw) as Partial<StoredDbFilters>;
+    return {
+      query: typeof parsed.query === "string" ? parsed.query : "",
+      classIds: stringArray(parsed.classIds),
+      packIds: stringArray(parsed.packIds),
+      keywordFilters: stringArray(parsed.keywordFilters),
+      otherFilters: stringArray(parsed.otherFilters),
+    };
+  } catch {
+    return emptyDbFilters;
+  }
+}
+
+function saveStoredDbFilters(filters: StoredDbFilters) {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(dbFiltersStorageKey, JSON.stringify(filters));
+  } catch {
+    // Ignore storage failures so the DB stays usable in private or restricted contexts.
+  }
 }
 
 async function fetchJson<T>(file: string): Promise<T> {
@@ -798,6 +848,20 @@ function CardBackTile() {
   );
 }
 
+function BlankFrameTile() {
+  return (
+    <article className={cn(frameStackTileClassName, "card-blank-frame")}>
+      <span className={frameStackIllustrationClassName} aria-hidden="true" />
+      <img
+        className={frameStackImageClassName}
+        src={publicAssetPath(st01FrontFrame)}
+        alt=""
+        aria-hidden="true"
+      />
+    </article>
+  );
+}
+
 function FilterChip({
   active,
   children,
@@ -1043,11 +1107,21 @@ function App() {
   const [manifest, setManifest] = useState<Manifest | null>(null);
   const [dbState, setDbState] = useState<DbState | null>(null);
   const [versionId, setVersionId] = useState("");
-  const [query, setQuery] = useState("");
-  const [classIds, setClassIds] = useState<string[]>([]);
-  const [packIds, setPackIds] = useState<string[]>([]);
-  const [keywordFilters, setKeywordFilters] = useState<string[]>([]);
-  const [otherFilters, setOtherFilters] = useState<string[]>([]);
+  const [initialDbFilters] = useState(loadStoredDbFilters);
+  const [query, setQuery] = useState(initialDbFilters.query);
+  const [classIds, setClassIds] = useState<string[]>(
+    initialDbFilters.classIds,
+  );
+  const [packIds, setPackIds] = useState<string[]>(initialDbFilters.packIds);
+  const [keywordFilters, setKeywordFilters] = useState<string[]>(
+    initialDbFilters.keywordFilters,
+  );
+  const [otherFilters, setOtherFilters] = useState<string[]>(
+    initialDbFilters.otherFilters,
+  );
+  const [dbPrintFaceMode, setDbPrintFaceMode] = useState<"front" | "back">(
+    "front",
+  );
   const [graphClassIds, setGraphClassIds] = useState<string[]>([]);
   const [graphPackIds, setGraphPackIds] = useState<string[]>([]);
   const [graphKeywordFilters, setGraphKeywordFilters] = useState<string[]>([]);
@@ -1096,8 +1170,29 @@ function App() {
       .catch((caught: Error) => setError(caught.message));
   }, []);
 
+  useEffect(() => {
+    saveStoredDbFilters({
+      query,
+      classIds,
+      packIds,
+      keywordFilters,
+      otherFilters,
+    });
+  }, [classIds, keywordFilters, otherFilters, packIds, query]);
+
+  useEffect(() => {
+    const resetDbPrintFaceMode = () => setDbPrintFaceMode("front");
+    window.addEventListener("afterprint", resetDbPrintFaceMode);
+    return () => window.removeEventListener("afterprint", resetDbPrintFaceMode);
+  }, []);
+
   const navigateTab = (tabId: TabId) => {
     navigate({ to: tabPaths[tabId] });
+  };
+
+  const printDbCards = (faceMode: "front" | "back") => {
+    setDbPrintFaceMode(faceMode);
+    window.requestAnimationFrame(() => window.print());
   };
 
   useEffect(() => {
@@ -1830,11 +1925,20 @@ function App() {
                   <button
                     className={panelActionButtonClassName}
                     type="button"
-                    onClick={() => window.print()}
+                    onClick={() => printDbCards("front")}
                     disabled={filteredCards.length === 0}
                   >
                     <Printer />
                     A4 프린트
+                  </button>
+                  <button
+                    className={panelActionButtonClassName}
+                    type="button"
+                    onClick={() => printDbCards("back")}
+                    disabled={filteredCards.length === 0}
+                  >
+                    <Printer />
+                    A4 뒷면
                   </button>
                 </div>
               </div>
@@ -1843,10 +1947,22 @@ function App() {
                   <div className={dbPrintPageClassName} key={`print-page-${pageIndex}`}>
                     {page.map((card) => (
                       <div className={dbPrintCardClassName} key={card.serial}>
-                        <CardTile
-                          card={card}
-                          onClick={() => setModalCardId(card.serial)}
-                        />
+                        {dbPrintFaceMode === "back" ? (
+                          <CardBackTile />
+                        ) : (
+                          <CardTile
+                            card={card}
+                            onClick={() => setModalCardId(card.serial)}
+                          />
+                        )}
+                      </div>
+                    ))}
+                    {Array.from({ length: 9 - page.length }, (_, index) => (
+                      <div
+                        className={`${dbPrintCardClassName} print-only`}
+                        key={`blank-${pageIndex}-${index}`}
+                      >
+                        <BlankFrameTile />
                       </div>
                     ))}
                   </div>
@@ -1932,6 +2048,7 @@ function App() {
               />
             )}
             renderBack={() => <CardBackTile />}
+            renderBlankFrame={() => <BlankFrameTile />}
           />
         )}
 
@@ -1947,85 +2064,6 @@ function App() {
                   <h2>카드 노드 그래프</h2>
                 </div>
                 <span>{dbState?.version.label ?? "불러오는 중"}</span>
-              </div>
-
-              <div className="graph-filter-bar" aria-label="그래프 필터">
-                <div className="graph-toggle-group">
-                  <div className="graph-toggle-head">
-                    <strong>클래스</strong>
-                    <span>{graphClassIds.length}/{classes.length}</span>
-                  </div>
-                  <div className="graph-toggle-list">
-                    {classes.map((item) => {
-                      const active = graphClassIds.includes(item.id);
-                      return (
-                        <button
-                          key={item.id}
-                          type="button"
-                          className={`graph-toggle ${active ? "active" : ""}`}
-                          aria-pressed={active}
-                          style={
-                            {
-                              "--graph-toggle-color":
-                                graphClassBorderColors[item.id],
-                            } as CSSProperties
-                          }
-                          onClick={() =>
-                            setGraphClassIds((current) =>
-                              toggleValue(current, item.id),
-                            )
-                          }
-                        >
-                          {classDisplayName(item)}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-                <div className="graph-toggle-group graph-toggle-group-keywords">
-                  <div className="graph-toggle-head">
-                    <strong>키워드</strong>
-                    <span>
-                      {graphKeywordFilters.length === 0
-                        ? "조건 없음"
-                        : `${graphKeywordFilters.length}개`}
-                    </span>
-                  </div>
-                  <div className="graph-toggle-list graph-toggle-list-keywords">
-                    {graphKeywordItems.map((item) => {
-                      const active = graphKeywordFilters.includes(item.keyword);
-                      return (
-                        <button
-                          key={item.keyword}
-                          type="button"
-                          className={`graph-toggle graph-toggle-keyword ${
-                            active ? "active" : ""
-                          }`}
-                          aria-pressed={active}
-                          onClick={() =>
-                            setGraphKeywordFilters((current) =>
-                              toggleValue(current, item.keyword),
-                            )
-                          }
-                        >
-                          [{item.keyword}]
-                          <span>{item.count}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-                <button
-                  className="graph-filter-reset"
-                  type="button"
-                  onClick={() => {
-                    setGraphClassIds(classes.map((item) => item.id));
-                    setGraphPackIds(defaultGraphPackIds);
-                    setGraphKeywordFilters([]);
-                  }}
-                >
-                  초기화
-                </button>
               </div>
 
               <div className="level-graph-layout">
@@ -2211,43 +2249,121 @@ function App() {
                       <span>평균 힘</span>
                     </div>
                   </div>
-                  <div className="graph-pack-filters">
-                    <div className="graph-pack-filters-head">
-                      <h3>팩</h3>
-                      <strong>{graphPackIds.length}/{packs.length}</strong>
+                  <div className="graph-filter-panel" aria-label="그래프 필터">
+                    <div className="graph-filter-panel-head">
+                      <h3>필터</h3>
+                      <button
+                        className="graph-filter-reset"
+                        type="button"
+                        onClick={() => {
+                          setGraphClassIds(classes.map((item) => item.id));
+                          setGraphPackIds(defaultGraphPackIds);
+                          setGraphKeywordFilters([]);
+                        }}
+                      >
+                        초기화
+                      </button>
                     </div>
-                    <div className="graph-pack-filter-list">
-                      {packs.map((pack) => {
-                        const active = graphPackIds.includes(pack.id);
-                        return (
-                          <button
-                            key={pack.id}
-                            type="button"
-                            className={`graph-pack-toggle ${
-                              active ? "active" : ""
-                            }`}
-                            aria-pressed={active}
-                            onClick={() =>
-                              setGraphPackIds((current) =>
-                                toggleValue(current, pack.id),
-                              )
-                            }
-                          >
-                            <span>{pack.name}</span>
-                            <strong>
-                              {graphPackCounts.get(pack.id) ?? 0}장
-                            </strong>
-                          </button>
-                        );
-                      })}
+                    <div className="graph-toggle-group">
+                      <div className="graph-toggle-head">
+                        <strong>클래스</strong>
+                        <span>{graphClassIds.length}/{classes.length}</span>
+                      </div>
+                      <div className="graph-toggle-list">
+                        {classes.map((item) => {
+                          const active = graphClassIds.includes(item.id);
+                          return (
+                            <button
+                              key={item.id}
+                              type="button"
+                              className={`graph-toggle ${
+                                active ? "active" : ""
+                              }`}
+                              aria-pressed={active}
+                              style={
+                                {
+                                  "--graph-toggle-color":
+                                    graphClassBorderColors[item.id],
+                                } as CSSProperties
+                              }
+                              onClick={() =>
+                                setGraphClassIds((current) =>
+                                  toggleValue(current, item.id),
+                                )
+                              }
+                            >
+                              {classDisplayName(item)}
+                            </button>
+                          );
+                        })}
+                      </div>
                     </div>
-                  </div>
-                  <div className="graph-legend">
-                    <h3>범례</h3>
-                    <p>
-                      가로축은 허기, 세로축은 힘입니다. 각 점은 카드 1장을
-                      나타냅니다.
-                    </p>
+                    <div className="graph-toggle-group">
+                      <div className="graph-toggle-head">
+                        <strong>팩</strong>
+                        <span>{graphPackIds.length}/{packs.length}</span>
+                      </div>
+                      <div className="graph-pack-filter-list">
+                        {packs.map((pack) => {
+                          const active = graphPackIds.includes(pack.id);
+                          return (
+                            <button
+                              key={pack.id}
+                              type="button"
+                              className={`graph-pack-toggle ${
+                                active ? "active" : ""
+                              }`}
+                              aria-pressed={active}
+                              onClick={() =>
+                                setGraphPackIds((current) =>
+                                  toggleValue(current, pack.id),
+                                )
+                              }
+                            >
+                              <span>{pack.name}</span>
+                              <strong>
+                                {graphPackCounts.get(pack.id) ?? 0}장
+                              </strong>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    <div className="graph-toggle-group graph-toggle-group-keywords">
+                      <div className="graph-toggle-head">
+                        <strong>키워드</strong>
+                        <span>
+                          {graphKeywordFilters.length === 0
+                            ? "조건 없음"
+                            : `${graphKeywordFilters.length}개`}
+                        </span>
+                      </div>
+                      <div className="graph-toggle-list graph-toggle-list-keywords">
+                        {graphKeywordItems.map((item) => {
+                          const active = graphKeywordFilters.includes(
+                            item.keyword,
+                          );
+                          return (
+                            <button
+                              key={item.keyword}
+                              type="button"
+                              className={`graph-toggle graph-toggle-keyword ${
+                                active ? "active" : ""
+                              }`}
+                              aria-pressed={active}
+                              onClick={() =>
+                                setGraphKeywordFilters((current) =>
+                                  toggleValue(current, item.keyword),
+                                )
+                              }
+                            >
+                              [{item.keyword}]
+                              <span>{item.count}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
                   </div>
                 </aside>
               </div>

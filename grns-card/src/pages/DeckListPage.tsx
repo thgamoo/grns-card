@@ -43,8 +43,20 @@ type DeckCardLine = {
   count: number;
 };
 
+type PrintSlot =
+  | {
+      type: "card";
+      card: PrintCard;
+      key: string;
+    }
+  | {
+      type: "blank";
+      key: string;
+    };
+
 type PrintMode = "selected" | "all";
 type PrintSideMode = "simplex" | "duplex";
+type PrintFaceMode = "front" | "back";
 type PreviewAnchor = "top" | "bottom";
 
 const cardsPerPrintPage = 9;
@@ -133,6 +145,26 @@ function chunkCards(cards: PrintCard[], size: number) {
   return chunks;
 }
 
+function chunkPrintSlots(cards: PrintCard[], size: number) {
+  return chunkCards(cards, size).map((pageCards, pageIndex) => {
+    const slots: PrintSlot[] = pageCards.map((card, index) => ({
+      type: "card",
+      card,
+      key: `${card.serial}-${pageIndex}-${index}`,
+    }));
+    while (slots.length < size) {
+      slots.push({
+        type: "blank",
+        key: `blank-${pageIndex}-${slots.length}`,
+      });
+    }
+    return {
+      cardCount: pageCards.length,
+      slots,
+    };
+  });
+}
+
 function effectSummary(effect?: string) {
   const text = effect?.replace(/_[\s\S]*$/g, "").trim();
   if (!text) return "(효과없음)";
@@ -144,6 +176,7 @@ export function DeckListPage({
   decks,
   renderCard,
   renderBack,
+  renderBlankFrame,
 }: {
   cards: PrintCard[];
   decks: StructureDeck[];
@@ -152,6 +185,7 @@ export function DeckListPage({
     options?: { renderGuide?: boolean },
   ) => ReactNode;
   renderBack?: () => ReactNode;
+  renderBlankFrame?: () => ReactNode;
 }) {
   const printableDecks = useMemo(
     () =>
@@ -164,6 +198,8 @@ export function DeckListPage({
   const [printMode, setPrintMode] = useState<PrintMode>("selected");
   const [printSideMode, setPrintSideMode] =
     useState<PrintSideMode>("simplex");
+  const [printFaceMode, setPrintFaceMode] =
+    useState<PrintFaceMode>("front");
   const [printGuide, setPrintGuide] = useState(false);
   const [previewCard, setPreviewCard] = useState<PrintCard | null>(null);
   const [previewPosition, setPreviewPosition] = useState({ x: 0, y: 0 });
@@ -178,13 +214,17 @@ export function DeckListPage({
       : [selectedDeck];
 
   useEffect(() => {
-    const resetPrintMode = () => setPrintMode("selected");
+    const resetPrintMode = () => {
+      setPrintMode("selected");
+      setPrintFaceMode("front");
+    };
     window.addEventListener("afterprint", resetPrintMode);
     return () => window.removeEventListener("afterprint", resetPrintMode);
   }, []);
 
-  const printDecks = (mode: PrintMode) => {
+  const printDecks = (mode: PrintMode, faceMode: PrintFaceMode = "front") => {
     setPrintMode(mode);
+    setPrintFaceMode(faceMode);
     window.requestAnimationFrame(() => window.print());
   };
 
@@ -239,6 +279,21 @@ export function DeckListPage({
             <Printer />
             전체 덱 프린트
           </button>
+          {renderBack && (
+            <>
+              <button
+                type="button"
+                onClick={() => printDecks("selected", "back")}
+              >
+                <Printer />
+                선택 덱 뒷면
+              </button>
+              <button type="button" onClick={() => printDecks("all", "back")}>
+                <Printer />
+                전체 뒷면
+              </button>
+            </>
+          )}
           <button
             type="button"
             className={printGuide ? "active" : ""}
@@ -340,37 +395,39 @@ export function DeckListPage({
 
       {visibleDecks.map((item) => (
         <Fragment key={item.deck.id}>
-          {chunkCards(item.cards, cardsPerPrintPage).map((pageCards, pageIndex) => (
-            <section
-              className="tutorial-print-sheet print-only"
-              key={`${item.deck.id}-front-${pageIndex}`}
-              aria-label={`${item.deck.name} 카드 앞면 ${pageIndex + 1}쪽`}
-            >
-              <div className="tutorial-print-title">
-                <span>
-                  {deckShortName(item.deck.name)} 앞면 {pageIndex + 1}
-                </span>
-                <strong>
-                  {pageCards.length}장 / {item.cards.length}장
-                </strong>
-              </div>
-              <div className="tutorial-print-grid">
-                {pageCards.map((card, index) => (
-                  <div
-                    className="tutorial-print-card"
-                    key={`${card.serial}-${pageIndex}-${index}`}
-                  >
-                    {renderCard(card, { renderGuide: printGuide })}
+          {printFaceMode === "front" &&
+            chunkPrintSlots(item.cards, cardsPerPrintPage).map(
+              ({ cardCount, slots }, pageIndex) => (
+                <section
+                  className="tutorial-print-sheet print-only"
+                  key={`${item.deck.id}-front-${pageIndex}`}
+                  aria-label={`${item.deck.name} 카드 앞면 ${pageIndex + 1}쪽`}
+                >
+                  <div className="tutorial-print-title">
+                    <span>
+                      {deckShortName(item.deck.name)} 앞면 {pageIndex + 1}
+                    </span>
+                    <strong>
+                      {cardCount}장 / {item.cards.length}장
+                    </strong>
                   </div>
-                ))}
-              </div>
-            </section>
-          ))}
+                  <div className="tutorial-print-grid">
+                    {slots.map((slot) => (
+                      <div className="tutorial-print-card" key={slot.key}>
+                        {slot.type === "card"
+                          ? renderCard(slot.card, { renderGuide: printGuide })
+                          : renderBlankFrame?.()}
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              ),
+            )}
 
           {renderBack &&
-            printSideMode === "duplex" &&
-            chunkCards(item.cards, cardsPerPrintPage).map(
-              (pageCards, pageIndex) => (
+            (printSideMode === "duplex" || printFaceMode === "back") &&
+            chunkPrintSlots(item.cards, cardsPerPrintPage).map(
+              ({ cardCount, slots }, pageIndex) => (
                 <section
                   className="tutorial-print-sheet tutorial-print-back-sheet print-only"
                   key={`${item.deck.id}-back-${pageIndex}`}
@@ -381,16 +438,18 @@ export function DeckListPage({
                       {deckShortName(item.deck.name)} 뒷면 {pageIndex + 1}
                     </span>
                     <strong>
-                      {pageCards.length}장 / {item.cards.length}장
+                      {cardCount}장 / {item.cards.length}장
                     </strong>
                   </div>
                   <div className="tutorial-print-grid">
-                    {pageCards.map((card, index) => (
+                    {slots.map((slot) => (
                       <div
                         className="tutorial-print-card"
-                        key={`${card.serial}-back-${pageIndex}-${index}`}
+                        key={`${slot.key}-back`}
                       >
-                        {renderBack()}
+                        {slot.type === "card"
+                          ? renderBack()
+                          : renderBlankFrame?.()}
                       </div>
                     ))}
                   </div>
