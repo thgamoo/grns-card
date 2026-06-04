@@ -9,7 +9,6 @@ import { useNavigate, useRouterState } from "@tanstack/react-router";
 import {
   Activity,
   BookOpenText,
-  ChevronDown,
   Gamepad2,
   Library,
   LogOut,
@@ -177,6 +176,29 @@ const classColors: Record<ClassId, string> = {
   ob: "#7a4f1d",
   tu: "#315f8f",
 };
+
+const graphClassBorderColors: Record<ClassId, string> = {
+  ym: "#d92d20",
+  gr: "#2563eb",
+  sr: "#16a34a",
+  sj: "#9333ea",
+  ne: "#111111",
+  ob: "#111111",
+  tu: "#111111",
+};
+
+const graphPackTone: Record<string, number> = {
+  st01: 96,
+  st02: 88,
+  st03: 80,
+  st04: 72,
+  ex01: 64,
+  base: 56,
+  ob01: 48,
+  tu01: 40,
+};
+
+const defaultHiddenGraphPackIds = new Set(["ob01", "tu01"]);
 
 const fallbackClassMarks: Record<ClassId, string> = {
   ym: "△",
@@ -408,22 +430,6 @@ function angleTerms(effect: string) {
   );
 }
 
-function cardTags(card: Card) {
-  return Array.from(
-    new Set(
-      [
-        card.faction,
-        card.race,
-        ...card.race.split(/[/,·\s]+/),
-        ...keywords(card.effect),
-        ...angleTerms(card.effect),
-      ]
-        .map((tag) => tag.trim())
-        .filter(Boolean),
-    ),
-  );
-}
-
 function primaryRace(card: Card) {
   return card.race.split(/[/,·\s]+/).find(Boolean) ?? "";
 }
@@ -433,6 +439,11 @@ function hashNumber(value: string) {
     (total, char) => (total * 31 + char.charCodeAt(0)) % 9973,
     7,
   );
+}
+
+function graphPackFill(packId: string) {
+  const lightness = graphPackTone[packId] ?? 92 - (hashNumber(packId) % 7) * 8;
+  return `hsl(42 38% ${lightness}%)`;
 }
 
 function buildGraphEdges(cards: Card[]) {
@@ -1037,9 +1048,10 @@ function App() {
   const [packIds, setPackIds] = useState<string[]>([]);
   const [keywordFilters, setKeywordFilters] = useState<string[]>([]);
   const [otherFilters, setOtherFilters] = useState<string[]>([]);
-  const [graphClassId, setGraphClassId] = useState("all");
-  const [graphTag, setGraphTag] = useState("전체");
-  const [openDistributionPackId, setOpenDistributionPackId] = useState("base");
+  const [graphClassIds, setGraphClassIds] = useState<string[]>([]);
+  const [graphPackIds, setGraphPackIds] = useState<string[]>([]);
+  const [graphKeywordFilters, setGraphKeywordFilters] = useState<string[]>([]);
+  const [graphFiltersInitialized, setGraphFiltersInitialized] = useState(false);
   const [modalCardId, setModalCardId] = useState<string | null>(null);
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
   const [mapZoom, setMapZoom] = useState(1);
@@ -1348,20 +1360,49 @@ function App() {
     );
   }, [cards]);
 
-  const graphTags = useMemo(() => {
-    return Array.from(new Set(cards.flatMap(cardTags))).sort((a, b) =>
-      a.localeCompare(b, "ko"),
-    );
+  const defaultGraphPackIds = useMemo(
+    () =>
+      packs
+        .filter((pack) => !defaultHiddenGraphPackIds.has(pack.id))
+        .map((pack) => pack.id),
+    [packs],
+  );
+
+  useEffect(() => {
+    if (graphFiltersInitialized || classes.length === 0 || packs.length === 0) {
+      return;
+    }
+    setGraphClassIds(classes.map((item) => item.id));
+    setGraphPackIds(defaultGraphPackIds);
+    setGraphKeywordFilters([]);
+    setGraphFiltersInitialized(true);
+  }, [classes, defaultGraphPackIds, graphFiltersInitialized, packs]);
+
+  const graphKeywordItems = useMemo(
+    () => keywordCounts.slice(0, 24),
+    [keywordCounts],
+  );
+  const graphPackCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    cards.forEach((card) => {
+      counts.set(card.packId, (counts.get(card.packId) ?? 0) + 1);
+    });
+    return counts;
   }, [cards]);
 
   const graphCards = useMemo(() => {
     return cards.filter((card) => {
+      const cardKeywords = keywords(card.effect);
       return (
-        (graphClassId === "all" || card.classId === graphClassId) &&
-        (graphTag === "전체" || cardTags(card).includes(graphTag))
+        graphClassIds.includes(card.classId) &&
+        graphPackIds.includes(card.packId) &&
+        (graphKeywordFilters.length === 0 ||
+          graphKeywordFilters.some((keyword) =>
+            matchesKeywordFilter(cardKeywords, keyword),
+          ))
       );
     });
-  }, [cards, graphClassId, graphTag]);
+  }, [cards, graphClassIds, graphKeywordFilters, graphPackIds]);
 
   const graphData = useMemo(() => {
     const width = 960;
@@ -1384,7 +1425,12 @@ function App() {
         x: margin.left + (card.cost / maxCost) * plotWidth + jitterX,
         y: margin.top + (1 - card.power / maxPower) * plotHeight + jitterY,
         radius: 6.5,
-        color: card.classStripe || classColors[card.classId] || "#ffffff",
+        fill: graphPackFill(card.packId),
+        stroke:
+          graphClassBorderColors[card.classId] ??
+          card.classStripe ??
+          classColors[card.classId] ??
+          "#111111",
       };
     });
     const nodeById = new Map(nodes.map((node) => [node.card.serial, node]));
@@ -1423,41 +1469,6 @@ function App() {
       (graphCards.length || 1);
     return { averageCost, averagePower };
   }, [graphCards]);
-
-  const cardDistribution = useMemo(() => {
-    const classLabels = new Map(
-      classes.map((classInfo) => [classInfo.id, classDisplayName(classInfo)]),
-    );
-    const packClassCounts = cards.reduce((counts, card) => {
-      const packCounts = counts.get(card.packId) ?? new Map<string, number>();
-      packCounts.set(card.classId, (packCounts.get(card.classId) ?? 0) + 1);
-      counts.set(card.packId, packCounts);
-      return counts;
-    }, new Map<string, Map<string, number>>());
-
-    return {
-      total: cards.length,
-      byPack: packs.map((pack) => ({
-        ...pack,
-        total: Array.from(packClassCounts.get(pack.id)?.values() ?? []).reduce(
-          (sum, count) => sum + count,
-          0,
-        ),
-        classes: classes
-          .map((classInfo) => ({
-            id: classInfo.id,
-            name: classLabels.get(classInfo.id) ?? classInfo.id,
-            count: packClassCounts.get(pack.id)?.get(classInfo.id) ?? 0,
-          }))
-          .filter((classInfo) => classInfo.count > 0),
-      })),
-    };
-  }, [cards, classes, packs]);
-  const visibleDistributionPackId =
-    cardDistribution.byPack.find((pack) => pack.id === openDistributionPackId)
-      ?.id ??
-    cardDistribution.byPack[0]?.id ??
-    "";
 
   const modalCard = cards.find((card) => card.serial === modalCardId);
   const sampleCard =
@@ -1939,39 +1950,78 @@ function App() {
               </div>
 
               <div className="graph-filter-bar" aria-label="그래프 필터">
-                <label>
-                  세력
-                  <select
-                    value={graphClassId}
-                    onChange={(event) => setGraphClassId(event.target.value)}
-                  >
-                    <option value="all">전체</option>
-                    {classes.map((item) => (
-                      <option key={item.id} value={item.id}>
-                        {classDisplayName(item)}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label>
-                  태그
-                  <select
-                    value={graphTag}
-                    onChange={(event) => setGraphTag(event.target.value)}
-                  >
-                    <option value="전체">전체</option>
-                    {graphTags.map((tag) => (
-                      <option key={tag} value={tag}>
-                        {tag}
-                      </option>
-                    ))}
-                  </select>
-                </label>
+                <div className="graph-toggle-group">
+                  <div className="graph-toggle-head">
+                    <strong>클래스</strong>
+                    <span>{graphClassIds.length}/{classes.length}</span>
+                  </div>
+                  <div className="graph-toggle-list">
+                    {classes.map((item) => {
+                      const active = graphClassIds.includes(item.id);
+                      return (
+                        <button
+                          key={item.id}
+                          type="button"
+                          className={`graph-toggle ${active ? "active" : ""}`}
+                          aria-pressed={active}
+                          style={
+                            {
+                              "--graph-toggle-color":
+                                graphClassBorderColors[item.id],
+                            } as CSSProperties
+                          }
+                          onClick={() =>
+                            setGraphClassIds((current) =>
+                              toggleValue(current, item.id),
+                            )
+                          }
+                        >
+                          {classDisplayName(item)}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+                <div className="graph-toggle-group graph-toggle-group-keywords">
+                  <div className="graph-toggle-head">
+                    <strong>키워드</strong>
+                    <span>
+                      {graphKeywordFilters.length === 0
+                        ? "조건 없음"
+                        : `${graphKeywordFilters.length}개`}
+                    </span>
+                  </div>
+                  <div className="graph-toggle-list graph-toggle-list-keywords">
+                    {graphKeywordItems.map((item) => {
+                      const active = graphKeywordFilters.includes(item.keyword);
+                      return (
+                        <button
+                          key={item.keyword}
+                          type="button"
+                          className={`graph-toggle graph-toggle-keyword ${
+                            active ? "active" : ""
+                          }`}
+                          aria-pressed={active}
+                          onClick={() =>
+                            setGraphKeywordFilters((current) =>
+                              toggleValue(current, item.keyword),
+                            )
+                          }
+                        >
+                          [{item.keyword}]
+                          <span>{item.count}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
                 <button
+                  className="graph-filter-reset"
                   type="button"
                   onClick={() => {
-                    setGraphClassId("all");
-                    setGraphTag("전체");
+                    setGraphClassIds(classes.map((item) => item.id));
+                    setGraphPackIds(defaultGraphPackIds);
+                    setGraphKeywordFilters([]);
                   }}
                 >
                   초기화
@@ -2009,7 +2059,7 @@ function App() {
                           textAnchor="middle"
                           className="graph-empty-help"
                         >
-                          세력과 태그 조건을 조정하세요.
+                          클래스, 팩, 키워드 조건을 조정하세요.
                         </text>
                       </>
                     ) : (
@@ -2130,7 +2180,8 @@ function App() {
                                 cx={node.x}
                                 cy={node.y}
                                 r={node.radius}
-                                fill={node.color}
+                                fill={node.fill}
+                                stroke={node.stroke}
                               >
                                 <title>{label}</title>
                               </circle>
@@ -2160,42 +2211,36 @@ function App() {
                       <span>평균 힘</span>
                     </div>
                   </div>
-                  <div className="graph-distribution">
-                    <div className="graph-distribution-head">
-                      <h3>카드 분포</h3>
-                      <strong>{cardDistribution.total}장</strong>
+                  <div className="graph-pack-filters">
+                    <div className="graph-pack-filters-head">
+                      <h3>팩</h3>
+                      <strong>{graphPackIds.length}/{packs.length}</strong>
                     </div>
-                    {cardDistribution.byPack.map((pack) => (
-                      <section key={pack.id} className="graph-pack-summary">
-                        <button
-                          type="button"
-                          aria-expanded={visibleDistributionPackId === pack.id}
-                          onClick={() => setOpenDistributionPackId(pack.id)}
-                        >
-                          <span>{pack.name}</span>
-                          <strong>{pack.total}장</strong>
-                          <ChevronDown
-                            className={
-                              visibleDistributionPackId === pack.id
-                                ? "open"
-                                : ""
+                    <div className="graph-pack-filter-list">
+                      {packs.map((pack) => {
+                        const active = graphPackIds.includes(pack.id);
+                        return (
+                          <button
+                            key={pack.id}
+                            type="button"
+                            className={`graph-pack-toggle ${
+                              active ? "active" : ""
+                            }`}
+                            aria-pressed={active}
+                            onClick={() =>
+                              setGraphPackIds((current) =>
+                                toggleValue(current, pack.id),
+                              )
                             }
-                            size={16}
-                            aria-hidden="true"
-                          />
-                        </button>
-                        {visibleDistributionPackId === pack.id && (
-                          <div className="graph-count-list">
-                            {pack.classes.map((classInfo) => (
-                              <span key={classInfo.id}>
-                                <em>{classInfo.name}</em>
-                                <strong>{classInfo.count}</strong>
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                      </section>
-                    ))}
+                          >
+                            <span>{pack.name}</span>
+                            <strong>
+                              {graphPackCounts.get(pack.id) ?? 0}장
+                            </strong>
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
                   <div className="graph-legend">
                     <h3>범례</h3>

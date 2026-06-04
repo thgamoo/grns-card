@@ -13,7 +13,7 @@
         "packId": "tu01",
         "classId": "tu",
         "file": "./data/card-2026-06-01-v1/cards/tu01/tu01-pack.json",
-        "count": 8
+        "count": 19
       },
       {
         "packId": "ob01",
@@ -73,7 +73,7 @@
         "packId": "ex01",
         "classId": "ne",
         "file": "./data/card-2026-06-01-v1/cards/ex01/pack05.json",
-        "count": 10
+        "count": 16
       }
     ],
     "structureDecks": [

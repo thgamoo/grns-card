@@ -547,7 +547,7 @@ const campaigns: Campaign[] = [
     title: "배신 범",
     subtitle: "공격, 전투광, 정복 승리",
     firstPlayer: "나: 선공",
-    opponentLord: "배신 범 3/4",
+    opponentLord: "배신 범 5/6",
     opponentLordArt: "./docs/card-assets/illustrations/tutorial-lords/betrayal-tiger.png",
     opponentDeck: ["징집소 지키는 이리 x1"],
     playerDeck: [
