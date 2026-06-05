@@ -1,0 +1,2613 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
+  <key id="type" for="node" attr.name="type" attr.type="string"/>
+  <key id="title" for="node" attr.name="title" attr.type="string"/>
+  <key id="path" for="node" attr.name="path" attr.type="string"/>
+  <key id="relation" for="edge" attr.name="relation" attr.type="string"/>
+  <graph id="GRNSLore" edgedefault="directed">
+    <node id="card.ob01-0001">
+      <data key="type">card</data>
+      <data key="title">성급한 수신의 화신</data>
+      <data key="path">lore/cards/ob01/ob01-0001.md</data>
+    </node>
+    <node id="card.ob01-0002">
+      <data key="type">card</data>
+      <data key="title">인사하는 신모의 우상</data>
+      <data key="path">lore/cards/ob01/ob01-0002.md</data>
+    </node>
+    <node id="card.ob01-0003">
+      <data key="type">card</data>
+      <data key="title">검은 새 머리 선구자</data>
+      <data key="path">lore/cards/ob01/ob01-0003.md</data>
+    </node>
+    <node id="card.ob01-0004">
+      <data key="type">card</data>
+      <data key="title">호랑이 주술사</data>
+      <data key="path">lore/cards/ob01/ob01-0004.md</data>
+    </node>
+    <node id="card.ob01-0005">
+      <data key="type">card</data>
+      <data key="title">작은 호랑이</data>
+      <data key="path">lore/cards/ob01/ob01-0005.md</data>
+    </node>
+    <node id="card.ob01-0006">
+      <data key="type">card</data>
+      <data key="title">호랑이 그림자</data>
+      <data key="path">lore/cards/ob01/ob01-0006.md</data>
+    </node>
+    <node id="card.ob01-0007">
+      <data key="type">card</data>
+      <data key="title">날뛰는 호랑무늬 고양이</data>
+      <data key="path">lore/cards/ob01/ob01-0007.md</data>
+    </node>
+    <node id="card.ob01-0008">
+      <data key="type">card</data>
+      <data key="title">빗물 호랑이</data>
+      <data key="path">lore/cards/ob01/ob01-0008.md</data>
+    </node>
+    <node id="card.ob01-0009">
+      <data key="type">card</data>
+      <data key="title">허기진 산군</data>
+      <data key="path">lore/cards/ob01/ob01-0009.md</data>
+    </node>
+    <node id="card.ob01-0010">
+      <data key="type">card</data>
+      <data key="title">광전사 범</data>
+      <data key="path">lore/cards/ob01/ob01-0010.md</data>
+    </node>
+    <node id="card.ob01-0011">
+      <data key="type">card</data>
+      <data key="title">저승호랑이</data>
+      <data key="path">lore/cards/ob01/ob01-0011.md</data>
+    </node>
+    <node id="card.ob01-0012">
+      <data key="type">card</data>
+      <data key="title">곰 주술사</data>
+      <data key="path">lore/cards/ob01/ob01-0012.md</data>
+    </node>
+    <node id="card.ob01-0013">
+      <data key="type">card</data>
+      <data key="title">선봉 아기곰</data>
+      <data key="path">lore/cards/ob01/ob01-0013.md</data>
+    </node>
+    <node id="card.ob01-0014">
+      <data key="type">card</data>
+      <data key="title">암살전문 아기곰</data>
+      <data key="path">lore/cards/ob01/ob01-0014.md</data>
+    </node>
+    <node id="card.ob01-0015">
+      <data key="type">card</data>
+      <data key="title">명사수 아기곰</data>
+      <data key="path">lore/cards/ob01/ob01-0015.md</data>
+    </node>
+    <node id="card.ob01-0016">
+      <data key="type">card</data>
+      <data key="title">문지기 아기곰</data>
+      <data key="path">lore/cards/ob01/ob01-0016.md</data>
+    </node>
+    <node id="card.ob01-0017">
+      <data key="type">card</data>
+      <data key="title">척후전문 곰</data>
+      <data key="path">lore/cards/ob01/ob01-0017.md</data>
+    </node>
+    <node id="card.ob01-0018">
+      <data key="type">card</data>
+      <data key="title">성난 곰</data>
+      <data key="path">lore/cards/ob01/ob01-0018.md</data>
+    </node>
+    <node id="card.ob01-0019">
+      <data key="type">card</data>
+      <data key="title">욕심 많은 곰</data>
+      <data key="path">lore/cards/ob01/ob01-0019.md</data>
+    </node>
+    <node id="card.ob01-0020">
+      <data key="type">card</data>
+      <data key="title">귀신 까마귀</data>
+      <data key="path">lore/cards/ob01/ob01-0020.md</data>
+    </node>
+    <node id="card.ob01-0021">
+      <data key="type">card</data>
+      <data key="title">까마귀 주술사</data>
+      <data key="path">lore/cards/ob01/ob01-0021.md</data>
+    </node>
+    <node id="card.ob01-0022">
+      <data key="type">card</data>
+      <data key="title">외눈 까마귀</data>
+      <data key="path">lore/cards/ob01/ob01-0022.md</data>
+    </node>
+    <node id="card.ob01-0023">
+      <data key="type">card</data>
+      <data key="title">날쌘 송골매</data>
+      <data key="path">lore/cards/ob01/ob01-0023.md</data>
+    </node>
+    <node id="card.ob01-0024">
+      <data key="type">card</data>
+      <data key="title">바람의 참매</data>
+      <data key="path">lore/cards/ob01/ob01-0024.md</data>
+    </node>
+    <node id="card.ob01-0025">
+      <data key="type">card</data>
+      <data key="title">다리 셋의 까마귀</data>
+      <data key="path">lore/cards/ob01/ob01-0025.md</data>
+    </node>
+    <node id="card.ob01-0026">
+      <data key="type">card</data>
+      <data key="title">마하수리 부엉이</data>
+      <data key="path">lore/cards/ob01/ob01-0026.md</data>
+    </node>
+    <node id="card.ob01-0027">
+      <data key="type">card</data>
+      <data key="title">공포의 솔부엉이</data>
+      <data key="path">lore/cards/ob01/ob01-0027.md</data>
+    </node>
+    <node id="card.ob01-0028">
+      <data key="type">card</data>
+      <data key="title">겁이 많은 고양이</data>
+      <data key="path">lore/cards/ob01/ob01-0028.md</data>
+    </node>
+    <node id="card.ob01-0029">
+      <data key="type">card</data>
+      <data key="title">무시무시한 고양이</data>
+      <data key="path">lore/cards/ob01/ob01-0029.md</data>
+    </node>
+    <node id="card.ob01-0030">
+      <data key="type">card</data>
+      <data key="title">전쟁선전꾼 여우</data>
+      <data key="path">lore/cards/ob01/ob01-0030.md</data>
+    </node>
+    <node id="card.ob01-0031">
+      <data key="type">card</data>
+      <data key="title">장난꾸러기 여우</data>
+      <data key="path">lore/cards/ob01/ob01-0031.md</data>
+    </node>
+    <node id="card.ob01-0032">
+      <data key="type">card</data>
+      <data key="title">광신도 이리</data>
+      <data key="path">lore/cards/ob01/ob01-0032.md</data>
+    </node>
+    <node id="card.ob01-0033">
+      <data key="type">card</data>
+      <data key="title">반격하는 이리</data>
+      <data key="path">lore/cards/ob01/ob01-0033.md</data>
+    </node>
+    <node id="card.ob01-0034">
+      <data key="type">card</data>
+      <data key="title">부정형의 구름떡</data>
+      <data key="path">lore/cards/ob01/ob01-0034.md</data>
+    </node>
+    <node id="card.ob01-0035">
+      <data key="type">card</data>
+      <data key="title">매우매우 쓴 쑥</data>
+      <data key="path">lore/cards/ob01/ob01-0035.md</data>
+    </node>
+    <node id="card.ob01-0036">
+      <data key="type">card</data>
+      <data key="title">살아움직이는 떡</data>
+      <data key="path">lore/cards/ob01/ob01-0036.md</data>
+    </node>
+    <node id="card.ob01-0037">
+      <data key="type">card</data>
+      <data key="title">상한 알</data>
+      <data key="path">lore/cards/ob01/ob01-0037.md</data>
+    </node>
+    <node id="card.ob01-0038">
+      <data key="type">card</data>
+      <data key="title">쓰디 쓴 쑥떡</data>
+      <data key="path">lore/cards/ob01/ob01-0038.md</data>
+    </node>
+    <node id="card.ob01-0039">
+      <data key="type">card</data>
+      <data key="title">거대한 마늘</data>
+      <data key="path">lore/cards/ob01/ob01-0039.md</data>
+    </node>
+    <node id="class.gaema-musa">
+      <data key="type">class</data>
+      <data key="title">개마무사</data>
+      <data key="path">lore/societies/classes/gaema-musa.md</data>
+    </node>
+    <node id="class.imaemangryang">
+      <data key="type">class</data>
+      <data key="title">이매망량</data>
+      <data key="path">lore/societies/classes/imaemangryang.md</data>
+    </node>
+    <node id="class.juhon-gwisa">
+      <data key="type">class</data>
+      <data key="title">주혼귀사</data>
+      <data key="path">lore/societies/classes/juhon-gwisa.md</data>
+    </node>
+    <node id="class.onboarding">
+      <data key="type">class</data>
+      <data key="title">온보딩</data>
+      <data key="path">lore/societies/classes/onboarding.md</data>
+    </node>
+    <node id="class.yacheoljang">
+      <data key="type">class</data>
+      <data key="title">야철장</data>
+      <data key="path">lore/societies/classes/yacheoljang.md</data>
+    </node>
+    <node id="event.first-gate-training">
+      <data key="type">event</data>
+      <data key="title">첫성문 훈련</data>
+      <data key="path">lore/events/first-gate-training.md</data>
+    </node>
+    <node id="event.great-separation">
+      <data key="type">event</data>
+      <data key="title">대변혁</data>
+      <data key="path">lore/events/great-separation.md</data>
+    </node>
+    <node id="event.revealed-reverse">
+      <data key="type">event_bundle</data>
+      <data key="title">드러나는 이면</data>
+      <data key="path">lore/events/revealed-reverse.md</data>
+    </node>
+    <node id="event.weird-powers-rise">
+      <data key="type">event</data>
+      <data key="title">기이열국의 발흥</data>
+      <data key="path">lore/events/weird-powers-rise.md</data>
+    </node>
+    <node id="faction.gaya">
+      <data key="type">faction</data>
+      <data key="title">가락</data>
+      <data key="path">lore/societies/factions/gaya.md</data>
+    </node>
+    <node id="faction.neutral">
+      <data key="type">faction</data>
+      <data key="title">중립</data>
+      <data key="path">lore/societies/factions/neutral.md</data>
+    </node>
+    <node id="faction.saro">
+      <data key="type">faction</data>
+      <data key="title">사로국</data>
+      <data key="path">lore/societies/factions/saro.md</data>
+    </node>
+    <node id="faction.sipje">
+      <data key="type">faction</data>
+      <data key="title">십제</data>
+      <data key="path">lore/societies/factions/sipje.md</data>
+    </node>
+    <node id="faction.yemaek">
+      <data key="type">faction</data>
+      <data key="title">예맥</data>
+      <data key="path">lore/societies/factions/yemaek.md</data>
+    </node>
+    <node id="group.animal-entourage">
+      <data key="type">social_group</data>
+      <data key="title">시작 덱 짐승 무리</data>
+      <data key="path">lore/societies/groups/animal-entourage.md</data>
+    </node>
+    <node id="group.beast-gatekeepers">
+      <data key="type">social_group</data>
+      <data key="title">짐승 문지기</data>
+      <data key="path">lore/societies/groups/beast-gatekeepers.md</data>
+    </node>
+    <node id="group.onboarding-spirits">
+      <data key="type">social_group</data>
+      <data key="title">시작 덱 영적 보호자</data>
+      <data key="path">lore/societies/groups/onboarding-spirits.md</data>
+    </node>
+    <node id="index.cards">
+      <data key="type">index</data>
+      <data key="title">카드 노트 색인</data>
+      <data key="path">lore/indexes/cards.md</data>
+    </node>
+    <node id="index.image-generation">
+      <data key="type">index</data>
+      <data key="title">이미지 생성 흐름</data>
+      <data key="path">lore/indexes/image-generation.md</data>
+    </node>
+    <node id="index.media">
+      <data key="type">index</data>
+      <data key="title">Media Index</data>
+      <data key="path">lore/indexes/media.md</data>
+    </node>
+    <node id="lore.readme">
+      <data key="type">index</data>
+      <data key="title">Lore</data>
+      <data key="path">lore/README.md</data>
+    </node>
+    <node id="material.old-gate-wood">
+      <data key="type">material</data>
+      <data key="title">낡은 성문 나무</data>
+      <data key="path">lore/visual/materials/old-gate-wood.md</data>
+    </node>
+    <node id="media.readme">
+      <data key="type">index</data>
+      <data key="title">Lore Media</data>
+      <data key="path">lore/media/README.md</data>
+    </node>
+    <node id="motif.beast-gatekeeper">
+      <data key="type">motif</data>
+      <data key="title">짐승 문지기</data>
+      <data key="path">lore/visual/motifs/beast-gatekeeper.md</data>
+    </node>
+    <node id="motif.black-bird-head">
+      <data key="type">motif</data>
+      <data key="title">검은 새 머리</data>
+      <data key="path">lore/visual/motifs/black-bird-head.md</data>
+    </node>
+    <node id="motif.sacrifice-under-deck">
+      <data key="type">motif</data>
+      <data key="title">아래에서부터의 희생</data>
+      <data key="path">lore/visual/motifs/sacrifice-under-deck.md</data>
+    </node>
+    <node id="motif.three-legged-crow">
+      <data key="type">motif</data>
+      <data key="title">다리 셋의 까마귀</data>
+      <data key="path">lore/visual/motifs/three-legged-crow.md</data>
+    </node>
+    <node id="note.2026-06-05">
+      <data key="type">note</data>
+      <data key="title">2026-06-05</data>
+      <data key="path">lore/2026-06-05.md</data>
+    </node>
+    <node id="palette.first-gate-muted-ritual">
+      <data key="type">palette</data>
+      <data key="title">첫성문 절제 의식 팔레트</data>
+      <data key="path">lore/visual/palettes/first-gate-muted-ritual.md</data>
+    </node>
+    <node id="period.after-great-separation-year-47">
+      <data key="type">period</data>
+      <data key="title">대변혁 이후 47년</data>
+      <data key="path">lore/chronology/periods/after-great-separation-year-47.md</data>
+    </node>
+    <node id="period.first-gate-learning-age">
+      <data key="type">period</data>
+      <data key="title">첫성문 학습기</data>
+      <data key="path">lore/chronology/periods/first-gate-learning-age.md</data>
+    </node>
+    <node id="race.beast">
+      <data key="type">external_ref</data>
+      <data key="title">race.beast</data>
+      <data key="path"></data>
+    </node>
+    <node id="race.dokkaebi">
+      <data key="type">external_ref</data>
+      <data key="title">race.dokkaebi</data>
+      <data key="path"></data>
+    </node>
+    <node id="race.egg">
+      <data key="type">external_ref</data>
+      <data key="title">race.egg</data>
+      <data key="path"></data>
+    </node>
+    <node id="race.ghost">
+      <data key="type">external_ref</data>
+      <data key="title">race.ghost</data>
+      <data key="path"></data>
+    </node>
+    <node id="race.human">
+      <data key="type">external_ref</data>
+      <data key="title">race.human</data>
+      <data key="path"></data>
+    </node>
+    <node id="race.tool">
+      <data key="type">external_ref</data>
+      <data key="title">race.tool</data>
+      <data key="path"></data>
+    </node>
+    <node id="region.divided-continent">
+      <data key="type">region</data>
+      <data key="title">잘려 나온 대륙</data>
+      <data key="path">lore/atlas/regions/divided-continent.md</data>
+    </node>
+    <node id="rule.card-illustration">
+      <data key="type">prompt_rule</data>
+      <data key="title">Card Illustration Rule</data>
+      <data key="path">lore/rules/card-illustration.md</data>
+    </node>
+    <node id="scene.onboarding-first-gate">
+      <data key="type">scene_context</data>
+      <data key="title">시작 덱의 첫성문</data>
+      <data key="path">lore/scenes/onboarding-first-gate.md</data>
+    </node>
+    <node id="scene.world-separation-aftermath">
+      <data key="type">scene_context</data>
+      <data key="title">세계분리 이후</data>
+      <data key="path">lore/scenes/world-separation-aftermath.md</data>
+    </node>
+    <node id="site.first-gate">
+      <data key="type">site</data>
+      <data key="title">첫성문</data>
+      <data key="path">lore/atlas/sites/first-gate.md</data>
+    </node>
+    <node id="style-profile.ex01-revealed-reverse">
+      <data key="type">style_profile</data>
+      <data key="title">EX01 Revealed Reverse</data>
+      <data key="path">lore/visual/style-profiles/ex01-revealed-reverse.md</data>
+    </node>
+    <node id="style-profile.ob01">
+      <data key="type">style_profile</data>
+      <data key="title">OB01 Onboarding</data>
+      <data key="path">lore/visual/style-profiles/ob01.md</data>
+    </node>
+    <node id="style-profile.st01-yemaek">
+      <data key="type">style_profile</data>
+      <data key="title">ST01 Yemaek</data>
+      <data key="path">lore/visual/style-profiles/st01-yemaek.md</data>
+    </node>
+    <node id="style-profile.st02-gaya">
+      <data key="type">style_profile</data>
+      <data key="title">ST02 Gaya</data>
+      <data key="path">lore/visual/style-profiles/st02-gaya.md</data>
+    </node>
+    <node id="style-profile.st03-saro">
+      <data key="type">style_profile</data>
+      <data key="title">ST03 Saro</data>
+      <data key="path">lore/visual/style-profiles/st03-saro.md</data>
+    </node>
+    <node id="style-profile.st04-sipje">
+      <data key="type">style_profile</data>
+      <data key="title">ST04 Sipje</data>
+      <data key="path">lore/visual/style-profiles/st04-sipje.md</data>
+    </node>
+    <node id="style-profile.tu01">
+      <data key="type">style_profile</data>
+      <data key="title">TU01 Tutorial</data>
+      <data key="path">lore/visual/style-profiles/tu01.md</data>
+    </node>
+    <node id="style.anti-realism">
+      <data key="type">style_guardrail</data>
+      <data key="title">Anti Realism</data>
+      <data key="path">lore/visual/anti-realism.md</data>
+    </node>
+    <node id="style.core">
+      <data key="type">style_core</data>
+      <data key="title">Style Core</data>
+      <data key="path">lore/visual/style-core.md</data>
+    </node>
+    <edge id="e1" source="region.divided-continent" target="scene.world-separation-aftermath">
+      <data key="relation">scene</data>
+    </edge>
+    <edge id="e2" source="region.divided-continent" target="scene.world-separation-aftermath">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e3" source="region.divided-continent" target="event.great-separation">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e4" source="site.first-gate" target="region.divided-continent">
+      <data key="relation">region</data>
+    </edge>
+    <edge id="e5" source="site.first-gate" target="scene.onboarding-first-gate">
+      <data key="relation">scene</data>
+    </edge>
+    <edge id="e6" source="site.first-gate" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e7" source="site.first-gate" target="group.beast-gatekeepers">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e8" source="card.ob01-0001" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e9" source="card.ob01-0001" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e10" source="card.ob01-0001" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e11" source="card.ob01-0001" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e12" source="card.ob01-0001" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e13" source="card.ob01-0001" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e14" source="card.ob01-0001" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e15" source="card.ob01-0001" target="group.onboarding-spirits">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e16" source="card.ob01-0001" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e17" source="card.ob01-0001" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e18" source="card.ob01-0001" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e19" source="card.ob01-0002" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e20" source="card.ob01-0002" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e21" source="card.ob01-0002" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e22" source="card.ob01-0002" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e23" source="card.ob01-0002" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e24" source="card.ob01-0002" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e25" source="card.ob01-0002" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e26" source="card.ob01-0002" target="group.beast-gatekeepers">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e27" source="card.ob01-0002" target="group.onboarding-spirits">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e28" source="card.ob01-0002" target="motif.beast-gatekeeper">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e29" source="card.ob01-0002" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e30" source="card.ob01-0002" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e31" source="card.ob01-0002" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e32" source="card.ob01-0002" target="motif.beast-gatekeeper">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e33" source="card.ob01-0003" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e34" source="card.ob01-0003" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e35" source="card.ob01-0003" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e36" source="card.ob01-0003" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e37" source="card.ob01-0003" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e38" source="card.ob01-0003" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e39" source="card.ob01-0003" target="race.dokkaebi">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e40" source="card.ob01-0003" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e41" source="card.ob01-0003" target="group.onboarding-spirits">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e42" source="card.ob01-0003" target="motif.sacrifice-under-deck">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e43" source="card.ob01-0003" target="motif.three-legged-crow">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e44" source="card.ob01-0003" target="motif.black-bird-head">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e45" source="card.ob01-0003" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e46" source="card.ob01-0003" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e47" source="card.ob01-0003" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e48" source="card.ob01-0003" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e49" source="card.ob01-0003" target="motif.three-legged-crow">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e50" source="card.ob01-0003" target="motif.black-bird-head">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e51" source="card.ob01-0004" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e52" source="card.ob01-0004" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e53" source="card.ob01-0004" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e54" source="card.ob01-0004" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e55" source="card.ob01-0004" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e56" source="card.ob01-0004" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e57" source="card.ob01-0004" target="race.human">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e58" source="card.ob01-0004" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e59" source="card.ob01-0004" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e60" source="card.ob01-0004" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e61" source="card.ob01-0004" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e62" source="card.ob01-0005" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e63" source="card.ob01-0005" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e64" source="card.ob01-0005" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e65" source="card.ob01-0005" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e66" source="card.ob01-0005" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e67" source="card.ob01-0005" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e68" source="card.ob01-0005" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e69" source="card.ob01-0005" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e70" source="card.ob01-0005" target="motif.beast-gatekeeper">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e71" source="card.ob01-0005" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e72" source="card.ob01-0005" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e73" source="card.ob01-0005" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e74" source="card.ob01-0005" target="motif.beast-gatekeeper">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e75" source="card.ob01-0006" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e76" source="card.ob01-0006" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e77" source="card.ob01-0006" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e78" source="card.ob01-0006" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e79" source="card.ob01-0006" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e80" source="card.ob01-0006" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e81" source="card.ob01-0006" target="race.dokkaebi">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e82" source="card.ob01-0006" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e83" source="card.ob01-0006" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e84" source="card.ob01-0006" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e85" source="card.ob01-0006" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e86" source="card.ob01-0006" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e87" source="card.ob01-0007" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e88" source="card.ob01-0007" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e89" source="card.ob01-0007" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e90" source="card.ob01-0007" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e91" source="card.ob01-0007" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e92" source="card.ob01-0007" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e93" source="card.ob01-0007" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e94" source="card.ob01-0007" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e95" source="card.ob01-0007" target="motif.beast-gatekeeper">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e96" source="card.ob01-0007" target="motif.sacrifice-under-deck">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e97" source="card.ob01-0007" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e98" source="card.ob01-0007" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e99" source="card.ob01-0007" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e100" source="card.ob01-0007" target="motif.beast-gatekeeper">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e101" source="card.ob01-0007" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e102" source="card.ob01-0008" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e103" source="card.ob01-0008" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e104" source="card.ob01-0008" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e105" source="card.ob01-0008" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e106" source="card.ob01-0008" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e107" source="card.ob01-0008" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e108" source="card.ob01-0008" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e109" source="card.ob01-0008" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e110" source="card.ob01-0008" target="group.beast-gatekeepers">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e111" source="card.ob01-0008" target="motif.beast-gatekeeper">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e112" source="card.ob01-0008" target="motif.sacrifice-under-deck">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e113" source="card.ob01-0008" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e114" source="card.ob01-0008" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e115" source="card.ob01-0008" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e116" source="card.ob01-0008" target="motif.beast-gatekeeper">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e117" source="card.ob01-0008" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e118" source="card.ob01-0009" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e119" source="card.ob01-0009" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e120" source="card.ob01-0009" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e121" source="card.ob01-0009" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e122" source="card.ob01-0009" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e123" source="card.ob01-0009" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e124" source="card.ob01-0009" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e125" source="card.ob01-0009" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e126" source="card.ob01-0009" target="motif.sacrifice-under-deck">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e127" source="card.ob01-0009" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e128" source="card.ob01-0009" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e129" source="card.ob01-0009" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e130" source="card.ob01-0009" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e131" source="card.ob01-0010" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e132" source="card.ob01-0010" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e133" source="card.ob01-0010" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e134" source="card.ob01-0010" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e135" source="card.ob01-0010" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e136" source="card.ob01-0010" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e137" source="card.ob01-0010" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e138" source="card.ob01-0010" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e139" source="card.ob01-0010" target="motif.sacrifice-under-deck">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e140" source="card.ob01-0010" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e141" source="card.ob01-0010" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e142" source="card.ob01-0010" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e143" source="card.ob01-0010" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e144" source="card.ob01-0011" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e145" source="card.ob01-0011" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e146" source="card.ob01-0011" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e147" source="card.ob01-0011" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e148" source="card.ob01-0011" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e149" source="card.ob01-0011" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e150" source="card.ob01-0011" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e151" source="card.ob01-0011" target="race.ghost">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e152" source="card.ob01-0011" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e153" source="card.ob01-0011" target="motif.sacrifice-under-deck">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e154" source="card.ob01-0011" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e155" source="card.ob01-0011" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e156" source="card.ob01-0011" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e157" source="card.ob01-0011" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e158" source="card.ob01-0012" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e159" source="card.ob01-0012" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e160" source="card.ob01-0012" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e161" source="card.ob01-0012" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e162" source="card.ob01-0012" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e163" source="card.ob01-0012" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e164" source="card.ob01-0012" target="race.human">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e165" source="card.ob01-0012" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e166" source="card.ob01-0012" target="group.beast-gatekeepers">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e167" source="card.ob01-0012" target="motif.beast-gatekeeper">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e168" source="card.ob01-0012" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e169" source="card.ob01-0012" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e170" source="card.ob01-0012" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e171" source="card.ob01-0012" target="motif.beast-gatekeeper">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e172" source="card.ob01-0013" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e173" source="card.ob01-0013" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e174" source="card.ob01-0013" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e175" source="card.ob01-0013" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e176" source="card.ob01-0013" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e177" source="card.ob01-0013" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e178" source="card.ob01-0013" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e179" source="card.ob01-0013" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e180" source="card.ob01-0013" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e181" source="card.ob01-0013" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e182" source="card.ob01-0013" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e183" source="card.ob01-0014" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e184" source="card.ob01-0014" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e185" source="card.ob01-0014" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e186" source="card.ob01-0014" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e187" source="card.ob01-0014" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e188" source="card.ob01-0014" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e189" source="card.ob01-0014" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e190" source="card.ob01-0014" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e191" source="card.ob01-0014" target="motif.sacrifice-under-deck">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e192" source="card.ob01-0014" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e193" source="card.ob01-0014" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e194" source="card.ob01-0014" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e195" source="card.ob01-0014" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e196" source="card.ob01-0015" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e197" source="card.ob01-0015" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e198" source="card.ob01-0015" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e199" source="card.ob01-0015" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e200" source="card.ob01-0015" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e201" source="card.ob01-0015" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e202" source="card.ob01-0015" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e203" source="card.ob01-0015" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e204" source="card.ob01-0015" target="group.beast-gatekeepers">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e205" source="card.ob01-0015" target="motif.beast-gatekeeper">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e206" source="card.ob01-0015" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e207" source="card.ob01-0015" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e208" source="card.ob01-0015" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e209" source="card.ob01-0015" target="motif.beast-gatekeeper">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e210" source="card.ob01-0016" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e211" source="card.ob01-0016" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e212" source="card.ob01-0016" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e213" source="card.ob01-0016" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e214" source="card.ob01-0016" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e215" source="card.ob01-0016" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e216" source="card.ob01-0016" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e217" source="card.ob01-0016" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e218" source="card.ob01-0016" target="group.beast-gatekeepers">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e219" source="card.ob01-0016" target="motif.beast-gatekeeper">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e220" source="card.ob01-0016" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e221" source="card.ob01-0016" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e222" source="card.ob01-0016" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e223" source="card.ob01-0016" target="motif.beast-gatekeeper">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e224" source="card.ob01-0017" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e225" source="card.ob01-0017" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e226" source="card.ob01-0017" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e227" source="card.ob01-0017" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e228" source="card.ob01-0017" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e229" source="card.ob01-0017" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e230" source="card.ob01-0017" target="race.human">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e231" source="card.ob01-0017" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e232" source="card.ob01-0017" target="group.beast-gatekeepers">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e233" source="card.ob01-0017" target="motif.beast-gatekeeper">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e234" source="card.ob01-0017" target="motif.sacrifice-under-deck">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e235" source="card.ob01-0017" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e236" source="card.ob01-0017" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e237" source="card.ob01-0017" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e238" source="card.ob01-0017" target="motif.beast-gatekeeper">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e239" source="card.ob01-0017" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e240" source="card.ob01-0018" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e241" source="card.ob01-0018" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e242" source="card.ob01-0018" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e243" source="card.ob01-0018" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e244" source="card.ob01-0018" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e245" source="card.ob01-0018" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e246" source="card.ob01-0018" target="race.human">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e247" source="card.ob01-0018" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e248" source="card.ob01-0018" target="group.beast-gatekeepers">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e249" source="card.ob01-0018" target="motif.beast-gatekeeper">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e250" source="card.ob01-0018" target="motif.sacrifice-under-deck">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e251" source="card.ob01-0018" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e252" source="card.ob01-0018" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e253" source="card.ob01-0018" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e254" source="card.ob01-0018" target="motif.beast-gatekeeper">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e255" source="card.ob01-0018" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e256" source="card.ob01-0019" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e257" source="card.ob01-0019" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e258" source="card.ob01-0019" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e259" source="card.ob01-0019" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e260" source="card.ob01-0019" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e261" source="card.ob01-0019" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e262" source="card.ob01-0019" target="race.dokkaebi">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e263" source="card.ob01-0019" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e264" source="card.ob01-0019" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e265" source="card.ob01-0019" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e266" source="card.ob01-0019" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e267" source="card.ob01-0020" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e268" source="card.ob01-0020" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e269" source="card.ob01-0020" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e270" source="card.ob01-0020" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e271" source="card.ob01-0020" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e272" source="card.ob01-0020" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e273" source="card.ob01-0020" target="race.ghost">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e274" source="card.ob01-0020" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e275" source="card.ob01-0020" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e276" source="card.ob01-0020" target="motif.sacrifice-under-deck">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e277" source="card.ob01-0020" target="motif.three-legged-crow">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e278" source="card.ob01-0020" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e279" source="card.ob01-0020" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e280" source="card.ob01-0020" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e281" source="card.ob01-0020" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e282" source="card.ob01-0020" target="motif.three-legged-crow">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e283" source="card.ob01-0021" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e284" source="card.ob01-0021" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e285" source="card.ob01-0021" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e286" source="card.ob01-0021" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e287" source="card.ob01-0021" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e288" source="card.ob01-0021" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e289" source="card.ob01-0021" target="race.human">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e290" source="card.ob01-0021" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e291" source="card.ob01-0021" target="motif.sacrifice-under-deck">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e292" source="card.ob01-0021" target="motif.three-legged-crow">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e293" source="card.ob01-0021" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e294" source="card.ob01-0021" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e295" source="card.ob01-0021" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e296" source="card.ob01-0021" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e297" source="card.ob01-0021" target="motif.three-legged-crow">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e298" source="card.ob01-0022" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e299" source="card.ob01-0022" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e300" source="card.ob01-0022" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e301" source="card.ob01-0022" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e302" source="card.ob01-0022" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e303" source="card.ob01-0022" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e304" source="card.ob01-0022" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e305" source="card.ob01-0022" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e306" source="card.ob01-0022" target="motif.sacrifice-under-deck">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e307" source="card.ob01-0022" target="motif.three-legged-crow">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e308" source="card.ob01-0022" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e309" source="card.ob01-0022" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e310" source="card.ob01-0022" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e311" source="card.ob01-0022" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e312" source="card.ob01-0022" target="motif.three-legged-crow">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e313" source="card.ob01-0023" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e314" source="card.ob01-0023" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e315" source="card.ob01-0023" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e316" source="card.ob01-0023" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e317" source="card.ob01-0023" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e318" source="card.ob01-0023" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e319" source="card.ob01-0023" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e320" source="card.ob01-0023" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e321" source="card.ob01-0023" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e322" source="card.ob01-0023" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e323" source="card.ob01-0023" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e324" source="card.ob01-0024" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e325" source="card.ob01-0024" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e326" source="card.ob01-0024" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e327" source="card.ob01-0024" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e328" source="card.ob01-0024" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e329" source="card.ob01-0024" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e330" source="card.ob01-0024" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e331" source="card.ob01-0024" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e332" source="card.ob01-0024" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e333" source="card.ob01-0024" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e334" source="card.ob01-0024" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e335" source="card.ob01-0025" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e336" source="card.ob01-0025" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e337" source="card.ob01-0025" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e338" source="card.ob01-0025" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e339" source="card.ob01-0025" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e340" source="card.ob01-0025" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e341" source="card.ob01-0025" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e342" source="card.ob01-0025" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e343" source="card.ob01-0025" target="motif.sacrifice-under-deck">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e344" source="card.ob01-0025" target="motif.three-legged-crow">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e345" source="card.ob01-0025" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e346" source="card.ob01-0025" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e347" source="card.ob01-0025" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e348" source="card.ob01-0025" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e349" source="card.ob01-0025" target="motif.three-legged-crow">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e350" source="card.ob01-0026" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e351" source="card.ob01-0026" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e352" source="card.ob01-0026" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e353" source="card.ob01-0026" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e354" source="card.ob01-0026" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e355" source="card.ob01-0026" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e356" source="card.ob01-0026" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e357" source="card.ob01-0026" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e358" source="card.ob01-0026" target="motif.sacrifice-under-deck">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e359" source="card.ob01-0026" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e360" source="card.ob01-0026" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e361" source="card.ob01-0026" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e362" source="card.ob01-0026" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e363" source="card.ob01-0027" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e364" source="card.ob01-0027" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e365" source="card.ob01-0027" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e366" source="card.ob01-0027" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e367" source="card.ob01-0027" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e368" source="card.ob01-0027" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e369" source="card.ob01-0027" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e370" source="card.ob01-0027" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e371" source="card.ob01-0027" target="motif.sacrifice-under-deck">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e372" source="card.ob01-0027" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e373" source="card.ob01-0027" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e374" source="card.ob01-0027" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e375" source="card.ob01-0027" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e376" source="card.ob01-0028" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e377" source="card.ob01-0028" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e378" source="card.ob01-0028" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e379" source="card.ob01-0028" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e380" source="card.ob01-0028" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e381" source="card.ob01-0028" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e382" source="card.ob01-0028" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e383" source="card.ob01-0028" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e384" source="card.ob01-0028" target="motif.beast-gatekeeper">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e385" source="card.ob01-0028" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e386" source="card.ob01-0028" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e387" source="card.ob01-0028" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e388" source="card.ob01-0028" target="motif.beast-gatekeeper">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e389" source="card.ob01-0029" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e390" source="card.ob01-0029" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e391" source="card.ob01-0029" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e392" source="card.ob01-0029" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e393" source="card.ob01-0029" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e394" source="card.ob01-0029" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e395" source="card.ob01-0029" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e396" source="card.ob01-0029" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e397" source="card.ob01-0029" target="motif.beast-gatekeeper">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e398" source="card.ob01-0029" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e399" source="card.ob01-0029" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e400" source="card.ob01-0029" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e401" source="card.ob01-0029" target="motif.beast-gatekeeper">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e402" source="card.ob01-0030" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e403" source="card.ob01-0030" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e404" source="card.ob01-0030" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e405" source="card.ob01-0030" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e406" source="card.ob01-0030" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e407" source="card.ob01-0030" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e408" source="card.ob01-0030" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e409" source="card.ob01-0030" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e410" source="card.ob01-0030" target="motif.beast-gatekeeper">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e411" source="card.ob01-0030" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e412" source="card.ob01-0030" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e413" source="card.ob01-0030" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e414" source="card.ob01-0030" target="motif.beast-gatekeeper">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e415" source="card.ob01-0031" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e416" source="card.ob01-0031" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e417" source="card.ob01-0031" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e418" source="card.ob01-0031" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e419" source="card.ob01-0031" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e420" source="card.ob01-0031" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e421" source="card.ob01-0031" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e422" source="card.ob01-0031" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e423" source="card.ob01-0031" target="motif.beast-gatekeeper">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e424" source="card.ob01-0031" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e425" source="card.ob01-0031" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e426" source="card.ob01-0031" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e427" source="card.ob01-0031" target="motif.beast-gatekeeper">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e428" source="card.ob01-0032" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e429" source="card.ob01-0032" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e430" source="card.ob01-0032" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e431" source="card.ob01-0032" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e432" source="card.ob01-0032" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e433" source="card.ob01-0032" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e434" source="card.ob01-0032" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e435" source="card.ob01-0032" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e436" source="card.ob01-0032" target="motif.sacrifice-under-deck">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e437" source="card.ob01-0032" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e438" source="card.ob01-0032" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e439" source="card.ob01-0032" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e440" source="card.ob01-0032" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e441" source="card.ob01-0033" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e442" source="card.ob01-0033" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e443" source="card.ob01-0033" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e444" source="card.ob01-0033" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e445" source="card.ob01-0033" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e446" source="card.ob01-0033" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e447" source="card.ob01-0033" target="race.beast">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e448" source="card.ob01-0033" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e449" source="card.ob01-0033" target="group.beast-gatekeepers">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e450" source="card.ob01-0033" target="motif.beast-gatekeeper">
+      <data key="relation">context.motifs</data>
+    </edge>
+    <edge id="e451" source="card.ob01-0033" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e452" source="card.ob01-0033" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e453" source="card.ob01-0033" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e454" source="card.ob01-0033" target="motif.beast-gatekeeper">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e455" source="card.ob01-0034" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e456" source="card.ob01-0034" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e457" source="card.ob01-0034" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e458" source="card.ob01-0034" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e459" source="card.ob01-0034" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e460" source="card.ob01-0034" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e461" source="card.ob01-0034" target="race.dokkaebi">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e462" source="card.ob01-0034" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e463" source="card.ob01-0034" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e464" source="card.ob01-0034" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e465" source="card.ob01-0034" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e466" source="card.ob01-0035" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e467" source="card.ob01-0035" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e468" source="card.ob01-0035" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e469" source="card.ob01-0035" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e470" source="card.ob01-0035" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e471" source="card.ob01-0035" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e472" source="card.ob01-0035" target="race.dokkaebi">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e473" source="card.ob01-0035" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e474" source="card.ob01-0035" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e475" source="card.ob01-0035" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e476" source="card.ob01-0035" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e477" source="card.ob01-0036" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e478" source="card.ob01-0036" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e479" source="card.ob01-0036" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e480" source="card.ob01-0036" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e481" source="card.ob01-0036" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e482" source="card.ob01-0036" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e483" source="card.ob01-0036" target="race.dokkaebi">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e484" source="card.ob01-0036" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e485" source="card.ob01-0036" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e486" source="card.ob01-0036" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e487" source="card.ob01-0036" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e488" source="card.ob01-0037" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e489" source="card.ob01-0037" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e490" source="card.ob01-0037" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e491" source="card.ob01-0037" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e492" source="card.ob01-0037" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e493" source="card.ob01-0037" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e494" source="card.ob01-0037" target="race.egg">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e495" source="card.ob01-0037" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e496" source="card.ob01-0037" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e497" source="card.ob01-0037" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e498" source="card.ob01-0037" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e499" source="card.ob01-0038" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e500" source="card.ob01-0038" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e501" source="card.ob01-0038" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e502" source="card.ob01-0038" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e503" source="card.ob01-0038" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e504" source="card.ob01-0038" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e505" source="card.ob01-0038" target="race.dokkaebi">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e506" source="card.ob01-0038" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e507" source="card.ob01-0038" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e508" source="card.ob01-0038" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e509" source="card.ob01-0038" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e510" source="card.ob01-0039" target="scene.onboarding-first-gate">
+      <data key="relation">context.scene</data>
+    </edge>
+    <edge id="e511" source="card.ob01-0039" target="site.first-gate">
+      <data key="relation">context.site</data>
+    </edge>
+    <edge id="e512" source="card.ob01-0039" target="period.first-gate-learning-age">
+      <data key="relation">context.period</data>
+    </edge>
+    <edge id="e513" source="card.ob01-0039" target="faction.neutral">
+      <data key="relation">context.faction</data>
+    </edge>
+    <edge id="e514" source="card.ob01-0039" target="class.onboarding">
+      <data key="relation">context.class</data>
+    </edge>
+    <edge id="e515" source="card.ob01-0039" target="style-profile.ob01">
+      <data key="relation">context.style_profile</data>
+    </edge>
+    <edge id="e516" source="card.ob01-0039" target="race.tool">
+      <data key="relation">context.races</data>
+    </edge>
+    <edge id="e517" source="card.ob01-0039" target="group.animal-entourage">
+      <data key="relation">context.social_groups</data>
+    </edge>
+    <edge id="e518" source="card.ob01-0039" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e519" source="card.ob01-0039" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e520" source="card.ob01-0039" target="class.onboarding">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e521" source="period.after-great-separation-year-47" target="scene.world-separation-aftermath">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e522" source="period.after-great-separation-year-47" target="event.revealed-reverse">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e523" source="period.first-gate-learning-age" target="period.after-great-separation-year-47">
+      <data key="relation">period</data>
+    </edge>
+    <edge id="e524" source="period.first-gate-learning-age" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e525" source="period.first-gate-learning-age" target="event.first-gate-training">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e526" source="event.first-gate-training" target="site.first-gate">
+      <data key="relation">site</data>
+    </edge>
+    <edge id="e527" source="event.first-gate-training" target="period.first-gate-learning-age">
+      <data key="relation">period</data>
+    </edge>
+    <edge id="e528" source="event.first-gate-training" target="group.beast-gatekeepers">
+      <data key="relation">social_groups</data>
+    </edge>
+    <edge id="e529" source="event.first-gate-training" target="group.animal-entourage">
+      <data key="relation">social_groups</data>
+    </edge>
+    <edge id="e530" source="event.first-gate-training" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e531" source="event.first-gate-training" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e532" source="event.first-gate-training" target="group.beast-gatekeepers">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e533" source="event.first-gate-training" target="group.animal-entourage">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e534" source="event.great-separation" target="period.after-great-separation-year-47">
+      <data key="relation">period</data>
+    </edge>
+    <edge id="e535" source="event.great-separation" target="region.divided-continent">
+      <data key="relation">region</data>
+    </edge>
+    <edge id="e536" source="event.great-separation" target="region.divided-continent">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e537" source="event.great-separation" target="scene.world-separation-aftermath">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e538" source="event.revealed-reverse" target="period.after-great-separation-year-47">
+      <data key="relation">period</data>
+    </edge>
+    <edge id="e539" source="event.revealed-reverse" target="scene.world-separation-aftermath">
+      <data key="relation">scene</data>
+    </edge>
+    <edge id="e540" source="event.revealed-reverse" target="scene.world-separation-aftermath">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e541" source="event.revealed-reverse" target="period.after-great-separation-year-47">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e542" source="event.weird-powers-rise" target="faction.yemaek">
+      <data key="relation">factions</data>
+    </edge>
+    <edge id="e543" source="event.weird-powers-rise" target="faction.saro">
+      <data key="relation">factions</data>
+    </edge>
+    <edge id="e544" source="event.weird-powers-rise" target="faction.gaya">
+      <data key="relation">factions</data>
+    </edge>
+    <edge id="e545" source="event.weird-powers-rise" target="faction.sipje">
+      <data key="relation">factions</data>
+    </edge>
+    <edge id="e546" source="event.weird-powers-rise" target="scene.world-separation-aftermath">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e547" source="event.weird-powers-rise" target="faction.yemaek">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e548" source="event.weird-powers-rise" target="faction.saro">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e549" source="event.weird-powers-rise" target="faction.gaya">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e550" source="event.weird-powers-rise" target="faction.sipje">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e551" source="index.cards" target="card.ob01-0001">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e552" source="index.cards" target="card.ob01-0002">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e553" source="index.cards" target="card.ob01-0003">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e554" source="index.cards" target="card.ob01-0004">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e555" source="index.cards" target="card.ob01-0005">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e556" source="index.cards" target="card.ob01-0006">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e557" source="index.cards" target="card.ob01-0007">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e558" source="index.cards" target="card.ob01-0008">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e559" source="index.cards" target="card.ob01-0009">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e560" source="index.cards" target="card.ob01-0010">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e561" source="index.cards" target="card.ob01-0011">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e562" source="index.cards" target="card.ob01-0012">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e563" source="index.cards" target="card.ob01-0013">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e564" source="index.cards" target="card.ob01-0014">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e565" source="index.cards" target="card.ob01-0015">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e566" source="index.cards" target="card.ob01-0016">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e567" source="index.cards" target="card.ob01-0017">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e568" source="index.cards" target="card.ob01-0018">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e569" source="index.cards" target="card.ob01-0019">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e570" source="index.cards" target="card.ob01-0020">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e571" source="index.cards" target="card.ob01-0021">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e572" source="index.cards" target="card.ob01-0022">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e573" source="index.cards" target="card.ob01-0023">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e574" source="index.cards" target="card.ob01-0024">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e575" source="index.cards" target="card.ob01-0025">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e576" source="index.cards" target="card.ob01-0026">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e577" source="index.cards" target="card.ob01-0027">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e578" source="index.cards" target="card.ob01-0028">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e579" source="index.cards" target="card.ob01-0029">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e580" source="index.cards" target="card.ob01-0030">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e581" source="index.cards" target="card.ob01-0031">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e582" source="index.cards" target="card.ob01-0032">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e583" source="index.cards" target="card.ob01-0033">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e584" source="index.cards" target="card.ob01-0034">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e585" source="index.cards" target="card.ob01-0035">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e586" source="index.cards" target="card.ob01-0036">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e587" source="index.cards" target="card.ob01-0037">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e588" source="index.cards" target="card.ob01-0038">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e589" source="index.cards" target="card.ob01-0039">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e590" source="index.image-generation" target="style.core">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e591" source="index.image-generation" target="style.anti-realism">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e592" source="index.image-generation" target="rule.card-illustration">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e593" source="index.image-generation" target="style-profile.ob01">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e594" source="index.image-generation" target="style-profile.tu01">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e595" source="index.image-generation" target="style-profile.st01-yemaek">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e596" source="index.image-generation" target="style-profile.st02-gaya">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e597" source="index.image-generation" target="style-profile.st03-saro">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e598" source="index.image-generation" target="style-profile.st04-sipje">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e599" source="index.image-generation" target="style-profile.ex01-revealed-reverse">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e600" source="index.image-generation" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e601" source="index.image-generation" target="scene.world-separation-aftermath">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e602" source="index.media" target="media.readme">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e603" source="scene.onboarding-first-gate" target="region.divided-continent">
+      <data key="relation">region</data>
+    </edge>
+    <edge id="e604" source="scene.onboarding-first-gate" target="site.first-gate">
+      <data key="relation">site</data>
+    </edge>
+    <edge id="e605" source="scene.onboarding-first-gate" target="period.first-gate-learning-age">
+      <data key="relation">period</data>
+    </edge>
+    <edge id="e606" source="scene.onboarding-first-gate" target="event.first-gate-training">
+      <data key="relation">event</data>
+    </edge>
+    <edge id="e607" source="scene.onboarding-first-gate" target="faction.neutral">
+      <data key="relation">factions</data>
+    </edge>
+    <edge id="e608" source="scene.onboarding-first-gate" target="group.beast-gatekeepers">
+      <data key="relation">social_groups</data>
+    </edge>
+    <edge id="e609" source="scene.onboarding-first-gate" target="group.animal-entourage">
+      <data key="relation">social_groups</data>
+    </edge>
+    <edge id="e610" source="scene.onboarding-first-gate" target="group.onboarding-spirits">
+      <data key="relation">social_groups</data>
+    </edge>
+    <edge id="e611" source="scene.onboarding-first-gate" target="style.core">
+      <data key="relation">visual_rules</data>
+    </edge>
+    <edge id="e612" source="scene.onboarding-first-gate" target="style.anti-realism">
+      <data key="relation">visual_rules</data>
+    </edge>
+    <edge id="e613" source="scene.onboarding-first-gate" target="style-profile.ob01">
+      <data key="relation">style_profiles</data>
+    </edge>
+    <edge id="e614" source="scene.onboarding-first-gate" target="card.ob01-0001">
+      <data key="relation">cards</data>
+    </edge>
+    <edge id="e615" source="scene.onboarding-first-gate" target="card.ob01-0002">
+      <data key="relation">cards</data>
+    </edge>
+    <edge id="e616" source="scene.onboarding-first-gate" target="card.ob01-0003">
+      <data key="relation">cards</data>
+    </edge>
+    <edge id="e617" source="scene.onboarding-first-gate" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e618" source="scene.onboarding-first-gate" target="period.first-gate-learning-age">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e619" source="scene.onboarding-first-gate" target="event.first-gate-training">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e620" source="scene.onboarding-first-gate" target="group.beast-gatekeepers">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e621" source="scene.onboarding-first-gate" target="group.animal-entourage">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e622" source="scene.onboarding-first-gate" target="motif.black-bird-head">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e623" source="scene.onboarding-first-gate" target="style.core">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e624" source="scene.onboarding-first-gate" target="style-profile.ob01">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e625" source="scene.world-separation-aftermath" target="region.divided-continent">
+      <data key="relation">region</data>
+    </edge>
+    <edge id="e626" source="scene.world-separation-aftermath" target="period.after-great-separation-year-47">
+      <data key="relation">period</data>
+    </edge>
+    <edge id="e627" source="scene.world-separation-aftermath" target="event.great-separation">
+      <data key="relation">event</data>
+    </edge>
+    <edge id="e628" source="scene.world-separation-aftermath" target="event.weird-powers-rise">
+      <data key="relation">event</data>
+    </edge>
+    <edge id="e629" source="scene.world-separation-aftermath" target="faction.yemaek">
+      <data key="relation">factions</data>
+    </edge>
+    <edge id="e630" source="scene.world-separation-aftermath" target="faction.saro">
+      <data key="relation">factions</data>
+    </edge>
+    <edge id="e631" source="scene.world-separation-aftermath" target="faction.gaya">
+      <data key="relation">factions</data>
+    </edge>
+    <edge id="e632" source="scene.world-separation-aftermath" target="faction.sipje">
+      <data key="relation">factions</data>
+    </edge>
+    <edge id="e633" source="scene.world-separation-aftermath" target="style.core">
+      <data key="relation">visual_rules</data>
+    </edge>
+    <edge id="e634" source="scene.world-separation-aftermath" target="style.anti-realism">
+      <data key="relation">visual_rules</data>
+    </edge>
+    <edge id="e635" source="scene.world-separation-aftermath" target="region.divided-continent">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e636" source="scene.world-separation-aftermath" target="period.after-great-separation-year-47">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e637" source="scene.world-separation-aftermath" target="event.great-separation">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e638" source="scene.world-separation-aftermath" target="event.weird-powers-rise">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e639" source="scene.world-separation-aftermath" target="style.core">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e640" source="scene.world-separation-aftermath" target="style.anti-realism">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e641" source="class.gaema-musa" target="faction.yemaek">
+      <data key="relation">faction</data>
+    </edge>
+    <edge id="e642" source="class.gaema-musa" target="scene.world-separation-aftermath">
+      <data key="relation">scene</data>
+    </edge>
+    <edge id="e643" source="class.gaema-musa" target="faction.yemaek">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e644" source="class.gaema-musa" target="scene.world-separation-aftermath">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e645" source="class.imaemangryang" target="faction.saro">
+      <data key="relation">faction</data>
+    </edge>
+    <edge id="e646" source="class.imaemangryang" target="scene.world-separation-aftermath">
+      <data key="relation">scene</data>
+    </edge>
+    <edge id="e647" source="class.imaemangryang" target="faction.saro">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e648" source="class.imaemangryang" target="scene.world-separation-aftermath">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e649" source="class.juhon-gwisa" target="faction.sipje">
+      <data key="relation">faction</data>
+    </edge>
+    <edge id="e650" source="class.juhon-gwisa" target="scene.world-separation-aftermath">
+      <data key="relation">scene</data>
+    </edge>
+    <edge id="e651" source="class.juhon-gwisa" target="faction.sipje">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e652" source="class.juhon-gwisa" target="scene.world-separation-aftermath">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e653" source="class.onboarding" target="faction.neutral">
+      <data key="relation">faction</data>
+    </edge>
+    <edge id="e654" source="class.onboarding" target="scene.onboarding-first-gate">
+      <data key="relation">scene</data>
+    </edge>
+    <edge id="e655" source="class.yacheoljang" target="faction.gaya">
+      <data key="relation">faction</data>
+    </edge>
+    <edge id="e656" source="class.yacheoljang" target="scene.world-separation-aftermath">
+      <data key="relation">scene</data>
+    </edge>
+    <edge id="e657" source="class.yacheoljang" target="faction.gaya">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e658" source="class.yacheoljang" target="event.revealed-reverse">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e659" source="faction.gaya" target="class.yacheoljang">
+      <data key="relation">class</data>
+    </edge>
+    <edge id="e660" source="faction.gaya" target="event.weird-powers-rise">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e661" source="faction.gaya" target="event.revealed-reverse">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e662" source="faction.neutral" target="class.onboarding">
+      <data key="relation">class</data>
+    </edge>
+    <edge id="e663" source="faction.neutral" target="scene.onboarding-first-gate">
+      <data key="relation">scene</data>
+    </edge>
+    <edge id="e664" source="faction.neutral" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e665" source="faction.saro" target="class.imaemangryang">
+      <data key="relation">class</data>
+    </edge>
+    <edge id="e666" source="faction.saro" target="event.weird-powers-rise">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e667" source="faction.sipje" target="class.juhon-gwisa">
+      <data key="relation">class</data>
+    </edge>
+    <edge id="e668" source="faction.sipje" target="event.weird-powers-rise">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e669" source="faction.yemaek" target="class.gaema-musa">
+      <data key="relation">class</data>
+    </edge>
+    <edge id="e670" source="faction.yemaek" target="event.weird-powers-rise">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e671" source="faction.yemaek" target="scene.world-separation-aftermath">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e672" source="group.animal-entourage" target="scene.onboarding-first-gate">
+      <data key="relation">scene</data>
+    </edge>
+    <edge id="e673" source="group.animal-entourage" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e674" source="group.animal-entourage" target="group.beast-gatekeepers">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e675" source="group.beast-gatekeepers" target="scene.onboarding-first-gate">
+      <data key="relation">scene</data>
+    </edge>
+    <edge id="e676" source="group.beast-gatekeepers" target="site.first-gate">
+      <data key="relation">site</data>
+    </edge>
+    <edge id="e677" source="group.beast-gatekeepers" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e678" source="group.beast-gatekeepers" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e679" source="group.onboarding-spirits" target="scene.onboarding-first-gate">
+      <data key="relation">scene</data>
+    </edge>
+    <edge id="e680" source="group.onboarding-spirits" target="motif.black-bird-head">
+      <data key="relation">motifs</data>
+    </edge>
+    <edge id="e681" source="group.onboarding-spirits" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e682" source="group.onboarding-spirits" target="motif.black-bird-head">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e683" source="material.old-gate-wood" target="scene.onboarding-first-gate">
+      <data key="relation">scene</data>
+    </edge>
+    <edge id="e684" source="motif.beast-gatekeeper" target="card.ob01-0008">
+      <data key="relation">cards</data>
+    </edge>
+    <edge id="e685" source="motif.beast-gatekeeper" target="card.ob01-0016">
+      <data key="relation">cards</data>
+    </edge>
+    <edge id="e686" source="motif.beast-gatekeeper" target="card.ob01-0029">
+      <data key="relation">cards</data>
+    </edge>
+    <edge id="e687" source="motif.beast-gatekeeper" target="group.beast-gatekeepers">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e688" source="motif.beast-gatekeeper" target="site.first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e689" source="motif.black-bird-head" target="card.ob01-0003">
+      <data key="relation">cards</data>
+    </edge>
+    <edge id="e690" source="motif.black-bird-head" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e691" source="motif.black-bird-head" target="group.onboarding-spirits">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e692" source="motif.sacrifice-under-deck" target="card.ob01-0007">
+      <data key="relation">cards</data>
+    </edge>
+    <edge id="e693" source="motif.sacrifice-under-deck" target="card.ob01-0008">
+      <data key="relation">cards</data>
+    </edge>
+    <edge id="e694" source="motif.sacrifice-under-deck" target="card.ob01-0009">
+      <data key="relation">cards</data>
+    </edge>
+    <edge id="e695" source="motif.sacrifice-under-deck" target="card.ob01-0010">
+      <data key="relation">cards</data>
+    </edge>
+    <edge id="e696" source="motif.sacrifice-under-deck" target="card.ob01-0027">
+      <data key="relation">cards</data>
+    </edge>
+    <edge id="e697" source="motif.sacrifice-under-deck" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e698" source="motif.three-legged-crow" target="card.ob01-0025">
+      <data key="relation">cards</data>
+    </edge>
+    <edge id="e699" source="motif.three-legged-crow" target="group.animal-entourage">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e700" source="motif.three-legged-crow" target="motif.sacrifice-under-deck">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e701" source="palette.first-gate-muted-ritual" target="scene.onboarding-first-gate">
+      <data key="relation">scene</data>
+    </edge>
+    <edge id="e702" source="style-profile.ex01-revealed-reverse" target="style.core">
+      <data key="relation">style_core</data>
+    </edge>
+    <edge id="e703" source="style-profile.ex01-revealed-reverse" target="event.revealed-reverse">
+      <data key="relation">event</data>
+    </edge>
+    <edge id="e704" source="style-profile.ob01" target="style.core">
+      <data key="relation">style_core</data>
+    </edge>
+    <edge id="e705" source="style-profile.ob01" target="scene.onboarding-first-gate">
+      <data key="relation">scene</data>
+    </edge>
+    <edge id="e706" source="style-profile.ob01" target="style.core">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e707" source="style-profile.ob01" target="style.anti-realism">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e708" source="style-profile.ob01" target="scene.onboarding-first-gate">
+      <data key="relation">wikilink</data>
+    </edge>
+    <edge id="e709" source="style-profile.st01-yemaek" target="style.core">
+      <data key="relation">style_core</data>
+    </edge>
+    <edge id="e710" source="style-profile.st01-yemaek" target="faction.yemaek">
+      <data key="relation">faction</data>
+    </edge>
+    <edge id="e711" source="style-profile.st02-gaya" target="style.core">
+      <data key="relation">style_core</data>
+    </edge>
+    <edge id="e712" source="style-profile.st02-gaya" target="faction.gaya">
+      <data key="relation">faction</data>
+    </edge>
+    <edge id="e713" source="style-profile.st03-saro" target="style.core">
+      <data key="relation">style_core</data>
+    </edge>
+    <edge id="e714" source="style-profile.st03-saro" target="faction.saro">
+      <data key="relation">faction</data>
+    </edge>
+    <edge id="e715" source="style-profile.st04-sipje" target="style.core">
+      <data key="relation">style_core</data>
+    </edge>
+    <edge id="e716" source="style-profile.st04-sipje" target="faction.sipje">
+      <data key="relation">faction</data>
+    </edge>
+    <edge id="e717" source="style-profile.tu01" target="style.core">
+      <data key="relation">style_core</data>
+    </edge>
+    <edge id="e718" source="style-profile.tu01" target="scene.onboarding-first-gate">
+      <data key="relation">scene</data>
+    </edge>
+  </graph>
+</graphml>

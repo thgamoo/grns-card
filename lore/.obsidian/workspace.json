@@ -1,0 +1,220 @@
+{
+  "main": {
+    "id": "66552ead27450c44",
+    "type": "split",
+    "children": [
+      {
+        "id": "013aab788d0b0d1f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "46cdea02c5e228f8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "atlas/regions/divided-continent.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "divided-continent"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "45be8d6c71105ea1",
+    "type": "split",
+    "children": [
+      {
+        "id": "27425f258ee03301",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "50232dbc1a335840",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "d7ca96e1d8c0753b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "983ae9cb85e078ac",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "522f3c904ffcf866",
+    "type": "split",
+    "children": [
+      {
+        "id": "0759f3a0b59599d4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6773f307faa4ab19",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "atlas/regions/divided-continent.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for divided-continent"
+            }
+          },
+          {
+            "id": "bcafe64439d4bbd4",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "atlas/regions/divided-continent.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from divided-continent"
+            }
+          },
+          {
+            "id": "67158d625e5c79ed",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "b2b1b4e8f1153075",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "e7dd474d380df3dc",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "atlas/regions/divided-continent.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of divided-continent"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "46cdea02c5e228f8",
+  "lastOpenFiles": [
+    "cache/image-contexts/ob01-0039.json",
+    "cache/image-contexts/ob01-0038.json",
+    "cache/image-contexts/ob01-0037.json",
+    "cache/image-contexts/ob01-0036.json",
+    "cache/image-contexts/ob01-0035.json",
+    "cache/image-contexts/ob01-0034.json",
+    "cache/image-contexts/ob01-0033.json",
+    "cache/image-contexts/ob01-0032.json",
+    "cache/image-contexts/ob01-0031.json",
+    "cache/image-contexts/ob01-0030.json",
+    "cache/image-contexts/ob01-0029.json",
+    "visual/style-profiles/ex01-revealed-reverse.md",
+    "visual/style-profiles/st04-sipje.md",
+    "visual/style-profiles/st03-saro.md",
+    "visual/style-profiles/st02-gaya.md",
+    "visual/style-profiles/st01-yemaek.md",
+    "visual/style-profiles/tu01.md",
+    "visual/style-profiles/ob01.md",
+    "visual/anti-realism.md",
+    "visual/style-core.md",
+    "indexes/media.md",
+    "media/README.md",
+    "scenes/world-separation-aftermath.md",
+    "cards/ob01/ob01-0009.md",
+    "cards/ob01/ob01-0004.md",
+    "Untitled 1.canvas",
+    "2026-06-05.md",
+    "Untitled.canvas",
+    "visual/motifs/sacrifice-under-deck.md",
+    "cards/ob01/ob01-0005.md",
+    "cards/ob01/ob01-0001.md"
+  ]
+}

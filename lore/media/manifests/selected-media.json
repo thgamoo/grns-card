@@ -1,0 +1,398 @@
+{
+  "generated_at": "2026-06-05T06:48:24.549Z",
+  "copied": 0,
+  "unchanged": 39,
+  "skipped": 0,
+  "entries": [
+    {
+      "node_id": "card.ob01-0001",
+      "serial": "ob01-0001",
+      "title": "성급한 수신의 화신",
+      "note_path": "lore/cards/ob01/ob01-0001.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0001.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0001.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0002",
+      "serial": "ob01-0002",
+      "title": "인사하는 신모의 우상",
+      "note_path": "lore/cards/ob01/ob01-0002.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0002.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0002.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0003",
+      "serial": "ob01-0003",
+      "title": "검은 새 머리 선구자",
+      "note_path": "lore/cards/ob01/ob01-0003.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0003.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0003.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0004",
+      "serial": "ob01-0004",
+      "title": "호랑이 주술사",
+      "note_path": "lore/cards/ob01/ob01-0004.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0004.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0004.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0005",
+      "serial": "ob01-0005",
+      "title": "작은 호랑이",
+      "note_path": "lore/cards/ob01/ob01-0005.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0005.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0005.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0006",
+      "serial": "ob01-0006",
+      "title": "호랑이 그림자",
+      "note_path": "lore/cards/ob01/ob01-0006.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0006.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0006.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0007",
+      "serial": "ob01-0007",
+      "title": "날뛰는 호랑무늬 고양이",
+      "note_path": "lore/cards/ob01/ob01-0007.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0007.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0007.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0008",
+      "serial": "ob01-0008",
+      "title": "빗물 호랑이",
+      "note_path": "lore/cards/ob01/ob01-0008.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0008.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0008.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0009",
+      "serial": "ob01-0009",
+      "title": "허기진 산군",
+      "note_path": "lore/cards/ob01/ob01-0009.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0009.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0009.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0010",
+      "serial": "ob01-0010",
+      "title": "광전사 범",
+      "note_path": "lore/cards/ob01/ob01-0010.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0010.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0010.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0011",
+      "serial": "ob01-0011",
+      "title": "저승호랑이",
+      "note_path": "lore/cards/ob01/ob01-0011.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0011.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0011.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0012",
+      "serial": "ob01-0012",
+      "title": "곰 주술사",
+      "note_path": "lore/cards/ob01/ob01-0012.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0012.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0012.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0013",
+      "serial": "ob01-0013",
+      "title": "선봉 아기곰",
+      "note_path": "lore/cards/ob01/ob01-0013.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0013.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0013.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0014",
+      "serial": "ob01-0014",
+      "title": "암살전문 아기곰",
+      "note_path": "lore/cards/ob01/ob01-0014.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0014.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0014.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0015",
+      "serial": "ob01-0015",
+      "title": "명사수 아기곰",
+      "note_path": "lore/cards/ob01/ob01-0015.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0015.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0015.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0016",
+      "serial": "ob01-0016",
+      "title": "문지기 아기곰",
+      "note_path": "lore/cards/ob01/ob01-0016.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0016.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0016.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0017",
+      "serial": "ob01-0017",
+      "title": "척후전문 곰",
+      "note_path": "lore/cards/ob01/ob01-0017.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0017.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0017.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0018",
+      "serial": "ob01-0018",
+      "title": "성난 곰",
+      "note_path": "lore/cards/ob01/ob01-0018.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0018.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0018.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0019",
+      "serial": "ob01-0019",
+      "title": "욕심 많은 곰",
+      "note_path": "lore/cards/ob01/ob01-0019.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0019.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0019.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0020",
+      "serial": "ob01-0020",
+      "title": "귀신 까마귀",
+      "note_path": "lore/cards/ob01/ob01-0020.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0020.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0020.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0021",
+      "serial": "ob01-0021",
+      "title": "까마귀 주술사",
+      "note_path": "lore/cards/ob01/ob01-0021.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0021.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0021.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0022",
+      "serial": "ob01-0022",
+      "title": "외눈 까마귀",
+      "note_path": "lore/cards/ob01/ob01-0022.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0022.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0022.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0023",
+      "serial": "ob01-0023",
+      "title": "날쌘 송골매",
+      "note_path": "lore/cards/ob01/ob01-0023.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0023.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0023.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0024",
+      "serial": "ob01-0024",
+      "title": "바람의 참매",
+      "note_path": "lore/cards/ob01/ob01-0024.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0024.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0024.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0025",
+      "serial": "ob01-0025",
+      "title": "다리 셋의 까마귀",
+      "note_path": "lore/cards/ob01/ob01-0025.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0025.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0025.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0026",
+      "serial": "ob01-0026",
+      "title": "마하수리 부엉이",
+      "note_path": "lore/cards/ob01/ob01-0026.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0026.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0026.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0027",
+      "serial": "ob01-0027",
+      "title": "공포의 솔부엉이",
+      "note_path": "lore/cards/ob01/ob01-0027.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0027.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0027.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0028",
+      "serial": "ob01-0028",
+      "title": "겁이 많은 고양이",
+      "note_path": "lore/cards/ob01/ob01-0028.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0028.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0028.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0029",
+      "serial": "ob01-0029",
+      "title": "무시무시한 고양이",
+      "note_path": "lore/cards/ob01/ob01-0029.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0029.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0029.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0030",
+      "serial": "ob01-0030",
+      "title": "전쟁선전꾼 여우",
+      "note_path": "lore/cards/ob01/ob01-0030.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0030.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0030.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0031",
+      "serial": "ob01-0031",
+      "title": "장난꾸러기 여우",
+      "note_path": "lore/cards/ob01/ob01-0031.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0031.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0031.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0032",
+      "serial": "ob01-0032",
+      "title": "광신도 이리",
+      "note_path": "lore/cards/ob01/ob01-0032.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0032.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0032.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0033",
+      "serial": "ob01-0033",
+      "title": "반격하는 이리",
+      "note_path": "lore/cards/ob01/ob01-0033.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0033.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0033.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0034",
+      "serial": "ob01-0034",
+      "title": "부정형의 구름떡",
+      "note_path": "lore/cards/ob01/ob01-0034.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0034.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0034.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0035",
+      "serial": "ob01-0035",
+      "title": "매우매우 쓴 쑥",
+      "note_path": "lore/cards/ob01/ob01-0035.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0035.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0035.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0036",
+      "serial": "ob01-0036",
+      "title": "살아움직이는 떡",
+      "note_path": "lore/cards/ob01/ob01-0036.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0036.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0036.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0037",
+      "serial": "ob01-0037",
+      "title": "상한 알",
+      "note_path": "lore/cards/ob01/ob01-0037.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0037.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0037.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0038",
+      "serial": "ob01-0038",
+      "title": "쓰디 쓴 쑥떡",
+      "note_path": "lore/cards/ob01/ob01-0038.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0038.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0038.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    },
+    {
+      "node_id": "card.ob01-0039",
+      "serial": "ob01-0039",
+      "title": "거대한 마늘",
+      "note_path": "lore/cards/ob01/ob01-0039.md",
+      "selected_path": "docs/card-assets/illustrations/ob01/ob01-0039.png",
+      "output_path": "docs/card-assets/illustrations/ob01/ob01-0039.png",
+      "action": "unchanged",
+      "reason": "legacy selected image already lives at final asset path"
+    }
+  ]
+}

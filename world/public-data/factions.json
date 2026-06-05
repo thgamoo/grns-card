@@ -1,0 +1,32 @@
+[
+  {
+    "id": "goguryeo",
+    "name": "예맥",
+    "className": "개마무사",
+    "theme": "용력"
+  },
+  {
+    "id": "jinhan",
+    "name": "사로국",
+    "className": "이매망량",
+    "theme": "괴이"
+  },
+  {
+    "id": "gaya",
+    "name": "가락",
+    "className": "야철장",
+    "theme": "반란"
+  },
+  {
+    "id": "mahan",
+    "name": "십제",
+    "className": "주혼귀사",
+    "theme": "귀신"
+  },
+  {
+    "id": "neutral",
+    "name": "중립",
+    "className": "중립",
+    "theme": "전운"
+  }
+]

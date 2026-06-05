@@ -1,0 +1,2730 @@
+{
+  "generated_at": "2026-06-05T06:52:53.751Z",
+  "source_root": "lore",
+  "cards": [
+    {
+      "id": "card.ob01-0001",
+      "serial": "ob01-0001",
+      "title": "성급한 수신의 화신",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [],
+        "social_groups": [
+          "group.animal-entourage",
+          "group.onboarding-spirits"
+        ],
+        "motifs": []
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0001.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0001.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0001.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0001.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0001.md"
+    },
+    {
+      "id": "card.ob01-0002",
+      "serial": "ob01-0002",
+      "title": "인사하는 신모의 우상",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [],
+        "social_groups": [
+          "group.animal-entourage",
+          "group.beast-gatekeepers",
+          "group.onboarding-spirits"
+        ],
+        "motifs": [
+          "motif.beast-gatekeeper"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0002.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0002.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0002.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0002.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0002.md"
+    },
+    {
+      "id": "card.ob01-0003",
+      "serial": "ob01-0003",
+      "title": "검은 새 머리 선구자",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.dokkaebi"
+        ],
+        "social_groups": [
+          "group.animal-entourage",
+          "group.onboarding-spirits"
+        ],
+        "motifs": [
+          "motif.sacrifice-under-deck",
+          "motif.three-legged-crow",
+          "motif.black-bird-head"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0003.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0003.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0003.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0003.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0003.md"
+    },
+    {
+      "id": "card.ob01-0004",
+      "serial": "ob01-0004",
+      "title": "호랑이 주술사",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.human"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": []
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0004.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0004.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0004.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0004.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0004.md"
+    },
+    {
+      "id": "card.ob01-0005",
+      "serial": "ob01-0005",
+      "title": "작은 호랑이",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.beast-gatekeeper"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0005.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0005.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0005.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0005.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0005.md"
+    },
+    {
+      "id": "card.ob01-0006",
+      "serial": "ob01-0006",
+      "title": "호랑이 그림자",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.dokkaebi",
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": []
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0006.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0006.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0006.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0006.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0006.md"
+    },
+    {
+      "id": "card.ob01-0007",
+      "serial": "ob01-0007",
+      "title": "날뛰는 호랑무늬 고양이",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.beast-gatekeeper",
+          "motif.sacrifice-under-deck"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0007.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0007.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0007.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0007.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0007.md"
+    },
+    {
+      "id": "card.ob01-0008",
+      "serial": "ob01-0008",
+      "title": "빗물 호랑이",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage",
+          "group.beast-gatekeepers"
+        ],
+        "motifs": [
+          "motif.beast-gatekeeper",
+          "motif.sacrifice-under-deck"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0008.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0008.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0008.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0008.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0008.md"
+    },
+    {
+      "id": "card.ob01-0009",
+      "serial": "ob01-0009",
+      "title": "허기진 산군",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.sacrifice-under-deck"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0009.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0009.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0009.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0009.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0009.md"
+    },
+    {
+      "id": "card.ob01-0010",
+      "serial": "ob01-0010",
+      "title": "광전사 범",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.sacrifice-under-deck"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0010.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0010.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0010.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0010.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0010.md"
+    },
+    {
+      "id": "card.ob01-0011",
+      "serial": "ob01-0011",
+      "title": "저승호랑이",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast",
+          "race.ghost"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.sacrifice-under-deck"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0011.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0011.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0011.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0011.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0011.md"
+    },
+    {
+      "id": "card.ob01-0012",
+      "serial": "ob01-0012",
+      "title": "곰 주술사",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.human"
+        ],
+        "social_groups": [
+          "group.animal-entourage",
+          "group.beast-gatekeepers"
+        ],
+        "motifs": [
+          "motif.beast-gatekeeper"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0012.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0012.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0012.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0012.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0012.md"
+    },
+    {
+      "id": "card.ob01-0013",
+      "serial": "ob01-0013",
+      "title": "선봉 아기곰",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": []
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0013.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0013.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0013.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0013.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0013.md"
+    },
+    {
+      "id": "card.ob01-0014",
+      "serial": "ob01-0014",
+      "title": "암살전문 아기곰",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.sacrifice-under-deck"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0014.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0014.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0014.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0014.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0014.md"
+    },
+    {
+      "id": "card.ob01-0015",
+      "serial": "ob01-0015",
+      "title": "명사수 아기곰",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage",
+          "group.beast-gatekeepers"
+        ],
+        "motifs": [
+          "motif.beast-gatekeeper"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0015.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0015.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0015.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0015.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0015.md"
+    },
+    {
+      "id": "card.ob01-0016",
+      "serial": "ob01-0016",
+      "title": "문지기 아기곰",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage",
+          "group.beast-gatekeepers"
+        ],
+        "motifs": [
+          "motif.beast-gatekeeper"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0016.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0016.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0016.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0016.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0016.md"
+    },
+    {
+      "id": "card.ob01-0017",
+      "serial": "ob01-0017",
+      "title": "척후전문 곰",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.human"
+        ],
+        "social_groups": [
+          "group.animal-entourage",
+          "group.beast-gatekeepers"
+        ],
+        "motifs": [
+          "motif.beast-gatekeeper",
+          "motif.sacrifice-under-deck"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0017.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0017.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0017.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0017.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0017.md"
+    },
+    {
+      "id": "card.ob01-0018",
+      "serial": "ob01-0018",
+      "title": "성난 곰",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.human"
+        ],
+        "social_groups": [
+          "group.animal-entourage",
+          "group.beast-gatekeepers"
+        ],
+        "motifs": [
+          "motif.beast-gatekeeper",
+          "motif.sacrifice-under-deck"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0018.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0018.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0018.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0018.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0018.md"
+    },
+    {
+      "id": "card.ob01-0019",
+      "serial": "ob01-0019",
+      "title": "욕심 많은 곰",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.dokkaebi"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": []
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0019.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0019.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0019.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0019.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0019.md"
+    },
+    {
+      "id": "card.ob01-0020",
+      "serial": "ob01-0020",
+      "title": "귀신 까마귀",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.ghost",
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.sacrifice-under-deck",
+          "motif.three-legged-crow"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0020.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0020.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0020.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0020.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0020.md"
+    },
+    {
+      "id": "card.ob01-0021",
+      "serial": "ob01-0021",
+      "title": "까마귀 주술사",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.human"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.sacrifice-under-deck",
+          "motif.three-legged-crow"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0021.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0021.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0021.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0021.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0021.md"
+    },
+    {
+      "id": "card.ob01-0022",
+      "serial": "ob01-0022",
+      "title": "외눈 까마귀",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.sacrifice-under-deck",
+          "motif.three-legged-crow"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0022.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0022.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0022.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0022.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0022.md"
+    },
+    {
+      "id": "card.ob01-0023",
+      "serial": "ob01-0023",
+      "title": "날쌘 송골매",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": []
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0023.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0023.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0023.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0023.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0023.md"
+    },
+    {
+      "id": "card.ob01-0024",
+      "serial": "ob01-0024",
+      "title": "바람의 참매",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": []
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0024.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0024.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0024.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0024.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0024.md"
+    },
+    {
+      "id": "card.ob01-0025",
+      "serial": "ob01-0025",
+      "title": "다리 셋의 까마귀",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.sacrifice-under-deck",
+          "motif.three-legged-crow"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0025.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0025.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0025.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0025.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0025.md"
+    },
+    {
+      "id": "card.ob01-0026",
+      "serial": "ob01-0026",
+      "title": "마하수리 부엉이",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.sacrifice-under-deck"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0026.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0026.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0026.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0026.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0026.md"
+    },
+    {
+      "id": "card.ob01-0027",
+      "serial": "ob01-0027",
+      "title": "공포의 솔부엉이",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.sacrifice-under-deck"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0027.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0027.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0027.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0027.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0027.md"
+    },
+    {
+      "id": "card.ob01-0028",
+      "serial": "ob01-0028",
+      "title": "겁이 많은 고양이",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.beast-gatekeeper"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0028.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0028.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0028.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0028.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0028.md"
+    },
+    {
+      "id": "card.ob01-0029",
+      "serial": "ob01-0029",
+      "title": "무시무시한 고양이",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.beast-gatekeeper"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0029.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0029.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0029.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0029.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0029.md"
+    },
+    {
+      "id": "card.ob01-0030",
+      "serial": "ob01-0030",
+      "title": "전쟁선전꾼 여우",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.beast-gatekeeper"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0030.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0030.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0030.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0030.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0030.md"
+    },
+    {
+      "id": "card.ob01-0031",
+      "serial": "ob01-0031",
+      "title": "장난꾸러기 여우",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.beast-gatekeeper"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0031.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0031.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0031.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0031.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0031.md"
+    },
+    {
+      "id": "card.ob01-0032",
+      "serial": "ob01-0032",
+      "title": "광신도 이리",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": [
+          "motif.sacrifice-under-deck"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0032.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0032.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0032.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0032.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0032.md"
+    },
+    {
+      "id": "card.ob01-0033",
+      "serial": "ob01-0033",
+      "title": "반격하는 이리",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.beast"
+        ],
+        "social_groups": [
+          "group.animal-entourage",
+          "group.beast-gatekeepers"
+        ],
+        "motifs": [
+          "motif.beast-gatekeeper"
+        ]
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0033.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0033.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0033.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0033.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0033.md"
+    },
+    {
+      "id": "card.ob01-0034",
+      "serial": "ob01-0034",
+      "title": "부정형의 구름떡",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.dokkaebi"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": []
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0034.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0034.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0034.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0034.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0034.md"
+    },
+    {
+      "id": "card.ob01-0035",
+      "serial": "ob01-0035",
+      "title": "매우매우 쓴 쑥",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.dokkaebi"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": []
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0035.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0035.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0035.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0035.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0035.md"
+    },
+    {
+      "id": "card.ob01-0036",
+      "serial": "ob01-0036",
+      "title": "살아움직이는 떡",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.dokkaebi"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": []
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0036.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0036.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0036.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0036.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0036.md"
+    },
+    {
+      "id": "card.ob01-0037",
+      "serial": "ob01-0037",
+      "title": "상한 알",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.egg"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": []
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0037.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0037.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0037.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0037.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0037.md"
+    },
+    {
+      "id": "card.ob01-0038",
+      "serial": "ob01-0038",
+      "title": "쓰디 쓴 쑥떡",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.dokkaebi"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": []
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0038.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0038.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0038.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0038.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0038.md"
+    },
+    {
+      "id": "card.ob01-0039",
+      "serial": "ob01-0039",
+      "title": "거대한 마늘",
+      "status": "extracted",
+      "expansion": "ob01",
+      "context": {
+        "scene": "scene.onboarding-first-gate",
+        "site": "site.first-gate",
+        "period": "period.first-gate-learning-age",
+        "faction": "faction.neutral",
+        "class": "class.onboarding",
+        "style_profile": "style-profile.ob01",
+        "races": [
+          "race.tool"
+        ],
+        "social_groups": [
+          "group.animal-entourage"
+        ],
+        "motifs": []
+      },
+      "grounded_in": [
+        "lore/scenes/onboarding-first-gate.md",
+        "lore/societies/classes/onboarding.md",
+        "world/stories/first-gate/beom.md",
+        "world/stories/first-gate/bear.md",
+        "world/stories/first-gate/cat.md",
+        "world/stories/first-gate/fox.md",
+        "world/stories/first-gate/wolf.md"
+      ],
+      "outputs": {
+        "card_data": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "illustration": "docs/card-assets/illustrations/ob01/ob01-0039.png"
+      },
+      "images": {
+        "cover": "docs/card-assets/illustrations/ob01/ob01-0039.png",
+        "selected": [
+          "docs/card-assets/illustrations/ob01/ob01-0039.png"
+        ],
+        "references": [],
+        "generated": []
+      },
+      "image_generation": {
+        "reference_images": [
+          "docs/card-assets/illustrations/ob01/ob01-0039.png"
+        ]
+      },
+      "legacy_seed": {
+        "card_file": "data/card-2026-06-01-v1/cards/ob01/ob01-pack.json",
+        "card_fields": [
+          "name",
+          "cost",
+          "faction",
+          "classId",
+          "className",
+          "theme",
+          "type",
+          "race",
+          "effect",
+          "lore",
+          "guide",
+          "power",
+          "sigil",
+          "illustration"
+        ]
+      },
+      "note_path": "lore/cards/ob01/ob01-0039.md"
+    }
+  ]
+}

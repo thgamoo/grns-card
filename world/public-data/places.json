@@ -1,0 +1,26 @@
+[
+  {
+    "id": "border-gate",
+    "name": "변경 성문",
+    "type": "castle",
+    "summary": "첫 캠페인의 중심 무대."
+  },
+  {
+    "id": "iron-mountains",
+    "name": "철산지대",
+    "type": "region",
+    "summary": "가락 야철장과 비밀 화로가 모인 산지."
+  },
+  {
+    "id": "north-sky-road",
+    "name": "북천 길목",
+    "type": "route",
+    "summary": "예맥 기병과 점고관이 지나는 북방 길."
+  },
+  {
+    "id": "ghost-gate-marsh",
+    "name": "귀문 습지",
+    "type": "region",
+    "summary": "십제의 귀신 전승과 피난민 행렬이 만나는 습지."
+  }
+]
