@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "reference-sources/crusades/battle-of-dorylaeum-1097.md",
+                "file": "media/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "battle-of-dorylaeum-1097"
+              "title": "README"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "reference-sources/crusades/battle-of-dorylaeum-1097.md",
+                "file": "media/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for battle-of-dorylaeum-1097"
+              "title": "Backlinks for README"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "reference-sources/crusades/battle-of-dorylaeum-1097.md",
+                "file": "media/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from battle-of-dorylaeum-1097"
+              "title": "Outgoing links from README"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "reference-sources/crusades/battle-of-dorylaeum-1097.md",
+                "file": "media/README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of battle-of-dorylaeum-1097"
+              "title": "Outline of README"
             }
           }
         ]
@@ -185,42 +185,42 @@
   },
   "active": "46cdea02c5e228f8",
   "lastOpenFiles": [
+    "indexes/operations.md",
+    "operations/beomideong-stance.md",
+    "operations/hapjeong-trap.md",
+    "operations/teukrapseominak-fog.md",
+    "operations/README.md",
+    "operations",
+    "tactics/mechanic-candidates/forced-movement-creates-advantage-now-and-exhaustion-later.md",
+    "tactics/mechanic-candidates/flanking-markers-can-become-a-delayed-collapse-trigger.md",
+    "tactics/mechanic-candidates/firepower-can-pin-units-while-another-effect-decides-the-site.md",
+    "tactics/mechanic-candidates/fast-forces-may-act-before-slower-reserves-can-form-a-line.md",
+    "tactics/mechanic-candidates/false-weakness-can-pull-an-attacker-into-a-worse-position.md",
+    "tactics/mechanic-candidates/command-friction-delays-actions-or-changes-who-claims-the-result.md",
+    "tactics/mechanic-candidates/allied-forces-can-share-a-battlefield-while-splitting-rewards.md",
+    "tactics/mechanic-candidates/a-unit-loses-retreat-options-before-it-loses-strength.md",
+    "tactics/mechanic-candidates/a-symbolic-loss-can-spread-penalties-beyond-the-battlefield.md",
+    "tactics/mechanic-candidates/a-defender-can-trade-time-for-damage-while-walls-or-gates-remain-intact.md",
+    "tactics/patterns/ambush-deception.md",
+    "tactics/patterns/attrition-firepower.md",
+    "tactics/patterns/defensive-position-terrain.md",
+    "tactics/patterns/siege-blockade.md",
+    "tactics/patterns/mobility-operational-tempo.md",
+    "tactics/patterns/logistics-supply.md",
+    "tactics/patterns/encirclement-envelopment.md",
+    "tactics/README.md",
+    "media/README.md",
+    "scenes/world-separation-aftermath.md",
+    "scenes/onboarding-first-gate.md",
+    "tactics/patterns",
+    "tactics/mechanic-candidates",
+    "tactics",
+    "terms",
     "reference-sources/generated-tactical-notes.json",
     "reference-sources/tactical-notes-map.html",
-    "reference-sources/README.md",
-    "reference-sources/world-war-ii/battle-of-okinawa.md",
-    "reference-sources/world-war-ii/battle-of-iwo-jima.md",
-    "reference-sources/world-war-ii/battle-of-the-bulge.md",
-    "reference-sources/world-war-ii/normandy-landings.md",
-    "reference-sources/world-war-ii/battle-of-kursk.md",
-    "reference-sources/world-war-ii/battle-of-stalingrad.md",
-    "reference-sources/world-war-ii/battle-of-midway.md",
-    "reference-sources/world-war-ii/battle-of-britain.md",
-    "reference-sources/world-war-ii/battle-of-france.md",
-    "reference-sources/world-war-ii/invasion-of-poland.md",
-    "reference-sources/world-war-ii/world-war-ii-overview.md",
     "generated/wikipedia-world-war-ii-references.json",
-    "reference-sources/world-war-i/hundred-days-offensive.md",
-    "reference-sources/world-war-i/spring-offensive.md",
-    "reference-sources/world-war-i/battle-of-passchendaele.md",
-    "reference-sources/world-war-i/brusilov-offensive.md",
-    "reference-sources/world-war-i/battle-of-the-somme.md",
-    "reference-sources/world-war-i/battle-of-verdun.md",
-    "reference-sources/world-war-i/gallipoli-campaign.md",
-    "reference-sources/world-war-i/battle-of-tannenberg.md",
-    "reference-sources/world-war-i/first-battle-of-the-marne.md",
-    "reference-sources/world-war-i/world-war-i-overview.md",
     "generated/wikipedia-world-war-i-references.json",
-    "reference-sources/napoleonic-wars/battle-of-waterloo.md",
-    "reference-sources/napoleonic-wars/battle-of-leipzig.md",
-    "reference-sources/napoleonic-wars/french-invasion-of-russia.md",
     "generated/wikipedia-napoleonic-wars-references.json",
-    "generated/wikipedia-thirty-years-war-references.json",
-    "generated/wikipedia-hundred-years-war-references.json",
-    "generated/wikipedia-mongol-conquests-references.json",
-    "generated/wikipedia-gallic-wars-references.json",
-    "generated/wikipedia-second-punic-war-references.json",
-    "generated/wikipedia-peloponnesian-war-references.json",
     "Untitled 1.canvas",
     "Untitled.canvas"
   ]

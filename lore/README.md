@@ -27,6 +27,8 @@ The Markdown structure is designed to work well in Obsidian.
 - `events/`: wars, rites, disasters, migrations, rebellions, and encounters.
 - `reference-sources/`: external research inputs and generated reference notes
   used for grounding, kept separate from in-world lore.
+- `operations/`: GOE operation card editorial notes, including historical
+  reference origins, rules intent, and image/lore direction.
 - `societies/`: factions, classes, social groups, occupations, and institutions.
 - `cosmology/`: powers, spirits, omens, taboos, and transformations.
 - `visual/`: style core, anti-realism guardrails, style profiles, motifs,
@@ -36,6 +38,8 @@ The Markdown structure is designed to work well in Obsidian.
 - `media/`: setting-node image references, generated candidates, selected-media
   promotion manifests, and image-to-node manifests. Selection is stored in note
   metadata.
+- `terms/`: editorial terminology maps for translating generic card-game
+  vocabulary into GRNS-specific rule, UI, and lore language.
 - `cache/`: gitignored generated working cache for image-generation context
   bundles. This directory can be deleted and rebuilt at any time.
 - `rules/`: global writing and image-generation rules.
