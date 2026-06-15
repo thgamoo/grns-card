@@ -1,0 +1,70 @@
+{
+  "description": "English Wikipedia pages for Hundred Years' War reference notes. Keep this list at battle, siege, raid, or campaign scale.",
+  "language": "en",
+  "parent": "Hundred Years' War",
+  "pages": [
+    {
+      "title": "Hundred Years' War",
+      "scope": "umbrella",
+      "parent": "Hundred Years' War",
+      "slug": "hundred-years-war-overview",
+      "note": "Broad context only. Use specific battles, sieges, and campaigns for tactical extraction."
+    },
+    {
+      "title": "Battle of Sluys",
+      "scope": "battle",
+      "parent": "Hundred Years' War",
+      "campaign": "Edwardian phase",
+      "note": "Naval melee, immobilized ships, missile fire, and control of channel access."
+    },
+    {
+      "title": "Battle of Crécy",
+      "scope": "battle",
+      "parent": "Hundred Years' War",
+      "campaign": "Crécy campaign",
+      "note": "Defensive position, English longbow, dismounted men-at-arms, and disorderly cavalry assaults."
+    },
+    {
+      "title": "Siege of Calais (1346–1347)",
+      "scope": "siege",
+      "parent": "Hundred Years' War",
+      "campaign": "Crécy campaign",
+      "note": "Long blockade, coastal logistics, starvation pressure, and strategic port capture."
+    },
+    {
+      "title": "Battle of Poitiers",
+      "scope": "battle",
+      "parent": "Hundred Years' War",
+      "campaign": "Black Prince's chevauchée",
+      "note": "Defensive terrain, longbow fire, dismounted combat, and capture of the French king."
+    },
+    {
+      "title": "Battle of Agincourt",
+      "scope": "battle",
+      "parent": "Hundred Years' War",
+      "campaign": "Lancastrian phase",
+      "note": "Mud, narrow frontage, longbow archers, stakes, and compressed French assault."
+    },
+    {
+      "title": "Battle of Orléans",
+      "scope": "siege",
+      "parent": "Hundred Years' War",
+      "campaign": "Loire campaign",
+      "note": "Relief of a besieged city, morale reversal, artillery and fortification pressure, and Joan of Arc's role."
+    },
+    {
+      "title": "Battle of Patay",
+      "scope": "battle",
+      "parent": "Hundred Years' War",
+      "campaign": "Loire campaign",
+      "note": "Rapid cavalry attack, English archers caught before preparing positions, and reversal after Orléans."
+    },
+    {
+      "title": "Battle of Castillon",
+      "scope": "battle",
+      "parent": "Hundred Years' War",
+      "campaign": "Final phase",
+      "note": "Field fortifications, artillery position, failed assault, and end-stage tactical transition."
+    }
+  ]
+}

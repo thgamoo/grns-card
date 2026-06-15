@@ -1,0 +1,76 @@
+{
+  "description": "English Wikipedia pages for World War I reference notes. Keep this list at battle, campaign, offensive, or operation scale.",
+  "language": "en",
+  "parent": "World War I",
+  "pages": [
+    {
+      "title": "World War I",
+      "scope": "umbrella",
+      "parent": "World War I",
+      "slug": "world-war-i-overview",
+      "note": "Broad context only. Use specific battles, offensives, and campaigns for tactical extraction."
+    },
+    {
+      "title": "First Battle of the Marne",
+      "scope": "battle",
+      "parent": "World War I",
+      "campaign": "Western Front",
+      "note": "Operational counterstroke, exposed flank, rail movement, and failure of German advance."
+    },
+    {
+      "title": "Battle of Tannenberg",
+      "scope": "battle",
+      "parent": "World War I",
+      "campaign": "Eastern Front",
+      "note": "Rail movement, intercepted communications, encirclement, and destruction of Russian army."
+    },
+    {
+      "title": "Gallipoli campaign",
+      "scope": "campaign",
+      "parent": "World War I",
+      "note": "Amphibious assault, terrain, naval support limits, logistics, and failed breakthrough."
+    },
+    {
+      "title": "Battle of Verdun",
+      "scope": "battle",
+      "parent": "World War I",
+      "campaign": "Western Front",
+      "note": "Attrition, fortress zone, artillery, rotation, and symbolic endurance."
+    },
+    {
+      "title": "Battle of the Somme",
+      "scope": "battle",
+      "parent": "World War I",
+      "campaign": "Western Front",
+      "note": "Artillery preparation, infantry assault, machine-gun defense, tanks, and attrition."
+    },
+    {
+      "title": "Brusilov offensive",
+      "scope": "offensive",
+      "parent": "World War I",
+      "campaign": "Eastern Front",
+      "note": "Short bombardments, infiltration-like assault preparation, broad-front attack, and Austro-Hungarian collapse."
+    },
+    {
+      "title": "Battle of Passchendaele",
+      "scope": "battle",
+      "parent": "World War I",
+      "campaign": "Western Front",
+      "note": "Mud, artillery-churned terrain, limited advances, and exhaustion."
+    },
+    {
+      "title": "Spring offensive",
+      "scope": "offensive",
+      "parent": "World War I",
+      "campaign": "Western Front",
+      "note": "Stormtrooper tactics, breakthrough without strategic exploitation, and German exhaustion."
+    },
+    {
+      "title": "Hundred Days Offensive",
+      "scope": "offensive",
+      "parent": "World War I",
+      "campaign": "Western Front",
+      "note": "Combined arms, rolling pressure, operational collapse, and final Allied advance."
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "description": "English Wikipedia pages for Thirty Years' War reference notes. Keep this list at battle, siege, sack, or campaign scale.",
+  "language": "en",
+  "parent": "Thirty Years' War",
+  "pages": [
+    {
+      "title": "Thirty Years' War",
+      "scope": "umbrella",
+      "parent": "Thirty Years' War",
+      "slug": "thirty-years-war-overview",
+      "note": "Broad context only. Use specific battles, sieges, sacks, and campaigns for tactical extraction."
+    },
+    {
+      "title": "Battle of White Mountain",
+      "scope": "battle",
+      "parent": "Thirty Years' War",
+      "campaign": "Bohemian Revolt",
+      "note": "Short decisive battle, morale collapse, and political-religious consequences."
+    },
+    {
+      "title": "Battle of Dessau Bridge",
+      "scope": "battle",
+      "parent": "Thirty Years' War",
+      "campaign": "Danish intervention",
+      "note": "Bridgehead, fortified position, artillery, and crossing control."
+    },
+    {
+      "title": "Sack of Magdeburg",
+      "scope": "siege",
+      "parent": "Thirty Years' War",
+      "campaign": "Swedish intervention",
+      "note": "Siege, urban storming, fire, massacre, and terror effect."
+    },
+    {
+      "title": "Battle of Breitenfeld (1631)",
+      "scope": "battle",
+      "parent": "Thirty Years' War",
+      "campaign": "Swedish intervention",
+      "note": "Linear tactics, artillery mobility, allied flank collapse, and Swedish tactical reform."
+    },
+    {
+      "title": "Battle of Lützen (1632)",
+      "scope": "battle",
+      "parent": "Thirty Years' War",
+      "campaign": "Swedish intervention",
+      "note": "Fog, repeated assaults, command death, and contested tactical victory."
+    },
+    {
+      "title": "Battle of Nördlingen (1634)",
+      "scope": "battle",
+      "parent": "Thirty Years' War",
+      "campaign": "Swedish intervention",
+      "note": "Assault against strong position, Spanish tercios, and collapse of Swedish position in southern Germany."
+    },
+    {
+      "title": "Battle of Rocroi",
+      "scope": "battle",
+      "parent": "Thirty Years' War",
+      "campaign": "Franco-Spanish War",
+      "note": "Cavalry action, encirclement pressure, Spanish infantry stand, and symbolic tactical transition."
+    },
+    {
+      "title": "Battle of Jankau",
+      "scope": "battle",
+      "parent": "Thirty Years' War",
+      "campaign": "Late war",
+      "note": "Maneuver, terrain, artillery, and Swedish victory opening routes toward Vienna."
+    }
+  ]
+}

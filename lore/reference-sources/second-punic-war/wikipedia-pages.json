@@ -1,0 +1,77 @@
+{
+  "description": "English Wikipedia pages for Second Punic War reference notes. Keep this list at battle, siege, crossing, or campaign scale.",
+  "language": "en",
+  "parent": "Second Punic War",
+  "pages": [
+    {
+      "title": "Second Punic War",
+      "scope": "umbrella",
+      "parent": "Second Punic War",
+      "slug": "second-punic-war-overview",
+      "note": "Broad context only. Use specific battles, sieges, crossings, and campaigns for tactical extraction."
+    },
+    {
+      "title": "Siege of Saguntum",
+      "scope": "siege",
+      "parent": "Second Punic War",
+      "campaign": "Iberian prelude",
+      "note": "Provocation, siege pressure, Roman alliance politics, and escalation to wider war."
+    },
+    {
+      "title": "Hannibal's crossing of the Alps",
+      "scope": "operation",
+      "parent": "Second Punic War",
+      "campaign": "Hannibal's Italian campaign",
+      "note": "Operational surprise, mountain passage, attrition, and psychological shock."
+    },
+    {
+      "title": "Battle of the Trebia",
+      "scope": "battle",
+      "parent": "Second Punic War",
+      "campaign": "Hannibal's Italian campaign",
+      "note": "Ambush, weather, river crossing fatigue, and concealed reserve attack."
+    },
+    {
+      "title": "Battle of Lake Trasimene",
+      "scope": "battle",
+      "parent": "Second Punic War",
+      "campaign": "Hannibal's Italian campaign",
+      "note": "March-column ambush, terrain trap, fog or visibility, and command disruption."
+    },
+    {
+      "title": "Battle of Cannae",
+      "scope": "battle",
+      "parent": "Second Punic War",
+      "campaign": "Hannibal's Italian campaign",
+      "note": "Double envelopment, elastic center, cavalry superiority, and mass encirclement."
+    },
+    {
+      "title": "Battle of the Metaurus",
+      "scope": "battle",
+      "parent": "Second Punic War",
+      "campaign": "Italian campaign",
+      "note": "Interception of reinforcement, forced march, and defeat of Hasdrubal before junction with Hannibal."
+    },
+    {
+      "title": "Battle of Baecula",
+      "scope": "battle",
+      "parent": "Second Punic War",
+      "campaign": "Iberian campaign",
+      "note": "Hill position, flanking attack, and Scipio's pressure on Carthaginian forces in Iberia."
+    },
+    {
+      "title": "Battle of Ilipa",
+      "scope": "battle",
+      "parent": "Second Punic War",
+      "campaign": "Iberian campaign",
+      "note": "Deceptive deployment, timing reversal, and infantry-cavalry coordination."
+    },
+    {
+      "title": "Battle of Zama",
+      "scope": "battle",
+      "parent": "Second Punic War",
+      "campaign": "African campaign",
+      "note": "Anti-elephant lanes, cavalry return, veteran infantry, and final reversal of Hannibal's methods."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "description": "English Wikipedia pages for Mongol conquests reference notes. Keep this list at battle, siege, invasion, or operational campaign scale.",
+  "language": "en",
+  "parent": "Mongol invasions and conquests",
+  "pages": [
+    {
+      "title": "Mongol conquests",
+      "scope": "umbrella",
+      "parent": "Mongol invasions and conquests",
+      "slug": "mongol-conquests-overview",
+      "note": "Broad context only. Use specific battles, sieges, and invasion campaigns for tactical extraction."
+    },
+    {
+      "title": "Mongol invasion of the Khwarazmian Empire",
+      "scope": "campaign",
+      "parent": "Mongol invasions and conquests",
+      "note": "Multi-pronged invasion, intelligence, terror strategy, city sieges, and operational mobility."
+    },
+    {
+      "title": "Siege of Bukhara",
+      "scope": "siege",
+      "parent": "Mongol invasions and conquests",
+      "campaign": "Khwarazmian campaign",
+      "note": "Rapid approach, psychological shock, and city submission under Mongol pressure."
+    },
+    {
+      "title": "Siege of Samarkand (1220)",
+      "scope": "siege",
+      "parent": "Mongol invasions and conquests",
+      "campaign": "Khwarazmian campaign",
+      "note": "Defended city, siege pressure, betrayal or collapse, and massacre as deterrence."
+    },
+    {
+      "title": "Battle of the Kalka River",
+      "scope": "battle",
+      "parent": "Mongol invasions and conquests",
+      "campaign": "Reconnaissance westward",
+      "note": "Feigned retreat, coalition pursuit, separation, and encirclement."
+    },
+    {
+      "title": "Battle of Mohi",
+      "scope": "battle",
+      "parent": "Mongol invasions and conquests",
+      "campaign": "Invasion of Europe",
+      "note": "River crossing, night maneuver, encirclement, siege engines, and camp destruction."
+    },
+    {
+      "title": "Battle of Legnica",
+      "scope": "battle",
+      "parent": "Mongol invasions and conquests",
+      "campaign": "Invasion of Poland",
+      "note": "Deception, smoke or battlefield confusion, cavalry coordination, and defeat of coalition forces."
+    },
+    {
+      "title": "Siege of Baghdad",
+      "scope": "siege",
+      "parent": "Mongol invasions and conquests",
+      "campaign": "Campaign against the Abbasid Caliphate",
+      "note": "Encirclement, siege engineering, symbolic capital collapse, and shock aftermath."
+    },
+    {
+      "title": "Battle of Ain Jalut",
+      "scope": "battle",
+      "parent": "Mongol invasions and conquests",
+      "campaign": "Levant campaign",
+      "note": "Mamluk ambush, feigned retreat reversal, and halt of Mongol advance in the region."
+    }
+  ]
+}

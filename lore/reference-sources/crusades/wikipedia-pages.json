@@ -1,0 +1,92 @@
+{
+  "description": "English Wikipedia pages for Crusades reference notes. Keep this list at battle, siege, or campaign-action scale rather than the whole Crusades umbrella.",
+  "language": "en",
+  "parent": "Crusades",
+  "pages": [
+    {
+      "title": "Crusades",
+      "scope": "umbrella",
+      "parent": "Crusades",
+      "slug": "crusades-overview",
+      "note": "Broad context only. Use specific battle and siege pages for tactical extraction."
+    },
+    {
+      "title": "Siege of Nicaea",
+      "scope": "siege",
+      "parent": "Crusades",
+      "campaign": "First Crusade",
+      "note": "Early crusader-Byzantine cooperation, fortified city pressure, and negotiated control."
+    },
+    {
+      "title": "Battle of Dorylaeum (1097)",
+      "scope": "battle",
+      "parent": "Crusades",
+      "campaign": "First Crusade",
+      "note": "March column vulnerability, Turkish mounted archery, and relief by divided crusader forces."
+    },
+    {
+      "title": "Siege of Antioch",
+      "scope": "siege",
+      "parent": "Crusades",
+      "campaign": "First Crusade",
+      "note": "Long siege, famine, internal betrayal, counter-siege pressure, and morale crisis."
+    },
+    {
+      "title": "Siege of Jerusalem (1099)",
+      "scope": "siege",
+      "parent": "Crusades",
+      "campaign": "First Crusade",
+      "note": "Assault on a fortified holy city, siege engines, water scarcity, and final storming."
+    },
+    {
+      "title": "Battle of Ascalon",
+      "scope": "battle",
+      "parent": "Crusades",
+      "campaign": "First Crusade",
+      "note": "Rapid post-siege field battle, surprise, camp attack, and consolidation after Jerusalem."
+    },
+    {
+      "title": "Siege of Edessa (1144)",
+      "scope": "siege",
+      "parent": "Crusades",
+      "campaign": "Second Crusade prelude",
+      "note": "Fall of a frontier county, weak garrison coordination, and strategic shock."
+    },
+    {
+      "title": "Battle of Montgisard",
+      "scope": "battle",
+      "parent": "Crusades",
+      "campaign": "Kingdom of Jerusalem",
+      "note": "Outnumbered Frankish strike, shock cavalry, surprise, and charismatic leadership."
+    },
+    {
+      "title": "Battle of Hattin",
+      "scope": "battle",
+      "parent": "Crusades",
+      "campaign": "Saladin's campaign",
+      "note": "Water denial, heat, encirclement, missile pressure, and army collapse."
+    },
+    {
+      "title": "Siege of Acre (1189–1191)",
+      "scope": "siege",
+      "parent": "Crusades",
+      "campaign": "Third Crusade",
+      "slug": "siege-of-acre-1189-1191",
+      "note": "Long coastal siege, naval supply, disease, coalition politics, and counter-siege."
+    },
+    {
+      "title": "Battle of Arsuf",
+      "scope": "battle",
+      "parent": "Crusades",
+      "campaign": "Third Crusade",
+      "note": "March discipline, harassment by mounted forces, controlled cavalry countercharge."
+    },
+    {
+      "title": "Sack of Constantinople",
+      "scope": "siege",
+      "parent": "Crusades",
+      "campaign": "Fourth Crusade",
+      "note": "Diversion of campaign objective, assault on a major city, naval access, and alliance breakdown."
+    }
+  ]
+}

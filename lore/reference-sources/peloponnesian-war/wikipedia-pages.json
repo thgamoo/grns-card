@@ -1,0 +1,62 @@
+{
+  "description": "English Wikipedia pages for Peloponnesian War reference notes. Keep this list at battle, siege, expedition, or campaign phase scale.",
+  "language": "en",
+  "parent": "Peloponnesian War",
+  "pages": [
+    {
+      "title": "Peloponnesian War",
+      "scope": "umbrella",
+      "parent": "Peloponnesian War",
+      "slug": "peloponnesian-war-overview",
+      "note": "Broad context only. Use specific battles, sieges, expeditions, and phases for tactical extraction."
+    },
+    {
+      "title": "Plague of Athens",
+      "scope": "campaign-condition",
+      "parent": "Peloponnesian War",
+      "note": "Urban crowding, disease shock, command loss, and morale collapse inside a defensive strategy."
+    },
+    {
+      "title": "Battle of Pylos",
+      "scope": "battle",
+      "parent": "Peloponnesian War",
+      "note": "Improvised fortification, coastal lodgment, Spartan reaction, and control of nearby island forces."
+    },
+    {
+      "title": "Battle of Sphacteria",
+      "scope": "battle",
+      "parent": "Peloponnesian War",
+      "note": "Light troops, missile harassment, difficult terrain, and surrender of elite hoplites."
+    },
+    {
+      "title": "Battle of Delium",
+      "scope": "battle",
+      "parent": "Peloponnesian War",
+      "note": "Hoplite battle, formation depth, routed wing dynamics, and battlefield pursuit."
+    },
+    {
+      "title": "Battle of Amphipolis",
+      "scope": "battle",
+      "parent": "Peloponnesian War",
+      "note": "Surprise, city approach, local intelligence, and command casualties."
+    },
+    {
+      "title": "Battle of Mantinea (418 BC)",
+      "scope": "battle",
+      "parent": "Peloponnesian War",
+      "note": "Alliance warfare, hoplite alignment drift, and Spartan battlefield discipline."
+    },
+    {
+      "title": "Sicilian Expedition",
+      "scope": "expedition",
+      "parent": "Peloponnesian War",
+      "note": "Overseas expedition risk, siege failure, command conflict, and strategic overreach."
+    },
+    {
+      "title": "Battle of Aegospotami",
+      "scope": "battle",
+      "parent": "Peloponnesian War",
+      "note": "Fleet vulnerability, surprise capture, supply discipline, and decisive naval-strategic collapse."
+    }
+  ]
+}

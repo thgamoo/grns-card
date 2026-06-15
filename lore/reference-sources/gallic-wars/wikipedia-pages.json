@@ -1,0 +1,68 @@
+{
+  "description": "English Wikipedia pages for Gallic Wars reference notes. Keep this list at battle, siege, revolt, or campaign-action scale.",
+  "language": "en",
+  "parent": "Gallic Wars",
+  "pages": [
+    {
+      "title": "Gallic Wars",
+      "scope": "umbrella",
+      "parent": "Gallic Wars",
+      "slug": "gallic-wars-overview",
+      "note": "Broad context only. Use specific campaigns, battles, and sieges for tactical extraction."
+    },
+    {
+      "title": "Battle of Bibracte",
+      "scope": "battle",
+      "parent": "Gallic Wars",
+      "campaign": "Helvetii campaign",
+      "note": "Forced march, hill deployment, reserve management, and pressure against migrating forces."
+    },
+    {
+      "title": "Battle of Vosges (58 BC)",
+      "scope": "battle",
+      "parent": "Gallic Wars",
+      "campaign": "Ariovistus campaign",
+      "note": "Camp placement, morale, Germanic wedge pressure, and Roman formation response."
+    },
+    {
+      "title": "Battle of the Sabis",
+      "scope": "battle",
+      "parent": "Gallic Wars",
+      "campaign": "Belgic campaign",
+      "note": "Sudden attack, incomplete Roman camp, river terrain, and rapid legion reorganization."
+    },
+    {
+      "title": "Avaricum",
+      "scope": "siege",
+      "parent": "Gallic Wars",
+      "campaign": "Vercingetorix revolt",
+      "note": "Siegeworks, scorched-earth strategy, and Roman assault against a defended town."
+    },
+    {
+      "title": "Battle of Gergovia",
+      "scope": "battle",
+      "parent": "Gallic Wars",
+      "campaign": "Vercingetorix revolt",
+      "note": "Failed assault, miscommunication, fortified high ground, and political consequences."
+    },
+    {
+      "title": "Battle of Alesia",
+      "scope": "siege",
+      "parent": "Gallic Wars",
+      "campaign": "Vercingetorix revolt",
+      "note": "Double circumvallation, siege and relief army pressure, engineering, and decisive containment."
+    },
+    {
+      "title": "Julius Caesar's invasions of Britain",
+      "scope": "operation",
+      "parent": "Gallic Wars",
+      "note": "Amphibious landing, reconnaissance, hostage politics, and limited expeditionary gains."
+    },
+    {
+      "title": "Caesar's Rhine bridges",
+      "scope": "operation",
+      "parent": "Gallic Wars",
+      "note": "Rapid military engineering, river crossing demonstration, and deterrence."
+    }
+  ]
+}

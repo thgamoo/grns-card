@@ -1,0 +1,65 @@
+{
+  "description": "Umbrella reference topics. These are no longer fetched into one flat note directory; each topic should have its own subdirectory with battle, siege, campaign, or operation pages.",
+  "language": "en",
+  "pages": [
+    {
+      "title": "Peloponnesian War",
+      "enabled": false,
+      "directory": "lore/reference-sources/peloponnesian-war/",
+      "note": "Handled as phase, battle, siege, and expedition notes in its own directory."
+    },
+    {
+      "title": "Second Punic War",
+      "enabled": false,
+      "directory": "lore/reference-sources/second-punic-war/",
+      "note": "Handled as battle, siege, crossing, and campaign notes in its own directory."
+    },
+    {
+      "title": "Gallic Wars",
+      "enabled": false,
+      "directory": "lore/reference-sources/gallic-wars/",
+      "note": "Handled as battle, siege, engineering, and campaign notes in its own directory."
+    },
+    {
+      "title": "Crusades",
+      "enabled": false,
+      "note": "Handled as battle and siege notes in lore/reference-sources/crusades/."
+    },
+    {
+      "title": "Mongol invasions and conquests",
+      "enabled": false,
+      "directory": "lore/reference-sources/mongol-conquests/",
+      "note": "Handled as battle, siege, and invasion campaign notes in its own directory."
+    },
+    {
+      "title": "Hundred Years' War",
+      "enabled": false,
+      "directory": "lore/reference-sources/hundred-years-war/",
+      "note": "Handled as battle, siege, and campaign notes in its own directory."
+    },
+    {
+      "title": "Thirty Years' War",
+      "enabled": false,
+      "directory": "lore/reference-sources/thirty-years-war/",
+      "note": "Handled as battle, siege, and sack notes in its own directory."
+    },
+    {
+      "title": "Napoleonic Wars",
+      "enabled": false,
+      "directory": "lore/reference-sources/napoleonic-wars/",
+      "note": "Handled as battle, campaign, and operation notes in its own directory."
+    },
+    {
+      "title": "World War I",
+      "enabled": false,
+      "directory": "lore/reference-sources/world-war-i/",
+      "note": "Handled as battle, offensive, and campaign notes in its own directory."
+    },
+    {
+      "title": "World War II",
+      "enabled": false,
+      "directory": "lore/reference-sources/world-war-ii/",
+      "note": "Handled as battle, campaign, operation, and siege notes in its own directory."
+    }
+  ]
+}

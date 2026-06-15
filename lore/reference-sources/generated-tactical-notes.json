@@ -1,0 +1,2659 @@
+[
+  {
+    "title": "Battle of Arsuf",
+    "path": "lore/reference-sources/crusades/battle-of-arsuf.md",
+    "topic": "crusades",
+    "scope": "battle",
+    "parent": "Crusades",
+    "campaign": "Third Crusade",
+    "source_note": "March discipline, harassment by mounted forces, controlled cavalry countercharge.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "March discipline",
+      "harassment",
+      "mounted forces",
+      "controlled cavalry countercharge",
+      "Mobility / Operational Tempo",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Battle of Ascalon",
+    "path": "lore/reference-sources/crusades/battle-of-ascalon.md",
+    "topic": "crusades",
+    "scope": "battle",
+    "parent": "Crusades",
+    "campaign": "First Crusade",
+    "source_note": "Rapid post-siege field battle, surprise, camp attack, and consolidation after Jerusalem.",
+    "categories": [
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Ambush / Deception"
+    ],
+    "terms": [
+      "Rapid post-siege field battle",
+      "surprise",
+      "camp attack",
+      "consolidation after Jerusalem",
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Ambush / Deception"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Battle of Dorylaeum (1097)",
+    "path": "lore/reference-sources/crusades/battle-of-dorylaeum-1097.md",
+    "topic": "crusades",
+    "scope": "battle",
+    "parent": "Crusades",
+    "campaign": "First Crusade",
+    "source_note": "March column vulnerability, Turkish mounted archery, and relief by divided crusader forces.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "March column vulnerability",
+      "Turkish mounted archery",
+      "relief",
+      "divided crusader forces",
+      "Mobility / Operational Tempo",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Battle of Hattin",
+    "path": "lore/reference-sources/crusades/battle-of-hattin.md",
+    "topic": "crusades",
+    "scope": "battle",
+    "parent": "Crusades",
+    "campaign": "Saladin's campaign",
+    "source_note": "Water denial, heat, encirclement, missile pressure, and army collapse.",
+    "categories": [
+      "Encirclement / Envelopment",
+      "Attrition / Firepower",
+      "Logistics / Supply",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Water denial",
+      "heat",
+      "encirclement",
+      "missile pressure",
+      "army collapse",
+      "Encirclement / Envelopment",
+      "Attrition / Firepower"
+    ],
+    "mechanics": [
+      "A unit loses retreat options before it loses strength.",
+      "Flanking markers can become a delayed collapse trigger.",
+      "Repeated pressure lowers readiness even without immediate capture."
+    ]
+  },
+  {
+    "title": "Battle of Montgisard",
+    "path": "lore/reference-sources/crusades/battle-of-montgisard.md",
+    "topic": "crusades",
+    "scope": "battle",
+    "parent": "Crusades",
+    "campaign": "Kingdom of Jerusalem",
+    "source_note": "Outnumbered Frankish strike, shock cavalry, surprise, and charismatic leadership.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Ambush / Deception",
+      "Coalition / Command",
+      "Morale / Symbolic Shock"
+    ],
+    "terms": [
+      "Outnumbered Frankish strike",
+      "shock cavalry",
+      "surprise",
+      "charismatic leadership",
+      "Mobility / Operational Tempo",
+      "Ambush / Deception",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Hidden setup converts enemy movement into exposure."
+    ]
+  },
+  {
+    "title": "Crusades",
+    "path": "lore/reference-sources/crusades/crusades-overview.md",
+    "topic": "crusades",
+    "scope": "umbrella",
+    "parent": "Crusades",
+    "campaign": "",
+    "source_note": "Broad context only. Use specific battle and siege pages for tactical extraction.",
+    "categories": [
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "terms": [
+      "siege pages for tactical extraction",
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "mechanics": [
+      "Allied forces can share a battlefield while splitting rewards.",
+      "Command friction delays actions or changes who claims the result.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Sack of Constantinople",
+    "path": "lore/reference-sources/crusades/sack-of-constantinople.md",
+    "topic": "crusades",
+    "scope": "siege",
+    "parent": "Crusades",
+    "campaign": "Fourth Crusade",
+    "source_note": "Diversion of campaign objective, assault on a major city, naval access, and alliance breakdown.",
+    "categories": [
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Diversion of campaign objective",
+      "assault on a major city",
+      "naval access",
+      "alliance breakdown",
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Engineering / Technology"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Siege of Acre (1189–1191)",
+    "path": "lore/reference-sources/crusades/siege-of-acre-1189-1191.md",
+    "topic": "crusades",
+    "scope": "siege",
+    "parent": "Crusades",
+    "campaign": "Third Crusade",
+    "source_note": "Long coastal siege, naval supply, disease, coalition politics, and counter-siege.",
+    "categories": [
+      "Siege / Blockade",
+      "Logistics / Supply",
+      "Coalition / Command",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Long coastal siege",
+      "naval supply",
+      "disease",
+      "coalition politics",
+      "counter-siege",
+      "Siege / Blockade",
+      "Logistics / Supply"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Supply lines become a second health track."
+    ]
+  },
+  {
+    "title": "Siege of Antioch",
+    "path": "lore/reference-sources/crusades/siege-of-antioch.md",
+    "topic": "crusades",
+    "scope": "siege",
+    "parent": "Crusades",
+    "campaign": "First Crusade",
+    "source_note": "Long siege, famine, internal betrayal, counter-siege pressure, and morale crisis.",
+    "categories": [
+      "Siege / Blockade",
+      "Logistics / Supply",
+      "Coalition / Command",
+      "Morale / Symbolic Shock"
+    ],
+    "terms": [
+      "Long siege",
+      "famine",
+      "internal betrayal",
+      "counter-siege pressure",
+      "morale crisis",
+      "Siege / Blockade",
+      "Logistics / Supply"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Supply lines become a second health track."
+    ]
+  },
+  {
+    "title": "Siege of Edessa (1144)",
+    "path": "lore/reference-sources/crusades/siege-of-edessa-1144.md",
+    "topic": "crusades",
+    "scope": "siege",
+    "parent": "Crusades",
+    "campaign": "Second Crusade prelude",
+    "source_note": "Fall of a frontier county, weak garrison coordination, and strategic shock.",
+    "categories": [
+      "Siege / Blockade",
+      "Coalition / Command",
+      "Morale / Symbolic Shock"
+    ],
+    "terms": [
+      "Fall of a frontier county",
+      "weak garrison coordination",
+      "strategic shock",
+      "Siege / Blockade",
+      "Coalition / Command",
+      "Morale / Symbolic Shock"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Siege of Jerusalem (1099)",
+    "path": "lore/reference-sources/crusades/siege-of-jerusalem-1099.md",
+    "topic": "crusades",
+    "scope": "siege",
+    "parent": "Crusades",
+    "campaign": "First Crusade",
+    "source_note": "Assault on a fortified holy city, siege engines, water scarcity, and final storming.",
+    "categories": [
+      "Siege / Blockade",
+      "Logistics / Supply",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Assault on a fortified holy city",
+      "siege engines",
+      "water scarcity",
+      "final storming",
+      "Siege / Blockade",
+      "Logistics / Supply",
+      "Engineering / Technology"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Supply lines become a second health track."
+    ]
+  },
+  {
+    "title": "Siege of Nicaea",
+    "path": "lore/reference-sources/crusades/siege-of-nicaea.md",
+    "topic": "crusades",
+    "scope": "siege",
+    "parent": "Crusades",
+    "campaign": "First Crusade",
+    "source_note": "Early crusader-Byzantine cooperation, fortified city pressure, and negotiated control.",
+    "categories": [
+      "Siege / Blockade",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Early crusader-Byzantine cooperation",
+      "fortified city pressure",
+      "negotiated control",
+      "Siege / Blockade",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Avaricum",
+    "path": "lore/reference-sources/gallic-wars/avaricum.md",
+    "topic": "gallic-wars",
+    "scope": "siege",
+    "parent": "Gallic Wars",
+    "campaign": "Vercingetorix revolt",
+    "source_note": "Siegeworks, scorched-earth strategy, and Roman assault against a defended town.",
+    "categories": [
+      "Siege / Blockade",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Siegeworks",
+      "scorched-earth strategy",
+      "Roman assault",
+      "a defended town",
+      "Siege / Blockade",
+      "Engineering / Technology"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "A tool or machine unlocks an otherwise impossible tactical line."
+    ]
+  },
+  {
+    "title": "Battle of Alesia",
+    "path": "lore/reference-sources/gallic-wars/battle-of-alesia.md",
+    "topic": "gallic-wars",
+    "scope": "siege",
+    "parent": "Gallic Wars",
+    "campaign": "Vercingetorix revolt",
+    "source_note": "Double circumvallation, siege and relief army pressure, engineering, and decisive containment.",
+    "categories": [
+      "Siege / Blockade",
+      "Encirclement / Envelopment",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Double circumvallation",
+      "siege",
+      "relief army pressure",
+      "engineering",
+      "decisive containment",
+      "Siege / Blockade",
+      "Encirclement / Envelopment"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "A unit loses retreat options before it loses strength."
+    ]
+  },
+  {
+    "title": "Battle of Bibracte",
+    "path": "lore/reference-sources/gallic-wars/battle-of-bibracte.md",
+    "topic": "gallic-wars",
+    "scope": "battle",
+    "parent": "Gallic Wars",
+    "campaign": "Helvetii campaign",
+    "source_note": "Forced march, hill deployment, reserve management, and pressure against migrating forces.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "Forced march",
+      "hill deployment",
+      "reserve management",
+      "pressure",
+      "migrating forces",
+      "Mobility / Operational Tempo",
+      "Defensive Position / Terrain"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Terrain changes the cost of attack more than the strength value."
+    ]
+  },
+  {
+    "title": "Battle of Gergovia",
+    "path": "lore/reference-sources/gallic-wars/battle-of-gergovia.md",
+    "topic": "gallic-wars",
+    "scope": "battle",
+    "parent": "Gallic Wars",
+    "campaign": "Vercingetorix revolt",
+    "source_note": "Failed assault, miscommunication, fortified high ground, and political consequences.",
+    "categories": [
+      "Siege / Blockade",
+      "Ambush / Deception",
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "Failed assault",
+      "miscommunication",
+      "fortified high ground",
+      "political consequences",
+      "Siege / Blockade",
+      "Ambush / Deception",
+      "Defensive Position / Terrain"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Hidden setup converts enemy movement into exposure."
+    ]
+  },
+  {
+    "title": "Battle of the Sabis",
+    "path": "lore/reference-sources/gallic-wars/battle-of-the-sabis.md",
+    "topic": "gallic-wars",
+    "scope": "battle",
+    "parent": "Gallic Wars",
+    "campaign": "Belgic campaign",
+    "source_note": "Sudden attack, incomplete Roman camp, river terrain, and rapid legion reorganization.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "Sudden attack",
+      "incomplete Roman camp",
+      "river terrain",
+      "rapid legion reorganization",
+      "Mobility / Operational Tempo",
+      "Defensive Position / Terrain"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Terrain changes the cost of attack more than the strength value."
+    ]
+  },
+  {
+    "title": "Battle of Vosges (58 BC)",
+    "path": "lore/reference-sources/gallic-wars/battle-of-vosges-58-bc.md",
+    "topic": "gallic-wars",
+    "scope": "battle",
+    "parent": "Gallic Wars",
+    "campaign": "Ariovistus campaign",
+    "source_note": "Camp placement, morale, Germanic wedge pressure, and Roman formation response.",
+    "categories": [
+      "Coalition / Command",
+      "Morale / Symbolic Shock"
+    ],
+    "terms": [
+      "Camp placement",
+      "morale",
+      "Germanic wedge pressure",
+      "Roman formation response",
+      "Coalition / Command",
+      "Morale / Symbolic Shock"
+    ],
+    "mechanics": [
+      "Allied forces can share a battlefield while splitting rewards.",
+      "Command friction delays actions or changes who claims the result.",
+      "A symbolic loss can spread penalties beyond the battlefield."
+    ]
+  },
+  {
+    "title": "Caesar's Rhine bridges",
+    "path": "lore/reference-sources/gallic-wars/caesars-rhine-bridges.md",
+    "topic": "gallic-wars",
+    "scope": "operation",
+    "parent": "Gallic Wars",
+    "campaign": "",
+    "source_note": "Rapid military engineering, river crossing demonstration, and deterrence.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Defensive Position / Terrain",
+      "Engineering / Technology",
+      "Morale / Symbolic Shock"
+    ],
+    "terms": [
+      "Rapid military engineering",
+      "river crossing demonstration",
+      "deterrence",
+      "Mobility / Operational Tempo",
+      "Defensive Position / Terrain",
+      "Engineering / Technology",
+      "Morale / Symbolic Shock"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Terrain changes the cost of attack more than the strength value."
+    ]
+  },
+  {
+    "title": "Gallic Wars",
+    "path": "lore/reference-sources/gallic-wars/gallic-wars-overview.md",
+    "topic": "gallic-wars",
+    "scope": "umbrella",
+    "parent": "Gallic Wars",
+    "campaign": "",
+    "source_note": "Broad context only. Use specific campaigns, battles, and sieges for tactical extraction.",
+    "categories": [
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "terms": [
+      "battles",
+      "sieges for tactical extraction",
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "mechanics": [
+      "Allied forces can share a battlefield while splitting rewards.",
+      "Command friction delays actions or changes who claims the result.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Julius Caesar's invasions of Britain",
+    "path": "lore/reference-sources/gallic-wars/julius-caesars-invasions-of-britain.md",
+    "topic": "gallic-wars",
+    "scope": "operation",
+    "parent": "Gallic Wars",
+    "campaign": "",
+    "source_note": "Amphibious landing, reconnaissance, hostage politics, and limited expeditionary gains.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Coalition / Command",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Amphibious landing",
+      "reconnaissance",
+      "hostage politics",
+      "limited expeditionary gains",
+      "Mobility / Operational Tempo",
+      "Coalition / Command",
+      "Engineering / Technology"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Battle of Agincourt",
+    "path": "lore/reference-sources/hundred-years-war/battle-of-agincourt.md",
+    "topic": "hundred-years-war",
+    "scope": "battle",
+    "parent": "Hundred Years' War",
+    "campaign": "Lancastrian phase",
+    "source_note": "Mud, narrow frontage, longbow archers, stakes, and compressed French assault.",
+    "categories": [
+      "Siege / Blockade",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "Mud",
+      "narrow frontage",
+      "longbow archers",
+      "stakes",
+      "compressed French assault",
+      "Siege / Blockade",
+      "Attrition / Firepower"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Repeated pressure lowers readiness even without immediate capture."
+    ]
+  },
+  {
+    "title": "Battle of Castillon",
+    "path": "lore/reference-sources/hundred-years-war/battle-of-castillon.md",
+    "topic": "hundred-years-war",
+    "scope": "battle",
+    "parent": "Hundred Years' War",
+    "campaign": "Final phase",
+    "source_note": "Field fortifications, artillery position, failed assault, and end-stage tactical transition.",
+    "categories": [
+      "Siege / Blockade",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Field fortifications",
+      "artillery position",
+      "failed assault",
+      "end-stage tactical transition",
+      "Siege / Blockade",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Repeated pressure lowers readiness even without immediate capture."
+    ]
+  },
+  {
+    "title": "Battle of Crécy",
+    "path": "lore/reference-sources/hundred-years-war/battle-of-crecy.md",
+    "topic": "hundred-years-war",
+    "scope": "battle",
+    "parent": "Hundred Years' War",
+    "campaign": "Crécy campaign",
+    "source_note": "Defensive position, English longbow, dismounted men-at-arms, and disorderly cavalry assaults.",
+    "categories": [
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "Defensive position",
+      "English longbow",
+      "dismounted men-at-arms",
+      "disorderly cavalry assaults",
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Battle of Orléans",
+    "path": "lore/reference-sources/hundred-years-war/battle-of-orleans.md",
+    "topic": "hundred-years-war",
+    "scope": "siege",
+    "parent": "Hundred Years' War",
+    "campaign": "Loire campaign",
+    "source_note": "Relief of a besieged city, morale reversal, artillery and fortification pressure, and Joan of Arc's role.",
+    "categories": [
+      "Siege / Blockade",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Relief of a besieged city",
+      "morale reversal",
+      "artillery",
+      "fortification pressure",
+      "Joan of Arc's role",
+      "Siege / Blockade",
+      "Attrition / Firepower"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Repeated pressure lowers readiness even without immediate capture."
+    ]
+  },
+  {
+    "title": "Battle of Patay",
+    "path": "lore/reference-sources/hundred-years-war/battle-of-patay.md",
+    "topic": "hundred-years-war",
+    "scope": "battle",
+    "parent": "Hundred Years' War",
+    "campaign": "Loire campaign",
+    "source_note": "Rapid cavalry attack, English archers caught before preparing positions, and reversal after Orléans.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "Rapid cavalry attack",
+      "English archers caught before preparing positions",
+      "reversal after Orléans",
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Repeated pressure lowers readiness even without immediate capture."
+    ]
+  },
+  {
+    "title": "Battle of Poitiers",
+    "path": "lore/reference-sources/hundred-years-war/battle-of-poitiers.md",
+    "topic": "hundred-years-war",
+    "scope": "battle",
+    "parent": "Hundred Years' War",
+    "campaign": "Black Prince's chevauchée",
+    "source_note": "Defensive terrain, longbow fire, dismounted combat, and capture of the French king.",
+    "categories": [
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "Defensive terrain",
+      "longbow fire",
+      "dismounted combat",
+      "capture of the French king",
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Battle of Sluys",
+    "path": "lore/reference-sources/hundred-years-war/battle-of-sluys.md",
+    "topic": "hundred-years-war",
+    "scope": "battle",
+    "parent": "Hundred Years' War",
+    "campaign": "Edwardian phase",
+    "source_note": "Naval melee, immobilized ships, missile fire, and control of channel access.",
+    "categories": [
+      "Attrition / Firepower",
+      "Coalition / Command",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Naval melee",
+      "immobilized ships",
+      "missile fire",
+      "control of channel access",
+      "Attrition / Firepower",
+      "Coalition / Command",
+      "Engineering / Technology"
+    ],
+    "mechanics": [
+      "Repeated pressure lowers readiness even without immediate capture.",
+      "Firepower can pin units while another effect decides the site.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Hundred Years' War",
+    "path": "lore/reference-sources/hundred-years-war/hundred-years-war-overview.md",
+    "topic": "hundred-years-war",
+    "scope": "umbrella",
+    "parent": "Hundred Years' War",
+    "campaign": "",
+    "source_note": "Broad context only. Use specific battles, sieges, and campaigns for tactical extraction.",
+    "categories": [
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "terms": [
+      "sieges",
+      "campaigns for tactical extraction",
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "mechanics": [
+      "Allied forces can share a battlefield while splitting rewards.",
+      "Command friction delays actions or changes who claims the result.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Siege of Calais (1346–1347)",
+    "path": "lore/reference-sources/hundred-years-war/siege-of-calais-13461347.md",
+    "topic": "hundred-years-war",
+    "scope": "siege",
+    "parent": "Hundred Years' War",
+    "campaign": "Crécy campaign",
+    "source_note": "Long blockade, coastal logistics, starvation pressure, and strategic port capture.",
+    "categories": [
+      "Siege / Blockade",
+      "Logistics / Supply"
+    ],
+    "terms": [
+      "Long blockade",
+      "coastal logistics",
+      "starvation pressure",
+      "strategic port capture",
+      "Siege / Blockade",
+      "Logistics / Supply"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Supply lines become a second health track."
+    ]
+  },
+  {
+    "title": "Battle of Ain Jalut",
+    "path": "lore/reference-sources/mongol-conquests/battle-of-ain-jalut.md",
+    "topic": "mongol-conquests",
+    "scope": "battle",
+    "parent": "Mongol invasions and conquests",
+    "campaign": "Levant campaign",
+    "source_note": "Mamluk ambush, feigned retreat reversal, and halt of Mongol advance in the region.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Ambush / Deception"
+    ],
+    "terms": [
+      "Mamluk ambush",
+      "feigned retreat reversal",
+      "halt of Mongol advance in the region",
+      "Mobility / Operational Tempo",
+      "Ambush / Deception"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Hidden setup converts enemy movement into exposure."
+    ]
+  },
+  {
+    "title": "Battle of Legnica",
+    "path": "lore/reference-sources/mongol-conquests/battle-of-legnica.md",
+    "topic": "mongol-conquests",
+    "scope": "battle",
+    "parent": "Mongol invasions and conquests",
+    "campaign": "Invasion of Poland",
+    "source_note": "Deception, smoke or battlefield confusion, cavalry coordination, and defeat of coalition forces.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Ambush / Deception",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Deception",
+      "smoke or battlefield confusion",
+      "cavalry coordination",
+      "defeat of coalition forces",
+      "Mobility / Operational Tempo",
+      "Ambush / Deception",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Hidden setup converts enemy movement into exposure."
+    ]
+  },
+  {
+    "title": "Battle of Mohi",
+    "path": "lore/reference-sources/mongol-conquests/battle-of-mohi.md",
+    "topic": "mongol-conquests",
+    "scope": "battle",
+    "parent": "Mongol invasions and conquests",
+    "campaign": "Invasion of Europe",
+    "source_note": "River crossing, night maneuver, encirclement, siege engines, and camp destruction.",
+    "categories": [
+      "Siege / Blockade",
+      "Encirclement / Envelopment",
+      "Mobility / Operational Tempo",
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "River crossing",
+      "night maneuver",
+      "encirclement",
+      "siege engines",
+      "camp destruction",
+      "Siege / Blockade",
+      "Encirclement / Envelopment"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "A unit loses retreat options before it loses strength."
+    ]
+  },
+  {
+    "title": "Battle of the Kalka River",
+    "path": "lore/reference-sources/mongol-conquests/battle-of-the-kalka-river.md",
+    "topic": "mongol-conquests",
+    "scope": "battle",
+    "parent": "Mongol invasions and conquests",
+    "campaign": "Reconnaissance westward",
+    "source_note": "Feigned retreat, coalition pursuit, separation, and encirclement.",
+    "categories": [
+      "Encirclement / Envelopment",
+      "Mobility / Operational Tempo",
+      "Ambush / Deception",
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "Feigned retreat",
+      "coalition pursuit",
+      "separation",
+      "encirclement",
+      "Encirclement / Envelopment",
+      "Mobility / Operational Tempo",
+      "Ambush / Deception"
+    ],
+    "mechanics": [
+      "A unit loses retreat options before it loses strength.",
+      "Flanking markers can become a delayed collapse trigger.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Mongol conquests",
+    "path": "lore/reference-sources/mongol-conquests/mongol-conquests-overview.md",
+    "topic": "mongol-conquests",
+    "scope": "umbrella",
+    "parent": "Mongol invasions and conquests",
+    "campaign": "",
+    "source_note": "Broad context only. Use specific battles, sieges, and invasion campaigns for tactical extraction.",
+    "categories": [
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "terms": [
+      "sieges",
+      "invasion campaigns for tactical extraction",
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "mechanics": [
+      "Allied forces can share a battlefield while splitting rewards.",
+      "Command friction delays actions or changes who claims the result.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Mongol invasion of the Khwarazmian Empire",
+    "path": "lore/reference-sources/mongol-conquests/mongol-invasion-of-the-khwarazmian-empire.md",
+    "topic": "mongol-conquests",
+    "scope": "campaign",
+    "parent": "Mongol invasions and conquests",
+    "campaign": "",
+    "source_note": "Multi-pronged invasion, intelligence, terror strategy, city sieges, and operational mobility.",
+    "categories": [
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Ambush / Deception",
+      "Morale / Symbolic Shock"
+    ],
+    "terms": [
+      "Multi-pronged invasion",
+      "intelligence",
+      "terror strategy",
+      "city sieges",
+      "operational mobility",
+      "Siege / Blockade",
+      "Mobility / Operational Tempo"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Siege of Baghdad",
+    "path": "lore/reference-sources/mongol-conquests/siege-of-baghdad.md",
+    "topic": "mongol-conquests",
+    "scope": "siege",
+    "parent": "Mongol invasions and conquests",
+    "campaign": "Campaign against the Abbasid Caliphate",
+    "source_note": "Encirclement, siege engineering, symbolic capital collapse, and shock aftermath.",
+    "categories": [
+      "Siege / Blockade",
+      "Encirclement / Envelopment",
+      "Coalition / Command",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Encirclement",
+      "siege engineering",
+      "symbolic capital collapse",
+      "shock aftermath",
+      "Siege / Blockade",
+      "Encirclement / Envelopment",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "A unit loses retreat options before it loses strength."
+    ]
+  },
+  {
+    "title": "Siege of Bukhara",
+    "path": "lore/reference-sources/mongol-conquests/siege-of-bukhara.md",
+    "topic": "mongol-conquests",
+    "scope": "siege",
+    "parent": "Mongol invasions and conquests",
+    "campaign": "Khwarazmian campaign",
+    "source_note": "Rapid approach, psychological shock, and city submission under Mongol pressure.",
+    "categories": [
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Morale / Symbolic Shock"
+    ],
+    "terms": [
+      "Rapid approach",
+      "psychological shock",
+      "city submission under Mongol pressure",
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Morale / Symbolic Shock"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Siege of Samarkand (1220)",
+    "path": "lore/reference-sources/mongol-conquests/siege-of-samarkand-1220.md",
+    "topic": "mongol-conquests",
+    "scope": "siege",
+    "parent": "Mongol invasions and conquests",
+    "campaign": "Khwarazmian campaign",
+    "source_note": "Defended city, siege pressure, betrayal or collapse, and massacre as deterrence.",
+    "categories": [
+      "Siege / Blockade",
+      "Coalition / Command",
+      "Morale / Symbolic Shock"
+    ],
+    "terms": [
+      "Defended city",
+      "siege pressure",
+      "betrayal or collapse",
+      "massacre as deterrence",
+      "Siege / Blockade",
+      "Coalition / Command",
+      "Morale / Symbolic Shock"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Battle of Austerlitz",
+    "path": "lore/reference-sources/napoleonic-wars/battle-of-austerlitz.md",
+    "topic": "napoleonic-wars",
+    "scope": "battle",
+    "parent": "Napoleonic Wars",
+    "campaign": "War of the Third Coalition",
+    "source_note": "Deliberate weak flank, central counterstroke, fog, and collapse of allied coordination.",
+    "categories": [
+      "Ambush / Deception",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Deliberate weak flank",
+      "central counterstroke",
+      "fog",
+      "collapse of allied coordination",
+      "Ambush / Deception",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "Hidden setup converts enemy movement into exposure.",
+      "False weakness can pull an attacker into a worse position.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Battle of Eylau",
+    "path": "lore/reference-sources/napoleonic-wars/battle-of-eylau.md",
+    "topic": "napoleonic-wars",
+    "scope": "battle",
+    "parent": "Napoleonic Wars",
+    "campaign": "War of the Fourth Coalition",
+    "source_note": "Winter battle, artillery, cavalry mass charge, and attritional indecision.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower",
+      "Logistics / Supply",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Winter battle",
+      "artillery",
+      "cavalry mass charge",
+      "attritional indecision",
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower",
+      "Logistics / Supply"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Repeated pressure lowers readiness even without immediate capture."
+    ]
+  },
+  {
+    "title": "Battle of Friedland",
+    "path": "lore/reference-sources/napoleonic-wars/battle-of-friedland.md",
+    "topic": "napoleonic-wars",
+    "scope": "battle",
+    "parent": "Napoleonic Wars",
+    "campaign": "War of the Fourth Coalition",
+    "source_note": "Enemy trapped against river, concentration, artillery, and decisive assault.",
+    "categories": [
+      "Siege / Blockade",
+      "Encirclement / Envelopment",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "Enemy trapped",
+      "river",
+      "concentration",
+      "artillery",
+      "decisive assault",
+      "Siege / Blockade",
+      "Encirclement / Envelopment"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "A unit loses retreat options before it loses strength."
+    ]
+  },
+  {
+    "title": "Battle of Jena–Auerstedt",
+    "path": "lore/reference-sources/napoleonic-wars/battle-of-jenaauerstedt.md",
+    "topic": "napoleonic-wars",
+    "scope": "battle",
+    "parent": "Napoleonic Wars",
+    "campaign": "War of the Fourth Coalition",
+    "source_note": "Twin battles, corps independence, Prussian command failure, and pursuit.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Twin battles",
+      "corps independence",
+      "Prussian command failure",
+      "pursuit",
+      "Mobility / Operational Tempo",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Battle of Leipzig",
+    "path": "lore/reference-sources/napoleonic-wars/battle-of-leipzig.md",
+    "topic": "napoleonic-wars",
+    "scope": "battle",
+    "parent": "Napoleonic Wars",
+    "campaign": "War of the Sixth Coalition",
+    "source_note": "Coalition pressure, multi-day battle, defection, retreat bottleneck, and operational defeat.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Coalition pressure",
+      "multi-day battle",
+      "defection",
+      "retreat bottleneck",
+      "operational defeat",
+      "Mobility / Operational Tempo",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Battle of Ulm",
+    "path": "lore/reference-sources/napoleonic-wars/battle-of-ulm.md",
+    "topic": "napoleonic-wars",
+    "scope": "campaign",
+    "parent": "Napoleonic Wars",
+    "campaign": "War of the Third Coalition",
+    "source_note": "Operational envelopment, rapid corps maneuver, and surrender without major pitched battle.",
+    "categories": [
+      "Encirclement / Envelopment",
+      "Mobility / Operational Tempo"
+    ],
+    "terms": [
+      "Operational envelopment",
+      "rapid corps maneuver",
+      "surrender without major pitched battle",
+      "Encirclement / Envelopment",
+      "Mobility / Operational Tempo"
+    ],
+    "mechanics": [
+      "A unit loses retreat options before it loses strength.",
+      "Flanking markers can become a delayed collapse trigger.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Battle of Wagram",
+    "path": "lore/reference-sources/napoleonic-wars/battle-of-wagram.md",
+    "topic": "napoleonic-wars",
+    "scope": "battle",
+    "parent": "Napoleonic Wars",
+    "campaign": "War of the Fifth Coalition",
+    "source_note": "Large-scale artillery, corps coordination, refused pressure, and battlefield exhaustion.",
+    "categories": [
+      "Attrition / Firepower",
+      "Coalition / Command",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Large-scale artillery",
+      "corps coordination",
+      "refused pressure",
+      "battlefield exhaustion",
+      "Attrition / Firepower",
+      "Coalition / Command",
+      "Engineering / Technology"
+    ],
+    "mechanics": [
+      "Repeated pressure lowers readiness even without immediate capture.",
+      "Firepower can pin units while another effect decides the site.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Battle of Waterloo",
+    "path": "lore/reference-sources/napoleonic-wars/battle-of-waterloo.md",
+    "topic": "napoleonic-wars",
+    "scope": "battle",
+    "parent": "Napoleonic Wars",
+    "campaign": "Hundred Days",
+    "source_note": "Defensive ridge, delayed attacks, coalition timing, cavalry misuse, and arrival of Prussians.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Defensive Position / Terrain",
+      "Logistics / Supply",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Defensive ridge",
+      "delayed attacks",
+      "coalition timing",
+      "cavalry misuse",
+      "arrival of Prussians",
+      "Mobility / Operational Tempo",
+      "Defensive Position / Terrain"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Terrain changes the cost of attack more than the strength value."
+    ]
+  },
+  {
+    "title": "French invasion of Russia",
+    "path": "lore/reference-sources/napoleonic-wars/french-invasion-of-russia.md",
+    "topic": "napoleonic-wars",
+    "scope": "campaign",
+    "parent": "Napoleonic Wars",
+    "campaign": "Russian campaign",
+    "source_note": "Strategic depth, scorched earth, logistics failure, attrition, and winter retreat.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain",
+      "Logistics / Supply"
+    ],
+    "terms": [
+      "Strategic depth",
+      "scorched earth",
+      "logistics failure",
+      "attrition",
+      "winter retreat",
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Repeated pressure lowers readiness even without immediate capture."
+    ]
+  },
+  {
+    "title": "Napoleonic Wars",
+    "path": "lore/reference-sources/napoleonic-wars/napoleonic-wars-overview.md",
+    "topic": "napoleonic-wars",
+    "scope": "umbrella",
+    "parent": "Napoleonic Wars",
+    "campaign": "",
+    "source_note": "Broad context only. Use specific battles and campaigns for tactical extraction.",
+    "categories": [
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "terms": [
+      "campaigns for tactical extraction",
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "mechanics": [
+      "Allied forces can share a battlefield while splitting rewards.",
+      "Command friction delays actions or changes who claims the result.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Battle of Aegospotami",
+    "path": "lore/reference-sources/peloponnesian-war/battle-of-aegospotami.md",
+    "topic": "peloponnesian-war",
+    "scope": "battle",
+    "parent": "Peloponnesian War",
+    "campaign": "",
+    "source_note": "Fleet vulnerability, surprise capture, supply discipline, and decisive naval-strategic collapse.",
+    "categories": [
+      "Siege / Blockade",
+      "Ambush / Deception",
+      "Logistics / Supply",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Fleet vulnerability",
+      "surprise capture",
+      "supply discipline",
+      "decisive naval-strategic collapse",
+      "Siege / Blockade",
+      "Ambush / Deception",
+      "Logistics / Supply"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Hidden setup converts enemy movement into exposure."
+    ]
+  },
+  {
+    "title": "Battle of Amphipolis",
+    "path": "lore/reference-sources/peloponnesian-war/battle-of-amphipolis.md",
+    "topic": "peloponnesian-war",
+    "scope": "battle",
+    "parent": "Peloponnesian War",
+    "campaign": "",
+    "source_note": "Surprise, city approach, local intelligence, and command casualties.",
+    "categories": [
+      "Siege / Blockade",
+      "Ambush / Deception",
+      "Attrition / Firepower",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Surprise",
+      "city approach",
+      "local intelligence",
+      "command casualties",
+      "Siege / Blockade",
+      "Ambush / Deception",
+      "Attrition / Firepower"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Hidden setup converts enemy movement into exposure."
+    ]
+  },
+  {
+    "title": "Battle of Delium",
+    "path": "lore/reference-sources/peloponnesian-war/battle-of-delium.md",
+    "topic": "peloponnesian-war",
+    "scope": "battle",
+    "parent": "Peloponnesian War",
+    "campaign": "",
+    "source_note": "Hoplite battle, formation depth, routed wing dynamics, and battlefield pursuit.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "Hoplite battle",
+      "formation depth",
+      "routed wing dynamics",
+      "battlefield pursuit",
+      "Mobility / Operational Tempo",
+      "Defensive Position / Terrain"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Terrain changes the cost of attack more than the strength value."
+    ]
+  },
+  {
+    "title": "Battle of Mantinea (418 BC)",
+    "path": "lore/reference-sources/peloponnesian-war/battle-of-mantinea-418-bc.md",
+    "topic": "peloponnesian-war",
+    "scope": "battle",
+    "parent": "Peloponnesian War",
+    "campaign": "",
+    "source_note": "Alliance warfare, hoplite alignment drift, and Spartan battlefield discipline.",
+    "categories": [
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Alliance warfare",
+      "hoplite alignment drift",
+      "Spartan battlefield discipline",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "Allied forces can share a battlefield while splitting rewards.",
+      "Command friction delays actions or changes who claims the result."
+    ]
+  },
+  {
+    "title": "Battle of Pylos",
+    "path": "lore/reference-sources/peloponnesian-war/battle-of-pylos.md",
+    "topic": "peloponnesian-war",
+    "scope": "battle",
+    "parent": "Peloponnesian War",
+    "campaign": "",
+    "source_note": "Improvised fortification, coastal lodgment, Spartan reaction, and control of nearby island forces.",
+    "categories": [
+      "Defensive Position / Terrain",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Improvised fortification",
+      "coastal lodgment",
+      "Spartan reaction",
+      "control of nearby island forces",
+      "Defensive Position / Terrain",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "Terrain changes the cost of attack more than the strength value.",
+      "Prepared ground lets a smaller force delay or punish a larger one.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Battle of Sphacteria",
+    "path": "lore/reference-sources/peloponnesian-war/battle-of-sphacteria.md",
+    "topic": "peloponnesian-war",
+    "scope": "battle",
+    "parent": "Peloponnesian War",
+    "campaign": "",
+    "source_note": "Light troops, missile harassment, difficult terrain, and surrender of elite hoplites.",
+    "categories": [
+      "Attrition / Firepower",
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "Light troops",
+      "missile harassment",
+      "difficult terrain",
+      "surrender of elite hoplites",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain"
+    ],
+    "mechanics": [
+      "Repeated pressure lowers readiness even without immediate capture.",
+      "Firepower can pin units while another effect decides the site.",
+      "Terrain changes the cost of attack more than the strength value."
+    ]
+  },
+  {
+    "title": "Peloponnesian War",
+    "path": "lore/reference-sources/peloponnesian-war/peloponnesian-war-overview.md",
+    "topic": "peloponnesian-war",
+    "scope": "umbrella",
+    "parent": "Peloponnesian War",
+    "campaign": "",
+    "source_note": "Broad context only. Use specific battles, sieges, expeditions, and phases for tactical extraction.",
+    "categories": [
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "terms": [
+      "sieges",
+      "expeditions",
+      "phases for tactical extraction",
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "mechanics": [
+      "Allied forces can share a battlefield while splitting rewards.",
+      "Command friction delays actions or changes who claims the result.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Plague of Athens",
+    "path": "lore/reference-sources/peloponnesian-war/plague-of-athens.md",
+    "topic": "peloponnesian-war",
+    "scope": "campaign-condition",
+    "parent": "Peloponnesian War",
+    "campaign": "",
+    "source_note": "Urban crowding, disease shock, command loss, and morale collapse inside a defensive strategy.",
+    "categories": [
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Defensive Position / Terrain",
+      "Logistics / Supply"
+    ],
+    "terms": [
+      "Urban crowding",
+      "disease shock",
+      "command loss",
+      "morale collapse inside a defensive strategy",
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Defensive Position / Terrain"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Sicilian Expedition",
+    "path": "lore/reference-sources/peloponnesian-war/sicilian-expedition.md",
+    "topic": "peloponnesian-war",
+    "scope": "expedition",
+    "parent": "Peloponnesian War",
+    "campaign": "",
+    "source_note": "Overseas expedition risk, siege failure, command conflict, and strategic overreach.",
+    "categories": [
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Overseas expedition risk",
+      "siege failure",
+      "command conflict",
+      "strategic overreach",
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Battle of Baecula",
+    "path": "lore/reference-sources/second-punic-war/battle-of-baecula.md",
+    "topic": "second-punic-war",
+    "scope": "battle",
+    "parent": "Second Punic War",
+    "campaign": "Iberian campaign",
+    "source_note": "Hill position, flanking attack, and Scipio's pressure on Carthaginian forces in Iberia.",
+    "categories": [
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "Hill position",
+      "flanking attack",
+      "Scipio's pressure on Carthaginian forces in Iberia",
+      "Defensive Position / Terrain"
+    ],
+    "mechanics": [
+      "Terrain changes the cost of attack more than the strength value.",
+      "Prepared ground lets a smaller force delay or punish a larger one."
+    ]
+  },
+  {
+    "title": "Battle of Cannae",
+    "path": "lore/reference-sources/second-punic-war/battle-of-cannae.md",
+    "topic": "second-punic-war",
+    "scope": "battle",
+    "parent": "Second Punic War",
+    "campaign": "Hannibal's Italian campaign",
+    "source_note": "Double envelopment, elastic center, cavalry superiority, and mass encirclement.",
+    "categories": [
+      "Encirclement / Envelopment",
+      "Mobility / Operational Tempo"
+    ],
+    "terms": [
+      "Double envelopment",
+      "elastic center",
+      "cavalry superiority",
+      "mass encirclement",
+      "Encirclement / Envelopment",
+      "Mobility / Operational Tempo"
+    ],
+    "mechanics": [
+      "A unit loses retreat options before it loses strength.",
+      "Flanking markers can become a delayed collapse trigger.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Battle of Ilipa",
+    "path": "lore/reference-sources/second-punic-war/battle-of-ilipa.md",
+    "topic": "second-punic-war",
+    "scope": "battle",
+    "parent": "Second Punic War",
+    "campaign": "Iberian campaign",
+    "source_note": "Deceptive deployment, timing reversal, and infantry-cavalry coordination.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Deceptive deployment",
+      "timing reversal",
+      "infantry-cavalry coordination",
+      "Mobility / Operational Tempo",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Battle of Lake Trasimene",
+    "path": "lore/reference-sources/second-punic-war/battle-of-lake-trasimene.md",
+    "topic": "second-punic-war",
+    "scope": "battle",
+    "parent": "Second Punic War",
+    "campaign": "Hannibal's Italian campaign",
+    "source_note": "March-column ambush, terrain trap, fog or visibility, and command disruption.",
+    "categories": [
+      "Encirclement / Envelopment",
+      "Mobility / Operational Tempo",
+      "Ambush / Deception",
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "March-column ambush",
+      "terrain trap",
+      "fog or visibility",
+      "command disruption",
+      "Encirclement / Envelopment",
+      "Mobility / Operational Tempo",
+      "Ambush / Deception"
+    ],
+    "mechanics": [
+      "A unit loses retreat options before it loses strength.",
+      "Flanking markers can become a delayed collapse trigger.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Battle of the Metaurus",
+    "path": "lore/reference-sources/second-punic-war/battle-of-the-metaurus.md",
+    "topic": "second-punic-war",
+    "scope": "battle",
+    "parent": "Second Punic War",
+    "campaign": "Italian campaign",
+    "source_note": "Interception of reinforcement, forced march, and defeat of Hasdrubal before junction with Hannibal.",
+    "categories": [
+      "Encirclement / Envelopment",
+      "Mobility / Operational Tempo"
+    ],
+    "terms": [
+      "Interception of reinforcement",
+      "forced march",
+      "defeat of Hasdrubal before junction",
+      "Hannibal",
+      "Encirclement / Envelopment",
+      "Mobility / Operational Tempo"
+    ],
+    "mechanics": [
+      "A unit loses retreat options before it loses strength.",
+      "Flanking markers can become a delayed collapse trigger.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Battle of the Trebia",
+    "path": "lore/reference-sources/second-punic-war/battle-of-the-trebia.md",
+    "topic": "second-punic-war",
+    "scope": "battle",
+    "parent": "Second Punic War",
+    "campaign": "Hannibal's Italian campaign",
+    "source_note": "Ambush, weather, river crossing fatigue, and concealed reserve attack.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Ambush / Deception",
+      "Defensive Position / Terrain",
+      "Logistics / Supply"
+    ],
+    "terms": [
+      "Ambush",
+      "weather",
+      "river crossing fatigue",
+      "concealed reserve attack",
+      "Mobility / Operational Tempo",
+      "Ambush / Deception",
+      "Defensive Position / Terrain"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Hidden setup converts enemy movement into exposure."
+    ]
+  },
+  {
+    "title": "Battle of Zama",
+    "path": "lore/reference-sources/second-punic-war/battle-of-zama.md",
+    "topic": "second-punic-war",
+    "scope": "battle",
+    "parent": "Second Punic War",
+    "campaign": "African campaign",
+    "source_note": "Anti-elephant lanes, cavalry return, veteran infantry, and final reversal of Hannibal's methods.",
+    "categories": [
+      "Mobility / Operational Tempo"
+    ],
+    "terms": [
+      "Anti-elephant lanes",
+      "cavalry return",
+      "veteran infantry",
+      "final reversal of Hannibal's methods",
+      "Mobility / Operational Tempo"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later."
+    ]
+  },
+  {
+    "title": "Hannibal's crossing of the Alps",
+    "path": "lore/reference-sources/second-punic-war/hannibals-crossing-of-the-alps.md",
+    "topic": "second-punic-war",
+    "scope": "operation",
+    "parent": "Second Punic War",
+    "campaign": "Hannibal's Italian campaign",
+    "source_note": "Operational surprise, mountain passage, attrition, and psychological shock.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Ambush / Deception",
+      "Attrition / Firepower",
+      "Morale / Symbolic Shock"
+    ],
+    "terms": [
+      "Operational surprise",
+      "mountain passage",
+      "attrition",
+      "psychological shock",
+      "Mobility / Operational Tempo",
+      "Ambush / Deception",
+      "Attrition / Firepower"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Hidden setup converts enemy movement into exposure."
+    ]
+  },
+  {
+    "title": "Second Punic War",
+    "path": "lore/reference-sources/second-punic-war/second-punic-war-overview.md",
+    "topic": "second-punic-war",
+    "scope": "umbrella",
+    "parent": "Second Punic War",
+    "campaign": "",
+    "source_note": "Broad context only. Use specific battles, sieges, crossings, and campaigns for tactical extraction.",
+    "categories": [
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "terms": [
+      "sieges",
+      "crossings",
+      "campaigns for tactical extraction",
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "mechanics": [
+      "Allied forces can share a battlefield while splitting rewards.",
+      "Command friction delays actions or changes who claims the result.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Siege of Saguntum",
+    "path": "lore/reference-sources/second-punic-war/siege-of-saguntum.md",
+    "topic": "second-punic-war",
+    "scope": "siege",
+    "parent": "Second Punic War",
+    "campaign": "Iberian prelude",
+    "source_note": "Provocation, siege pressure, Roman alliance politics, and escalation to wider war.",
+    "categories": [
+      "Siege / Blockade",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Provocation",
+      "siege pressure",
+      "Roman alliance politics",
+      "escalation to wider war",
+      "Siege / Blockade",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Battle of Breitenfeld (1631)",
+    "path": "lore/reference-sources/thirty-years-war/battle-of-breitenfeld-1631.md",
+    "topic": "thirty-years-war",
+    "scope": "battle",
+    "parent": "Thirty Years' War",
+    "campaign": "Swedish intervention",
+    "source_note": "Linear tactics, artillery mobility, allied flank collapse, and Swedish tactical reform.",
+    "categories": [
+      "Attrition / Firepower",
+      "Coalition / Command",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Linear tactics",
+      "artillery mobility",
+      "allied flank collapse",
+      "Swedish tactical reform",
+      "Attrition / Firepower",
+      "Coalition / Command",
+      "Engineering / Technology"
+    ],
+    "mechanics": [
+      "Repeated pressure lowers readiness even without immediate capture.",
+      "Firepower can pin units while another effect decides the site.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Battle of Dessau Bridge",
+    "path": "lore/reference-sources/thirty-years-war/battle-of-dessau-bridge.md",
+    "topic": "thirty-years-war",
+    "scope": "battle",
+    "parent": "Thirty Years' War",
+    "campaign": "Danish intervention",
+    "source_note": "Bridgehead, fortified position, artillery, and crossing control.",
+    "categories": [
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "Bridgehead",
+      "fortified position",
+      "artillery",
+      "crossing control",
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Battle of Jankau",
+    "path": "lore/reference-sources/thirty-years-war/battle-of-jankau.md",
+    "topic": "thirty-years-war",
+    "scope": "battle",
+    "parent": "Thirty Years' War",
+    "campaign": "Late war",
+    "source_note": "Maneuver, terrain, artillery, and Swedish victory opening routes toward Vienna.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Maneuver",
+      "terrain",
+      "artillery",
+      "Swedish victory opening routes toward Vienna",
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Repeated pressure lowers readiness even without immediate capture."
+    ]
+  },
+  {
+    "title": "Battle of Lützen (1632)",
+    "path": "lore/reference-sources/thirty-years-war/battle-of-lutzen-1632.md",
+    "topic": "thirty-years-war",
+    "scope": "battle",
+    "parent": "Thirty Years' War",
+    "campaign": "Swedish intervention",
+    "source_note": "Fog, repeated assaults, command death, and contested tactical victory.",
+    "categories": [
+      "Siege / Blockade",
+      "Ambush / Deception",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Fog",
+      "repeated assaults",
+      "command death",
+      "contested tactical victory",
+      "Siege / Blockade",
+      "Ambush / Deception",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Hidden setup converts enemy movement into exposure."
+    ]
+  },
+  {
+    "title": "Battle of Nördlingen (1634)",
+    "path": "lore/reference-sources/thirty-years-war/battle-of-nordlingen-1634.md",
+    "topic": "thirty-years-war",
+    "scope": "battle",
+    "parent": "Thirty Years' War",
+    "campaign": "Swedish intervention",
+    "source_note": "Assault against strong position, Spanish tercios, and collapse of Swedish position in southern Germany.",
+    "categories": [
+      "Siege / Blockade",
+      "Defensive Position / Terrain",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Assault",
+      "strong position",
+      "Spanish tercios",
+      "collapse of Swedish position in southern Germany",
+      "Siege / Blockade",
+      "Defensive Position / Terrain",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Terrain changes the cost of attack more than the strength value."
+    ]
+  },
+  {
+    "title": "Battle of Rocroi",
+    "path": "lore/reference-sources/thirty-years-war/battle-of-rocroi.md",
+    "topic": "thirty-years-war",
+    "scope": "battle",
+    "parent": "Thirty Years' War",
+    "campaign": "Franco-Spanish War",
+    "source_note": "Cavalry action, encirclement pressure, Spanish infantry stand, and symbolic tactical transition.",
+    "categories": [
+      "Encirclement / Envelopment",
+      "Mobility / Operational Tempo",
+      "Morale / Symbolic Shock"
+    ],
+    "terms": [
+      "Cavalry action",
+      "encirclement pressure",
+      "Spanish infantry stand",
+      "symbolic tactical transition",
+      "Encirclement / Envelopment",
+      "Mobility / Operational Tempo",
+      "Morale / Symbolic Shock"
+    ],
+    "mechanics": [
+      "A unit loses retreat options before it loses strength.",
+      "Flanking markers can become a delayed collapse trigger.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Battle of White Mountain",
+    "path": "lore/reference-sources/thirty-years-war/battle-of-white-mountain.md",
+    "topic": "thirty-years-war",
+    "scope": "battle",
+    "parent": "Thirty Years' War",
+    "campaign": "Bohemian Revolt",
+    "source_note": "Short decisive battle, morale collapse, and political-religious consequences.",
+    "categories": [
+      "Coalition / Command",
+      "Morale / Symbolic Shock"
+    ],
+    "terms": [
+      "Short decisive battle",
+      "morale collapse",
+      "political-religious consequences",
+      "Coalition / Command",
+      "Morale / Symbolic Shock"
+    ],
+    "mechanics": [
+      "Allied forces can share a battlefield while splitting rewards.",
+      "Command friction delays actions or changes who claims the result.",
+      "A symbolic loss can spread penalties beyond the battlefield."
+    ]
+  },
+  {
+    "title": "Sack of Magdeburg",
+    "path": "lore/reference-sources/thirty-years-war/sack-of-magdeburg.md",
+    "topic": "thirty-years-war",
+    "scope": "siege",
+    "parent": "Thirty Years' War",
+    "campaign": "Swedish intervention",
+    "source_note": "Siege, urban storming, fire, massacre, and terror effect.",
+    "categories": [
+      "Siege / Blockade",
+      "Attrition / Firepower",
+      "Morale / Symbolic Shock"
+    ],
+    "terms": [
+      "Siege",
+      "urban storming",
+      "fire",
+      "massacre",
+      "terror effect",
+      "Siege / Blockade",
+      "Attrition / Firepower"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Repeated pressure lowers readiness even without immediate capture."
+    ]
+  },
+  {
+    "title": "Thirty Years' War",
+    "path": "lore/reference-sources/thirty-years-war/thirty-years-war-overview.md",
+    "topic": "thirty-years-war",
+    "scope": "umbrella",
+    "parent": "Thirty Years' War",
+    "campaign": "",
+    "source_note": "Broad context only. Use specific battles, sieges, sacks, and campaigns for tactical extraction.",
+    "categories": [
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "terms": [
+      "sieges",
+      "sacks",
+      "campaigns for tactical extraction",
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "mechanics": [
+      "Allied forces can share a battlefield while splitting rewards.",
+      "Command friction delays actions or changes who claims the result.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Battle of Passchendaele",
+    "path": "lore/reference-sources/world-war-i/battle-of-passchendaele.md",
+    "topic": "world-war-i",
+    "scope": "battle",
+    "parent": "World War I",
+    "campaign": "Western Front",
+    "source_note": "Mud, artillery-churned terrain, limited advances, and exhaustion.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Mud",
+      "artillery-churned terrain",
+      "limited advances",
+      "exhaustion",
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Repeated pressure lowers readiness even without immediate capture."
+    ]
+  },
+  {
+    "title": "Battle of Tannenberg",
+    "path": "lore/reference-sources/world-war-i/battle-of-tannenberg.md",
+    "topic": "world-war-i",
+    "scope": "battle",
+    "parent": "World War I",
+    "campaign": "Eastern Front",
+    "source_note": "Rail movement, intercepted communications, encirclement, and destruction of Russian army.",
+    "categories": [
+      "Encirclement / Envelopment",
+      "Logistics / Supply"
+    ],
+    "terms": [
+      "Rail movement",
+      "intercepted communications",
+      "encirclement",
+      "destruction of Russian army",
+      "Encirclement / Envelopment",
+      "Logistics / Supply"
+    ],
+    "mechanics": [
+      "A unit loses retreat options before it loses strength.",
+      "Flanking markers can become a delayed collapse trigger.",
+      "Supply lines become a second health track."
+    ]
+  },
+  {
+    "title": "Battle of the Somme",
+    "path": "lore/reference-sources/world-war-i/battle-of-the-somme.md",
+    "topic": "world-war-i",
+    "scope": "battle",
+    "parent": "World War I",
+    "campaign": "Western Front",
+    "source_note": "Artillery preparation, infantry assault, machine-gun defense, tanks, and attrition.",
+    "categories": [
+      "Siege / Blockade",
+      "Attrition / Firepower",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Artillery preparation",
+      "infantry assault",
+      "machine-gun defense",
+      "tanks",
+      "attrition",
+      "Siege / Blockade",
+      "Attrition / Firepower"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Repeated pressure lowers readiness even without immediate capture."
+    ]
+  },
+  {
+    "title": "Battle of Verdun",
+    "path": "lore/reference-sources/world-war-i/battle-of-verdun.md",
+    "topic": "world-war-i",
+    "scope": "battle",
+    "parent": "World War I",
+    "campaign": "Western Front",
+    "source_note": "Attrition, fortress zone, artillery, rotation, and symbolic endurance.",
+    "categories": [
+      "Siege / Blockade",
+      "Attrition / Firepower",
+      "Logistics / Supply",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Attrition",
+      "fortress zone",
+      "artillery",
+      "rotation",
+      "symbolic endurance",
+      "Siege / Blockade",
+      "Attrition / Firepower"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Repeated pressure lowers readiness even without immediate capture."
+    ]
+  },
+  {
+    "title": "Brusilov offensive",
+    "path": "lore/reference-sources/world-war-i/brusilov-offensive.md",
+    "topic": "world-war-i",
+    "scope": "offensive",
+    "parent": "World War I",
+    "campaign": "Eastern Front",
+    "source_note": "Short bombardments, infiltration-like assault preparation, broad-front attack, and Austro-Hungarian collapse.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Siege / Blockade",
+      "Attrition / Firepower",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Short bombardments",
+      "infiltration-like assault preparation",
+      "broad-front attack",
+      "Austro-Hungarian collapse",
+      "Mobility / Operational Tempo",
+      "Siege / Blockade",
+      "Attrition / Firepower"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "A site gains pressure only when adjacent routes are denied."
+    ]
+  },
+  {
+    "title": "First Battle of the Marne",
+    "path": "lore/reference-sources/world-war-i/first-battle-of-the-marne.md",
+    "topic": "world-war-i",
+    "scope": "battle",
+    "parent": "World War I",
+    "campaign": "Western Front",
+    "source_note": "Operational counterstroke, exposed flank, rail movement, and failure of German advance.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Logistics / Supply"
+    ],
+    "terms": [
+      "Operational counterstroke",
+      "exposed flank",
+      "rail movement",
+      "failure of German advance",
+      "Mobility / Operational Tempo",
+      "Logistics / Supply"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Supply lines become a second health track."
+    ]
+  },
+  {
+    "title": "Gallipoli campaign",
+    "path": "lore/reference-sources/world-war-i/gallipoli-campaign.md",
+    "topic": "world-war-i",
+    "scope": "campaign",
+    "parent": "World War I",
+    "campaign": "",
+    "source_note": "Amphibious assault, terrain, naval support limits, logistics, and failed breakthrough.",
+    "categories": [
+      "Siege / Blockade",
+      "Mobility / Operational Tempo",
+      "Defensive Position / Terrain",
+      "Logistics / Supply"
+    ],
+    "terms": [
+      "Amphibious assault",
+      "terrain",
+      "naval support limits",
+      "logistics",
+      "failed breakthrough",
+      "Siege / Blockade",
+      "Mobility / Operational Tempo"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Hundred Days Offensive",
+    "path": "lore/reference-sources/world-war-i/hundred-days-offensive.md",
+    "topic": "world-war-i",
+    "scope": "offensive",
+    "parent": "World War I",
+    "campaign": "Western Front",
+    "source_note": "Combined arms, rolling pressure, operational collapse, and final Allied advance.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Combined arms",
+      "rolling pressure",
+      "operational collapse",
+      "final Allied advance",
+      "Mobility / Operational Tempo",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Spring offensive",
+    "path": "lore/reference-sources/world-war-i/spring-offensive.md",
+    "topic": "world-war-i",
+    "scope": "offensive",
+    "parent": "World War I",
+    "campaign": "Western Front",
+    "source_note": "Stormtrooper tactics, breakthrough without strategic exploitation, and German exhaustion.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower"
+    ],
+    "terms": [
+      "Stormtrooper tactics",
+      "breakthrough without strategic exploitation",
+      "German exhaustion",
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Repeated pressure lowers readiness even without immediate capture."
+    ]
+  },
+  {
+    "title": "World War I",
+    "path": "lore/reference-sources/world-war-i/world-war-i-overview.md",
+    "topic": "world-war-i",
+    "scope": "umbrella",
+    "parent": "World War I",
+    "campaign": "",
+    "source_note": "Broad context only. Use specific battles, offensives, and campaigns for tactical extraction.",
+    "categories": [
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "terms": [
+      "offensives",
+      "campaigns for tactical extraction",
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "mechanics": [
+      "Allied forces can share a battlefield while splitting rewards.",
+      "Command friction delays actions or changes who claims the result.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Battle of Britain",
+    "path": "lore/reference-sources/world-war-ii/battle-of-britain.md",
+    "topic": "world-war-ii",
+    "scope": "battle",
+    "parent": "World War II",
+    "campaign": "European theatre",
+    "source_note": "Air defense network, radar, fighter control, attrition, and strategic denial.",
+    "categories": [
+      "Attrition / Firepower",
+      "Coalition / Command",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Air defense network",
+      "radar",
+      "fighter control",
+      "attrition",
+      "strategic denial",
+      "Attrition / Firepower",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "Repeated pressure lowers readiness even without immediate capture.",
+      "Firepower can pin units while another effect decides the site.",
+      "Allied forces can share a battlefield while splitting rewards."
+    ]
+  },
+  {
+    "title": "Battle of France",
+    "path": "lore/reference-sources/world-war-ii/battle-of-france.md",
+    "topic": "world-war-ii",
+    "scope": "campaign",
+    "parent": "World War II",
+    "campaign": "European theatre",
+    "source_note": "Ardennes breakthrough, armored exploitation, command paralysis, and encirclement.",
+    "categories": [
+      "Encirclement / Envelopment",
+      "Mobility / Operational Tempo",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Ardennes breakthrough",
+      "armored exploitation",
+      "command paralysis",
+      "encirclement",
+      "Encirclement / Envelopment",
+      "Mobility / Operational Tempo",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "A unit loses retreat options before it loses strength.",
+      "Flanking markers can become a delayed collapse trigger.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  },
+  {
+    "title": "Battle of Iwo Jima",
+    "path": "lore/reference-sources/world-war-ii/battle-of-iwo-jima.md",
+    "topic": "world-war-ii",
+    "scope": "battle",
+    "parent": "World War II",
+    "campaign": "Pacific War",
+    "source_note": "Amphibious assault, tunnel defense, volcanic terrain, and high-casualty island capture.",
+    "categories": [
+      "Siege / Blockade",
+      "Defensive Position / Terrain",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Amphibious assault",
+      "tunnel defense",
+      "volcanic terrain",
+      "high-casualty island capture",
+      "Siege / Blockade",
+      "Defensive Position / Terrain",
+      "Engineering / Technology"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "Terrain changes the cost of attack more than the strength value."
+    ]
+  },
+  {
+    "title": "Battle of Kursk",
+    "path": "lore/reference-sources/world-war-ii/battle-of-kursk.md",
+    "topic": "world-war-ii",
+    "scope": "battle",
+    "parent": "World War II",
+    "campaign": "Eastern Front",
+    "source_note": "Defense in depth, minefields, armored battle, reserves, and failed offensive.",
+    "categories": [
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "Defense in depth",
+      "minefields",
+      "armored battle",
+      "reserves",
+      "failed offensive",
+      "Defensive Position / Terrain"
+    ],
+    "mechanics": [
+      "Terrain changes the cost of attack more than the strength value.",
+      "Prepared ground lets a smaller force delay or punish a larger one."
+    ]
+  },
+  {
+    "title": "Battle of Midway",
+    "path": "lore/reference-sources/world-war-ii/battle-of-midway.md",
+    "topic": "world-war-ii",
+    "scope": "battle",
+    "parent": "World War II",
+    "campaign": "Pacific War",
+    "source_note": "Carrier warfare, intelligence, search timing, and sudden reversal.",
+    "categories": [
+      "Ambush / Deception",
+      "Engineering / Technology"
+    ],
+    "terms": [
+      "Carrier warfare",
+      "intelligence",
+      "search timing",
+      "sudden reversal",
+      "Ambush / Deception",
+      "Engineering / Technology"
+    ],
+    "mechanics": [
+      "Hidden setup converts enemy movement into exposure.",
+      "False weakness can pull an attacker into a worse position.",
+      "A tool or machine unlocks an otherwise impossible tactical line."
+    ]
+  },
+  {
+    "title": "Battle of Okinawa",
+    "path": "lore/reference-sources/world-war-ii/battle-of-okinawa.md",
+    "topic": "world-war-ii",
+    "scope": "battle",
+    "parent": "World War II",
+    "campaign": "Pacific War",
+    "source_note": "Layered defense, attrition, kamikaze attacks, civilians, and final island campaign.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "Layered defense",
+      "attrition",
+      "kamikaze attacks",
+      "civilians",
+      "final island campaign",
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Repeated pressure lowers readiness even without immediate capture."
+    ]
+  },
+  {
+    "title": "Battle of Stalingrad",
+    "path": "lore/reference-sources/world-war-ii/battle-of-stalingrad.md",
+    "topic": "world-war-ii",
+    "scope": "battle",
+    "parent": "World War II",
+    "campaign": "Eastern Front",
+    "source_note": "Urban attrition, encirclement, supply failure, and strategic turning point.",
+    "categories": [
+      "Siege / Blockade",
+      "Encirclement / Envelopment",
+      "Attrition / Firepower",
+      "Logistics / Supply"
+    ],
+    "terms": [
+      "Urban attrition",
+      "encirclement",
+      "supply failure",
+      "strategic turning point",
+      "Siege / Blockade",
+      "Encirclement / Envelopment",
+      "Attrition / Firepower"
+    ],
+    "mechanics": [
+      "A site gains pressure only when adjacent routes are denied.",
+      "A defender can trade time for damage while walls or gates remain intact.",
+      "A unit loses retreat options before it loses strength."
+    ]
+  },
+  {
+    "title": "Battle of the Bulge",
+    "path": "lore/reference-sources/world-war-ii/battle-of-the-bulge.md",
+    "topic": "world-war-ii",
+    "scope": "battle",
+    "parent": "World War II",
+    "campaign": "Western Front",
+    "source_note": "Surprise winter offensive, road junctions, fuel limits, and delayed Allied response.",
+    "categories": [
+      "Encirclement / Envelopment",
+      "Ambush / Deception",
+      "Logistics / Supply",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Surprise winter offensive",
+      "road junctions",
+      "fuel limits",
+      "delayed Allied response",
+      "Encirclement / Envelopment",
+      "Ambush / Deception",
+      "Logistics / Supply"
+    ],
+    "mechanics": [
+      "A unit loses retreat options before it loses strength.",
+      "Flanking markers can become a delayed collapse trigger.",
+      "Hidden setup converts enemy movement into exposure."
+    ]
+  },
+  {
+    "title": "Invasion of Poland",
+    "path": "lore/reference-sources/world-war-ii/invasion-of-poland.md",
+    "topic": "world-war-ii",
+    "scope": "campaign",
+    "parent": "World War II",
+    "campaign": "European theatre",
+    "source_note": "Combined arms, rapid maneuver, air-ground pressure, and operational collapse.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower",
+      "Coalition / Command"
+    ],
+    "terms": [
+      "Combined arms",
+      "rapid maneuver",
+      "air-ground pressure",
+      "operational collapse",
+      "Mobility / Operational Tempo",
+      "Attrition / Firepower",
+      "Coalition / Command"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Repeated pressure lowers readiness even without immediate capture."
+    ]
+  },
+  {
+    "title": "Normandy landings",
+    "path": "lore/reference-sources/world-war-ii/normandy-landings.md",
+    "topic": "world-war-ii",
+    "scope": "operation",
+    "parent": "World War II",
+    "campaign": "Western Front",
+    "source_note": "Amphibious invasion, airborne drops, naval fire support, deception, and beachhead logistics.",
+    "categories": [
+      "Mobility / Operational Tempo",
+      "Ambush / Deception",
+      "Attrition / Firepower",
+      "Defensive Position / Terrain"
+    ],
+    "terms": [
+      "Amphibious invasion",
+      "airborne drops",
+      "naval fire support",
+      "deception",
+      "beachhead logistics",
+      "Mobility / Operational Tempo",
+      "Ambush / Deception"
+    ],
+    "mechanics": [
+      "Fast forces may act before slower reserves can form a line.",
+      "Forced movement creates advantage now and exhaustion later.",
+      "Hidden setup converts enemy movement into exposure."
+    ]
+  },
+  {
+    "title": "World War II",
+    "path": "lore/reference-sources/world-war-ii/world-war-ii-overview.md",
+    "topic": "world-war-ii",
+    "scope": "umbrella",
+    "parent": "World War II",
+    "campaign": "",
+    "source_note": "Broad context only. Use specific battles, operations, and campaigns for tactical extraction.",
+    "categories": [
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "terms": [
+      "operations",
+      "campaigns for tactical extraction",
+      "Coalition / Command",
+      "Mobility / Operational Tempo"
+    ],
+    "mechanics": [
+      "Allied forces can share a battlefield while splitting rewards.",
+      "Command friction delays actions or changes who claims the result.",
+      "Fast forces may act before slower reserves can form a line."
+    ]
+  }
+]

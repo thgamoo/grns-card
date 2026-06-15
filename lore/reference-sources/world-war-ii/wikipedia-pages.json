@@ -1,0 +1,84 @@
+{
+  "description": "English Wikipedia pages for World War II reference notes. Keep this list at battle, campaign, operation, or siege scale.",
+  "language": "en",
+  "parent": "World War II",
+  "pages": [
+    {
+      "title": "World War II",
+      "scope": "umbrella",
+      "parent": "World War II",
+      "slug": "world-war-ii-overview",
+      "note": "Broad context only. Use specific battles, operations, and campaigns for tactical extraction."
+    },
+    {
+      "title": "Invasion of Poland",
+      "scope": "campaign",
+      "parent": "World War II",
+      "campaign": "European theatre",
+      "note": "Combined arms, rapid maneuver, air-ground pressure, and operational collapse."
+    },
+    {
+      "title": "Battle of France",
+      "scope": "campaign",
+      "parent": "World War II",
+      "campaign": "European theatre",
+      "note": "Ardennes breakthrough, armored exploitation, command paralysis, and encirclement."
+    },
+    {
+      "title": "Battle of Britain",
+      "scope": "battle",
+      "parent": "World War II",
+      "campaign": "European theatre",
+      "note": "Air defense network, radar, fighter control, attrition, and strategic denial."
+    },
+    {
+      "title": "Battle of Midway",
+      "scope": "battle",
+      "parent": "World War II",
+      "campaign": "Pacific War",
+      "note": "Carrier warfare, intelligence, search timing, and sudden reversal."
+    },
+    {
+      "title": "Battle of Stalingrad",
+      "scope": "battle",
+      "parent": "World War II",
+      "campaign": "Eastern Front",
+      "note": "Urban attrition, encirclement, supply failure, and strategic turning point."
+    },
+    {
+      "title": "Battle of Kursk",
+      "scope": "battle",
+      "parent": "World War II",
+      "campaign": "Eastern Front",
+      "note": "Defense in depth, minefields, armored battle, reserves, and failed offensive."
+    },
+    {
+      "title": "Normandy landings",
+      "scope": "operation",
+      "parent": "World War II",
+      "campaign": "Western Front",
+      "note": "Amphibious invasion, airborne drops, naval fire support, deception, and beachhead logistics."
+    },
+    {
+      "title": "Battle of the Bulge",
+      "scope": "battle",
+      "parent": "World War II",
+      "campaign": "Western Front",
+      "note": "Surprise winter offensive, road junctions, fuel limits, and delayed Allied response."
+    },
+    {
+      "title": "Battle of Iwo Jima",
+      "scope": "battle",
+      "parent": "World War II",
+      "campaign": "Pacific War",
+      "note": "Amphibious assault, tunnel defense, volcanic terrain, and high-casualty island capture."
+    },
+    {
+      "title": "Battle of Okinawa",
+      "scope": "battle",
+      "parent": "World War II",
+      "campaign": "Pacific War",
+      "note": "Layered defense, attrition, kamikaze attacks, civilians, and final island campaign."
+    }
+  ]
+}

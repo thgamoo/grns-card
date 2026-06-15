@@ -25,6 +25,8 @@ The Markdown structure is designed to work well in Obsidian.
 - `atlas/`: regions, routes, sites, borders, and recurring spatial frames.
 - `chronology/`: periods and timeline anchors.
 - `events/`: wars, rites, disasters, migrations, rebellions, and encounters.
+- `reference-sources/`: external research inputs and generated reference notes
+  used for grounding, kept separate from in-world lore.
 - `societies/`: factions, classes, social groups, occupations, and institutions.
 - `cosmology/`: powers, spirits, omens, taboos, and transformations.
 - `visual/`: style core, anti-realism guardrails, style profiles, motifs,
@@ -94,6 +96,39 @@ node scripts/lore/promote-selected-media.mjs
 node scripts/lore/export-media-index.mjs
 node scripts/lore/export-card-contexts.mjs --root lore --out lore/generated/card-contexts.json
 node scripts/lore/export-graphml.mjs --root lore --out lore/graph/exports/world.graphml
+python3 -m pip install -r requirements-lore.txt
+python3 scripts/lore/fetch_wikipedia_war_references.py \
+  --pages lore/reference-sources/crusades/wikipedia-pages.json \
+  --out-dir lore/reference-sources/crusades \
+  --out-json lore/generated/wikipedia-crusades-references.json
+```
+
+`fetch_wikipedia_war_references.py` uses the PyPI `Wikipedia-API` package to
+collect English Wikipedia reference pages for tactically notable wars. Use it
+with a topic-specific `wikipedia-pages.json`, then write generated notes into the
+same topic directory.
+
+Each large umbrella subject should live in its own subdirectory, and each
+generated Markdown file should represent a battle, siege, campaign, offensive, or
+operation rather than the whole war. The root
+`lore/reference-sources/wikipedia-war-pages.json` is now only an umbrella index;
+the active source lists live in directories such as
+`lore/reference-sources/crusades/wikipedia-pages.json`.
+
+Change a page's `title` to replace the source page, add a new object to `pages`,
+or set `enabled` to `false` to skip one temporarily. Use `--page "Korean War"` to
+add a one-off page, `--pages path/to/pages.json` for a different list,
+`--no-defaults` to fetch only explicit `--page` values, and `--full` when you
+want full page text instead of intro summaries.
+
+For example, Crusades references live in `lore/reference-sources/crusades/` and
+are generated with:
+
+```bash
+python3 scripts/lore/fetch_wikipedia_war_references.py \
+  --pages lore/reference-sources/crusades/wikipedia-pages.json \
+  --out-dir lore/reference-sources/crusades \
+  --out-json lore/generated/wikipedia-crusades-references.json
 ```
 
 ## Image-Generation Cache

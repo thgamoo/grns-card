@@ -1,0 +1,77 @@
+{
+  "description": "English Wikipedia pages for Napoleonic Wars reference notes. Keep this list at battle, campaign, operation, or siege scale.",
+  "language": "en",
+  "parent": "Napoleonic Wars",
+  "pages": [
+    {
+      "title": "Napoleonic Wars",
+      "scope": "umbrella",
+      "parent": "Napoleonic Wars",
+      "slug": "napoleonic-wars-overview",
+      "note": "Broad context only. Use specific battles and campaigns for tactical extraction."
+    },
+    {
+      "title": "Battle of Ulm",
+      "scope": "campaign",
+      "parent": "Napoleonic Wars",
+      "campaign": "War of the Third Coalition",
+      "note": "Operational envelopment, rapid corps maneuver, and surrender without major pitched battle."
+    },
+    {
+      "title": "Battle of Austerlitz",
+      "scope": "battle",
+      "parent": "Napoleonic Wars",
+      "campaign": "War of the Third Coalition",
+      "note": "Deliberate weak flank, central counterstroke, fog, and collapse of allied coordination."
+    },
+    {
+      "title": "Battle of Jena–Auerstedt",
+      "scope": "battle",
+      "parent": "Napoleonic Wars",
+      "campaign": "War of the Fourth Coalition",
+      "note": "Twin battles, corps independence, Prussian command failure, and pursuit."
+    },
+    {
+      "title": "Battle of Eylau",
+      "scope": "battle",
+      "parent": "Napoleonic Wars",
+      "campaign": "War of the Fourth Coalition",
+      "note": "Winter battle, artillery, cavalry mass charge, and attritional indecision."
+    },
+    {
+      "title": "Battle of Friedland",
+      "scope": "battle",
+      "parent": "Napoleonic Wars",
+      "campaign": "War of the Fourth Coalition",
+      "note": "Enemy trapped against river, concentration, artillery, and decisive assault."
+    },
+    {
+      "title": "Battle of Wagram",
+      "scope": "battle",
+      "parent": "Napoleonic Wars",
+      "campaign": "War of the Fifth Coalition",
+      "note": "Large-scale artillery, corps coordination, refused pressure, and battlefield exhaustion."
+    },
+    {
+      "title": "French invasion of Russia",
+      "scope": "campaign",
+      "parent": "Napoleonic Wars",
+      "campaign": "Russian campaign",
+      "note": "Strategic depth, scorched earth, logistics failure, attrition, and winter retreat."
+    },
+    {
+      "title": "Battle of Leipzig",
+      "scope": "battle",
+      "parent": "Napoleonic Wars",
+      "campaign": "War of the Sixth Coalition",
+      "note": "Coalition pressure, multi-day battle, defection, retreat bottleneck, and operational defeat."
+    },
+    {
+      "title": "Battle of Waterloo",
+      "scope": "battle",
+      "parent": "Napoleonic Wars",
+      "campaign": "Hundred Days",
+      "note": "Defensive ridge, delayed attacks, coalition timing, cavalry misuse, and arrival of Prussians."
+    }
+  ]
+}
