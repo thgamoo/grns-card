@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "atlas/regions/divided-continent.md",
+                "file": "reference-sources/crusades/battle-of-dorylaeum-1097.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "divided-continent"
+              "title": "battle-of-dorylaeum-1097"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "atlas/regions/divided-continent.md",
+                "file": "reference-sources/crusades/battle-of-dorylaeum-1097.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for divided-continent"
+              "title": "Backlinks for battle-of-dorylaeum-1097"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "atlas/regions/divided-continent.md",
+                "file": "reference-sources/crusades/battle-of-dorylaeum-1097.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from divided-continent"
+              "title": "Outgoing links from battle-of-dorylaeum-1097"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "atlas/regions/divided-continent.md",
+                "file": "reference-sources/crusades/battle-of-dorylaeum-1097.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of divided-continent"
+              "title": "Outline of battle-of-dorylaeum-1097"
             }
           }
         ]
@@ -185,36 +185,43 @@
   },
   "active": "46cdea02c5e228f8",
   "lastOpenFiles": [
-    "cache/image-contexts/ob01-0039.json",
-    "cache/image-contexts/ob01-0038.json",
-    "cache/image-contexts/ob01-0037.json",
-    "cache/image-contexts/ob01-0036.json",
-    "cache/image-contexts/ob01-0035.json",
-    "cache/image-contexts/ob01-0034.json",
-    "cache/image-contexts/ob01-0033.json",
-    "cache/image-contexts/ob01-0032.json",
-    "cache/image-contexts/ob01-0031.json",
-    "cache/image-contexts/ob01-0030.json",
-    "cache/image-contexts/ob01-0029.json",
-    "visual/style-profiles/ex01-revealed-reverse.md",
-    "visual/style-profiles/st04-sipje.md",
-    "visual/style-profiles/st03-saro.md",
-    "visual/style-profiles/st02-gaya.md",
-    "visual/style-profiles/st01-yemaek.md",
-    "visual/style-profiles/tu01.md",
-    "visual/style-profiles/ob01.md",
-    "visual/anti-realism.md",
-    "visual/style-core.md",
-    "indexes/media.md",
-    "media/README.md",
-    "scenes/world-separation-aftermath.md",
-    "cards/ob01/ob01-0009.md",
-    "cards/ob01/ob01-0004.md",
+    "reference-sources/generated-tactical-notes.json",
+    "reference-sources/tactical-notes-map.html",
+    "reference-sources/README.md",
+    "reference-sources/world-war-ii/battle-of-okinawa.md",
+    "reference-sources/world-war-ii/battle-of-iwo-jima.md",
+    "reference-sources/world-war-ii/battle-of-the-bulge.md",
+    "reference-sources/world-war-ii/normandy-landings.md",
+    "reference-sources/world-war-ii/battle-of-kursk.md",
+    "reference-sources/world-war-ii/battle-of-stalingrad.md",
+    "reference-sources/world-war-ii/battle-of-midway.md",
+    "reference-sources/world-war-ii/battle-of-britain.md",
+    "reference-sources/world-war-ii/battle-of-france.md",
+    "reference-sources/world-war-ii/invasion-of-poland.md",
+    "reference-sources/world-war-ii/world-war-ii-overview.md",
+    "generated/wikipedia-world-war-ii-references.json",
+    "reference-sources/world-war-i/hundred-days-offensive.md",
+    "reference-sources/world-war-i/spring-offensive.md",
+    "reference-sources/world-war-i/battle-of-passchendaele.md",
+    "reference-sources/world-war-i/brusilov-offensive.md",
+    "reference-sources/world-war-i/battle-of-the-somme.md",
+    "reference-sources/world-war-i/battle-of-verdun.md",
+    "reference-sources/world-war-i/gallipoli-campaign.md",
+    "reference-sources/world-war-i/battle-of-tannenberg.md",
+    "reference-sources/world-war-i/first-battle-of-the-marne.md",
+    "reference-sources/world-war-i/world-war-i-overview.md",
+    "generated/wikipedia-world-war-i-references.json",
+    "reference-sources/napoleonic-wars/battle-of-waterloo.md",
+    "reference-sources/napoleonic-wars/battle-of-leipzig.md",
+    "reference-sources/napoleonic-wars/french-invasion-of-russia.md",
+    "generated/wikipedia-napoleonic-wars-references.json",
+    "generated/wikipedia-thirty-years-war-references.json",
+    "generated/wikipedia-hundred-years-war-references.json",
+    "generated/wikipedia-mongol-conquests-references.json",
+    "generated/wikipedia-gallic-wars-references.json",
+    "generated/wikipedia-second-punic-war-references.json",
+    "generated/wikipedia-peloponnesian-war-references.json",
     "Untitled 1.canvas",
-    "2026-06-05.md",
-    "Untitled.canvas",
-    "visual/motifs/sacrifice-under-deck.md",
-    "cards/ob01/ob01-0005.md",
-    "cards/ob01/ob01-0001.md"
+    "Untitled.canvas"
   ]
 }
